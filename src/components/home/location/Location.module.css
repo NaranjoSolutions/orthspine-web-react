@@ -1,0 +1,16 @@
+.location-content {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.location-heading {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.location-address {
+  margin-bottom: 8px;
+  margin-top: 10px;
+}
+.location-image {
+  margin-bottom: 16px;
+}

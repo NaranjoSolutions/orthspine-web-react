@@ -1,0 +1,7 @@
+.content {
+  padding: 20px;
+}
+
+.card_image {
+  object-fit: cover;
+}

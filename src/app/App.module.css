@@ -1,0 +1,13 @@
+.layout {
+  height: 100vh;
+  width: 100%;
+}
+
+.appContent {
+  margin: 5px 10px;
+  padding: 24;
+  min-height: 280;
+  overflow-y: scroll;
+  background-color: white;
+  border-radius: 10;
+}

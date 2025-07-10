@@ -1,0 +1,12 @@
+.carousel-content {
+  padding: 10px;
+}
+
+.carousel-card {
+  width: 90%;
+}
+
+.carousel-image {
+  height: 180px;
+  object-fit: cover;
+}

@@ -1,0 +1,11 @@
+.mapContainer {
+  height: 250px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.contactUsCard {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 10px;
+}
