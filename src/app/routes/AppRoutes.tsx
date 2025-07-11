@@ -1,27 +1,25 @@
-import React from 'react';
-import { shallowEqual, useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
-import { routes } from './AppRoutesContent';
-import { RootState } from '../../store/redux/store';
+import { Routes, Route } from 'react-router-dom';
+import { Home } from '../../features/home';
+import { Testimonials } from '../../features/testimonials';
+import { Login } from '../../features/login';
+import { ProtectedRoute } from './ProtectedRoute';
+import { TestimonialsAdmin } from '../../features/testimonials-admin';
 
-const AppRoutes: React.FC = () => {
-  const { loggedIn } = useSelector(
-    (state: RootState) => ({
-      loggedIn: state.user.loggedIn,
-    }),
-    shallowEqual,
-  );
-
+export function AppRoutes() {
   return (
     <Routes>
-      {routes.map((route, index) => {
-        if (route.isPublicOnly && loggedIn) return null;
-        if (route.isPrivate && !loggedIn) return null;
+      <Route path="/" element={<Home />} />
+      <Route path="/testimonials" element={<Testimonials />} />
+      <Route path="/login" element={<Login />} />
 
-        return <Route key={index} path={route.path} element={route.element} />;
-      })}
+      <Route
+        path="/admin/testimonials"
+        element={
+          <ProtectedRoute>
+            <TestimonialsAdmin />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
-};
-
-export { AppRoutes };
+}

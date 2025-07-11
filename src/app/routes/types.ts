@@ -1,6 +1,3 @@
-export interface RouteItem {
-  path: string;
-  isPrivate?: boolean;
-  isPublicOnly?: boolean;
-  element: React.ReactNode;
+export interface ProtectedRouteProps {
+  children: React.ReactNode;
 }
