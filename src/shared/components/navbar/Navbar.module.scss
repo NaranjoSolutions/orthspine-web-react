@@ -6,27 +6,30 @@
   background-color: #fff;
   border-bottom: 1px solid #e6e6e6;
 
-  .navbar-desktop {
+  &-desktop {
     display: flex;
-    flex: 1;
 
     @media (max-width: 768px) {
       display: none;
     }
   }
 
-  .navbar-mobile {
+  &-mobile {
     display: none;
+    position: relative;
 
     @media (max-width: 768px) {
       display: block;
     }
-  }
 
-  .hamburger-menu {
-    font-size: 20px;
-    border: none;
-    background: none;
-    cursor: pointer;
+    .hamburger-menu {
+      position: absolute;
+      top: 16px; /* Adjust as necessary */
+      right: 16px; /* Adjust as necessary */
+      font-size: 20px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
   }
 }
