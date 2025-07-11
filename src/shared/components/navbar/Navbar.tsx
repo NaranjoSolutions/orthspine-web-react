@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Menu, Drawer, Button } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import './Navbar.module.scss';
+import styles from './Navbar.module.scss';
 
 const menuItems = [
   { key: 'home', label: <Link to="/">Home</Link> },
@@ -20,19 +20,19 @@ export function Navbar() {
   };
 
   return (
-    <header className="navbar">
+    <header className={styles.navbar}>
       {/* Desktop Menu */}
-      <nav className="navbar-desktop">
+      <nav className={styles.navbarDesktop}>
         <Menu mode="horizontal" items={menuItems} />
       </nav>
 
       {/* Mobile Menu */}
-      <nav className="navbar-mobile">
+      <nav className={styles.navbarMobile}>
         <Button
           type="text"
           icon={<MenuOutlined />}
           onClick={toggleDrawer}
-          className="hamburger-menu"
+          className={styles.hamburgerMenu}
           aria-label="Open menu"
         />
         {isDrawerVisible && (
