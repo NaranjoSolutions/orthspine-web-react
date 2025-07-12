@@ -1,16 +1,9 @@
 import { useState } from 'react';
 import { Menu, Drawer, Button } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
-import styles from './Navbar.module.scss';
 
-const menuItems = [
-  { key: 'home', label: <Link to="/">Home</Link> },
-  { key: 'services', label: <Link to="/services">Services</Link> },
-  { key: 'testimonials', label: <Link to="/testimonials">Testimonials</Link> },
-  { key: 'contact', label: <Link to="/contact">Contact</Link> },
-  { key: 'about-us', label: <Link to="/about-us">About Us</Link> },
-];
+import styles from './Navbar.module.scss';
+import { menuItems } from '../menu/Menu';
 
 export function Navbar() {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
