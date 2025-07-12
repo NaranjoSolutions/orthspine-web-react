@@ -1,5 +1,5 @@
 import { Col, Layout, Row, Space, Typography } from 'antd';
-import styles from './AppFooter.module.scss';
+import './AppFooter.scss';
 import { iconsFooter } from './AppFooterContent';
 import { clinicInformation } from '../../resources/clinic-information';
 
@@ -11,20 +11,20 @@ export const AppFooter: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <Footer className={styles.footer}>
+    <Footer className="footer">
       {/* Clinic Name */}
-      <Row justify="center" className={styles.clinicNameRow}>
-        <Col xs={24} sm={20} md={16} lg={12} className={styles.clinicNameCol}>
-          <Text strong className={styles.clinicName}>
+      <Row justify="center" className="clinic-name-row">
+        <Col xs={24} sm={20} md={16} lg={12} className="clinic-name-col">
+          <Text strong className="clinic-name">
             {name}
           </Text>
         </Col>
       </Row>
 
       {/* Social Media Icons */}
-      <Row justify="center" className={styles.socialIconsRow}>
+      <Row justify="center" className="social-icons-row">
         <Col>
-          <Space size="large" className={styles.socialIcons}>
+          <Space size="large" className="social-icons">
             {iconsFooter.map(({ id, href, target, rel, icon, ariaLabel }) => (
               <a
                 key={id}
@@ -33,7 +33,7 @@ export const AppFooter: React.FC = () => {
                 rel={rel}
                 aria-label={ariaLabel}
                 title={ariaLabel}
-                className={styles.socialLink}
+                className="social-link"
               >
                 {icon}
               </a>
@@ -43,11 +43,11 @@ export const AppFooter: React.FC = () => {
       </Row>
 
       {/* Copyright */}
-      <Row justify="center" className={styles.copyrightRow}>
-        <Col xs={24} className={styles.copyrightCol}>
-          <Text className={styles.copyrightText}>
+      <Row justify="center" className="copyright-row">
+        <Col xs={24} className="copyright-col">
+          <Text className="copyright-text">
             Copyright © {currentYear} - Developed by{' '}
-            <Text strong className={styles.developerName}>
+            <Text strong className="developer-name">
               Naranjo Solutions
             </Text>
           </Text>

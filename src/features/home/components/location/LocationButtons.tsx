@@ -1,7 +1,7 @@
 import { Button, Image, Space } from 'antd';
 import wazeIcon from '../../../../assets/images/waze.png';
 import mapsIcon from '../../../../assets/images/maps.png';
-import styles from './LocationButtons.module.scss';
+import './LocationButtons.scss';
 
 interface LocationButtonsProps {
   latitude: number;
@@ -23,16 +23,16 @@ const locationButtons = [
 
 export const LocationButtons: React.FC<LocationButtonsProps> = ({ latitude, longitude }) => {
   return (
-    <Space className={styles.space}>
+    <Space className="location-buttons-space">
       {locationButtons.map((button) => (
         <Button
-          className={styles.button}
+          className="location-button"
           key={button.name}
           size="large"
           aria-label={`Abrir ubicación en ${button.name}`}
           onClick={() => window.open(button.url(latitude, longitude), '_blank')}
         >
-          <Image className={styles.icons} src={button.icon} alt={button.name} preview={false} />
+          <Image className="location-button-icon" src={button.icon} alt={button.name} preview={false} />
         </Button>
       ))}
     </Space>

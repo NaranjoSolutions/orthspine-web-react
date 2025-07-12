@@ -1,5 +1,5 @@
 import { Col, Row, Typography, Layout } from 'antd';
-import styles from './Schedule.module.scss';
+import './Schedule.scss';
 import { clinicInformation } from '../../../../shared/resources/clinic-information';
 
 const { Paragraph } = Typography;
@@ -9,14 +9,14 @@ export const Schedule = () => {
   const { schedule } = clinicInformation;
 
   return (
-    <Content className={styles['schedule-content']}>
+    <Content className="schedule-content">
       <Row justify="center">
         <Col>
-          <Paragraph className={styles['schedule-heading']} strong>
+          <Paragraph className="schedule-heading" strong>
             Nuestro Horario:
           </Paragraph>
           {schedule.map((day, index) => (
-            <Paragraph className={styles['schedule-day']} key={index}>
+            <Paragraph className="schedule-day" key={index}>
               {day}
             </Paragraph>
           ))}

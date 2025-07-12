@@ -5,14 +5,14 @@
   text-align: center;
   margin-top: auto;
 
-  .clinicNameRow {
+  .clinic-name-row {
     margin-bottom: 24px;
 
-    .clinicNameCol {
+    .clinic-name-col {
       text-align: center;
     }
 
-    .clinicName {
+    .clinic-name {
       font-size: 18px;
       color: white;
       letter-spacing: 0.5px;
@@ -23,10 +23,10 @@
     }
   }
 
-  .socialIconsRow {
+  .social-icons-row {
     margin-bottom: 24px;
 
-    .socialIcons {
+    .social-icons {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -37,7 +37,7 @@
       }
     }
 
-    .socialLink {
+    .social-link {
       color: rgba(255, 255, 255, 0.7);
       font-size: 24px;
       transition: all 0.3s ease;
@@ -72,15 +72,15 @@
     }
   }
 
-  .copyrightRow {
+  .copyright-row {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 16px;
 
-    .copyrightCol {
+    .copyright-col {
       text-align: center;
     }
 
-    .copyrightText {
+    .copyright-text {
       color: rgba(255, 255, 255, 0.7);
       font-size: 14px;
       line-height: 1.5;
@@ -90,7 +90,7 @@
       }
     }
 
-    .developerName {
+    .developer-name {
       color: #1890ff;
       font-weight: 600;
     }

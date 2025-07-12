@@ -1,0 +1,90 @@
+.home-content {
+  min-height: 100vh;
+
+  .hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 30px 0;
+    color: white;
+    border-radius: 10px;
+
+    .hero-row {
+      min-height: 200px;
+    }
+
+    .hero-content {
+      text-align: center;
+
+      .clinic-name {
+        color: white !important;
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+        @media (max-width: 768px) {
+          font-size: 2.2rem;
+        }
+      }
+
+      .services-title {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-size: 1.8rem;
+        font-weight: 400;
+        margin-bottom: 0;
+
+        @media (max-width: 768px) {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+
+  .services-section,
+  .schedule-section,
+  .location-section {
+    padding: 60px 0;
+
+    @media (max-width: 768px) {
+      padding: 40px 0;
+    }
+  }
+
+  .services-section {
+    background-color: #f8f9fa;
+  }
+
+  .schedule-section {
+    background-color: white;
+  }
+
+  .location-section {
+    background-color: #f8f9fa;
+  }
+
+  // Dark theme support
+  &[data-theme='dark'] {
+    .hero-section {
+      background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+    }
+
+    .services-section {
+      background-color: #1a202c;
+    }
+
+    .schedule-section {
+      background-color: #2d3748;
+    }
+
+    .location-section {
+      background-color: #1a202c;
+    }
+
+    .clinic-name {
+      color: #f7fafc !important;
+    }
+
+    .services-title {
+      color: rgba(247, 250, 252, 0.9) !important;
+    }
+  }
+}

@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Menu, Drawer, Button } from 'antd';
+import { Menu, Drawer, Button, Space } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 
-import styles from './Navbar.module.scss';
+import './Navbar.scss';
 import { menuItems } from '../menu/Menu';
+import { ThemeToggle } from '../../theme-toggle/ThemeToggle';
 
 export function Navbar() {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
@@ -13,21 +14,26 @@ export function Navbar() {
   };
 
   return (
-    <header className={styles.navbar}>
+    <header className="navbar">
       {/* Desktop Menu */}
-      <nav className={styles.navbarDesktop}>
+      <nav className="navbar-desktop">
         <Menu mode="horizontal" items={menuItems} />
       </nav>
 
       {/* Mobile Menu */}
-      <nav className={styles.navbarMobile}>
-        <Button
-          type="text"
-          icon={<MenuOutlined />}
-          onClick={toggleDrawer}
-          className={styles.hamburgerMenu}
-          aria-label="Open menu"
-        />
+      <nav className="navbar-mobile">
+        <Space size="large" align="center">
+          <ThemeToggle />
+
+          <Button
+            type="text"
+            icon={<MenuOutlined />}
+            onClick={toggleDrawer}
+            className="hamburger-menu"
+            aria-label="Open menu"
+          />
+        </Space>
+
         {isDrawerVisible && (
           <Drawer
             title="Menu"
@@ -38,6 +44,9 @@ export function Navbar() {
             aria-label="Mobile menu"
           >
             <Menu mode="vertical" items={menuItems} />
+            <div style={{ padding: '16px', borderTop: '1px solid #f0f0f0' }}>
+              <ThemeToggle />
+            </div>
           </Drawer>
         )}
       </nav>

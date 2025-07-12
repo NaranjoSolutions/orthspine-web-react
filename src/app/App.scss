@@ -1,0 +1,26 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    // Ensure content takes full height
+    & > div {
+      flex: 1;
+    }
+  }
+}
+
+// Global styles for smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Ensure proper spacing for floating elements
+body {
+  position: relative;
+}

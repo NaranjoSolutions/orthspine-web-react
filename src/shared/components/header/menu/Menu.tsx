@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 
 import logo from './images/clinic-icon.png';
-import styles from './Menu.module.scss';
+import './Menu.scss';
 
 export const menuItems = [
   {
     key: 'clinic-icon',
     label: (
       <Link to="/">
-        <img src={logo} alt="Clinic Logo" className={styles.clinicLogo} />
+        <img src={logo} alt="Clinic Logo" className="clinic-logo" />
       </Link>
     ),
   },
@@ -22,7 +22,7 @@ export const menuItems = [
     key: 'book-appointment',
     label: (
       <Link to="/book-appointment">
-        <Button type="primary" className={styles.bookAppointmentButton}>
+        <Button type="primary" className="book-appointment-button">
           Agendar cita
         </Button>
       </Link>
