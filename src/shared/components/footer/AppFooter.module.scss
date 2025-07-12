@@ -1,5 +1,104 @@
 .footer {
+  background-color: #001529;
+  color: white;
+  padding: 40px 24px 24px;
   text-align: center;
-  color: '#fff';
-  padding: 5px 0;
+  margin-top: auto;
+
+  .clinicNameRow {
+    margin-bottom: 24px;
+
+    .clinicNameCol {
+      text-align: center;
+    }
+
+    .clinicName {
+      font-size: 18px;
+      color: white;
+      letter-spacing: 0.5px;
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .socialIconsRow {
+    margin-bottom: 24px;
+
+    .socialIcons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      @media (max-width: 480px) {
+        gap: 12px;
+      }
+    }
+
+    .socialLink {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 24px;
+      transition: all 0.3s ease;
+      padding: 8px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        // color: #1890ff;
+        transform: translateY(-2px);
+        background-color: rgba(255, 255, 255, 0.1);
+        // Brand-specific hover colors
+        &[href*='facebook']:hover {
+          color: #1877f2;
+        }
+
+        &[href*='instagram']:hover {
+          color: #e4405f;
+        }
+
+        &[href*='youtube']:hover {
+          color: #ff0000;
+        }
+      }
+
+      @media (max-width: 480px) {
+        font-size: 20px;
+        padding: 6px;
+      }
+    }
+  }
+
+  .copyrightRow {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 16px;
+
+    .copyrightCol {
+      text-align: center;
+    }
+
+    .copyrightText {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      line-height: 1.5;
+
+      @media (max-width: 480px) {
+        font-size: 12px;
+      }
+    }
+
+    .developerName {
+      color: #1890ff;
+      font-weight: 600;
+    }
+  }
+}
+
+// Dark theme support
+[data-theme='dark'] .footer {
+  background-color: #141414;
+  border-top: 1px solid #303030;
 }

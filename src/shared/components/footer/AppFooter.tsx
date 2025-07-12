@@ -8,26 +8,49 @@ const { Text } = Typography;
 
 export const AppFooter: React.FC = () => {
   const { name } = clinicInformation;
+  const currentYear = new Date().getFullYear();
 
   return (
     <Footer className={styles.footer}>
-      <Row justify={'center'} style={{ marginTop: '5px' }}>
-        <Col>
-          <Text strong style={{ fontSize: '16px' }}>
+      {/* Clinic Name */}
+      <Row justify="center" className={styles.clinicNameRow}>
+        <Col xs={24} sm={20} md={16} lg={12} className={styles.clinicNameCol}>
+          <Text strong className={styles.clinicName}>
             {name}
           </Text>
         </Col>
       </Row>
-      <Space style={{ marginTop: '5px' }}>
-        {iconsFooter.map(({ id, href, target, rel, icon }) => (
-          <a key={id} href={href} target={target} rel={rel}>
-            {icon}
-          </a>
-        ))}
-      </Space>
-      <Row justify={'center'} style={{ marginTop: '5px' }}>
+
+      {/* Social Media Icons */}
+      <Row justify="center" className={styles.socialIconsRow}>
         <Col>
-          <Text>Copyright © {new Date().getFullYear()} - Develop by Alonso</Text>
+          <Space size="large" className={styles.socialIcons}>
+            {iconsFooter.map(({ id, href, target, rel, icon, ariaLabel }) => (
+              <a
+                key={id}
+                href={href}
+                target={target}
+                rel={rel}
+                aria-label={ariaLabel}
+                title={ariaLabel}
+                className={styles.socialLink}
+              >
+                {icon}
+              </a>
+            ))}
+          </Space>
+        </Col>
+      </Row>
+
+      {/* Copyright */}
+      <Row justify="center" className={styles.copyrightRow}>
+        <Col xs={24} className={styles.copyrightCol}>
+          <Text className={styles.copyrightText}>
+            Copyright © {currentYear} - Developed by{' '}
+            <Text strong className={styles.developerName}>
+              Naranjo Solutions
+            </Text>
+          </Text>
         </Col>
       </Row>
     </Footer>

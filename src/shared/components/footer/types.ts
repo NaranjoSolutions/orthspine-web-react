@@ -1,7 +1,13 @@
+import { ReactNode } from 'react';
+
 export interface AppIcon {
-  id: number;
+  id: string;
   href: string;
-  target: string;
+  target: '_blank' | '_self' | '_parent' | '_top';
   rel: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
+  label: string;
+  ariaLabel: string;
 }
+
+export type SocialMediaPlatform = 'facebook' | 'instagram' | 'youtube';

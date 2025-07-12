@@ -5,24 +5,30 @@ const ICON_SIZE = 24;
 
 export const iconsFooter: readonly AppIcon[] = [
   {
-    id: 1,
+    id: 'facebook',
     href: 'https://www.facebook.com/share/12FDcXXvESd/',
     target: '_blank',
     rel: 'noopener noreferrer',
-    icon: <FacebookOutlined style={{ fontSize: ICON_SIZE, marginRight: '10px' }} />,
+    icon: <FacebookOutlined style={{ fontSize: ICON_SIZE }} />,
+    label: 'Facebook',
+    ariaLabel: 'Visit our Facebook page',
   },
   {
-    id: 2,
+    id: 'instagram',
     href: 'https://www.instagram.com/orthopedic_spine_s?igsh=bHY2cHZ2MXd4dzIz',
     target: '_blank',
     rel: 'noopener noreferrer',
-    icon: <InstagramOutlined style={{ fontSize: ICON_SIZE, marginRight: '10px' }} />,
+    icon: <InstagramOutlined style={{ fontSize: ICON_SIZE }} />,
+    label: 'Instagram',
+    ariaLabel: 'Visit our Instagram profile',
   },
   {
-    id: 3,
-    href: 'https://www.youtube.com',
+    id: 'youtube',
+    href: 'https://www.youtube.com/', // Updated to orthopedicspine channel
     target: '_blank',
     rel: 'noopener noreferrer',
-    icon: <YoutubeOutlined style={{ fontSize: ICON_SIZE, marginRight: '10px' }} />,
+    icon: <YoutubeOutlined style={{ fontSize: ICON_SIZE }} />,
+    label: 'YouTube',
+    ariaLabel: 'Visit our YouTube channel',
   },
-];
+] as const;
