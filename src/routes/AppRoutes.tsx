@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Home } from '../features/home';
+import { Home } from '../features/home/Home';
 import { Testimonials } from '../features/testimonials';
 import { Login } from '../features/login';
 import { ProtectedRoute } from './ProtectedRoute';
