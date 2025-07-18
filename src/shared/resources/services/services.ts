@@ -51,7 +51,7 @@ export const allClinicServices: ServicesCard[] = [
   },
   {
     serviceId: 'foot-and-hand',
-    title: 'Pie Y Mano',
+    title: 'Pie y Mano',
     shortDescription: 'Programas de rehabilitación para fracturas, tendinitis y síndrome del túnel carpiano.',
     description: `Nuestros servicios de rehabilitación abordan condiciones como fracturas, tendinitis, tejserviceIdo fibroso, esguinces, espolones calcáneos, fascitis plantar, síndrome del túnel carpiano, tendinitis de De Quervain y radiculopatías.`,
     alt: 'Pie Y Mano',
