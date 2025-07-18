@@ -1,5 +1,5 @@
 export interface ServicesCard {
-  id: number;
+  serviceId: string;
   title: string;
   shortDescription?: string;
   description?: string;
