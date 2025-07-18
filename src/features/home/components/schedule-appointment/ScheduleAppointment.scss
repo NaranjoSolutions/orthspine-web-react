@@ -1,0 +1,119 @@
+.schedule-content {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, var(--color-bg-layout) 0%, var(--color-bg-container) 100%);
+  text-align: center;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+
+  &[data-theme='dark'] {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  }
+
+  .schedule-wrapper {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .schedule-title {
+    color: var(--color-text) !important;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 12px !important;
+    line-height: 1.2;
+
+    &.ant-typography {
+      margin-bottom: 12px !important;
+    }
+  }
+
+  .schedule-subtitle {
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+    margin-bottom: 32px;
+    line-height: 1.5;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ant-row {
+    margin-bottom: 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .cta-button {
+    background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+    border: none;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 16px 32px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+    transition: all 0.3s ease;
+    min-width: 180px;
+
+    &:hover {
+      background: linear-gradient(135deg, #096dd9 0%, #0050b3 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(24, 144, 255, 0.4);
+      color: white;
+    }
+
+    &:focus {
+      outline: 3px solid rgba(24, 144, 255, 0.3);
+      outline-offset: 2px;
+      color: white;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 16px;
+    min-height: 160px;
+
+    .schedule-title {
+      font-size: 1.5rem;
+    }
+
+    .schedule-subtitle {
+      font-size: 1rem;
+      margin-bottom: 24px;
+    }
+
+    .cta-button {
+      font-size: 1.125rem;
+      padding: 14px 28px;
+      min-width: 160px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 32px 12px;
+
+    .schedule-title {
+      font-size: 1.375rem;
+    }
+
+    .schedule-subtitle {
+      font-size: 0.9375rem;
+    }
+
+    .cta-button {
+      font-size: 1rem;
+      padding: 12px 24px;
+      min-width: 140px;
+    }
+  }
+}
