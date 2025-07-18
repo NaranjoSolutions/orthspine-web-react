@@ -1,0 +1,214 @@
+.testimonials-section-content {
+  padding: 0 24px;
+
+  .section-header {
+    margin-bottom: 48px;
+    text-align: center;
+
+    .section-title {
+      color: var(--color-text);
+      font-weight: 600;
+      margin-bottom: 0;
+      position: relative;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: var(--color-primary);
+        margin: 16px auto 0;
+        border-radius: 2px;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .testimonial-col {
+    display: flex;
+    height: 100%;
+  }
+
+  .testimonial-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    background: var(--color-bg-container);
+    border: 1px solid var(--color-border);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    :global(.ant-card-body) {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      gap: 12px;
+
+      .testimonial-avatar {
+        background-color: var(--color-primary);
+        color: white;
+        font-weight: 600;
+        flex-shrink: 0;
+      }
+
+      .testimonial-info {
+        flex-grow: 1;
+
+        .testimonial-name {
+          display: block;
+          color: var(--color-text);
+          font-size: 16px;
+          margin-bottom: 4px;
+        }
+
+        .testimonial-rating {
+          .ant-rate {
+            color: #faad14;
+          }
+        }
+      }
+    }
+
+    .testimonial-comment {
+      color: var(--color-text-secondary);
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 0;
+      flex-grow: 1;
+      font-size: 14px;
+
+      // Limit text to prevent cards from being too tall
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  .view-more-row {
+    margin-top: 32px;
+    text-align: center;
+
+    .view-more-text {
+      color: var(--color-text-secondary);
+      font-size: 14px;
+
+      .view-more-link {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 500;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  // Loading and error states
+  &.testimonials-loading,
+  &.testimonials-error {
+    text-align: center;
+    padding: 60px 24px;
+
+    .ant-spin {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+// Dark theme support
+[data-theme='dark'] {
+  .testimonials-section-content {
+    .testimonial-card {
+      background: var(--color-bg-container);
+      border-color: var(--color-border);
+
+      &:hover {
+        box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
+      }
+
+      .testimonial-header {
+        .testimonial-name {
+          color: var(--color-text);
+        }
+      }
+
+      .testimonial-comment {
+        color: var(--color-text-secondary);
+      }
+    }
+
+    .view-more-text {
+      color: var(--color-text-secondary);
+
+      .view-more-link {
+        color: var(--color-primary);
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 1200px) {
+  .testimonials-section-content {
+    .testimonial-col {
+      // Show 2 columns on medium screens
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials-section-content {
+    padding: 0 16px;
+
+    .section-header {
+      margin-bottom: 32px;
+    }
+
+    .testimonial-card {
+      :global(.ant-card-body) {
+        padding: 20px;
+      }
+
+      .testimonial-header {
+        .testimonial-avatar {
+          width: 40px !important;
+          height: 40px !important;
+          font-size: 16px;
+        }
+
+        .testimonial-info {
+          .testimonial-name {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .testimonial-comment {
+        font-size: 13px;
+      }
+    }
+
+    .view-more-row {
+      margin-top: 24px;
+    }
+  }
+}
