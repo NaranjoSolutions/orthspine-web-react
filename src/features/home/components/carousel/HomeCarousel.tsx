@@ -44,7 +44,7 @@ export function HomeCarousel() {
           dots={{ className: 'carousel-dots' }}
           autoplaySpeed={4000}
           speed={800}
-          slidesToShow={3}
+          slidesToShow={4}
           slidesToScroll={1}
           infinite
           pauseOnHover
