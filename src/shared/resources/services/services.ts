@@ -47,6 +47,7 @@ export const allClinicServices: ServicesCard[] = [
     description: `Proveemos tratamientos para condiciones de hombro como fracturas, bursitis, desgaste, cambios mecánicos articulares, problemas de manguito rotador, tendinitis y desgarros.`,
     alt: 'Hombro',
     image: shoulder,
+    isPrimary: true,
   },
   {
     serviceId: 'foot-and-hand',
@@ -64,6 +65,7 @@ export const allClinicServices: ServicesCard[] = [
     description: `Ofrecemos programas y seguimiento para condiciones post-cardiacas, pacientes con marcapasos, cirugías de corazón abierto y afectaciones cardio-pulmonares.`,
     alt: 'Rehabilitación',
     image: rehabilitation,
+    isPrimary: true,
   },
   {
     serviceId: 'circulation',
@@ -72,6 +74,7 @@ export const allClinicServices: ServicesCard[] = [
     description: `Nuestros servicios incluyen tratamientos para problemas circulatorios como várices, linfedema, problemas de circulación y úlceras.`,
     alt: 'Circulación',
     image: circulation,
+    isPrimary: true,
   },
   {
     serviceId: 'sports',
@@ -80,5 +83,6 @@ export const allClinicServices: ServicesCard[] = [
     description: `Proveemos servicios de rehabilitación deportiva como masajes de recuperación muscular, corrección de postura, readaptación deportiva, crioterapia y orientación en la prescripción de calzado deportivo.`,
     alt: 'Deportiva',
     image: sports,
+    isPrimary: true,
   },
 ];
