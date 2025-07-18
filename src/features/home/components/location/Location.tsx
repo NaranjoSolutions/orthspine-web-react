@@ -4,19 +4,19 @@ import { LocationButtons } from './LocationButtons';
 import './Location.scss';
 import { clinicInformation } from '../../../../shared/resources/clinic-information';
 
-const { Paragraph } = Typography;
+const { Paragraph, Title } = Typography;
 const { Content } = Layout;
 
 export const Location = () => {
   const { location } = clinicInformation;
- 
+
   return (
     <Content className="location-content">
       <Row justify="center">
         <Col>
-          <Paragraph className="location-heading" strong>
-            Ubicación:
-          </Paragraph>
+          <Title level={2} className="location-heading">
+            Nuestra Ubicación:
+          </Title>
           <Image width={150} height={110} src={building} alt="Ubicación" className="location-image" />
         </Col>
       </Row>
