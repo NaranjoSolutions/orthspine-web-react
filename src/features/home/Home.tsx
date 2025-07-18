@@ -3,8 +3,10 @@ import { clinicInformation } from '../../shared/resources/clinic-information';
 import { HomeCarousel } from './components/carousel/HomeCarousel';
 import { Schedule } from './components/schedule/Schedule';
 import { Location } from './components/location/Location';
-import './index.scss';
+import './Home.scss';
 import { useTheme } from '../../shared/theme/ThemeContext';
+import { ScheduleAppointment } from './components/schedule-appointment/ScheduleAppointment';
+import { Testimonials } from './components/testimonials/Testimonials';
 
 const { Title } = Typography;
 const { Content } = Layout;
@@ -34,14 +36,26 @@ export function Home() {
         <HomeCarousel />
       </section>
 
-      {/* Schedule Section */}
-      <section className="schedule-section" data-theme={theme}>
-        <Schedule />
+      {/* Testimonials Section */}
+      <section className="testimonials-section" data-theme={theme}>
+        <Testimonials />
       </section>
 
-      {/* Location Section */}
-      <section className="location-section" data-theme={theme}>
-        <Location />
+      {/* Schedule and Location Section */}
+      <section className="schedule-location-section" data-theme={theme}>
+        <Row gutter={[24, 24]} justify="center">
+          <Col xs={24} lg={12}>
+            <Location />
+          </Col>
+          <Col xs={24} lg={12}>
+            <Schedule />
+          </Col>
+        </Row>
+      </section>
+
+      {/* Schedule Appointment Section */}
+      <section className="schedule-appointment-section" data-theme={theme}>
+        <ScheduleAppointment />
       </section>
     </Content>
   );
