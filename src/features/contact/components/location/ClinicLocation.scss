@@ -12,31 +12,35 @@
     margin: 0 auto;
 
     .ant-row {
-      align-items: stretch;
-
       .ant-col {
-        display: flex;
-        flex-direction: column;
-
         .map-card,
         .contact-card {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          height: 100%;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          transition: all 0.3s ease;
+          width: 100%;
 
-          :global(.ant-card-body) {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+          &:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
           }
         }
+      }
+    }
 
-        .map-card {
-          .map-wrapper {
-            flex: 1;
-          }
-        }
+    // Add visual separation between the two rows
+    .ant-row + .ant-row {
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+        opacity: 0.6;
       }
     }
   }
@@ -193,6 +197,14 @@
 
 // Dark theme specific styles
 .clinic-location[data-theme='dark'] {
+  .location-container {
+    .ant-row + .ant-row {
+      &::before {
+        background: linear-gradient(90deg, transparent, #434343, transparent);
+      }
+    }
+  }
+
   .map-card,
   .contact-card {
     background: #1f1f1f;
@@ -277,11 +289,7 @@
   .location-container {
     .ant-row {
       .ant-col {
-        margin-bottom: 16px;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
+        margin-bottom: 0; // Remove bottom margin as we're using gutter
       }
     }
   }
@@ -323,6 +331,13 @@
 
     .section-title {
       font-size: 0.9rem;
+    }
+  }
+
+  // Ensure better spacing on mobile for separate rows
+  .location-container {
+    .ant-row + .ant-row {
+      margin-top: 0; // Let gutter handle spacing
     }
   }
 }

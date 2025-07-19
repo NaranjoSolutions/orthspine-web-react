@@ -25,54 +25,9 @@ export function ClinicLocation() {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className="location-container"
       >
-        <Row justify="center" gutter={[24, 24]}>
-          {/* Map Section */}
-          <Col xs={24} lg={14} xl={14}>
-            <Card
-              className="map-card"
-              title={
-                <Space>
-                  <EnvironmentOutlined />
-                  <span>Nuestra Ubicación</span>
-                </Space>
-              }
-              bordered={false}
-            >
-              <div style={{ marginBottom: 16 }}>
-                <Text strong>{name}</Text>
-                <br />
-                <Text type="secondary">{location.address}</Text>
-              </div>
-              <div className="map-wrapper">
-                <MapContainer
-                  className="map-container"
-                  center={position || [0, 0]}
-                  zoom={16}
-                  scrollWheelZoom={true}
-                  zoomControl={true}
-                  attributionControl={true}
-                >
-                  <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  />
-                  <Marker position={position}>
-                    <Popup closeButton={true} className="custom-popup">
-                      <div className="popup-content">
-                        <Title level={5} style={{ margin: 0, marginBottom: 8 }}>
-                          {name}
-                        </Title>
-                        <Text>{location.address}</Text>
-                      </div>
-                    </Popup>
-                  </Marker>
-                </MapContainer>
-              </div>
-            </Card>
-          </Col>
-
+        <Row justify="center" gutter={[0, 24]}>
           {/* Contact Information Section */}
-          <Col xs={24} lg={10} xl={10}>
+          <Col xs={24} sm={20} md={16} lg={12} xl={10}>
             <Card
               className="contact-card"
               title={
@@ -120,6 +75,53 @@ export function ClinicLocation() {
                     {contact.email}
                   </a>
                 </div>
+              </div>
+            </Card>
+          </Col>
+        </Row>
+
+        <Row justify="center" gutter={[0, 24]}>
+          {/* Map Section */}
+          <Col xs={24} sm={22} md={20} lg={16} xl={14}>
+            <Card
+              className="map-card"
+              title={
+                <Space>
+                  <EnvironmentOutlined />
+                  <span>Nuestra Ubicación</span>
+                </Space>
+              }
+              bordered={false}
+            >
+              <div style={{ marginBottom: 16 }}>
+                <Text strong>{name}</Text>
+                <br />
+                <Text type="secondary">{location.address}</Text>
+              </div>
+              <div className="map-wrapper">
+                <MapContainer
+                  className="map-container"
+                  center={position || [0, 0]}
+                  zoom={16}
+                  scrollWheelZoom={true}
+                  zoomControl={true}
+                  attributionControl={true}
+                >
+                  <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  />
+                  <Marker position={position}>
+                    <Popup closeButton={true} className="custom-popup">
+                      <div className="popup-content">
+                        <Title level={5} style={{ margin: 0, marginBottom: 8 }}>
+                          {name}
+                        </Title>
+                        <Text>{location.address}</Text>
+                      </div>
+                    </Popup>
+                  </Marker>
+                </MapContainer>
               </div>
             </Card>
           </Col>
