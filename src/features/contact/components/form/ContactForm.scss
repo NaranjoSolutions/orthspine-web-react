@@ -1,0 +1,440 @@
+@import '../../../../styles/variables.scss';
+
+.contact-form-content {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  
+  &[data-theme="dark"] {
+    background: var(--background-dark);
+    color: var(--text-dark);
+  }
+
+  &[data-theme="light"] {
+    background: var(--background-light);
+    color: var(--text-light);
+  }
+}
+
+.form-container {
+  width: 100%;
+  
+  .contact-form-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    
+    &[data-theme="dark"] {
+      background: var(--card-background-dark);
+      border: 1px solid var(--border-color-dark);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    &[data-theme="light"] {
+      background: var(--card-background-light);
+      border: 1px solid var(--border-color-light);
+    }
+  }
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color-light);
+  
+  &[data-theme="dark"] {
+    border-bottom-color: var(--border-color-dark);
+  }
+
+  .form-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    
+    &[data-theme="dark"] {
+      color: var(--text-dark);
+    }
+
+    &[data-theme="light"] {
+      color: var(--text-light);
+    }
+
+    .title-icon {
+      font-size: 1.2em;
+      color: var(--primary-color);
+    }
+  }
+
+  .form-subtitle {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    
+    &[data-theme="dark"] {
+      color: var(--text-secondary-dark);
+    }
+
+    &[data-theme="light"] {
+      color: var(--text-secondary-light);
+    }
+  }
+
+  .required-note {
+    display: block;
+    font-size: 0.875rem;
+    font-style: italic;
+    
+    &[data-theme="dark"] {
+      color: var(--text-secondary-dark);
+    }
+
+    &[data-theme="light"] {
+      color: var(--text-secondary-light);
+    }
+  }
+}
+
+.contact-form {
+  .ant-form-item-label > label {
+    font-weight: 500;
+    
+    &[data-theme="dark"] {
+      color: var(--text-dark);
+    }
+
+    &[data-theme="light"] {
+      color: var(--text-light);
+    }
+  }
+
+  .ant-input,
+  .ant-input-affix-wrapper {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color-light);
+    transition: all 0.3s ease;
+    
+    &[data-theme="dark"] {
+      background: var(--input-background-dark);
+      border-color: var(--border-color-dark);
+      color: var(--text-dark);
+    }
+
+    &[data-theme="light"] {
+      background: var(--input-background-light);
+      border-color: var(--border-color-light);
+      color: var(--text-light);
+    }
+
+    &:hover {
+      border-color: var(--primary-color);
+    }
+
+    &:focus,
+    &.ant-input-focused {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    }
+  }
+
+  .input-icon {
+    color: var(--text-secondary-light);
+    
+    &[data-theme="dark"] {
+      color: var(--text-secondary-dark);
+    }
+  }
+}
+
+.verification-button {
+  border-radius: 8px;
+  height: 42px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(24, 144, 255, 0.3);
+  }
+}
+
+.verification-section {
+  padding: 1.5rem;
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+  margin: 1rem 0;
+  background: var(--background-light);
+  
+  &[data-theme="dark"] {
+    border-color: var(--border-color-dark);
+    background: var(--background-dark);
+  }
+
+  .verified-input {
+    border-color: #52c41a !important;
+    box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.2) !important;
+  }
+
+  .verification-info {
+    margin-top: 1rem;
+
+    .timer-section {
+      margin-bottom: 1rem;
+
+      .timer-progress {
+        margin-top: 0.5rem;
+        
+        .ant-progress-bg {
+          transition: all 0.3s ease;
+        }
+      }
+    }
+
+    .verification-success {
+      margin: 1rem 0;
+      border-radius: 6px;
+    }
+
+    .verification-note {
+      font-size: 0.875rem;
+      line-height: 1.4;
+      
+      &[data-theme="dark"] {
+        color: var(--text-secondary-dark);
+      }
+
+      &[data-theme="light"] {
+        color: var(--text-secondary-light);
+      }
+    }
+  }
+}
+
+.message-textarea {
+  .ant-input {
+    min-height: 120px;
+    padding: 1rem;
+    line-height: 1.6;
+    
+    &[data-theme="dark"] {
+      background: var(--input-background-dark);
+      border-color: var(--border-color-dark);
+      color: var(--text-dark);
+    }
+
+    &[data-theme="light"] {
+      background: var(--input-background-light);
+      border-color: var(--border-color-light);
+      color: var(--text-light);
+    }
+  }
+}
+
+.privacy-checkbox {
+  .ant-checkbox-wrapper {
+    align-items: flex-start;
+    line-height: 1.5;
+    
+    &[data-theme="dark"] {
+      color: var(--text-dark);
+    }
+
+    &[data-theme="light"] {
+      color: var(--text-light);
+    }
+  }
+
+  .privacy-link {
+    color: var(--primary-color);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: var(--primary-color-hover);
+      text-decoration: none;
+    }
+  }
+}
+
+.form-actions {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color-light);
+  
+  &[data-theme="dark"] {
+    border-top-color: var(--border-color-dark);
+  }
+
+  .reset-button,
+  .submit-button {
+    border-radius: 8px;
+    height: 42px;
+    font-weight: 500;
+    min-width: 140px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  .reset-button {
+    border-color: var(--border-color-light);
+    
+    &[data-theme="dark"] {
+      border-color: var(--border-color-dark);
+      background: var(--button-background-dark);
+      color: var(--text-dark);
+    }
+
+    &[data-theme="light"] {
+      background: var(--button-background-light);
+      color: var(--text-light);
+    }
+
+    &:hover {
+      border-color: var(--primary-color);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .submit-button {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    
+    &:hover:not(:disabled) {
+      background: var(--primary-color-hover);
+      border-color: var(--primary-color-hover);
+      box-shadow: 0 4px 8px rgba(24, 144, 255, 0.3);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .contact-form-content {
+    padding: 1rem;
+  }
+
+  .form-header {
+    .form-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  .form-actions {
+    .ant-row {
+      flex-direction: column-reverse;
+      align-items: stretch;
+      
+      .ant-col {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+        
+        .ant-btn {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .verification-section {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form-content {
+    padding: 0.5rem;
+  }
+
+  .contact-form-card {
+    .ant-card-body {
+      padding: 1rem !important;
+    }
+  }
+
+  .form-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    
+    .form-title {
+      font-size: 1.3rem;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+}
+
+// Animation Enhancements
+.verification-section {
+  animation: slideIn 0.3s ease-out;
+}
+
+.verification-success {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Dark theme specific adjustments
+[data-theme="dark"] {
+  .ant-alert {
+    background: var(--card-background-dark);
+    border-color: var(--border-color-dark);
+    
+    &.ant-alert-info {
+      background: rgba(24, 144, 255, 0.1);
+      border-color: rgba(24, 144, 255, 0.3);
+    }
+    
+    &.ant-alert-success {
+      background: rgba(82, 196, 26, 0.1);
+      border-color: rgba(82, 196, 26, 0.3);
+    }
+  }
+  
+  .ant-progress-inner {
+    background: var(--background-dark);
+  }
+  
+  .ant-checkbox {
+    border-color: var(--border-color-dark);
+    
+    &.ant-checkbox-checked {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+  }
+}
