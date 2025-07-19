@@ -36,7 +36,7 @@ export function HomeCarousel() {
   }
 
   return (
-    <Content className="carousel-content" data-theme={theme}>
+    <Content className="carousel-content" data-theme={theme.mode}>
       <div className="carousel-wrapper">
         <Carousel
           autoplay

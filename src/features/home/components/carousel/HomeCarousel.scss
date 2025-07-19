@@ -3,6 +3,10 @@
   background-color: var(--color-bg-layout);
   transition: background-color 0.3s ease;
 
+  &[data-theme='dark'] {
+    background-color: #141414;
+  }
+
   .section-header {
     margin-bottom: 40px;
     text-align: center;
@@ -155,6 +159,57 @@
           line-clamp: 3;
           -webkit-box-orient: vertical;
           overflow: hidden;
+        }
+      }
+    }
+  }
+
+  // Dark theme specific styles
+  &[data-theme='dark'] {
+    .carousel-card {
+      background: #1f1f1f !important;
+      border-color: #434343 !important;
+
+      &:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+      }
+
+      .image-wrapper {
+        background-color: #1f1f1f !important;
+      }
+
+      :global(.ant-card-body) {
+        background: #1f1f1f !important;
+
+        .card-title {
+          color: #ffffff !important;
+        }
+
+        .card-description {
+          color: #bfbfbf !important;
+        }
+      }
+    }
+
+    :global(.ant-carousel) {
+      .ant-carousel-dots {
+        li {
+          button {
+            background: #434343 !important;
+          }
+
+          &.ant-carousel-dots-active button {
+            background: #1890ff !important;
+          }
+        }
+      }
+
+      .ant-carousel-prev,
+      .ant-carousel-next {
+        color: #bfbfbf !important;
+
+        &:hover {
+          color: #1890ff !important;
         }
       }
     }
