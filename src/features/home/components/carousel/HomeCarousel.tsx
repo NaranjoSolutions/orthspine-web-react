@@ -67,7 +67,7 @@ export function HomeCarousel() {
           ]}
         >
           {principalServices.map((service) => (
-            <div key={service.id} className="carousel-slide">
+            <div key={service.serviceId} className="carousel-slide">
               <div className="card-wrapper">
                 <Card
                   hoverable
@@ -85,8 +85,8 @@ export function HomeCarousel() {
                       />
                     </div>
                   }
-                  onClick={() => handleOnClickCarouselCard(service.id.toString())}
-                  onKeyDown={(e) => handleKeyDown(e, service.id.toString())}
+                  onClick={() => handleOnClickCarouselCard(service.serviceId.toString())}
+                  onKeyDown={(e) => handleKeyDown(e, service.serviceId.toString())}
                   tabIndex={0}
                   role="button"
                   aria-label={`Ver más sobre ${service.title}`}
