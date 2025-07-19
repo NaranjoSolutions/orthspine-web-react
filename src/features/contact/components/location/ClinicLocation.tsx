@@ -27,7 +27,7 @@ export function ClinicLocation() {
       >
         <Row justify="center" gutter={[0, 24]}>
           {/* Contact Information Section */}
-          <Col xs={24} sm={20} md={16} lg={12} xl={10}>
+          <Col xs={24} sm={20} md={16} lg={20} xl={24}>
             <Card
               className="contact-card"
               title={
@@ -80,9 +80,9 @@ export function ClinicLocation() {
           </Col>
         </Row>
 
-        <Row justify="center" gutter={[0, 24]}>
+        <Row justify="center" style={{ marginTop: 20 }} gutter={[0, 24]}>
           {/* Map Section */}
-          <Col xs={24} sm={22} md={20} lg={16} xl={14}>
+          <Col xs={24} sm={22} md={20} lg={20} xl={24}>
             <Card
               className="map-card"
               title={
