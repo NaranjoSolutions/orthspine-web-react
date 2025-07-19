@@ -1,5 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { ReceiveEmailRequest, SendVerificationCodeRequest } from './types';
+import { SendVerificationCodeRequest, ContactFormRequest, AppointmentRequest, EmailResponse } from './types';
 import { baseQueryWithReAuth } from './baseQuery';
 
 export const emailApi = createApi({
@@ -8,16 +8,28 @@ export const emailApi = createApi({
   tagTypes: ['email'],
 
   endpoints: (builder) => ({
-    receiveEmail: builder.mutation<void, ReceiveEmailRequest>({
+    // General contact emails
+    sendContactEmail: builder.mutation<EmailResponse, ContactFormRequest>({
       query: (payload) => ({
-        url: 'email/receive-email/',
+        url: 'email/contact',
         method: 'POST',
         body: payload,
       }),
     }),
-    sendVerificationCodeEmail: builder.mutation<void, SendVerificationCodeRequest>({
+
+    // Appointment requests
+    sendAppointmentRequest: builder.mutation<EmailResponse, AppointmentRequest>({
       query: (payload) => ({
-        url: `email/send-verification-code-email?email=${payload.email}`,
+        url: 'email/appointment',
+        method: 'POST',
+        body: payload,
+      }),
+    }),
+
+    // Verification codes
+    sendVerificationCode: builder.mutation<EmailResponse, SendVerificationCodeRequest>({
+      query: (payload) => ({
+        url: 'email/verification-code',
         method: 'POST',
         body: payload,
       }),
@@ -25,6 +37,5 @@ export const emailApi = createApi({
   }),
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const { useReceiveEmailMutation, useSendVerificationCodeEmailMutation } = emailApi;
+export const { useSendContactEmailMutation, useSendAppointmentRequestMutation, useSendVerificationCodeMutation } =
+  emailApi;

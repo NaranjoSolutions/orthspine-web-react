@@ -1,5 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { CreateTestimonialRequest, Testimonial } from './types';
+import { CreateTestimonialRequest, Testimonial, UpdateTestimonialRequest, TestimonialFilters } from './types';
 import { baseQueryWithReAuth } from './baseQuery';
 
 export const testimonialApi = createApi({
@@ -8,30 +8,81 @@ export const testimonialApi = createApi({
   tagTypes: ['testimonial'],
 
   endpoints: (builder) => ({
-    //Testimonials
-    getTestimonials: builder.query<Testimonial[], void>({
-      query: () => 'testimonial/all',
+    // Public testimonials (no auth required)
+    getPublicTestimonials: builder.query<Testimonial[], TestimonialFilters | void>({
+      query: (filters) => ({
+        url: 'testimonial/public',
+        params: filters,
+      }),
       providesTags: ['testimonial'],
+    }),
+
+    // Admin testimonials (auth required)
+    getAllTestimonials: builder.query<Testimonial[], TestimonialFilters | void>({
+      query: (filters) => ({
+        url: 'testimonial/all',
+        params: filters,
+      }),
+      providesTags: ['testimonial'],
+    }),
+
+    getTestimonialById: builder.query<Testimonial, string>({
+      query: (id) => `testimonial/${id}`,
+      providesTags: (result, error, id) => [{ type: 'testimonial', id }],
     }),
 
     createTestimonial: builder.mutation<Testimonial, CreateTestimonialRequest>({
       query: (payload) => ({
-        url: 'testimonial/',
+        url: 'testimonial',
         method: 'POST',
         body: payload,
       }),
       invalidatesTags: ['testimonial'],
     }),
+
+    updateTestimonial: builder.mutation<Testimonial, { id: string; data: UpdateTestimonialRequest }>({
+      query: ({ id, data }) => ({
+        url: `testimonial/${id}`,
+        method: 'PUT',
+        body: data,
+      }),
+      invalidatesTags: (result, error, { id }) => [{ type: 'testimonial', id }, 'testimonial'],
+    }),
+
     deleteTestimonial: builder.mutation<{ success: boolean }, string>({
-      query: (payload) => ({
-        url: `testimonial/${payload}`,
+      query: (id) => ({
+        url: `testimonial/${id}`,
         method: 'DELETE',
+      }),
+      invalidatesTags: (result, error, id) => [{ type: 'testimonial', id }, 'testimonial'],
+    }),
+
+    // Approve/reject testimonials (admin)
+    approveTestimonial: builder.mutation<Testimonial, string>({
+      query: (id) => ({
+        url: `testimonial/${id}/approve`,
+        method: 'PATCH',
+      }),
+      invalidatesTags: ['testimonial'],
+    }),
+
+    rejectTestimonial: builder.mutation<Testimonial, string>({
+      query: (id) => ({
+        url: `testimonial/${id}/reject`,
+        method: 'PATCH',
       }),
       invalidatesTags: ['testimonial'],
     }),
   }),
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const { useGetTestimonialsQuery, useCreateTestimonialMutation, useDeleteTestimonialMutation } = testimonialApi;
+export const {
+  useGetPublicTestimonialsQuery,
+  useGetAllTestimonialsQuery,
+  useGetTestimonialByIdQuery,
+  useCreateTestimonialMutation,
+  useUpdateTestimonialMutation,
+  useDeleteTestimonialMutation,
+  useApproveTestimonialMutation,
+  useRejectTestimonialMutation,
+} = testimonialApi;

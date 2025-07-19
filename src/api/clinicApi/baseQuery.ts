@@ -1,8 +1,9 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { RootState } from '../../store/redux/store';
-import { logout, refreshTokens } from '../../store/redux/slices/userSlice';
 import { BaseQueryFn, FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta } from '@reduxjs/toolkit/query';
+
 import { LoginResponse } from './types';
+import { logout, refreshTokens } from '../../store/redux/slices/userSlice';
+import { RootState } from '../../store/redux/store';
 
 const baseUrl = import.meta.env.VITE_BASE_API_URL || '';
 const apiVersion = import.meta.env.VITE_API_VERSION || 'api/v1';
