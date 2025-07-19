@@ -8,15 +8,6 @@ export const testimonialApi = createApi({
   tagTypes: ['testimonial'],
 
   endpoints: (builder) => ({
-    // Public testimonials (no auth required)
-    getPublicTestimonials: builder.query<Testimonial[], TestimonialFilters | void>({
-      query: (filters) => ({
-        url: 'testimonial/public',
-        params: filters,
-      }),
-      providesTags: ['testimonial'],
-    }),
-
     // Admin testimonials (auth required)
     getAllTestimonials: builder.query<Testimonial[], TestimonialFilters | void>({
       query: (filters) => ({
@@ -77,7 +68,6 @@ export const testimonialApi = createApi({
 });
 
 export const {
-  useGetPublicTestimonialsQuery,
   useGetAllTestimonialsQuery,
   useGetTestimonialByIdQuery,
   useCreateTestimonialMutation,

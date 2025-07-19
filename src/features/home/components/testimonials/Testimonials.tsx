@@ -3,14 +3,14 @@ import { UserOutlined } from '@ant-design/icons';
 
 import { useTheme } from '../../../../shared/theme/ThemeContext';
 import './Testimonials.scss';
-import { useGetPublicTestimonialsQuery } from '../../../../api/clinicApi';
+import { useGetAllTestimonialsQuery } from '../../../../api/clinicApi';
 
 const { Title, Paragraph, Text } = Typography;
 
 export function Testimonials() {
   const { theme } = useTheme();
 
-  const { data: testimonials, isLoading, error } = useGetPublicTestimonialsQuery();
+  const { data: testimonials, isLoading, error } = useGetAllTestimonialsQuery();
 
   const getInitials = (firstName: string, lastName: string): string => {
     return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
