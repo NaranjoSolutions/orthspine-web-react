@@ -12,6 +12,8 @@ export interface InfoItem {
   id: number;
   name: string;
   image: string;
+  description?: string;
+  type: 'professional' | 'certification' | 'institution';
 }
 
 export const aboutUsContent: Paragraph[] = [
@@ -48,11 +50,21 @@ export const infoItems: InfoItem[] = [
     id: 1,
     name: 'Lic. Aaron Fallas',
     image: aaronImage,
+    description: 'Fisioterapeuta licenciado especializado en rehabilitación ortopédica',
+    type: 'professional',
   },
-  { id: 2, name: 'Colegio de terapeutas', image: colegioImage },
+  {
+    id: 2,
+    name: 'Colegio de Terapeutas',
+    image: colegioImage,
+    description: 'Certificación profesional y regulación ética',
+    type: 'certification',
+  },
   {
     id: 3,
     name: 'Universidad Santa Paula',
     image: santaPaulaImage,
+    description: 'Formación académica en fisioterapia',
+    type: 'institution',
   },
 ];
