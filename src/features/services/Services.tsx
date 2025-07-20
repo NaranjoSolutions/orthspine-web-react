@@ -1,7 +1,6 @@
 import { Row, Col, Card, Typography, Space, Button, Image, Divider, Layout } from 'antd';
 import {
   MedicineBoxOutlined,
-  HeartOutlined,
   UserOutlined,
   PhoneOutlined,
   EnvironmentOutlined,
@@ -25,7 +24,7 @@ export function Services() {
 
   const handleScheduleClick = () => {
     // Navigate to appointment scheduling
-    window.location.href = '/#schedule';
+    window.location.href = '/book-appointment';
   };
 
   return (
@@ -81,13 +80,9 @@ export function Services() {
               <Col xs={24} sm={12} lg={8} xl={6} key={service.serviceId}>
                 <Card
                   className={`service-card service-card--${theme.mode}`}
-                  hoverable
                   cover={
                     <div className="service-image-container">
-                      <Image alt={service.alt} src={service.image} className="service-image" preview={false} />
-                      <div className="service-image-overlay">
-                        <HeartOutlined className="service-overlay-icon" />
-                      </div>
+                      <img alt={service.alt} src={service.image} className="service-image" />
                     </div>
                   }
                   actions={[
