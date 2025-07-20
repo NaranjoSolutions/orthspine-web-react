@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { Home } from '../features/home/Home';
-import { Testimonials } from '../features/testimonials';
+import { Testimonials } from '../features/testimonials/Testimonials';
 import { Login } from '../features/login';
 import { ProtectedRoute } from './ProtectedRoute';
-import { TestimonialsAdmin } from '../features/testimonials-admin';
+import { TestimonialsAdmin } from '../features/testimonials-admin/TestimonialsAdmin';
 import { Contact } from '../features/contact/Contact';
 import { AboutUs } from '../features/about-us/AboutUs';
 import { NotFound } from '../shared/components/not-found/NotFound';
