@@ -25,7 +25,7 @@ export const allClinicServices: ServicesCard[] = [
     title: 'Rodilla',
     shortDescription:
       'Tratamientos integrales para problemas de rodilla incluyendo lesiones de menisco, artritis y esguinces de ligamentos.',
-    description: `Ofrecemos tratamientos para condiciones de rodilla como lesiones de menisco, desgaste, artritis, condromalacia, esguinces de ligamentos, quistes de Baker, derrame articular, tejserviceIdo fibroso, procedimientos quirúrgicos de rodilla y fracturas.`,
+    description: `Ofrecemos tratamientos para condiciones de rodilla como lesiones de menisco, desgaste, artritis, condromalacia, esguinces de ligamentos, quistes de Baker, derrame articular, tejido fibroso, procedimientos quirúrgicos de rodilla y fracturas.`,
     alt: 'Rodilla',
     image: knee,
     isPrimary: true,
@@ -53,7 +53,7 @@ export const allClinicServices: ServicesCard[] = [
     serviceId: 'foot-and-hand',
     title: 'Pie y Mano',
     shortDescription: 'Programas de rehabilitación para fracturas, tendinitis y síndrome del túnel carpiano.',
-    description: `Nuestros servicios de rehabilitación abordan condiciones como fracturas, tendinitis, tejserviceIdo fibroso, esguinces, espolones calcáneos, fascitis plantar, síndrome del túnel carpiano, tendinitis de De Quervain y radiculopatías.`,
+    description: `Nuestros servicios de rehabilitación abordan condiciones como fracturas, tendinitis, tejido fibroso, esguinces, espolones calcáneos, fascitis plantar, síndrome del túnel carpiano, tendinitis de De Quervain y radiculopatías.`,
     alt: 'Pie Y Mano',
     image: footAndHand1,
     isPrimary: true,
