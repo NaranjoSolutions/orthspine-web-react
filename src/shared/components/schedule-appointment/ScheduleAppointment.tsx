@@ -1,7 +1,7 @@
 import { Col, Row, Typography, Layout, Button } from 'antd';
 import './ScheduleAppointment.scss';
 import { useNavigate } from 'react-router-dom';
-import { useTheme } from '../../../../shared/theme/ThemeContext';
+import { useTheme } from '../../theme/ThemeContext';
 
 const { Title } = Typography;
 const { Content } = Layout;

@@ -5,7 +5,7 @@ import { Schedule } from './components/schedule/Schedule';
 import { Location } from './components/location/Location';
 import './Home.scss';
 import { useTheme } from '../../shared/theme/ThemeContext';
-import { ScheduleAppointment } from './components/schedule-appointment/ScheduleAppointment';
+import { ScheduleAppointment } from '../../shared/components/schedule-appointment/ScheduleAppointment';
 import { Testimonials } from './components/testimonials/Testimonials';
 
 const { Title } = Typography;
