@@ -7,12 +7,14 @@ import { TestimonialsAdmin } from '../features/testimonials-admin';
 import { Contact } from '../features/contact/Contact';
 import { AboutUs } from '../features/about-us/AboutUs';
 import { NotFound } from '../shared/components/not-found/NotFound';
+import { Services } from '../features/services/Services';
 
 export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/services" element={<Services />} />
       <Route path="/testimonials" element={<Testimonials />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/about-us" element={<AboutUs />} />
