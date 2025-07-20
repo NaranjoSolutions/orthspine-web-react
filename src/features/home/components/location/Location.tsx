@@ -1,4 +1,4 @@
-import { Col, Row, Card, Typography, Space, Divider } from 'antd';
+import { Col, Row, Card, Typography, Space, Divider, Layout } from 'antd';
 import { EnvironmentOutlined, CompassOutlined } from '@ant-design/icons';
 import { LocationButtons } from './LocationButtons';
 import { useTheme } from '../../../../shared/theme/ThemeContext';
@@ -6,13 +6,14 @@ import './Location.scss';
 import { clinicInformation } from '../../../../shared/resources/clinic-information';
 
 const { Paragraph, Title } = Typography;
+const { Content } = Layout;
 
 export const Location = () => {
   const { location } = clinicInformation;
   const { theme } = useTheme();
 
   return (
-    <div className="location-section">
+    <Content className="location-section">
       <Row justify="center" style={{ width: '100%' }}>
         <Col span={24}>
           <Card
@@ -52,6 +53,6 @@ export const Location = () => {
           </Card>
         </Col>
       </Row>
-    </div>
+    </Content>
   );
 };
