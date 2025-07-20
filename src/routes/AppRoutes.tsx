@@ -6,6 +6,7 @@ import { ProtectedRoute } from './ProtectedRoute';
 import { TestimonialsAdmin } from '../features/testimonials-admin';
 import { Contact } from '../features/contact/Contact';
 import { AboutUs } from '../features/about-us/AboutUs';
+import { NotFound } from '../shared/components/not-found/NotFound';
 
 export function AppRoutes() {
   return (
@@ -24,6 +25,9 @@ export function AppRoutes() {
           </ProtectedRoute>
         }
       />
+
+      {/* Catch-all route for 404 pages */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
