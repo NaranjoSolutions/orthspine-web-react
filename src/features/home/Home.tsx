@@ -1,4 +1,5 @@
-import { Col, Layout, Row, Typography } from 'antd';
+import { Col, Layout, Row, Typography, Space, Button } from 'antd';
+import { HeartOutlined, PhoneOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { clinicInformation } from '../../shared/resources/clinic-information';
 import { HomeCarousel } from './components/carousel/HomeCarousel';
 import { Schedule } from './components/schedule/Schedule';
@@ -8,27 +9,62 @@ import { useTheme } from '../../shared/theme/ThemeContext';
 import { ScheduleAppointment } from '../../shared/components/schedule-appointment/ScheduleAppointment';
 import { Testimonials } from './components/testimonials/Testimonials';
 
-const { Title } = Typography;
+const { Title, Paragraph } = Typography;
 const { Content } = Layout;
 
 export function Home() {
   const { theme } = useTheme();
   const { name } = clinicInformation;
 
+  const handleContactClick = () => {
+    // Navigate to contact page
+    window.location.href = '/contact';
+  };
+
+  const handleScheduleClick = () => {
+    // Scroll to schedule appointment section
+    const scheduleSection = document.querySelector('.schedule-appointment-section');
+    if (scheduleSection) {
+      scheduleSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <Content className="home-content" data-theme={theme}>
+    <Content className={`home-content home-content--${theme.mode}`} data-theme={theme}>
       {/* Hero Section */}
-      <section className="hero-section" data-theme={theme}>
-        <Row justify="center" align="middle" className="hero-row">
-          <Col xs={24} sm={20} md={16} lg={12} className="hero-content">
-            <Title level={1} className="clinic-name">
+      <section className="home-hero">
+        <div className="home-hero-content">
+          <Space direction="vertical" size="large" className="home-hero-text">
+            <HeartOutlined className="home-hero-icon" />
+            <Title level={1} className="home-hero-title">
               {name}
             </Title>
-            <Title level={2} className="services-title">
-              Servicios Especializados
-            </Title>
-          </Col>
-        </Row>
+            <Paragraph className="home-hero-description">
+              Atención médica especializada en ortopedia y columna vertebral. 
+              Nuestro equipo de profesionales está dedicado a brindarte el mejor 
+              cuidado para tu recuperación y bienestar integral.
+            </Paragraph>
+            <Space size="middle" wrap>
+              <Button
+                type="primary"
+                size="large"
+                icon={<PhoneOutlined />}
+                onClick={handleContactClick}
+                className="home-cta-primary"
+              >
+                Contactar Ahora
+              </Button>
+              <Button
+                size="large"
+                icon={<ClockCircleOutlined />}
+                onClick={handleScheduleClick}
+                className="home-cta-secondary"
+              >
+                Agendar Cita
+              </Button>
+            </Space>
+          </Space>
+        </div>
       </section>
 
       {/* Services Carousel */}
@@ -60,3 +96,4 @@ export function Home() {
     </Content>
   );
 }
+ 
