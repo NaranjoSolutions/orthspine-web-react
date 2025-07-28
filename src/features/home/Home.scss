@@ -1,13 +1,13 @@
-@use "../../styles/variables.scss" as *;
+@use '../../styles/variables.scss' as *;
 
 .home-content {
   min-height: 100vh;
-  
+
   // Light theme
   &--light {
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   }
-  
+
   // Dark theme
   &--dark {
     background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
@@ -20,7 +20,7 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -28,15 +28,15 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
       radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
       radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
     pointer-events: none;
   }
-  
+
   .home-content--dark & {
     &::before {
-      background: 
+      background:
         radial-gradient(circle at 20% 80%, rgba(155, 197, 61, 0.05) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(74, 103, 65, 0.05) 0%, transparent 50%);
     }
@@ -58,7 +58,7 @@
   font-size: 4rem;
   color: #667eea;
   margin-bottom: 1rem;
-  
+
   .home-content--dark & {
     color: #9bc53d;
   }
@@ -70,11 +70,11 @@
   font-weight: 700 !important;
   margin-bottom: 1.5rem !important;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
+
   .home-content--dark & {
     color: #f7fafc !important;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2.5rem !important;
   }
@@ -85,11 +85,11 @@
   color: #4a5568 !important;
   line-height: 1.8 !important;
   margin-bottom: 2rem !important;
-  
+
   .home-content--dark & {
     color: #cbd5e0 !important;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1rem !important;
   }
@@ -160,7 +160,7 @@
 
 .services-section {
   background-color: #f8f9fa;
-  
+
   .home-content--dark & {
     background-color: #1a202c;
   }
@@ -168,7 +168,7 @@
 
 .testimonials-section {
   background-color: white;
-  
+
   .home-content--dark & {
     background-color: #2d3748;
   }
@@ -176,7 +176,7 @@
 
 .schedule-location-section {
   background-color: #f8f9fa;
-  
+
   .home-content--dark & {
     background-color: #1a202c;
   }
@@ -184,7 +184,7 @@
 
 .schedule-appointment-section {
   background-color: white;
-  
+
   .home-content--dark & {
     background-color: #2d3748;
   }

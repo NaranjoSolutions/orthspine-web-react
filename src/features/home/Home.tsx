@@ -40,9 +40,8 @@ export function Home() {
               {name}
             </Title>
             <Paragraph className="home-hero-description">
-              Atención médica especializada en ortopedia y columna vertebral. 
-              Nuestro equipo de profesionales está dedicado a brindarte el mejor 
-              cuidado para tu recuperación y bienestar integral.
+              Atención médica especializada en ortopedia y columna vertebral. Nuestro equipo de profesionales está
+              dedicado a brindarte el mejor cuidado para tu recuperación y bienestar integral.
             </Paragraph>
             <Space size="middle" wrap>
               <Button
@@ -96,4 +95,3 @@ export function Home() {
     </Content>
   );
 }
- 
