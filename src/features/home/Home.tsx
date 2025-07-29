@@ -1,5 +1,5 @@
 import { Col, Layout, Row, Typography, Space, Button } from 'antd';
-import { HeartOutlined, PhoneOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import { PhoneOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { clinicInformation } from '../../shared/resources/clinic-information';
 import { HomeCarousel } from './components/carousel/HomeCarousel';
 import { Schedule } from './components/schedule/Schedule';
@@ -35,7 +35,6 @@ export function Home() {
       <section className="home-hero">
         <div className="home-hero-content">
           <Space direction="vertical" size="large" className="home-hero-text">
-            <HeartOutlined className="home-hero-icon" />
             <Title level={1} className="home-hero-title">
               {name}
             </Title>
