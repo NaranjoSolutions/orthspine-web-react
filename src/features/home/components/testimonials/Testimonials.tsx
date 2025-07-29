@@ -1,5 +1,4 @@
-import { Card, Col, Row, Typography, Rate, Avatar, Spin, Alert } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { Card, Col, Row, Typography, Rate, Avatar, Spin, Alert, Divider } from 'antd';
 
 import { useTheme } from '../../../../shared/theme/ThemeContext';
 import './Testimonials.scss';
@@ -46,7 +45,7 @@ export function Testimonials() {
   const displayTestimonials = testimonials.slice(0, 6);
 
   return (
-    <div className="testimonials-section-content" data-theme={theme}>
+    <div className={`testimonials-section-content testimonials-section-content--${theme.mode}`} data-theme={theme}>
       <Row justify="center" className="section-header">
         <Col>
           <Title level={2} className="section-title">
@@ -55,23 +54,31 @@ export function Testimonials() {
         </Col>
       </Row>
 
-      <Row gutter={[24, 24]} justify="center">
+      <Row gutter={[16, 16]} className="testimonials-grid">
         {displayTestimonials.map((testimonial) => (
-          <Col key={testimonial.testimonialId} xs={24} sm={12} lg={8} xl={8} className="testimonial-col">
-            <Card className="testimonial-card" bordered={false} hoverable>
+          <Col key={testimonial.testimonialId} xs={24} sm={12} lg={8} className="testimonial-col">
+            <Card className={`testimonial-card testimonial-card--${theme.mode}`} bordered={false}>
               <div className="testimonial-header">
-                <Avatar size={48} className="testimonial-avatar" icon={<UserOutlined />}>
+                <Avatar size={60} className={`testimonial-avatar testimonial-avatar--${theme.mode}`}>
                   {getInitials(testimonial.firstName, testimonial.lastName)}
                 </Avatar>
                 <div className="testimonial-info">
                   <Text strong className="testimonial-name">
                     {testimonial.firstName} {testimonial.lastName}
                   </Text>
-                  <div className="testimonial-rating">
-                    <Rate disabled defaultValue={testimonial.rating} style={{ fontSize: 14 }} />
+                  <div className={`testimonial-rating testimonial-rating--${theme.mode}`}>
+                    <Rate
+                      disabled
+                      defaultValue={testimonial.rating}
+                      style={{
+                        fontSize: 16,
+                        color: theme.mode === 'dark' ? '#ffc53d' : '#faad14',
+                      }}
+                    />
                   </div>
                 </div>
               </div>
+              <Divider className="testimonial-divider" />
 
               <Paragraph className="testimonial-comment">"{testimonial.comment}"</Paragraph>
             </Card>

@@ -186,7 +186,7 @@ export function Testimonials() {
               <Row gutter={[24, 24]} className="testimonials-grid">
                 {currentTestimonials.map((testimonial) => (
                   <Col xs={24} sm={12} lg={8} key={testimonial.testimonialId}>
-                    <Card className={`testimonial-card testimonial-card--${theme.mode}`} bordered={false} hoverable>
+                    <Card className={`testimonial-card testimonial-card--${theme.mode}`} bordered={false}>
                       <div className="testimonial-header">
                         <Avatar size={56} className="testimonial-avatar">
                           {getInitials(testimonial.firstName, testimonial.lastName)}
@@ -199,8 +199,10 @@ export function Testimonials() {
                             <Rate
                               disabled
                               defaultValue={testimonial.rating}
-                              style={{ fontSize: 16 }}
-                              className="rating-stars"
+                              style={{
+                                fontSize: 16,
+                                color: theme.mode === 'dark' ? '#ffc53d' : '#faad14',
+                              }}
                             />
                           </div>
                           <Text type="secondary" className="testimonial-date">
