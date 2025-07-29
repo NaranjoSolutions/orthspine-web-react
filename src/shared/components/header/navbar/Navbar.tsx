@@ -9,7 +9,7 @@ import { useTheme } from '../../../theme/ThemeContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 
 import './Navbar.scss';
-import logo from './images/clinic-icon.png';
+import logo from './images/orth-spine-logo.svg';
 
 export function Navbar() {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
