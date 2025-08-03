@@ -278,7 +278,13 @@ export function Testimonials() {
             name="rating"
             rules={[{ required: true, message: 'Por favor selecciona una calificación' }]}
           >
-            <Rate style={{ fontSize: 24 }} />
+            <Rate
+              defaultValue={5}
+              style={{
+                fontSize: 24,
+                color: '#ffc53d',
+              }}
+            />
           </Form.Item>
 
           <Form.Item
