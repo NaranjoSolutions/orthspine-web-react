@@ -1,12 +1,12 @@
 import { Layout } from 'antd';
 import { AppRoutes } from '../routes/AppRoutes';
-import { WhatsAppFloat } from '../shared/components/whatsapp-float';
 import { Navbar } from '../shared/components/header';
 import { AppFooter } from '../shared/components/footer';
 import { ErrorBoundary } from '../shared/components/error-boundary/ErrorBoundary';
 import { ScrollToTop } from '../shared/components/scroll-to-top/ScrollToTop';
 import { ThemeProvider } from '../shared/theme/ThemeContext';
 import './App.scss';
+import { WhatsAppFloat } from '../shared/components/whatsapp-float/WhatsAppFloat';
 
 const { Content } = Layout;
 
