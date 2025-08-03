@@ -12,8 +12,6 @@
 
   // Light theme
   &--light {
-    background-color: #722ed1 !important;
-    border-color: #722ed1 !important;
     box-shadow: 0 2px 8px rgba(114, 46, 209, 0.25);
 
     .anticon {
@@ -22,8 +20,6 @@
 
     &:hover,
     &:focus {
-      background-color: #9254de !important;
-      border-color: #9254de !important;
       transform: translateY(-3px);
       box-shadow: 0 4px 12px rgba(114, 46, 209, 0.35);
       opacity: 1;
@@ -37,8 +33,6 @@
 
   // Dark theme
   &--dark {
-    background-color: #52c41a !important;
-    border-color: #52c41a !important;
     box-shadow: 0 2px 8px rgba(82, 196, 26, 0.3);
 
     .anticon {
@@ -47,8 +41,6 @@
 
     &:hover,
     &:focus {
-      background-color: #73d13d !important;
-      border-color: #73d13d !important;
       transform: translateY(-3px);
       box-shadow: 0 4px 12px rgba(82, 196, 26, 0.4);
       opacity: 1;
@@ -110,55 +102,5 @@
   to {
     opacity: 0.9;
     transform: translateY(0) scale(1);
-  }
-}
-
-// Override Ant Design button styles with high specificity
-.scroll-to-top.ant-btn-primary {
-  &.scroll-to-top--light {
-    background-color: #722ed1 !important;
-    border-color: #722ed1 !important;
-
-    &:hover,
-    &:focus {
-      background-color: #9254de !important;
-      border-color: #9254de !important;
-    }
-  }
-
-  &.scroll-to-top--dark {
-    background-color: #52c41a !important;
-    border-color: #52c41a !important;
-
-    &:hover,
-    &:focus {
-      background-color: #73d13d !important;
-      border-color: #73d13d !important;
-    }
-  }
-}
-
-// Theme-specific global overrides
-[data-theme='light'] {
-  .scroll-to-top {
-    background-color: #722ed1 !important;
-    border-color: #722ed1 !important;
-
-    &:hover {
-      background-color: #9254de !important;
-      border-color: #9254de !important;
-    }
-  }
-}
-
-[data-theme='dark'] {
-  .scroll-to-top {
-    background-color: #52c41a !important;
-    border-color: #52c41a !important;
-
-    &:hover {
-      background-color: #73d13d !important;
-      border-color: #73d13d !important;
-    }
   }
 }
