@@ -1,4 +1,4 @@
-import { Row, Col, Card, Typography, Space, Button, Image, Divider, Layout } from 'antd';
+import { Row, Col, Card, Typography, Space, Button, Divider, Layout } from 'antd';
 import {
   MedicineBoxOutlined,
   UserOutlined,
