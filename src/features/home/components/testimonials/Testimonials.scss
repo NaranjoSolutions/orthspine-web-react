@@ -54,6 +54,7 @@
 
   .testimonial-card {
     height: 100%;
+    width: 90% !important;
     display: flex;
     flex-direction: column;
     border-radius: 12px;
@@ -191,15 +192,24 @@
   }
 }
 
-// Avatar theme classes
-.testimonial-avatar--light {
+.testimonials-section-content .testimonial-avatar.testimonial-avatar--light,
+.testimonial-avatar.testimonial-avatar--light.ant-avatar {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
   color: white !important;
+  border: none !important;
 }
 
-.testimonial-avatar--dark {
+.testimonials-section-content .testimonial-avatar.testimonial-avatar--dark,
+.testimonial-avatar.testimonial-avatar--dark.ant-avatar {
   background: linear-gradient(135deg, #9bc53d 0%, #4a6741 100%) !important;
   color: #1a202c !important;
+  border: none !important;
+}
+
+// Additional override for ant-avatar span element
+.testimonial-avatar--light.ant-avatar > span,
+.testimonial-avatar--dark.ant-avatar > span {
+  color: inherit !important;
 }
 
 // Rating theme classes - increased specificity

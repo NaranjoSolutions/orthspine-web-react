@@ -54,9 +54,9 @@ export function Testimonials() {
         </Col>
       </Row>
 
-      <Row gutter={[16, 16]} className="testimonials-grid">
+      <Row gutter={[8, 16]} className="testimonials-grid">
         {displayTestimonials.map((testimonial) => (
-          <Col key={testimonial.testimonialId} xs={24} sm={12} lg={8} className="testimonial-col">
+          <Col key={testimonial.testimonialId} xs={24} sm={12} lg={8} xl={6} className="testimonial-col">
             <Card className={`testimonial-card testimonial-card--${theme.mode}`} bordered={false}>
               <div className="testimonial-header">
                 <Avatar size={60} className={`testimonial-avatar testimonial-avatar--${theme.mode}`}>
