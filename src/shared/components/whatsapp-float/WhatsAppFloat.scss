@@ -1,1 +1,172 @@
- 
+@use '../../../styles/variables.scss' as *;
+
+.whatsapp-float {
+  // WhatsApp brand color
+  --whatsapp-green: #25d366;
+  --whatsapp-green-hover: #20b355;
+  --whatsapp-green-dark: #1e9f4a;
+
+  // Base styles
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  transition: all 0.3s ease;
+
+  // Light theme
+  &--light {
+    background-color: var(--whatsapp-green) !important;
+    border-color: var(--whatsapp-green) !important;
+
+    .anticon {
+      color: white !important;
+    }
+
+    &:hover {
+      background-color: var(--whatsapp-green-hover) !important;
+      border-color: var(--whatsapp-green-hover) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+  }
+
+  // Dark theme
+  &--dark {
+    background-color: var(--whatsapp-green) !important;
+    border-color: var(--whatsapp-green) !important;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+
+    .anticon {
+      color: white !important;
+    }
+
+    &:hover {
+      background-color: var(--whatsapp-green-hover) !important;
+      border-color: var(--whatsapp-green-hover) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    // Adjust position for mobile
+    inset-inline-end: 16px !important;
+    bottom: 16px !important;
+  }
+
+  // Accessibility
+  &:focus {
+    outline: 2px solid var(--whatsapp-green);
+    outline-offset: 2px;
+  }
+
+  // Animation for better UX
+  &:hover .anticon {
+    animation: pulse 1s infinite;
+  }
+}
+
+// Pulse animation for the WhatsApp icon
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// Ensure proper z-index for the float button
+.ant-float-btn {
+  z-index: 1000;
+}
+
+// Override Ant Design's default primary color for WhatsApp button with maximum specificity
+.ant-float-btn.ant-float-btn-primary.whatsapp-float,
+.whatsapp-float.ant-float-btn-primary,
+.whatsapp-float.ant-float-btn.ant-float-btn-primary {
+  background-color: var(--whatsapp-green) !important;
+  border-color: var(--whatsapp-green) !important;
+  background: var(--whatsapp-green) !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--whatsapp-green-hover) !important;
+    border-color: var(--whatsapp-green-hover) !important;
+    background: var(--whatsapp-green-hover) !important;
+  }
+
+  // Target the body of the button specifically
+  .ant-float-btn-body {
+    background-color: var(--whatsapp-green) !important;
+    background: var(--whatsapp-green) !important;
+  }
+
+  &:hover .ant-float-btn-body,
+  &:focus .ant-float-btn-body {
+    background-color: var(--whatsapp-green-hover) !important;
+    background: var(--whatsapp-green-hover) !important;
+  }
+}
+
+// Theme-specific overrides for better visibility
+[data-theme='dark'] {
+  .whatsapp-float {
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+
+    &:hover {
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
+    }
+  }
+}
+
+[data-theme='light'] {
+  .whatsapp-float {
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+
+    &:hover {
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+    }
+  }
+}
+
+// Additional force overrides for stubborn Ant Design styles
+.whatsapp-float {
+  // Force WhatsApp green with maximum specificity
+  &.ant-float-btn-primary,
+  &.ant-float-btn {
+    background: #25d366 !important;
+    background-color: #25d366 !important;
+    border-color: #25d366 !important;
+
+    .ant-float-btn-body {
+      background: #25d366 !important;
+      background-color: #25d366 !important;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: #20b355 !important;
+      background-color: #20b355 !important;
+      border-color: #20b355 !important;
+
+      .ant-float-btn-body {
+        background: #20b355 !important;
+        background-color: #20b355 !important;
+      }
+    }
+  }
+}
