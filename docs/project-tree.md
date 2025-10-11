@@ -1,5 +1,4 @@
 ```
-```
 template-web-react/
 │
 ├── public/
@@ -511,5 +510,4 @@ template-web-react/
 ├── package-lock.json                       # Lock file for dependencies
 ├── LICENSE                                 # Project license
 └── README.md                               # Project README
-```
 ```
