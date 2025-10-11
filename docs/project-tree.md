@@ -1,13 +1,6 @@
 ```
-orthopedic-spine-frontend/
-│
-├── .github/
-│   └── workflows/
-│       ├── ci.yml                          # PR checks: lint, test, type-check, build
-│       ├── cd-staging.yml                  # Deploy to AWS S3/CloudFront (staging)
-│       ├── cd-production.yml               # Deploy to production
-│       ├── storybook-deploy.yml            # Deploy Storybook to GitHub Pages
-│       └── codeql-analysis.yml             # Security scanning
+```
+template-web-react/
 │
 ├── public/
 │   ├── assets/
@@ -16,26 +9,17 @@ orthopedic-spine-frontend/
 │   │   │   ├── hero-banner.jpg
 │   │   │   ├── placeholder-avatar.png
 │   │   │   └── icons/
-│   │   │       ├── appointment.svg
-│   │   │       ├── service.svg
-│   │   │       └── testimonial.svg
+│   │   │       └── users.svg
 │   │   ├── fonts/
 │   │   │   ├── Inter-Regular.woff2
 │   │   │   └── Inter-Bold.woff2
 │   │   └── favicon.ico
-│   ├── robots.txt
-│   └── index.html
 │
 ├── src/
 │   │
 │   ├── app/
-│   │   ├── store.ts                        # Redux store with RTK Query middleware
-│   │   ├── rootReducer.ts                  # Combine traditional slices (not RTK Query)
-│   │   ├── hooks.ts                        # Typed useAppDispatch, useAppSelector
-│   │   └── listenerMiddleware.ts           # Optional: Redux listener middleware
-│   │
+│   │   ├── tbd
 │   ├── features/                           # Feature-based modules (domain-driven)
-│   │   │
 │   │   ├── auth/                           # 🔐 Authentication & Authorization
 │   │   │   ├── components/
 │   │   │   │   ├── LoginForm/
@@ -84,121 +68,6 @@ orthopedic-spine-frontend/
 │   │   │   │   └── index.ts
 │   │   │   │
 │   │   │   └── index.ts                    # Public API exports
-│   │   │
-│   │   ├── appointments/                   # 📅 Appointments Management
-│   │   │   ├── components/
-│   │   │   │   ├── AppointmentForm/
-│   │   │   │   │   ├── AppointmentForm.tsx
-│   │   │   │   │   ├── AppointmentForm.module.scss
-│   │   │   │   │   ├── AppointmentForm.stories.tsx
-│   │   │   │   │   ├── AppointmentForm.test.tsx
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── AppointmentList/
-│   │   │   │   │   ├── AppointmentList.tsx
-│   │   │   │   │   ├── AppointmentList.module.scss
-│   │   │   │   │   ├── AppointmentList.stories.tsx
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── AppointmentCard/
-│   │   │   │   │   ├── AppointmentCard.tsx
-│   │   │   │   │   ├── AppointmentCard.module.scss
-│   │   │   │   │   ├── AppointmentCard.stories.tsx
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── AppointmentFilters/
-│   │   │   │   │   ├── AppointmentFilters.tsx
-│   │   │   │   │   ├── AppointmentFilters.module.scss
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── AppointmentCalendar/
-│   │   │   │   │   ├── AppointmentCalendar.tsx
-│   │   │   │   │   ├── AppointmentCalendar.module.scss
-│   │   │   │   │   └── index.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   ├── api/
-│   │   │   │   └── appointmentsApi.ts      # ⭐ RTK Query API slice
-│   │   │   │                                # Endpoints: getAll, getById, create, update, delete
-│   │   │   │                                # Tags: ['Appointment'] for cache invalidation
-│   │   │   │
-│   │   │   ├── hooks/
-│   │   │   │   ├── useAppointments.ts      # Business logic layer over RTK Query
-│   │   │   │   ├── useAppointmentForm.ts   # Form state management
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   ├── types/
-│   │   │   │   ├── appointment.types.ts    # Appointment, CreateAppointmentDto, etc.
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   ├── validators/
-│   │   │   │   ├── appointmentValidation.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   └── index.ts
-│   │   │
-│   │   ├── services/                       # 🏥 Medical Services
-│   │   │   ├── components/
-│   │   │   │   ├── ServiceCard/
-│   │   │   │   │   ├── ServiceCard.tsx
-│   │   │   │   │   ├── ServiceCard.module.scss
-│   │   │   │   │   ├── ServiceCard.stories.tsx
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── ServiceDetail/
-│   │   │   │   │   ├── ServiceDetail.tsx
-│   │   │   │   │   ├── ServiceDetail.module.scss
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── ServiceList/
-│   │   │   │   │   ├── ServiceList.tsx
-│   │   │   │   │   ├── ServiceList.module.scss
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── ServiceGrid/
-│   │   │   │   │   ├── ServiceGrid.tsx
-│   │   │   │   │   ├── ServiceGrid.module.scss
-│   │   │   │   │   └── index.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   ├── api/
-│   │   │   │   └── servicesApi.ts          # ⭐ RTK Query API slice
-│   │   │   │                                # Tags: ['Service']
-│   │   │   │
-│   │   │   ├── hooks/
-│   │   │   │   ├── useServices.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   ├── types/
-│   │   │   │   ├── service.types.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   └── index.ts
-│   │   │
-│   │   ├── testimonials/                   # ⭐ Patient Testimonials
-│   │   │   ├── components/
-│   │   │   │   ├── TestimonialCard/
-│   │   │   │   │   ├── TestimonialCard.tsx
-│   │   │   │   │   ├── TestimonialCard.module.scss
-│   │   │   │   │   ├── TestimonialCard.stories.tsx
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── TestimonialCarousel/
-│   │   │   │   │   ├── TestimonialCarousel.tsx
-│   │   │   │   │   ├── TestimonialCarousel.module.scss
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── TestimonialForm/
-│   │   │   │   │   ├── TestimonialForm.tsx
-│   │   │   │   │   ├── TestimonialForm.module.scss
-│   │   │   │   │   └── index.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   ├── api/
-│   │   │   │   └── testimonialsApi.ts      # ⭐ RTK Query API slice
-│   │   │   │                                # Tags: ['Testimonial']
-│   │   │   │
-│   │   │   ├── hooks/
-│   │   │   │   ├── useTestimonials.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   ├── types/
-│   │   │   │   ├── testimonial.types.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   └── index.ts
-│   │   │
 │   │   ├── contact/                        # 📧 Contact Form
 │   │   │   ├── components/
 │   │   │   │   ├── ContactForm/
@@ -229,63 +98,6 @@ orthopedic-spine-frontend/
 │   │   │   │   └── index.ts
 │   │   │   │
 │   │   │   └── index.ts
-│   │   │
-│   │   ├── clinic-info/                    # 🏢 Clinic Information
-│   │   │   ├── components/
-│   │   │   │   ├── LocationMap/
-│   │   │   │   │   ├── LocationMap.tsx
-│   │   │   │   │   ├── LocationMap.module.scss
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── ScheduleDisplay/
-│   │   │   │   │   ├── ScheduleDisplay.tsx
-│   │   │   │   │   ├── ScheduleDisplay.module.scss
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── AboutSection/
-│   │   │   │   │   ├── AboutSection.tsx
-│   │   │   │   │   ├── AboutSection.module.scss
-│   │   │   │   │   └── index.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   ├── api/
-│   │   │   │   └── clinicInfoApi.ts        # ⭐ RTK Query API slice
-│   │   │   │                                # Query: getClinicInfo (cached)
-│   │   │   │
-│   │   │   ├── hooks/
-│   │   │   │   ├── useClinicInfo.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   ├── types/
-│   │   │   │   ├── clinicInfo.types.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   └── index.ts
-│   │   │
-│   │   ├── patients/                       # 👤 Patient Management (Admin)
-│   │   │   ├── components/
-│   │   │   │   ├── PatientList/
-│   │   │   │   │   ├── PatientList.tsx
-│   │   │   │   │   ├── PatientList.module.scss
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── PatientDetail/
-│   │   │   │   │   ├── PatientDetail.tsx
-│   │   │   │   │   ├── PatientDetail.module.scss
-│   │   │   │   │   └── index.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   ├── api/
-│   │   │   │   └── patientsApi.ts          # ⭐ RTK Query API slice
-│   │   │   │                                # Tags: ['Patient']
-│   │   │   │
-│   │   │   ├── hooks/
-│   │   │   │   ├── usePatients.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   ├── types/
-│   │   │   │   ├── patient.types.ts
-│   │   │   │   └── index.ts
-│   │   │   │
-│   │   │   └── index.ts
-│   │   │
 │   │   ├── admin/                          # 👨‍💼 Admin Dashboard & Management
 │   │   │   ├── components/
 │   │   │   │   ├── Dashboard/
@@ -323,7 +135,6 @@ orthopedic-spine-frontend/
 │   │   │   │   └── index.ts
 │   │   │   │
 │   │   │   └── index.ts
-│   │   │
 │   │   └── theme/                          # 🎨 Theme Management (Dark Mode)
 │   │       ├── components/
 │   │       │   ├── ThemeToggle/
@@ -590,20 +401,6 @@ orthopedic-spine-frontend/
 │   │   │   │   ├── TestimonialsSection.tsx
 │   │   │   │   └── index.ts
 │   │   │   └── index.ts
-│   │   ├── Services/
-│   │   │   ├── ServicesPage.tsx
-│   │   │   ├── ServicesPage.module.scss
-│   │   │   ├── ServiceDetailPage.tsx
-│   │   │   ├── ServiceDetailPage.module.scss
-│   │   │   └── index.ts
-│   │   ├── Appointments/
-│   │   │   ├── AppointmentsPage.tsx
-│   │   │   ├── AppointmentsPage.module.scss
-│   │   │   ├── NewAppointmentPage.tsx
-│   │   │   ├── NewAppointmentPage.module.scss
-│   │   │   ├── AppointmentDetailPage.tsx
-│   │   │   ├── AppointmentDetailPage.module.scss
-│   │   │   └── index.ts
 │   │   ├── Contact/
 │   │   │   ├── ContactPage.tsx
 │   │   │   ├── ContactPage.module.scss
@@ -714,4 +511,5 @@ orthopedic-spine-frontend/
 ├── package-lock.json                       # Lock file for dependencies
 ├── LICENSE                                 # Project license
 └── README.md                               # Project README
+```
 ```
