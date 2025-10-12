@@ -1,5 +1,5 @@
 {
-  "name": "clinic-ui",
+  "name": "orthspine-web-react",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Alonsovn/clinic-ui.git"
+    "url": "https://github.com/Alonsovn/orthspine-web-react.git"
   },
   "dependencies": {
     "@ant-design/icons": "^5.6.0",
