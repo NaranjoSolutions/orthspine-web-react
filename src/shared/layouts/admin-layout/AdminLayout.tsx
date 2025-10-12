@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { DashboardOutlined, CommentOutlined, UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
-import { useAppDispatch } from '@/store/hooks';
-import { clearAuth } from '@/features/auth/store/authSlice';
+import { useLogout } from '@/features/auth/hooks';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
 import styles from './AdminLayout.module.scss';
 
@@ -27,16 +26,8 @@ const { Header, Sider, Content } = Layout;
 export const AdminLayout: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useAppDispatch();
+  const { handleLogout } = useLogout();
   const [collapsed, setCollapsed] = useState(false);
-
-  /**
-   * Handle logout
-   */
-  const handleLogout = () => {
-    dispatch(clearAuth());
-    navigate(ROUTE_PATHS.AUTH.LOGIN);
-  };
 
   /**
    * Menu items configuration
