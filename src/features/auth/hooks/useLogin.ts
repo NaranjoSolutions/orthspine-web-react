@@ -109,12 +109,15 @@ export const useLogin = () => {
         } else {
           navigate(ROUTE_PATHS.HOME);
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         // Hide loading message
         hideLoading();
 
         // Handle API errors
-        const errorMessage = error?.data?.message || error?.message || 'Login failed. Please check your credentials.';
+        const errorMessage =
+          (error as { data?: { message?: string }; message?: string })?.data?.message ||
+          (error as { message?: string })?.message ||
+          'Login failed. Please check your credentials.';
 
         setErrors({
           general: errorMessage,

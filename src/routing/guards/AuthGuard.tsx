@@ -29,7 +29,7 @@ import { ROUTE_PATHS } from '../config/routePaths';
  * ```
  */
 export const AuthGuard: React.FC = () => {
-  const { isAuthenticated, isLoading } = useAppSelector((state: any) => state.auth);
+  const { isAuthenticated, isLoading } = useAppSelector((state: { auth: { isAuthenticated: boolean; isLoading: boolean } }) => state.auth);
 
   if (isLoading) {
     return (

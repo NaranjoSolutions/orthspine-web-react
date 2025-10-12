@@ -27,7 +27,7 @@ import { ROUTE_PATHS } from '../config/routePaths';
  * ```
  */
 export const GuestGuard: React.FC = () => {
-  const { isAuthenticated } = useAppSelector((state: any) => state.auth);
+  const { isAuthenticated } = useAppSelector((state: { auth: { isAuthenticated: boolean } }) => state.auth);
 
   if (isAuthenticated) {
     return <Navigate to={ROUTE_PATHS.HOME} replace />;

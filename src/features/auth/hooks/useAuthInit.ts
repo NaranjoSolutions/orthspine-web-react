@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch } from '@/store/hooks';
-import { setUser, setTokens } from '../store/authSlice';
+import { setTokens } from '../store/authSlice';
 import { tokenService } from '../services/TokenService';
 import { logger } from '@/infrastructure/logger';
 
