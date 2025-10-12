@@ -12,14 +12,14 @@ export const testimonialApi = createApi({
     getAllTestimonials: builder.query<Testimonial[], TestimonialFilters | void>({
       query: (filters) => ({
         url: 'testimonial/all',
-        params: filters,
+        params: filters || undefined,
       }),
       providesTags: ['testimonial'],
     }),
 
     getTestimonialById: builder.query<Testimonial, string>({
       query: (id) => `testimonial/${id}`,
-      providesTags: (result, error, id) => [{ type: 'testimonial', id }],
+      providesTags: (_result, _error, id) => [{ type: 'testimonial', id }],
     }),
 
     createTestimonial: builder.mutation<Testimonial, CreateTestimonialRequest>({
@@ -37,7 +37,7 @@ export const testimonialApi = createApi({
         method: 'PUT',
         body: data,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: 'testimonial', id }, 'testimonial'],
+      invalidatesTags: (_result, _error, { id }) => [{ type: 'testimonial', id }, 'testimonial'],
     }),
 
     deleteTestimonial: builder.mutation<{ success: boolean }, string>({
@@ -45,7 +45,7 @@ export const testimonialApi = createApi({
         url: `testimonial/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: (result, error, id) => [{ type: 'testimonial', id }, 'testimonial'],
+      invalidatesTags: (_result, _error, id) => [{ type: 'testimonial', id }, 'testimonial'],
     }),
 
     // Approve/reject testimonials (admin)

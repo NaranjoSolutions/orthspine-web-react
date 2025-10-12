@@ -56,7 +56,7 @@ export const AdminLayout: React.FC = () => {
     },
     {
       key: 'divider-1',
-      type: 'divider',
+      type: 'divider' as const,
     },
     {
       key: 'settings',

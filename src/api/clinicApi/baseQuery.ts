@@ -2,20 +2,21 @@ import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BaseQueryFn, FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta } from '@reduxjs/toolkit/query';
 
 import { LoginResponse } from './types';
-import { logout, refreshTokens } from '../../store/redux/slices/userSlice';
-import { RootState } from '../../store/redux/store';
+import { clearAuth, setTokens } from '@/features/auth/store/authSlice';
+import { tokenService } from '@/features/auth/services/TokenService';
 
 const baseUrl = import.meta.env.VITE_BASE_API_URL || '';
 const apiVersion = import.meta.env.VITE_API_VERSION || 'api/v1';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: `${baseUrl}/${apiVersion}`,
-  prepareHeaders: (headers, { getState }) => {
-    const { user } = getState() as RootState;
-    const access_token = user.accessToken;
-    if (access_token) {
-      headers.set('Authorization', `Bearer ${access_token}`);
+  prepareHeaders: (headers) => {
+    // Get token from TokenService (Singleton)
+    const token = tokenService.getAccessToken();
+    if (token) {
+      headers.set('Authorization', `Bearer ${token}`);
     }
+    headers.set('Content-Type', 'application/json');
     return headers;
   },
   credentials: 'include', // Ensures cookies are sent if needed
@@ -32,12 +33,12 @@ export const baseQueryWithReAuth: BaseQueryFn<
 
   if (result.error && result.error.status === 401) {
     // Unauthorized error: try to refresh token
-    const { user } = api.getState() as RootState;
-    const refreshToken = user.refreshToken;
+    const refreshToken = tokenService.getRefreshToken();
 
     if (!refreshToken) {
       // No refresh token available, logout user
-      api.dispatch(logout());
+      tokenService.clearTokens();
+      api.dispatch(clearAuth());
       return result;
     }
 
@@ -55,23 +56,26 @@ export const baseQueryWithReAuth: BaseQueryFn<
       );
 
       if (refreshResponse.data) {
-        // Update tokens in Redux store
+        // Update tokens in Redux store and TokenService
         const data = refreshResponse.data as LoginResponse;
-        api.dispatch(
-          refreshTokens({
-            accessToken: data.accessToken,
-            refreshToken: data.refreshToken,
-          }),
-        );
+        const tokens = {
+          accessToken: data.accessToken,
+          refreshToken: data.refreshToken,
+          expiresIn: 3600, // Default expiry
+        };
+        tokenService.saveTokens(tokens, true);
+        api.dispatch(setTokens(tokens));
 
         // Retry the original request with new token
         result = await baseQuery(args, api, extraOptions);
       } else {
         // Refresh token failed, logout user
-        api.dispatch(logout());
+        tokenService.clearTokens();
+        api.dispatch(clearAuth());
       }
     } catch {
-      api.dispatch(logout());
+      tokenService.clearTokens();
+      api.dispatch(clearAuth());
     }
   }
 

@@ -32,7 +32,7 @@ interface RoleGuardProps {
  * ```
  */
 export const RoleGuard: React.FC<RoleGuardProps> = ({ allowedRoles }) => {
-  const { user } = useAppSelector((state) => state.auth);
+  const { user } = useAppSelector((state: any) => state.auth);
 
   const hasPermission = user && allowedRoles.includes(user.role);
 

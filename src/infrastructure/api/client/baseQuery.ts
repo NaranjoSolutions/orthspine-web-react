@@ -1,5 +1,4 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { RootState } from '@/store/store';
 import { tokenService } from '@/features/auth/services/TokenService';
 
 /**
@@ -8,7 +7,7 @@ import { tokenService } from '@/features/auth/services/TokenService';
  */
 export const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_URL || 'http://localhost:8000/api',
-  prepareHeaders: (headers, { getState }) => {
+  prepareHeaders: (headers) => {
     // Get token from TokenService (Singleton)
     const token = tokenService.getAccessToken();
 

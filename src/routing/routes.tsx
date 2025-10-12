@@ -20,7 +20,7 @@ const ContactPage = lazy(() => import('@/pages/ContactPage'));
 const TestimonialsPage = lazy(() => import('@/pages/TestimonialsPage'));
 
 // Auth pages
-const LoginPage = lazy(() => import('@/pages/auth/LoginPage'));
+const LoginPage = lazy(() => import('@/pages/auth/login-page'));
 const RegisterPage = lazy(() => import('@/pages/auth/RegisterPage'));
 const ForgotPasswordPage = lazy(() => import('@/pages/auth/ForgotPasswordPage'));
 
