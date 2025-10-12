@@ -24,7 +24,9 @@ export const App: React.FC = () => {
     <Suspense
       fallback={
         <div className="app-loading">
-          <Spin size="large" tip="Loading..." />
+          <Spin size="large" tip="Loading...">
+            <div style={{ minHeight: '200px' }} />
+          </Spin>
         </div>
       }
     >
