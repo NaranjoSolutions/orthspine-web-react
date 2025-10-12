@@ -1,0 +1,26 @@
+@use '@/styles/abstracts' as *;
+
+.loginCard {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 16px;
+
+  :global(.ant-card-body) {
+    padding: 32px;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .loginCard {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+
+    :global(.ant-card-body) {
+      padding: 24px 16px;
+    }
+  }
+}
