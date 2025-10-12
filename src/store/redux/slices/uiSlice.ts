@@ -1,33 +1,49 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface UiState {
-  siderMenuCollapsed: boolean;
-  siderMenuSelectedKey: string;
-  searchQuery: string;
+/**
+ * UI State Slice
+ * Manages global UI state (loading, modals, notifications, etc.)
+ */
+interface UIState {
+  isSidebarOpen: boolean;
+  isLoading: boolean;
+  notification: {
+    message: string;
+    type: 'success' | 'error' | 'info' | 'warning' | null;
+  } | null;
 }
 
-const initialState: UiState = {
-  siderMenuCollapsed: false,
-  siderMenuSelectedKey: '/',
-  searchQuery: '',
+const initialState: UIState = {
+  isSidebarOpen: true,
+  isLoading: false,
+  notification: null,
 };
 
 const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    toggleCollapseSiderMenu: (state) => {
-      // state.siderMenuCollapsed = !state.siderMenuCollapsed;
-      return { ...state, siderMenuCollapsed: !state.siderMenuCollapsed };
+    toggleSidebar: (state) => {
+      state.isSidebarOpen = !state.isSidebarOpen;
     },
-    setSiderMenuSelectedKey: (state, action) => {
-      return { ...state, siderMenuSelectedKey: action.payload };
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
     },
-    setSearchQuery: (state, action) => {
-      return { ...state, searchQuery: action.payload };
+    showNotification: (
+      state,
+      action: PayloadAction<{
+        message: string;
+        type: 'success' | 'error' | 'info' | 'warning';
+      }>,
+    ) => {
+      state.notification = action.payload;
+    },
+    clearNotification: (state) => {
+      state.notification = null;
     },
   },
 });
 
-export const { toggleCollapseSiderMenu, setSiderMenuSelectedKey, setSearchQuery } = uiSlice.actions;
+export const { toggleSidebar, setLoading, showNotification, clearNotification } = uiSlice.actions;
+
 export default uiSlice.reducer;

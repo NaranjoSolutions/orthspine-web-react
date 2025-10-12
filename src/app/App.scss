@@ -1,26 +1,37 @@
-.app-layout {
-  min-height: 100vh;
+@use '@/styles/abstracts' as *;
+
+// Global app styles
+.app-loading {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: $color-gray-50;
 
-  .main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-
-    // Ensure content takes full height
-    & > div {
-      flex: 1;
-    }
+  :global(.ant-spin-text) {
+    margin-top: 16px;
+    color: $color-gray-600;
+    font-size: 16px;
   }
 }
 
-// Global styles for smooth scrolling
-html {
-  scroll-behavior: smooth;
-}
+// Global layout styles
+:global {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: $font-family-base;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-// Ensure proper spacing for floating elements
-body {
-  position: relative;
+  #root {
+    height: 100%;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
 }

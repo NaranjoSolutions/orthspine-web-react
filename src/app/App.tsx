@@ -1,29 +1,34 @@
-import { Layout } from 'antd';
-import { AppRoutes } from '../routes/AppRoutes';
-import { Navbar } from '../shared/components/header';
-import { AppFooter } from '../shared/components/footer';
-import { ErrorBoundary } from '../shared/components/error-boundary/ErrorBoundary';
-import { ScrollToTop } from '../shared/components/scroll-to-top/ScrollToTop';
-import { ThemeProvider } from '../shared/theme/ThemeContext';
+import React, { Suspense } from 'react';
+import { useRoutes } from 'react-router-dom';
+import { Spin } from 'antd';
+import { routes } from '@/routing/routes';
 import './App.scss';
-import { WhatsAppFloat } from '../shared/components/whatsapp-float/WhatsAppFloat';
 
-const { Content } = Layout;
+/**
+ * App Component - Application Root
+ *
+ * Design Principles:
+ * - Single Responsibility: Only handles route rendering
+ * - Separation of Concerns: Layout logic moved to route configuration
+ * - Open/Closed: Easy to extend routes without modifying this component
+ *
+ * Architecture:
+ * - Routes are lazy-loaded for optimal performance
+ * - Suspense boundary provides loading state
+ * - Layout components wrapped at route level (not here)
+ */
+export const App: React.FC = () => {
+  const element = useRoutes(routes);
 
-export function App() {
   return (
-    <ThemeProvider defaultTheme="light">
-      <ErrorBoundary>
-        <Layout className="app-layout">
-          <Navbar />
-          <Content className="main-content">
-            <AppRoutes />
-          </Content>
-          <AppFooter />
-          <WhatsAppFloat />
-          <ScrollToTop />
-        </Layout>
-      </ErrorBoundary>
-    </ThemeProvider>
+    <Suspense
+      fallback={
+        <div className="app-loading">
+          <Spin size="large" tip="Loading..." />
+        </div>
+      }
+    >
+      {element}
+    </Suspense>
   );
-}
+};

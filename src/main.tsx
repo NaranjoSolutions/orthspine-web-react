@@ -1,21 +1,32 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { AppProviders } from './app/providers';
 import { App } from './app/App';
-import { store } from './store/redux/store';
 
-// import 'leaflet/dist/leaflet.css';
+// Import Ant Design reset styles
+import 'antd/dist/reset.css';
 
+// Import global styles
+import './styles/main.scss';
+
+/**
+ * Application Entry Point
+ *
+ * Architecture:
+ * - Composite Pattern: AppProviders wraps all context providers
+ * - Single Responsibility: main.tsx only handles React DOM rendering
+ * - Error Handling: ErrorBoundary catches all render errors
+ */
 const rootElement = document.getElementById('root');
-if (!rootElement) throw new Error('Root element not found');
 
-createRoot(rootElement as HTMLElement).render(
+if (!rootElement) {
+  throw new Error('Root element not found. Ensure index.html has a <div id="root">');
+}
+
+createRoot(rootElement).render(
   <StrictMode>
-    <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
-    </Provider>
+    <AppProviders>
+      <App />
+    </AppProviders>
   </StrictMode>,
 );

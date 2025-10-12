@@ -7,9 +7,7 @@ import rehabilitation from '../../../assets/images/services/rehabilitation.jpg';
 import circulation from '../../../assets/images/services/circulation.jpg';
 import sports from '../../../assets/images/services/sports.jpg';
 
-import { ServicesCard } from '../../types/variables';
-
-export const allClinicServices: ServicesCard[] = [
+export const allClinicServices = [
   {
     serviceId: 'spine',
     title: 'Columna',

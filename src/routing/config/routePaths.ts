@@ -1,5 +1,13 @@
 /**
- * Centralized route path constants
+ * Centralized Route Path Constants
+ *
+ * Benefits:
+ * - Type-safe route paths
+ * - Single source of truth
+ * - Easy refactoring (change once, update everywhere)
+ * - Prevents typos in route strings
+ *
+ * Design Principle: DRY (Don't Repeat Yourself)
  */
 export const ROUTE_PATHS = {
   HOME: '/',
@@ -22,3 +30,6 @@ export const ROUTE_PATHS = {
   NOT_FOUND: '*',
   UNAUTHORIZED: '/unauthorized',
 } as const;
+
+// Type for route paths (for type safety in navigation)
+export type RoutePath = typeof ROUTE_PATHS;
