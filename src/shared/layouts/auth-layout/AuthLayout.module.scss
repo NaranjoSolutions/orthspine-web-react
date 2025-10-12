@@ -1,0 +1,60 @@
+@use '@/styles/abstracts' as *;
+
+.authLayout {
+  min-height: 100vh;
+  background-color: #f3f4f6;
+}
+
+.header {
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0 32px;
+  height: 64px;
+  line-height: 64px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  min-height: calc(100vh - 64px);
+}
+
+.contentInner {
+  width: 100%;
+  max-width: 480px;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+  }
+
+  .content {
+    padding: 24px 16px;
+  }
+
+  .contentInner {
+    max-width: 100%;
+  }
+}
