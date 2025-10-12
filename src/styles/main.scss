@@ -1,12 +1,28 @@
-@use './abstracts' as *;
-@use './base/reset';
-@use './base/typography';
-@use './base/global';
+/**
+ * Main SCSS Entry Point
+ */
 
-// Ant Design overrides
-:root {
-  // Typography
-  --ant-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+// Import Ant Design reset (handled in main.tsx)
+// Import abstracts
+@use './abstracts' as *;
+
+// Global styles
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: $font-family-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
 }
 
 // Custom scrollbar
@@ -16,28 +32,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: $color-gray-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
+  background: $color-gray-400;
+  border-radius: $border-radius-sm;
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-// Global Ant Design overrides
-.ant-btn {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.ant-input,
-.ant-input-password {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.ant-form-item-explain-error {
-  font-size: 14px;
+  &:hover {
+    background: $color-gray-500;
+  }
 }

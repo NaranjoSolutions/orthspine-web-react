@@ -1,7 +1,6 @@
-import React from 'react';
 import { Card } from 'antd';
-import { AuthLayout } from '@/shared/layouts/AuthLayout';
-import { LoginForm } from '@/features/auth/components/LoginForm';
+import { AuthLayout } from '@/shared/layouts/auth-layout';
+import { LoginForm } from '@/features/auth/components/login-form';
 import styles from './LoginPage.module.scss';
 
 /**
@@ -18,3 +17,4 @@ export const LoginPage: React.FC = () => {
     </AuthLayout>
   );
 };
+export default LoginPage;

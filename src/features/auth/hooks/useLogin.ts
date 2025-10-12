@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { message } from 'antd';
-import { useAppDispatch } from '@/store/hooks';
 import { useLoginMutation } from '../api/authApi';
-import { setUser, setTokens } from '../store/authSlice';
 import { LoginFormData, LoginFormErrors } from '../types';
 import { AuthService } from '../services/AuthService';
 import { LoginValidator } from '@/shared/utils/validators/LoginValidator';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
-import { logger } from '@/infrastructure/logger';
+import { logger } from '@/infrastructure/logger/Logger';
+import { useAppDispatch } from '@/store/redux/hooks';
 
 /**
  * useLogin Hook - Facade Pattern
@@ -18,6 +17,7 @@ import { logger } from '@/infrastructure/logger';
 export const useLogin = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
   const [login, { isLoading }] = useLoginMutation();
 
   const [formData, setFormData] = useState<LoginFormData>({

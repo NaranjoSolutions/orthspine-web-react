@@ -33,3 +33,14 @@ export const ROUTE_PATHS = {
 
 // Type for route paths (for type safety in navigation)
 export type RoutePath = typeof ROUTE_PATHS;
+
+/**
+ * Helper function to build parameterized routes
+ *
+ * @example
+ * buildRoute(ROUTE_PATHS.AUTH.RESET_PASSWORD, { token: 'abc123' })
+ * // Returns: '/reset-password/abc123'
+ */
+export const buildRoute = (path: string, params: Record<string, string>): string => {
+  return Object.entries(params).reduce((acc, [key, value]) => acc.replace(`:${key}`, value), path);
+};

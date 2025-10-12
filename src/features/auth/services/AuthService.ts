@@ -1,6 +1,6 @@
 import { LoginCredentials, AuthResponse, User } from '../types';
 import { tokenService } from './TokenService';
-import { logger } from '@/infrastructure/logger';
+import { logger } from '@/infrastructure/logger/Logger';
 
 /**
  * AuthService - Repository Pattern

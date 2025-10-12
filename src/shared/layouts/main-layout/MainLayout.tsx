@@ -3,8 +3,6 @@ import { Layout } from 'antd';
 import { Outlet } from 'react-router-dom';
 import { Navbar } from '@/shared/components/header';
 import { AppFooter } from '@/shared/components/footer';
-import { WhatsAppFloat } from '@/shared/components/whatsapp-float/WhatsAppFloat';
-import { ScrollToTop } from '@/shared/components/scroll-to-top/ScrollToTop';
 import styles from './MainLayout.module.scss';
 
 const { Content } = Layout;
@@ -42,10 +40,6 @@ export const MainLayout: React.FC = () => {
         <Outlet />
       </Content>
       <AppFooter />
-
-      {/* Floating widgets */}
-      <WhatsAppFloat />
-      <ScrollToTop />
     </Layout>
   );
 };
