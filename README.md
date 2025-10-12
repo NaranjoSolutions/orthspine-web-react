@@ -33,6 +33,28 @@ npm run localdev
 
 The app will be available at `http://localhost:5173` by default.
 
+### Authentication Feature Validation
+
+To validate the authentication implementation:
+
+```bash
+node scripts/validate-auth.cjs
+```
+
+This script checks that all authentication components are properly in place. For detailed documentation about the authentication system, see [AUTHENTICATION_CHECK.md](./AUTHENTICATION_CHECK.md).
+
+### Code Quality
+
+Run linter:
+```bash
+npm run lint
+```
+
+Run type checking:
+```bash
+npm run type-check
+```
+
 ## Deployment
 
 This project is set up for CI/CD. Built files are automatically deployed to AWS S3 and served via CloudFront.
