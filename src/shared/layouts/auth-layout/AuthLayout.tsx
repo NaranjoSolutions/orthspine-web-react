@@ -1,11 +1,21 @@
 import React from 'react';
-import { Layout } from 'antd';
-import { Outlet } from 'react-router-dom';
+import { Layout, Button } from 'antd';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import styles from './AuthLayout.module.scss';
+import { ROUTE_PATHS } from '@/routing/config/routePaths';
 
 const { Header, Content } = Layout;
 
 export const AuthLayout: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const isLoginPage = location.pathname === ROUTE_PATHS.AUTH.LOGIN;
+
+  const handleLoginClick = () => {
+    navigate(ROUTE_PATHS.AUTH.LOGIN);
+  };
+
   return (
     <Layout className={styles.authLayout}>
       <Header className={styles.header}>
@@ -15,6 +25,27 @@ export const AuthLayout: React.FC = () => {
           </svg>
           <span className={styles.logoText}>Orthopedic Spine</span>
         </div>
+
+        <nav className={styles.nav}>
+          <a href="#" className={styles.navLink}>
+            Home
+          </a>
+          <a href="#" className={styles.navLink}>
+            Services
+          </a>
+          <a href="#" className={styles.navLink}>
+            Contact
+          </a>
+          <a href="#" className={styles.navLink}>
+            About Us
+          </a>
+        </nav>
+
+        {!isLoginPage && (
+          <Button type="primary" className={styles.loginButton} onClick={handleLoginClick}>
+            Login
+          </Button>
+        )}
       </Header>
 
       <Content className={styles.content}>

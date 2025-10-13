@@ -9,6 +9,13 @@ export interface LoginCredentials {
   rememberMe?: boolean;
 }
 
+export interface RegisterCredentials {
+  fullName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
 export interface User {
   id: string;
   email: string;
@@ -43,6 +50,21 @@ export interface LoginFormData {
 export interface LoginFormErrors {
   email?: string;
   password?: string;
+  general?: string;
+}
+
+export interface RegisterFormData {
+  fullName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+export interface RegisterFormErrors {
+  fullName?: string;
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
   general?: string;
 }
 
