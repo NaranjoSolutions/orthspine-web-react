@@ -53,11 +53,11 @@ export const ServicesPage: React.FC = () => {
           <div className={styles.iconWrapper}>
             <MedicineBoxOutlined className={styles.heroIcon} />
           </div>
-          <h1 className={styles.heroTitle}>Nuestros Servicios</h1>
+          <h1 className={styles.heroTitle}>Our Services</h1>
           <p className={styles.heroSubtitle}>
-            En Orthopedic Spine ofrecemos atención médica especializada y rehabilitación integral para
-            ayudarte a recuperar tu movilidad y calidad de vida. Nuestro equipo de profesionales está
-            comprometido con tu bienestar.
+            At Orthopedic Spine, we offer specialized medical care and comprehensive rehabilitation to
+            help you regain your mobility and quality of life. Our team of professionals is committed
+            to your well-being.
           </p>
           <div className={styles.buttonGroup}>
             <Button
@@ -67,7 +67,7 @@ export const ServicesPage: React.FC = () => {
               className={styles.primaryButton}
               onClick={handleContactNow}
             >
-              Contactar Ahora
+              Contact Now
             </Button>
             <Button
               type="primary"
@@ -76,7 +76,7 @@ export const ServicesPage: React.FC = () => {
               className={styles.secondaryButton}
               onClick={handleScheduleAppointment}
             >
-              Agendar Cita
+              Schedule Appointment
             </Button>
           </div>
         </div>
@@ -86,9 +86,9 @@ export const ServicesPage: React.FC = () => {
       <section className={styles.servicesSection}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Especialidades Médicas</h2>
+            <h2 className={styles.sectionTitle}>Medical Specialties</h2>
             <p className={styles.sectionSubtitle}>
-              Descubre nuestras especialidades diseñadas para tratar una amplia gama de condiciones ortopédicas
+              Discover our specialties designed to treat a wide range of orthopedic conditions
             </p>
           </div>
           <div className={styles.servicesGrid}>
