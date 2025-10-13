@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'antd';
 import { TestimonialsCarousel } from '@/features/home/components/TestimonialsCarousel';
 import { ServicesCarousel } from '@/features/home/components/ServicesCarousel';
+import { ContactSection } from '@/features/home/components/ContactSection';
 import styles from './HomePage.module.scss';
 
 /**
@@ -12,8 +13,9 @@ import styles from './HomePage.module.scss';
  * - Hero section with background image
  * - Main heading and subtitle
  * - Call-to-action button
- * - Patient testimonials carousel section
  * - Services carousel section
+ * - Contact Us section with navigation buttons
+ * - Patient testimonials carousel section
  */
 export const HomePage: React.FC = () => {
   const handleBookAppointment = () => {
@@ -38,6 +40,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       <ServicesCarousel />
+      <ContactSection />
       <TestimonialsCarousel />
     </div>
   );
