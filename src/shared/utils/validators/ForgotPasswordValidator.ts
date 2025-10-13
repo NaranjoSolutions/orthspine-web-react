@@ -51,11 +51,7 @@ export class ForgotPasswordValidator {
   /**
    * Validates entire forgot password form
    */
-  static validateForgotPasswordForm(data: {
-    email: string;
-    captcha: string;
-    expectedCaptcha: string;
-  }): {
+  static validateForgotPasswordForm(data: { email: string; captcha: string; expectedCaptcha: string }): {
     isValid: boolean;
     errors: Record<string, string>;
   } {

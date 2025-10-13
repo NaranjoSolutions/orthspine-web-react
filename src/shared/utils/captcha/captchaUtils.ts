@@ -38,13 +38,16 @@ export const renderCaptchaToSVG = (captcha: string): string => {
   }).join('');
 
   // Generate letters with random positions and rotations
-  const letters = captcha.split('').map((char, index) => {
-    const x = letterSpacing * (index + 0.5);
-    const y = height / 2 + Math.random() * 10 - 5;
-    const rotation = Math.random() * 30 - 15;
-    const color = `rgb(${Math.floor(Math.random() * 100)}, ${Math.floor(Math.random() * 100)}, ${Math.floor(Math.random() * 100)})`;
-    return `<text x="${x}" y="${y}" font-size="${fontSize}" font-weight="bold" fill="${color}" text-anchor="middle" transform="rotate(${rotation} ${x} ${y})">${char}</text>`;
-  }).join('');
+  const letters = captcha
+    .split('')
+    .map((char, index) => {
+      const x = letterSpacing * (index + 0.5);
+      const y = height / 2 + Math.random() * 10 - 5;
+      const rotation = Math.random() * 30 - 15;
+      const color = `rgb(${Math.floor(Math.random() * 100)}, ${Math.floor(Math.random() * 100)}, ${Math.floor(Math.random() * 100)})`;
+      return `<text x="${x}" y="${y}" font-size="${fontSize}" font-weight="bold" fill="${color}" text-anchor="middle" transform="rotate(${rotation} ${x} ${y})">${char}</text>`;
+    })
+    .join('');
 
   return `
     <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">

@@ -10,16 +10,8 @@ import styles from './ForgotPasswordForm.module.scss';
  * Follows Single Responsibility Principle - only renders form UI
  */
 export const ForgotPasswordForm: React.FC = () => {
-  const {
-    formData,
-    errors,
-    isLoading,
-    captchaSvg,
-    handleChange,
-    handleSubmit,
-    handleBackToLogin,
-    refreshCaptcha,
-  } = useForgotPassword();
+  const { formData, errors, isLoading, captchaSvg, handleChange, handleSubmit, handleBackToLogin, refreshCaptcha } =
+    useForgotPassword();
 
   const [form] = Form.useForm();
 
@@ -65,10 +57,7 @@ export const ForgotPasswordForm: React.FC = () => {
         <Form.Item label="Please enter the numbers you see below">
           <Space direction="vertical" style={{ width: '100%' }} size="middle">
             <div className={styles.captchaContainer}>
-              <div
-                className={styles.captchaImage}
-                dangerouslySetInnerHTML={{ __html: captchaSvg }}
-              />
+              <div className={styles.captchaImage} dangerouslySetInnerHTML={{ __html: captchaSvg }} />
               <Button
                 icon={<ReloadOutlined />}
                 onClick={refreshCaptcha}
