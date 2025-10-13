@@ -64,6 +64,17 @@ export const authApi = createApi({
         body,
       }),
     }),
+
+    /**
+     * Forgot password endpoint
+     */
+    forgotPassword: builder.mutation<{ message: string }, { email: string }>({
+      query: (body) => ({
+        url: '/auth/forgot-password',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
@@ -73,4 +84,5 @@ export const {
   useLogoutMutation,
   useGetCurrentUserQuery,
   useRefreshTokenMutation,
+  useForgotPasswordMutation,
 } = authApi;

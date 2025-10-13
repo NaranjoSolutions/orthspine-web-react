@@ -93,12 +93,7 @@ export class RegisterValidator {
   /**
    * Validates entire registration form
    */
-  static validateRegisterForm(data: {
-    fullName: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-  }): {
+  static validateRegisterForm(data: { fullName: string; email: string; password: string; confirmPassword: string }): {
     isValid: boolean;
     errors: Record<string, string>;
   } {
