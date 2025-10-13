@@ -80,7 +80,7 @@ export const ContactSection: React.FC = () => {
               title={
                 <Space>
                   <EnvironmentOutlined />
-                  <span>Nuestra Ubicación</span>
+                  <span>Location</span>
                 </Space>
               }
               bordered={false}

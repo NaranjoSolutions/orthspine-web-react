@@ -30,7 +30,7 @@ export const HomePage: React.FC = () => {
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>Your Path to Pain-Free Living</h1>
           <p className={styles.heroSubtitle}>
-            At Spine & Joint Clinic, we specialize in comprehensive orthopedic care. Our expert team is dedicated to
+            At Orthopedic Spine, we specialize in comprehensive orthopedic care. Our expert team is dedicated to
             providing personalized treatment plans to help you regain mobility and live a healthier life.
           </p>
           <Button type="primary" size="large" className={styles.heroButton} onClick={handleBookAppointment}>
