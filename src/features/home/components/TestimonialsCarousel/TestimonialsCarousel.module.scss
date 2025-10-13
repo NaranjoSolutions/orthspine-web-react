@@ -1,0 +1,103 @@
+@use '@/styles/abstracts' as *;
+
+.testimonialsSection {
+  width: 100%;
+  padding: 80px 0;
+  background: $color-white;
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 60px 0;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 40px 0;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+
+  @media (max-width: $breakpoint-md) {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  font-size: 48px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin-bottom: $spacing-md;
+  line-height: 1.2;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 36px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 28px;
+  }
+}
+
+.carouselWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  cursor: grab;
+  margin-bottom: $spacing-xl;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    // Width of card (420px) + gap (24px) = 444px, times 3 testimonials
+    transform: translateX(calc(-444px * 3));
+  }
+}
+
+.carouselTrack {
+  display: flex;
+  gap: $spacing-lg;
+  animation: scroll 30s linear infinite;
+  will-change: transform;
+
+  &.paused {
+    animation-play-state: paused;
+  }
+}
+
+.cardWrapper {
+  flex-shrink: 0;
+}
+
+.footer {
+  text-align: center;
+  margin-top: $spacing-xl;
+}
+
+.viewMoreLink {
+  font-size: $font-size-lg;
+  color: #0ea5e9;
+  font-weight: $font-weight-semibold;
+  text-decoration: none;
+  transition: all $transition-base;
+  display: inline-block;
+
+  &:hover {
+    color: #0284c7;
+    text-decoration: underline;
+  }
+}

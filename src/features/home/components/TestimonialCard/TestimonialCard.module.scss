@@ -1,0 +1,66 @@
+@use '@/styles/abstracts' as *;
+
+.testimonialCard {
+  width: 420px;
+  min-height: 280px;
+  border-radius: $border-radius-lg;
+  background: $color-gray-50;
+  border: 1px solid $color-gray-200;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+
+  :global(.ant-card-body) {
+    padding: $spacing-xl;
+    height: 100%;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    width: 360px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    width: 320px;
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: $spacing-lg;
+  font-size: 20px;
+}
+
+.starFilled {
+  color: #fadb14;
+}
+
+.starOutlined {
+  color: $color-gray-300;
+}
+
+.testimonial {
+  font-size: $font-size-base;
+  color: $color-gray-700;
+  line-height: 1.8;
+  margin-bottom: $spacing-lg;
+  flex: 1;
+  font-style: italic;
+}
+
+.patientName {
+  font-size: $font-size-base;
+  color: $color-gray-900;
+  font-weight: $font-weight-bold;
+  margin: 0;
+  align-self: flex-start;
+}
