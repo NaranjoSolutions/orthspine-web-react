@@ -48,9 +48,9 @@ export const TeamSection: React.FC = () => {
         </div>
         <div className={styles.teamGrid}>
           <TeamMember
-            name="Ana Torres"
+            name="Aaron Fallas"
             title="Principal Physiotherapist"
-            description="Ana is a certified physiotherapist specializing in spinal rehabilitation. Her approach focuses on manual therapies and personalized exercise plans to promote lasting recovery."
+            description="Aaron is a certified physiotherapist specializing in spinal rehabilitation. His approach focuses on manual therapies and personalized exercise plans to promote lasting recovery."
             certifications={['Certified in Manual Orthopedic Therapy', 'Sports Rehabilitation Specialist']}
             image={aaron}
           />

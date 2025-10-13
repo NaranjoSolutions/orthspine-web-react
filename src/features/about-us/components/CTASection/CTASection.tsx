@@ -22,7 +22,7 @@ export const CTASection: React.FC = () => {
           consultation.
         </p>
         <Button type="primary" size="large" className={styles.ctaButton} onClick={handleBookAppointment}>
-          Schedule a Consultation
+          Book an Appointment
         </Button>
       </div>
     </section>
