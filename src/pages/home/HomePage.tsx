@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
+import { ServicesCarousel } from '@/features/home/components/ServicesCarousel';
 import styles from './HomePage.module.scss';
 
 /**
@@ -10,6 +11,7 @@ import styles from './HomePage.module.scss';
  * - Hero section with background image
  * - Main heading and subtitle
  * - Call-to-action button
+ * - Services carousel section
  */
 export const HomePage: React.FC = () => {
   const handleBookAppointment = () => {
@@ -32,6 +34,8 @@ export const HomePage: React.FC = () => {
           </Button>
         </div>
       </section>
+
+      <ServicesCarousel />
     </div>
   );
 };
