@@ -1,0 +1,80 @@
+@use '@/styles/abstracts' as *;
+
+.locationMap {
+  width: 100%;
+  margin-top: $spacing-2xl;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin-bottom: $spacing-xl;
+  text-align: center;
+}
+
+.mapWrapper {
+  width: 100%;
+  height: 500px;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+  margin-bottom: $spacing-xl;
+
+  @media (max-width: $breakpoint-md) {
+    height: 400px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    height: 350px;
+  }
+}
+
+.mapContainer {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+  :global {
+    .leaflet-container {
+      width: 100%;
+      height: 100%;
+      border-radius: $border-radius-lg;
+    }
+
+    .leaflet-popup-content-wrapper {
+      border-radius: $border-radius-sm;
+    }
+
+    .leaflet-popup-content {
+      margin: $spacing-md;
+    }
+  }
+}
+
+.popupContent {
+  min-width: 200px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+  }
+}
+
+.navButton {
+  min-width: 180px;
+  height: 48px;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  border-radius: $border-radius-md;
+
+  @media (max-width: $breakpoint-sm) {
+    width: 100%;
+  }
+}

@@ -16,7 +16,7 @@ import { ROUTE_PATHS } from './config/routePaths';
 const HomePage = lazy(() => import('@/pages/home'));
 const AboutPage = lazy(() => import('@/pages/about'));
 const ServicesPage = lazy(() => import('@/pages/services'));
-// const ContactPage = lazy(() => import('@/pages/ContactPage'));
+const ContactPage = lazy(() => import('@/pages/contact'));
 const TestimonialsPage = lazy(() => import('@/pages/testimonials'));
 
 // Auth pages
@@ -71,10 +71,10 @@ export const routes: RouteObject[] = [
         path: ROUTE_PATHS.SERVICES,
         element: <ServicesPage />,
       },
-      // {
-      //   path: ROUTE_PATHS.CONTACT,
-      //   element: <ContactPage />,
-      // },
+      {
+        path: ROUTE_PATHS.CONTACT,
+        element: <ContactPage />,
+      },
       {
         path: ROUTE_PATHS.TESTIMONIALS,
         element: <TestimonialsPage />,
