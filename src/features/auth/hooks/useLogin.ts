@@ -136,6 +136,13 @@ export const useLogin = () => {
     navigate(ROUTE_PATHS.AUTH.FORGOT_PASSWORD);
   };
 
+  /**
+   * Handle register navigation
+   */
+  const handleRegisterRedirect = () => {
+    navigate(ROUTE_PATHS.AUTH.REGISTER);
+  };
+
   return {
     formData,
     errors,
@@ -143,5 +150,6 @@ export const useLogin = () => {
     handleChange,
     handleLogin,
     handleForgotPassword,
+    handleRegisterRedirect,
   };
 };

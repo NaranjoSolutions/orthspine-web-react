@@ -10,7 +10,7 @@ import styles from './LoginForm.module.scss';
  * Follows Single Responsibility Principle - only renders form UI
  */
 export const LoginForm: React.FC = () => {
-  const { formData, errors, isLoading, handleChange, handleLogin, handleForgotPassword } = useLogin();
+  const { formData, errors, isLoading, handleChange, handleLogin, handleForgotPassword, handleRegisterRedirect } = useLogin();
 
   const [form] = Form.useForm();
 
@@ -24,6 +24,12 @@ export const LoginForm: React.FC = () => {
   return (
     <div className={styles.loginFormWrapper}>
       <h1 className={styles.title}>Sign in to your account</h1>
+      <p className={styles.subtitle}>
+        Don't have an account?{' '}
+        <Button type="link" onClick={handleRegisterRedirect} disabled={isLoading} className={styles.registerLink}>
+          Sign up
+        </Button>
+      </p>
 
       {errors.general && (
         <Alert message={errors.general} type="error" showIcon closable className={styles.errorAlert} />
