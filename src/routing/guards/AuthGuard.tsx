@@ -10,7 +10,9 @@ export const AuthGuard: React.FC = () => {
   if (isLoading) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-        <Spin size="large" tip="Checking authentication..." />
+        <Spin size="large" tip="Checking authentication...">
+          <div style={{ minHeight: '200px' }} />
+        </Spin>{' '}
       </div>
     );
   }
