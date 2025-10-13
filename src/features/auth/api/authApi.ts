@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from '@/infrastructure/api/client/baseQuery';
-import { AuthResponse, LoginCredentials } from '../types';
+import { AuthResponse, LoginCredentials, RegisterCredentials } from '../types';
 
 /**
  * Authentication API - RTK Query
@@ -17,6 +17,18 @@ export const authApi = createApi({
     login: builder.mutation<AuthResponse, LoginCredentials>({
       query: (credentials: LoginCredentials) => ({
         url: '/auth/login',
+        method: 'POST',
+        body: credentials,
+      }),
+      invalidatesTags: ['Auth'],
+    }),
+
+    /**
+     * Register endpoint
+     */
+    register: builder.mutation<AuthResponse, RegisterCredentials>({
+      query: (credentials: RegisterCredentials) => ({
+        url: '/auth/register',
         method: 'POST',
         body: credentials,
       }),
@@ -55,4 +67,10 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginMutation, useLogoutMutation, useGetCurrentUserQuery, useRefreshTokenMutation } = authApi;
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useLogoutMutation,
+  useGetCurrentUserQuery,
+  useRefreshTokenMutation,
+} = authApi;

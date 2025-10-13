@@ -1,0 +1,26 @@
+@use '@/styles/abstracts' as *;
+
+.registerCard {
+  box-shadow: $shadow-lg;
+  border-radius: $border-radius-lg;
+  padding: $spacing-md;
+  max-width: 480px;
+  width: 100%;
+
+  :global(.ant-card-body) {
+    padding: $spacing-xl;
+  }
+}
+
+// Responsive design
+@media (max-width: $breakpoint-md) {
+  .registerCard {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+
+    :global(.ant-card-body) {
+      padding: $spacing-lg $spacing-md;
+    }
+  }
+}
