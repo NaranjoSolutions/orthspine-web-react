@@ -1,8 +1,26 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Card, Space, Typography } from 'antd';
 import { EnvironmentOutlined } from '@ant-design/icons';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 import { clinicInformation } from '@/shared/resources/clinic-information';
 import styles from './ContactSection.module.scss';
+
+// Fix for default marker icon in react-leaflet
+import L from 'leaflet';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+
+const DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
+
+const { Text, Title } = Typography;
 
 /**
  * ContactSection Component
@@ -10,11 +28,13 @@ import styles from './ContactSection.module.scss';
  *
  * Features:
  * - Contact information (phone, email, address)
+ * - Interactive map using react-leaflet
  * - Google Maps and Waze navigation buttons
  * - Responsive design
  */
 export const ContactSection: React.FC = () => {
-  const { location, contact } = clinicInformation;
+  const { location, contact, name } = clinicInformation;
+  const position: [number, number] = [location.latitude, location.longitude];
 
   const handleOpenGoogleMaps = () => {
     const url = `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
@@ -55,11 +75,47 @@ export const ContactSection: React.FC = () => {
             </div>
           </div>
 
-          <div className={styles.mapPlaceholder}>
-            <div className={styles.mapIcon}>
-              <EnvironmentOutlined />
-            </div>
-            <p className={styles.mapText}>Location Map</p>
+          <div className={styles.mapCard}>
+            <Card
+              title={
+                <Space>
+                  <EnvironmentOutlined />
+                  <span>Nuestra Ubicación</span>
+                </Space>
+              }
+              bordered={false}
+            >
+              <div style={{ marginBottom: 16 }}>
+                <Text strong>{name}</Text>
+                <br />
+                <Text type="secondary">{location.address}</Text>
+              </div>
+              <div className={styles.mapWrapper}>
+                <MapContainer
+                  className={styles.mapContainer}
+                  center={position}
+                  zoom={16}
+                  scrollWheelZoom={true}
+                  zoomControl={true}
+                  attributionControl={true}
+                >
+                  <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  />
+                  <Marker position={position}>
+                    <Popup closeButton={true}>
+                      <div className={styles.popupContent}>
+                        <Title level={5} style={{ margin: 0, marginBottom: 8 }}>
+                          {name}
+                        </Title>
+                        <Text>{location.address}</Text>
+                      </div>
+                    </Popup>
+                  </Marker>
+                </MapContainer>
+              </div>
+            </Card>
           </div>
 
           <div className={styles.buttonGroup}>

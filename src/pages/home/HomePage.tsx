@@ -14,8 +14,8 @@ import styles from './HomePage.module.scss';
  * - Main heading and subtitle
  * - Call-to-action button
  * - Services carousel section
- * - Contact Us section with navigation buttons
  * - Patient testimonials carousel section
+ * - Contact Us section with map and navigation buttons
  */
 export const HomePage: React.FC = () => {
   const handleBookAppointment = () => {
@@ -40,8 +40,8 @@ export const HomePage: React.FC = () => {
       </section>
 
       <ServicesCarousel />
-      <ContactSection />
       <TestimonialsCarousel />
+      <ContactSection />
     </div>
   );
 };
