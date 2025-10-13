@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { ROUTE_PATHS } from '@/routing/config/routePaths';
 import { TestimonialsCarousel } from '@/features/home/components/TestimonialsCarousel';
 import { ServicesCarousel } from '@/features/home/components/ServicesCarousel';
 import { ContactSection } from '@/features/home/components/ContactSection';
@@ -18,9 +20,10 @@ import styles from './HomePage.module.scss';
  * - Contact Us section with map and navigation buttons
  */
 export const HomePage: React.FC = () => {
+  const navigate = useNavigate();
+
   const handleBookAppointment = () => {
-    // TODO: Navigate to appointment booking page
-    console.log('Book Appointment clicked');
+    navigate(ROUTE_PATHS.BOOK_APPOINTMENT);
   };
 
   return (

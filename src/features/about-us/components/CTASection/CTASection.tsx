@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'antd';
 import styles from './CTASection.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { ROUTE_PATHS } from '@/routing/config/routePaths';
 
 /**
  * CTASection Component
@@ -10,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 export const CTASection: React.FC = () => {
   const navigate = useNavigate();
   const handleBookAppointment = () => {
-    navigate('/book-appointment');
+    navigate(ROUTE_PATHS.BOOK_APPOINTMENT);
   };
 
   return (
