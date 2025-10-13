@@ -22,7 +22,7 @@ import { ROUTE_PATHS } from './config/routePaths';
 // Auth pages
 const LoginPage = lazy(() => import('@/pages/auth/login-page'));
 const RegisterPage = lazy(() => import('@/pages/auth/register-page'));
-// const ForgotPasswordPage = lazy(() => import('@/pages/auth/ForgotPasswordPage'));
+const ForgotPasswordPage = lazy(() => import('@/pages/auth/forgot-password-page'));
 
 // Admin pages
 // const AdminDashboardPage = lazy(() => import('@/pages/admin/AdminDashboardPage'));
@@ -101,10 +101,10 @@ export const routes: RouteObject[] = [
             path: ROUTE_PATHS.AUTH.REGISTER,
             element: <RegisterPage />,
           },
-          // {
-          //   path: ROUTE_PATHS.AUTH.FORGOT_PASSWORD,
-          //   element: <ForgotPasswordPage />,
-          // },
+          {
+            path: ROUTE_PATHS.AUTH.FORGOT_PASSWORD,
+            element: <ForgotPasswordPage />,
+          },
         ],
       },
     ],

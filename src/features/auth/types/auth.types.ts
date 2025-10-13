@@ -68,6 +68,17 @@ export interface RegisterFormErrors {
   general?: string;
 }
 
+export interface ForgotPasswordFormData {
+  email: string;
+  captcha: string;
+}
+
+export interface ForgotPasswordFormErrors {
+  email?: string;
+  captcha?: string;
+  general?: string;
+}
+
 export interface AuthState {
   user: User | null;
   tokens: AuthTokens | null;
