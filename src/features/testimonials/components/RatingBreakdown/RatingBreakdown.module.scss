@@ -1,0 +1,44 @@
+@use '@/styles/abstracts' as *;
+
+.ratingBreakdown {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  width: 100%;
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.starLabel {
+  font-size: $font-size-base;
+  color: $color-gray-700;
+  min-width: 12px;
+  text-align: right;
+}
+
+.progressBar {
+  flex: 1;
+  margin: 0;
+
+  :global(.ant-progress-bg) {
+    height: 12px !important;
+    border-radius: $border-radius-sm;
+  }
+
+  :global(.ant-progress-inner) {
+    height: 12px;
+    border-radius: $border-radius-sm;
+    background-color: #e8e8e8;
+  }
+}
+
+.percentage {
+  font-size: $font-size-sm;
+  color: $color-gray-600;
+  min-width: 40px;
+  text-align: right;
+}

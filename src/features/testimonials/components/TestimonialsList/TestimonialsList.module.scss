@@ -1,0 +1,107 @@
+@use '@/styles/abstracts' as *;
+
+.testimonialsListContainer {
+  background: $color-white;
+  padding: $spacing-2xl;
+  border-radius: $border-radius-lg;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-xl;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-lg;
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-2xl;
+  gap: $spacing-lg;
+  flex-wrap: wrap;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.filterButtons {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+
+  button {
+    border-radius: $border-radius-md;
+    height: 36px;
+    padding: 0 $spacing-md;
+  }
+}
+
+.sortControl {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.sortLabel {
+  font-size: $font-size-base;
+  color: $color-gray-700;
+  white-space: nowrap;
+}
+
+.sortSelect {
+  min-width: 180px;
+
+  :global(.ant-select-selector) {
+    border-radius: $border-radius-md;
+    height: 36px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  }
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: $spacing-2xl;
+  color: $color-gray-500;
+  font-size: $font-size-lg;
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: $spacing-2xl;
+
+  .pagination {
+    :global(.ant-pagination-item) {
+      border-radius: $border-radius-sm;
+    }
+
+    :global(.ant-pagination-item-active) {
+      border-color: $color-primary;
+      background-color: $color-primary;
+
+      a {
+        color: $color-white;
+      }
+    }
+  }
+}
