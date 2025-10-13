@@ -19,8 +19,7 @@ export const Navbar: React.FC = () => {
   const navigate = useNavigate();
 
   const handleBookAppointment = () => {
-    // TODO: Navigate to appointment booking page
-    console.log('Book Appointment clicked');
+    navigate(ROUTE_PATHS.BOOK_APPOINTMENT);
   };
 
   return (

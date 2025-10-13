@@ -15,6 +15,7 @@ export const ROUTE_PATHS = {
   SERVICES: '/services',
   CONTACT: '/contact',
   TESTIMONIALS: '/testimonials',
+  BOOK_APPOINTMENT: '/book-appointment',
 
   AUTH: {
     LOGIN: '/login',
