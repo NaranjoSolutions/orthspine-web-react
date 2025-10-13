@@ -1,0 +1,97 @@
+@use '@/styles/abstracts' as *;
+
+.navbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0;
+  height: 64px;
+  line-height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.navLink {
+  color: #4b5563;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+
+  &:hover {
+    color: #007bb9;
+  }
+
+  &:active,
+  &.active {
+    color: #007bb9;
+  }
+}
+
+.bookButton {
+  height: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0 24px;
+  background: #0ea5e9;
+  border-color: #0ea5e9;
+  white-space: nowrap;
+
+  &:hover {
+    background: #0284c7;
+    border-color: #0284c7;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+    font-size: 14px;
+  }
+}

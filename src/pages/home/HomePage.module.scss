@@ -1,0 +1,96 @@
+@use '@/styles/abstracts' as *;
+
+.homePage {
+  width: 100%;
+}
+
+.hero {
+  position: relative;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('@/assets/images/building.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @media (max-width: 768px) {
+    height: 500px;
+  }
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: 56px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 24px;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 28px;
+  }
+}
+
+.heroSubtitle {
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 32px;
+  line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+.heroButton {
+  height: 56px;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0 48px;
+  border-radius: 12px;
+  background: #0ea5e9;
+  border-color: #0ea5e9;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #0284c7;
+    border-color: #0284c7;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(14, 165, 233, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    height: 48px;
+    font-size: 16px;
+    padding: 0 32px;
+  }
+}

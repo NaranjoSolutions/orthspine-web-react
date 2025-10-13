@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { DashboardOutlined, CommentOutlined, UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
-import { useAppDispatch } from '@/store/hooks';
+import { useAppDispatch } from '@/store';
 import { clearAuth } from '@/features/auth/store/authSlice';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
 import styles from './AdminLayout.module.scss';
@@ -56,7 +56,7 @@ export const AdminLayout: React.FC = () => {
     },
     {
       key: 'divider-1',
-      type: 'divider',
+      type: 'divider' as const,
     },
     {
       key: 'settings',
