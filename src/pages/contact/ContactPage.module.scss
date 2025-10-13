@@ -1,0 +1,85 @@
+@use '@/styles/abstracts' as *;
+
+.contactPage {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-gray-50;
+  padding: 80px 0;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 60px 0;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 40px 0;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+
+  @media (max-width: $breakpoint-md) {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  font-size: 48px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin-bottom: $spacing-md;
+  line-height: 1.2;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 36px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 28px;
+  }
+}
+
+.subtitle {
+  font-size: $font-size-lg;
+  color: $color-gray-600;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-base;
+  }
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+}
