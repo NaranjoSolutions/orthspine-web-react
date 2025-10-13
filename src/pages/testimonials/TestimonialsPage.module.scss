@@ -1,0 +1,25 @@
+@use '@/styles/abstracts' as *;
+
+.testimonialsPage {
+  min-height: calc(100vh - 200px);
+  background: linear-gradient(180deg, $color-gray-50 0%, $color-white 100%);
+  padding: $spacing-2xl 0;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-xl 0;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 0 $spacing-lg;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 0 $spacing-md;
+  }
+}
