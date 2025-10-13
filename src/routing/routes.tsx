@@ -14,7 +14,7 @@ import { ROUTE_PATHS } from './config/routePaths';
  * Code splitting for optimal performance
  */
 const HomePage = lazy(() => import('@/pages/home'));
-// const AboutPage = lazy(() => import('@/pages/AboutPage'));
+const AboutPage = lazy(() => import('@/pages/about'));
 const ServicesPage = lazy(() => import('@/pages/services'));
 // const ContactPage = lazy(() => import('@/pages/ContactPage'));
 const TestimonialsPage = lazy(() => import('@/pages/testimonials'));
@@ -63,10 +63,10 @@ export const routes: RouteObject[] = [
         path: ROUTE_PATHS.HOME,
         element: <HomePage />,
       },
-      // {
-      //   path: ROUTE_PATHS.ABOUT,
-      //   element: <AboutPage />,
-      // },
+      {
+        path: ROUTE_PATHS.ABOUT,
+        element: <AboutPage />,
+      },
       {
         path: ROUTE_PATHS.SERVICES,
         element: <ServicesPage />,
