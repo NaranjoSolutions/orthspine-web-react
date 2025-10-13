@@ -10,4 +10,9 @@ export const clinicInformation = {
     phones: ['+506 8910-3115'],
     email: 'orthopedicspineinfo@gmail.com',
   },
+  socialMedia: {
+    facebook: 'https://www.facebook.com/orthopedicspine',
+    instagram: 'https://www.instagram.com/orthopedicspine',
+    youtube: 'https://www.youtube.com/@orthopedicspine',
+  },
 };
