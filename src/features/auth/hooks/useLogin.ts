@@ -7,7 +7,8 @@ import { AuthService } from '../services/AuthService';
 import { LoginValidator } from '@/shared/utils/validators/LoginValidator';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
 import { logger } from '@/infrastructure/logger/Logger';
-import { useAppDispatch } from '@/store/redux/hooks';
+import { useAppDispatch } from '@/store';
+import { setUser, setTokens } from '../store/authSlice';
 
 /**
  * useLogin Hook - Facade Pattern

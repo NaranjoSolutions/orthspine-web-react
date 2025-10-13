@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import { RouteObject } from 'react-router-dom';
-// import { MainLayout } from '@/shared/layouts/MainLayout';
+import { MainLayout } from '@/shared/layouts/main-layout';
 import { AuthLayout } from '@/shared/layouts/auth-layout';
 // import { AdminLayout } from '@/shared/layouts/AdminLayout';
 // import { AuthGuard } from './guards/AuthGuard';
@@ -13,7 +13,7 @@ import { ROUTE_PATHS } from './config/routePaths';
  * Lazy-loaded page components
  * Code splitting for optimal performance
  */
-// const HomePage = lazy(() => import('@/pages/HomePage'));
+const HomePage = lazy(() => import('@/pages/home'));
 // const AboutPage = lazy(() => import('@/pages/AboutPage'));
 // const ServicesPage = lazy(() => import('@/pages/ServicesPage'));
 // const ContactPage = lazy(() => import('@/pages/ContactPage'));
@@ -56,31 +56,31 @@ export const routes: RouteObject[] = [
    * Public Routes - MainLayout
    * Accessible to all users
    */
-  // {
-  //   element: <MainLayout />,
-  //   children: [
-  //     {
-  //       path: ROUTE_PATHS.HOME,
-  //       element: <HomePage />,
-  //     },
-  //     {
-  //       path: ROUTE_PATHS.ABOUT,
-  //       element: <AboutPage />,
-  //     },
-  //     {
-  //       path: ROUTE_PATHS.SERVICES,
-  //       element: <ServicesPage />,
-  //     },
-  //     {
-  //       path: ROUTE_PATHS.CONTACT,
-  //       element: <ContactPage />,
-  //     },
-  //     {
-  //       path: ROUTE_PATHS.TESTIMONIALS,
-  //       element: <TestimonialsPage />,
-  //     },
-  //   ],
-  // },
+  {
+    element: <MainLayout />,
+    children: [
+      {
+        path: ROUTE_PATHS.HOME,
+        element: <HomePage />,
+      },
+      // {
+      //   path: ROUTE_PATHS.ABOUT,
+      //   element: <AboutPage />,
+      // },
+      // {
+      //   path: ROUTE_PATHS.SERVICES,
+      //   element: <ServicesPage />,
+      // },
+      // {
+      //   path: ROUTE_PATHS.CONTACT,
+      //   element: <ContactPage />,
+      // },
+      // {
+      //   path: ROUTE_PATHS.TESTIMONIALS,
+      //   element: <TestimonialsPage />,
+      // },
+    ],
+  },
 
   /**
    * Guest-Only Routes - AuthLayout

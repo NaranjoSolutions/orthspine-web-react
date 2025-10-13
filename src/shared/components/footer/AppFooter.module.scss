@@ -1,0 +1,19 @@
+@use '@/styles/abstracts' as *;
+
+.footer {
+  background: #1f2937;
+  color: #9ca3af;
+  padding: 24px 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.copyright {
+  margin: 0;
+  font-size: 14px;
+}
