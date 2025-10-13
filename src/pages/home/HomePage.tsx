@@ -37,8 +37,8 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      <TestimonialsCarousel />
       <ServicesCarousel />
+      <TestimonialsCarousel />
     </div>
   );
 };
