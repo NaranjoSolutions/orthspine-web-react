@@ -1,15 +1,16 @@
 import React from 'react';
 import { Button } from 'antd';
 import styles from './CTASection.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * CTASection Component
  * Call-to-action section to book an appointment
  */
 export const CTASection: React.FC = () => {
+  const navigate = useNavigate();
   const handleBookAppointment = () => {
-    // TODO: Navigate to appointment booking page or contact
-    console.log('Book Appointment clicked');
+    navigate('/book-appointment');
   };
 
   return (
