@@ -51,6 +51,10 @@ export const SelectDateTime: React.FC<SelectDateTimeProps> = ({ onNext }) => {
     borderRadius: token.borderRadiusLG,
   };
 
+  // Get current and next month for dual calendar display
+  const currentMonth = dayjs();
+  const nextMonth = dayjs().add(1, 'month');
+
   return (
     <div className={styles.selectDateTime}>
       <div className={styles.breadcrumb}>
@@ -62,12 +66,22 @@ export const SelectDateTime: React.FC<SelectDateTimeProps> = ({ onNext }) => {
       <h1 className={styles.title}>Select Date & Time</h1>
 
       <div className={styles.calendarContainer}>
-        <div style={wrapperStyle}>
+        <div className={styles.calendarWrapper} style={wrapperStyle}>
           <Calendar
             fullscreen={false}
             value={selectedDate}
             onSelect={handleDateSelect}
             disabledDate={disabledDate}
+            defaultValue={currentMonth}
+          />
+        </div>
+        <div className={styles.calendarWrapper} style={wrapperStyle}>
+          <Calendar
+            fullscreen={false}
+            value={selectedDate}
+            onSelect={handleDateSelect}
+            disabledDate={disabledDate}
+            defaultValue={nextMonth}
           />
         </div>
       </div>

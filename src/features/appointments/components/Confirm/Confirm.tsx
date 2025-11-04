@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
+import { ArrowRightOutlined } from '@ant-design/icons';
 import { AppointmentDetails } from '@/features/appointments/types/appointment.types';
 import dayjs from 'dayjs';
 import styles from './Confirm.module.scss';
@@ -60,7 +61,7 @@ export const Confirm: React.FC<ConfirmProps> = ({ appointmentDetails, onBack, on
           <Button size="large" onClick={onBack}>
             Back
           </Button>
-          <Button type="primary" size="large" onClick={onConfirm}>
+          <Button type="primary" size="large" onClick={onConfirm} icon={<ArrowRightOutlined />} iconPosition="end">
             Confirm Appointment
           </Button>
         </div>
