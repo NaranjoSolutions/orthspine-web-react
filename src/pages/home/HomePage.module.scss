@@ -10,11 +10,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('@/assets/images/building.png');
+  background-image: url('@/assets/images/home-hero.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
+  // background: #3287c4;
   @media (max-width: 768px) {
     height: 500px;
   }
