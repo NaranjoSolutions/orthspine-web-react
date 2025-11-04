@@ -27,16 +27,19 @@ export const AuthLayout: React.FC = () => {
         </div>
 
         <nav className={styles.nav}>
-          <a href="#" className={styles.navLink}>
+          <a href={ROUTE_PATHS.HOME} className={styles.navLink}>
             Home
           </a>
-          <a href="#" className={styles.navLink}>
+          <a href={ROUTE_PATHS.SERVICES} className={styles.navLink}>
             Services
           </a>
-          <a href="#" className={styles.navLink}>
+          <a href={ROUTE_PATHS.TESTIMONIALS} className={styles.navLink}>
+            Testimonials
+          </a>
+          <a href={ROUTE_PATHS.CONTACT} className={styles.navLink}>
             Contact
           </a>
-          <a href="#" className={styles.navLink}>
+          <a href={ROUTE_PATHS.ABOUT} className={styles.navLink}>
             About Us
           </a>
         </nav>
