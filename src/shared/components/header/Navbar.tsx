@@ -54,14 +54,14 @@ export const Navbar: React.FC = () => {
           <a href={ROUTE_PATHS.SERVICES} className={styles.navLink}>
             Services
           </a>
+          <a href={ROUTE_PATHS.TESTIMONIALS} className={styles.navLink}>
+            Testimonials
+          </a>
           <a href={ROUTE_PATHS.CONTACT} className={styles.navLink}>
             Contact
           </a>
           <a href={ROUTE_PATHS.ABOUT} className={styles.navLink}>
             About Us
-          </a>
-          <a href={ROUTE_PATHS.TESTIMONIALS} className={styles.navLink}>
-            Testimonials
           </a>
         </nav>
 
