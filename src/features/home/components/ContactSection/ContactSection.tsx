@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Typography } from 'antd';
-import { EnvironmentOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import { EnvironmentOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 import 'leaflet/dist/leaflet.css';
 import { clinicInformation } from '@/shared/resources/clinic-information';
 import styles from './ContactSection.module.scss';
@@ -58,17 +58,30 @@ export const ContactSection: React.FC = () => {
           <div className={styles.infoGrid}>
             <div className={styles.infoItem}>
               <h3 className={styles.infoLabel}>Phone</h3>
-              <p className={styles.infoValue}>{contact.phones[0]}</p>
+              <PhoneOutlined />
+              <div>
+                <a href={`tel:${contact.phones[0]}`} className={styles.infoValue}>
+                  {contact.phones[0]}
+                </a>
+              </div>
             </div>
 
             <div className={styles.infoItem}>
               <h3 className={styles.infoLabel}>Email</h3>
-              <p className={styles.infoValue}>{contact.email}</p>
+              <div>
+                <MailOutlined />
+                <a href={`mailto:${contact.email}`} className={styles.infoValue}>
+                  {contact.email}
+                </a>
+              </div>
             </div>
 
             <div className={styles.infoItem}>
               <h3 className={styles.infoLabel}>Address</h3>
-              <p className={styles.infoValue}>{location.address}</p>
+              <div>
+                <EnvironmentOutlined />
+                <p className={styles.infoValue}>{location.address}</p>
+              </div>
             </div>
           </div>
 
