@@ -30,8 +30,7 @@ L.Marker.prototype.options.icon = DefaultIcon;
  * - Responsive design
  */
 export const ContactSection: React.FC = () => {
-  const { location, contact, name } = clinicInformation;
-  const position: [number, number] = [location.latitude, location.longitude];
+  const { location, contact } = clinicInformation;
 
   const handleOpenGoogleMaps = () => {
     const url = `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;

@@ -42,20 +42,20 @@
 
     .details {
       margin-bottom: var(--spacing-xl);
+      padding: var(--spacing-lg) 0;
 
       .detailRow {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: var(--spacing-md) 0;
-        border-bottom: 1px solid var(--color-border);
+        padding: var(--spacing-lg) 0;
 
-        &:last-child {
-          border-bottom: none;
+        &:not(:last-child) {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
 
         .label {
-          font-size: 16px;
+          font-size: 15px;
           color: var(--color-text-secondary);
           font-weight: 500;
         }
