@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button, Card, Space, Typography } from 'antd';
+import { Button, Typography } from 'antd';
 import { EnvironmentOutlined } from '@ant-design/icons';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { clinicInformation } from '@/shared/resources/clinic-information';
 import styles from './ContactSection.module.scss';
@@ -19,8 +18,6 @@ const DefaultIcon = L.icon({
 });
 
 L.Marker.prototype.options.icon = DefaultIcon;
-
-const { Text, Title } = Typography;
 
 /**
  * ContactSection Component
@@ -73,49 +70,6 @@ export const ContactSection: React.FC = () => {
               <h3 className={styles.infoLabel}>Address</h3>
               <p className={styles.infoValue}>{location.address}</p>
             </div>
-          </div>
-
-          <div className={styles.mapCard}>
-            <Card
-              title={
-                <Space>
-                  <EnvironmentOutlined />
-                  <span>Location</span>
-                </Space>
-              }
-              bordered={false}
-            >
-              <div style={{ marginBottom: 16 }}>
-                <Text strong>{name}</Text>
-                <br />
-                <Text type="secondary">{location.address}</Text>
-              </div>
-              <div className={styles.mapWrapper}>
-                <MapContainer
-                  className={styles.mapContainer}
-                  center={position}
-                  zoom={16}
-                  scrollWheelZoom={true}
-                  zoomControl={true}
-                  attributionControl={true}
-                >
-                  <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  />
-                  <Marker position={position}>
-                    <Popup closeButton={true}>
-                      <div className={styles.popupContent}>
-                        <Title level={5} style={{ margin: 0, marginBottom: 8 }}>
-                          {name}
-                        </Title>
-                        <Text>{location.address}</Text>
-                      </div>
-                    </Popup>
-                  </Marker>
-                </MapContainer>
-              </div>
-            </Card>
           </div>
 
           <div className={styles.buttonGroup}>
