@@ -67,7 +67,7 @@ export const ForgotPasswordForm: React.FC = () => {
               />
             </div>
 
-            <Form.Item name="captcha" validateStatus={errors.captcha ? 'error' : ''} help={errors.captcha} noStyle>
+            <Form.Item name="captcha" validateStatus={errors.captcha ? 'error' : ''} help={errors.captcha}>
               <Input
                 placeholder="Enter captcha"
                 value={formData.captcha}
