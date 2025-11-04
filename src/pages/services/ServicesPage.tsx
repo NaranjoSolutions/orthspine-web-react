@@ -1,25 +1,29 @@
 import React from 'react';
 import { Button } from 'antd';
-import { PhoneOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import {
+  PhoneOutlined,
+  ClockCircleOutlined,
+  SafetyCertificateOutlined,
+  HddOutlined,
+  DeploymentUnitOutlined,
+  BranchesOutlined,
+  SyncOutlined,
+} from '@ant-design/icons';
 import { allClinicServices } from '@/shared/resources/services/services';
 import { ServiceCard } from '@/features/home/components/ServiceCard';
 import { ContactSection } from '@/features/home/components/ContactSection';
-import {
-  MedicineBoxOutlined,
-  HeartOutlined,
-  ThunderboltOutlined,
-} from '@ant-design/icons';
+import { MedicineBoxOutlined, HeartOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import styles from './ServicesPage.module.scss';
 
 const serviceIcons: Record<string, React.ReactNode> = {
-  spine: <MedicineBoxOutlined />,
-  knee: <MedicineBoxOutlined />,
-  hip: <MedicineBoxOutlined />,
-  shoulder: <MedicineBoxOutlined />,
-  'foot-and-hand': <MedicineBoxOutlined />,
-  rehabilitation: <HeartOutlined />,
-  circulation: <HeartOutlined />,
-  sports: <ThunderboltOutlined />,
+  spine: <MedicineBoxOutlined />, // Represents spine care
+  knee: <SafetyCertificateOutlined />, // Icon for knee treatments
+  hip: <HddOutlined />, // Icon representing hip care
+  shoulder: <DeploymentUnitOutlined />, // Icon for shoulder care
+  'foot-and-hand': <BranchesOutlined />, // Represents foot and hand medical services
+  rehabilitation: <HeartOutlined />, // Heart icon for rehabilitation services
+  circulation: <SyncOutlined />, // Icon for circulatory treatments
+  sports: <ThunderboltOutlined />, // Symbolizing sports recovery
 };
 
 /**
@@ -55,9 +59,8 @@ export const ServicesPage: React.FC = () => {
           </div>
           <h1 className={styles.heroTitle}>Our Services</h1>
           <p className={styles.heroSubtitle}>
-            At Orthopedic Spine, we offer specialized medical care and comprehensive rehabilitation to
-            help you regain your mobility and quality of life. Our team of professionals is committed
-            to your well-being.
+            At Orthopedic Spine, we offer specialized medical care and comprehensive rehabilitation to help you regain
+            your mobility and quality of life. Our team of professionals is committed to your well-being.
           </p>
           <div className={styles.buttonGroup}>
             <Button

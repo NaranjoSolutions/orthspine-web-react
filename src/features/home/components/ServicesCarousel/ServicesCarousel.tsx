@@ -1,21 +1,30 @@
 import React, { useState } from 'react';
 import { ServiceCard } from '../ServiceCard';
 import { allClinicServices } from '@/shared/resources/services/services';
-import { MedicineBoxOutlined, HeartOutlined, ThunderboltOutlined } from '@ant-design/icons';
+import {
+  MedicineBoxOutlined,
+  HeartOutlined,
+  ThunderboltOutlined,
+  SafetyCertificateOutlined,
+  HddOutlined,
+  DeploymentUnitOutlined,
+  BranchesOutlined,
+  SyncOutlined,
+} from '@ant-design/icons';
 import styles from './ServicesCarousel.module.scss';
 
 /**
  * Map service IDs to icons for visual representation
  */
 const serviceIcons: Record<string, React.ReactNode> = {
-  spine: <MedicineBoxOutlined />,
-  knee: <MedicineBoxOutlined />,
-  hip: <MedicineBoxOutlined />,
-  shoulder: <MedicineBoxOutlined />,
-  'foot-and-hand': <MedicineBoxOutlined />,
-  rehabilitation: <HeartOutlined />,
-  circulation: <HeartOutlined />,
-  sports: <ThunderboltOutlined />,
+  spine: <MedicineBoxOutlined />, // Represents spine care
+  knee: <SafetyCertificateOutlined />, // Icon for knee treatments
+  hip: <HddOutlined />, // Icon representing hip care
+  shoulder: <DeploymentUnitOutlined />, // Icon for shoulder care
+  'foot-and-hand': <BranchesOutlined />, // Represents foot and hand medical services
+  rehabilitation: <HeartOutlined />, // Heart icon for rehabilitation services
+  circulation: <SyncOutlined />, // Icon for circulatory treatments
+  sports: <ThunderboltOutlined />, // Symbolizing sports recovery
 };
 
 /**
