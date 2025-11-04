@@ -1,0 +1,61 @@
+@use '@/styles/abstracts' as *;
+
+.adminLayout {
+  min-height: 100vh;
+}
+
+.sider {
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  h2 {
+    color: white;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
+
+.header {
+  background-color: white;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.pageTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: $color-gray-800;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $color-gray-700;
+  font-size: 14px;
+}
+
+.content {
+  background-color: $color-gray-50;
+  padding: 24px;
+  min-height: calc(100vh - 64px);
+}
+
+.contentInner {
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,60 @@
+@use '@/styles/abstracts' as *;
+
+.ctaSection {
+  padding: $spacing-2xl * 2 0;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(14, 165, 233, 0.1) 100%);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+  text-align: center;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin-bottom: $spacing-lg;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 28px;
+  }
+}
+
+.description {
+  font-size: 18px;
+  color: $color-gray-600;
+  line-height: 1.6;
+  margin-bottom: $spacing-xl;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 16px;
+  }
+}
+
+.ctaButton {
+  height: 56px;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0 48px;
+  border-radius: $border-radius-lg;
+  background: #0ea5e9;
+  border-color: #0ea5e9;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+  transition: all $transition-base;
+
+  &:hover {
+    background: #0284c7;
+    border-color: #0284c7;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(14, 165, 233, 0.5);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    height: 48px;
+    font-size: 16px;
+    padding: 0 32px;
+  }
+}

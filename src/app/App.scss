@@ -1,0 +1,15 @@
+@use '@/styles/abstracts' as *;
+
+.app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: $color-gray-50;
+
+  :global(.ant-spin-text) {
+    margin-top: $spacing-md;
+    color: $color-gray-600;
+    font-size: $font-size-base;
+  }
+}

@@ -1,0 +1,67 @@
+@use '@/styles/abstracts' as *;
+
+.hero {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('@/assets/images/hero-blur.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @media (max-width: $breakpoint-md) {
+    height: 300px;
+  }
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 $spacing-lg;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: 56px;
+  font-weight: 800;
+  color: $color-white;
+  margin: 0;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 40px;
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    font-size: 32px;
+  }
+}
+
+.heroDescription {
+  font-size: 20px;
+  color: $color-white;
+  margin-top: $spacing-md;
+  line-height: 1.5;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 18px;
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,45 @@
+/**
+ * Main SCSS Entry Point
+ */
+
+// Import Ant Design reset (handled in main.tsx)
+// Import abstracts
+@use './abstracts' as *;
+
+// Global styles
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: $font-family-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-gray-400;
+  border-radius: $border-radius-sm;
+
+  &:hover {
+    background: $color-gray-500;
+  }
+}

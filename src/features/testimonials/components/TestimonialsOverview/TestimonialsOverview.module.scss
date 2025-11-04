@@ -1,0 +1,107 @@
+@use '@/styles/abstracts' as *;
+
+.overviewContainer {
+  background: $color-white;
+  padding: $spacing-2xl;
+  border-radius: $border-radius-lg;
+  margin-bottom: $spacing-2xl;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-xl;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-lg;
+  }
+}
+
+.header {
+  margin-bottom: $spacing-2xl;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin-bottom: $spacing-md;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 28px;
+  }
+}
+
+.subtitle {
+  font-size: $font-size-lg;
+  color: $color-gray-600;
+  margin: 0;
+}
+
+.ratingSection {
+  display: flex;
+  gap: $spacing-2xl;
+  margin-bottom: $spacing-2xl;
+  align-items: flex-start;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    gap: $spacing-xl;
+  }
+}
+
+.averageRating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+
+  @media (max-width: $breakpoint-md) {
+    min-width: unset;
+  }
+}
+
+.ratingNumber {
+  font-size: 72px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  line-height: 1;
+  margin-bottom: $spacing-sm;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 60px;
+  }
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: $spacing-sm;
+  font-size: 24px;
+}
+
+.star {
+  color: #fadb14;
+}
+
+.reviewCount {
+  font-size: $font-size-base;
+  color: $color-gray-600;
+  text-align: center;
+}
+
+.ratingBreakdownWrapper {
+  flex: 1;
+  max-width: 600px;
+}
+
+.actionSection {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.leaveReviewButton {
+  min-width: 160px;
+  height: 44px;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  border-radius: $border-radius-md;
+}

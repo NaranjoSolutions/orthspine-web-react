@@ -1,0 +1,71 @@
+@use '@/styles/abstracts' as *;
+
+.serviceCard {
+  width: 350px;
+  height: 100%;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  transition: all $transition-base;
+  box-shadow: $shadow-md;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-xl;
+  }
+
+  :global(.ant-card-cover) {
+    height: 200px;
+    overflow: hidden;
+  }
+
+  :global(.ant-card-body) {
+    padding: $spacing-lg;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    width: 300px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    width: 280px;
+  }
+}
+
+.cardImage {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  transition: transform $transition-slow;
+
+  .serviceCard:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.iconWrapper {
+  margin-bottom: $spacing-md;
+  font-size: 48px;
+  color: #0ea5e9;
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin-bottom: $spacing-sm;
+  line-height: 1.3;
+}
+
+.cardDescription {
+  font-size: $font-size-base;
+  color: $color-gray-600;
+  line-height: 1.6;
+  margin: 0;
+}

@@ -1,0 +1,67 @@
+@use '@/styles/abstracts' as *;
+
+.valuesSection {
+  padding: $spacing-2xl 0;
+  background-color: $color-gray-50;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-xl;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+}
+
+.valueCard {
+  text-align: center;
+  padding: $spacing-xl;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  transition: all $transition-base;
+  background: $color-white;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto $spacing-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(14, 165, 233, 0.05) 100%);
+}
+
+.icon {
+  font-size: 40px;
+  color: #0ea5e9;
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin-bottom: $spacing-md;
+}
+
+.cardDescription {
+  font-size: 16px;
+  color: $color-gray-600;
+  line-height: 1.6;
+  margin: 0;
+}

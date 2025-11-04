@@ -1,0 +1,60 @@
+@use '@/styles/abstracts' as *;
+
+.contactInformation {
+  background: $color-white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-xl;
+  box-shadow: $shadow-sm;
+}
+
+.title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin-bottom: $spacing-xl;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: $spacing-lg;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  background: $color-gray-100;
+  border-radius: $border-radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: $spacing-md;
+}
+
+.icon {
+  font-size: 20px;
+  color: $color-primary;
+}
+
+.infoContent {
+  flex: 1;
+  padding-top: 4px;
+}
+
+.infoValue {
+  font-size: $font-size-base;
+  color: $color-gray-900;
+  line-height: 1.6;
+  display: block;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

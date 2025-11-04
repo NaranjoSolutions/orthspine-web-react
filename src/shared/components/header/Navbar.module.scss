@@ -1,0 +1,240 @@
+@use '@/styles/abstracts' as *;
+
+.navbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0;
+  height: 64px;
+  line-height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.navLink {
+  color: #4b5563;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+
+  &:hover {
+    color: #007bb9;
+  }
+
+  &:active,
+  &.active {
+    color: #007bb9;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.loginButton {
+  height: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0 24px;
+  white-space: nowrap;
+  border: 1px solid #d1d5db;
+  color: #374151;
+
+  &:hover {
+    border-color: #007bb9;
+    color: #007bb9;
+  }
+}
+
+.bookButton {
+  height: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0 24px;
+  background: #0ea5e9;
+  border-color: #0ea5e9;
+  white-space: nowrap;
+
+  &:hover {
+    background: #0284c7;
+    border-color: #0284c7;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+    font-size: 14px;
+  }
+}
+
+.hamburgerButton {
+  display: none;
+  font-size: 24px;
+  color: #374151;
+  padding: 0;
+  height: 40px;
+  width: 40px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:hover {
+    color: #007bb9;
+  }
+}
+
+.mobileDrawer {
+  :global {
+    .ant-drawer-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .ant-drawer-body {
+      padding: 0;
+    }
+
+    .ant-drawer-close {
+      color: #374151;
+
+      &:hover {
+        color: #007bb9;
+      }
+    }
+  }
+}
+
+.drawerHeader {
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logoText {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+  }
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+.mobileNavLink {
+  padding: 16px 20px;
+  color: #374151;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f9fafb;
+    color: #007bb9;
+  }
+
+  &:active {
+    background-color: #f3f4f6;
+  }
+}
+
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  margin-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.mobileLoginButton {
+  height: 44px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  color: #374151;
+
+  &:hover {
+    border-color: #007bb9;
+    color: #007bb9;
+  }
+}
+
+.mobileBookButton {
+  height: 44px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  background: #0ea5e9;
+  border-color: #0ea5e9;
+
+  &:hover {
+    background: #0284c7;
+    border-color: #0284c7;
+  }
+}
