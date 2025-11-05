@@ -72,24 +72,13 @@ export const SelectDateTime: React.FC<SelectDateTimeProps> = ({ onNext }) => {
             value={selectedDate}
             onSelect={handleDateSelect}
             disabledDate={disabledDate}
-            defaultValue={currentMonth}
-          />
-        </div>
-        <div className={styles.calendarWrapper} style={wrapperStyle}>
-          <Calendar
-            fullscreen={false}
-            value={selectedDate}
-            onSelect={handleDateSelect}
-            disabledDate={disabledDate}
             defaultValue={nextMonth}
           />
         </div>
       </div>
 
       <div className={styles.timeSlotsSection}>
-        <h2 className={styles.timeSlotsTitle}>
-          Available Times on {selectedDate.format('MMMM D, YYYY')}
-        </h2>
+        <h2 className={styles.timeSlotsTitle}>Available Times on {selectedDate.format('MMMM D, YYYY')}</h2>
         <div className={styles.timeSlots}>
           {availableTimeSlots
             .filter((slot) => slot.available)
