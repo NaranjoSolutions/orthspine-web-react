@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { CheckCircleOutlined, CalendarOutlined, HomeOutlined } from '@ant-design/icons';
+import { CheckCircleOutlined, CalendarOutlined, AppstoreOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
 import { AppointmentDetails } from '@/features/appointments/types/appointment.types';
@@ -74,7 +74,7 @@ export const Success: React.FC<SuccessProps> = ({ appointmentDetails }) => {
         </div>
 
         <div className={styles.actions}>
-          <Button size="large" icon={<HomeOutlined />} onClick={handleReturnToDashboard}>
+          <Button size="large" icon={<AppstoreOutlined />} onClick={handleReturnToDashboard}>
             Return to Home
           </Button>
           <Button type="primary" size="large" icon={<CalendarOutlined />} onClick={handleAddToCalendar}>
