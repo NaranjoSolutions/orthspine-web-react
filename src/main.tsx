@@ -6,6 +6,9 @@ import { App } from './app/App';
 // Import Ant Design reset styles
 import 'antd/dist/reset.css';
 
+// Import CSS custom properties (must be before other styles)
+import './styles/variables.css';
+
 // Import global styles
 import './styles/main.scss';
 
