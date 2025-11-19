@@ -51,8 +51,7 @@ export const SelectDateTime: React.FC<SelectDateTimeProps> = ({ onNext }) => {
     borderRadius: token.borderRadiusLG,
   };
 
-  // Get current and next month for dual calendar display
-  const currentMonth = dayjs();
+  // Get next month for calendar display
   const nextMonth = dayjs().add(1, 'month');
 
   return (
