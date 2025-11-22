@@ -17,11 +17,11 @@ export interface RegisterCredentials {
 }
 
 export interface User {
-  id: string;
+  userId: string;
   email: string;
   firstName: string;
   lastName: string;
-  role: UserRole;
+  userRole: UserRole;
   avatar?: string;
 }
 
@@ -32,8 +32,9 @@ export enum UserRole {
 
 export interface AuthTokens {
   accessToken: string;
+  accessTokenExpiresIn: number;
   refreshToken: string;
-  expiresIn: number;
+  refreshTokenExpiresIn: number;
 }
 
 export interface AuthResponse {

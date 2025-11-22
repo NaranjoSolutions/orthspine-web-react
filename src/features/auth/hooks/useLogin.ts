@@ -102,10 +102,8 @@ export const useLogin = () => {
         // Show success message
         message.success(`Welcome back, ${user.firstName}!`);
 
-        logger.info('Login successful', { userId: user.id, email: user.email });
-
         // Navigate based on user role
-        if (user.role === 'admin') {
+        if (user.userRole.toLowerCase() === 'admin') {
           navigate(ROUTE_PATHS.ADMIN.DASHBOARD);
         } else {
           navigate(ROUTE_PATHS.HOME);

@@ -17,7 +17,7 @@ export class AuthService {
       tokenService.saveTokens(response.tokens, rememberMe);
 
       logger.info('User logged in successfully', {
-        userId: response.user.id,
+        userId: response.user.userId,
         email: response.user.email,
       });
 
