@@ -106,10 +106,10 @@ export const useRegister = () => {
         // Show success message
         message.success(`Welcome, ${user.firstName}! Your account has been created.`);
 
-        logger.info('Registration successful', { userId: user.id, email: user.email });
+        logger.info('Registration successful', { userId: user.userId, email: user.email });
 
         // Navigate based on user role
-        if (user.role === 'admin') {
+        if (user.userRole.toLowerCase() === 'admin') {
           navigate(ROUTE_PATHS.ADMIN.DASHBOARD);
         } else {
           navigate(ROUTE_PATHS.HOME);
