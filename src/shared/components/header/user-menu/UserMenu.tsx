@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
-import { UserOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
+import { UserOutlined, LogoutOutlined, DashboardOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { clearAuth } from '@/features/auth/store/authSlice';
@@ -22,16 +22,16 @@ export const UserMenu: React.FC = () => {
     navigate(ROUTE_PATHS.HOME);
   };
 
-  const handleSettings = () => {
+  const handleDashboard = () => {
     navigate(ROUTE_PATHS.ADMIN.DASHBOARD);
   };
 
   const menuItems: MenuProps['items'] = [
     {
-      key: 'settings',
-      icon: <SettingOutlined />,
-      label: 'Settings',
-      onClick: handleSettings,
+      key: 'dashboard',
+      icon: <DashboardOutlined />,
+      label: 'Dashboard',
+      onClick: handleDashboard,
     },
     {
       type: 'divider',
@@ -48,8 +48,10 @@ export const UserMenu: React.FC = () => {
     return null;
   }
 
-  const displayName = `${user.firstName} ${user.lastName}`;
-  const initials = `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`.toUpperCase();
+  const firstName = user.firstName || '';
+  const lastName = user.lastName || '';
+  const displayName = `${firstName} ${lastName}`.trim() || 'User';
+  const initials = `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase() || 'U';
 
   return (
     <Dropdown menu={{ items: menuItems }} trigger={['click']} placement="bottomRight">
