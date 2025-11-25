@@ -3,6 +3,8 @@ import { Layout, Button, Drawer } from 'antd';
 import { MenuOutlined, CloseOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
+import { useAppSelector } from '@/store';
+import { UserMenu } from './user-menu';
 import styles from './Navbar.module.scss';
 
 const { Header } = Layout;
@@ -21,6 +23,7 @@ const { Header } = Layout;
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
 
   const handleBookAppointment = () => {
     navigate(ROUTE_PATHS.BOOK_APPOINTMENT);
@@ -66,12 +69,18 @@ export const Navbar: React.FC = () => {
         </nav>
 
         <div className={styles.actions}>
-          <Button type="default" className={styles.loginButton} onClick={handleLoginClick}>
-            Login
-          </Button>
-          <Button type="primary" className={styles.bookButton} onClick={handleBookAppointment}>
-            Book Appointment
-          </Button>
+          {isAuthenticated ? (
+            <UserMenu />
+          ) : (
+            <>
+              <Button type="default" className={styles.loginButton} onClick={handleLoginClick}>
+                Login
+              </Button>
+              <Button type="primary" className={styles.bookButton} onClick={handleBookAppointment}>
+                Book Appointment
+              </Button>
+            </>
+          )}
         </div>
 
         <Button
@@ -117,12 +126,18 @@ export const Navbar: React.FC = () => {
             Testimonials
           </a>
           <div className={styles.mobileActions}>
-            <Button type="default" className={styles.mobileLoginButton} onClick={handleLoginClick} block>
-              Login
-            </Button>
-            <Button type="primary" className={styles.mobileBookButton} onClick={handleBookAppointment} block>
-              Book Appointment
-            </Button>
+            {isAuthenticated ? (
+              <UserMenu />
+            ) : (
+              <>
+                <Button type="default" className={styles.mobileLoginButton} onClick={handleLoginClick} block>
+                  Login
+                </Button>
+                <Button type="primary" className={styles.mobileBookButton} onClick={handleBookAppointment} block>
+                  Book Appointment
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </Drawer>
