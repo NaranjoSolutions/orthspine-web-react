@@ -29,6 +29,24 @@ export class AuthService {
   }
 
   /**
+   * Process registration response
+   * Returns user data and tokens
+   */
+  static processRegisterResponse(response: AuthResponse): User {
+    try {
+      logger.info('User registered successfully', {
+        userId: response.user.userId,
+        email: response.user.email,
+      });
+
+      return response.user;
+    } catch (error) {
+      logger.error('Failed to process registration response', error);
+      throw new Error('Failed to save authentication data');
+    }
+  }
+
+  /**
    * Process logout
    * Clears all authentication data
    */

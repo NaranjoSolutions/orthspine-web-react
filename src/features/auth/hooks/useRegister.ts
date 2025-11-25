@@ -22,7 +22,7 @@ export const useRegister = () => {
   const [register, { isLoading }] = useRegisterMutation();
 
   const [formData, setFormData] = useState<RegisterFormData>({
-    fullName: '',
+    fullname: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -53,7 +53,7 @@ export const useRegister = () => {
    */
   const validateForm = (): boolean => {
     const validation = RegisterValidator.validateRegisterForm({
-      fullName: formData.fullName,
+      fullname: formData.fullname,
       email: formData.email,
       password: formData.password,
       confirmPassword: formData.confirmPassword,
@@ -87,14 +87,14 @@ export const useRegister = () => {
       try {
         // Call register API
         const response = await register({
-          fullName: formData.fullName,
+          fullname: formData.fullName,
           email: formData.email,
           password: formData.password,
           confirmPassword: formData.confirmPassword,
         }).unwrap();
 
         // Process response using AuthService (Repository Pattern)
-        const user = AuthService.processLoginResponse(response, false);
+        const user = AuthService.processRegisterResponse(response);
 
         // Update Redux state
         dispatch(setUser(user));

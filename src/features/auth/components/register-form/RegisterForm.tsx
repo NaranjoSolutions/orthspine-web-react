@@ -45,12 +45,12 @@ export const RegisterForm: React.FC = () => {
         requiredMark={false}
       >
         {/* Full Name Field */}
-        <Form.Item name="fullName" validateStatus={errors.fullName ? 'error' : ''} help={errors.fullName}>
+        <Form.Item name="fullname" validateStatus={errors.fullname ? 'error' : ''} help={errors.fullname}>
           <Input
             prefix={<UserOutlined className={styles.inputIcon} />}
             placeholder="Full Name"
-            value={formData.fullName}
-            onChange={(e) => handleChange('fullName', e.target.value)}
+            value={formData.fullname}
+            onChange={(e) => handleChange('fullname', e.target.value)}
             disabled={isLoading}
             autoFocus
           />

@@ -8,7 +8,7 @@ export class RegisterValidator {
   /**
    * Validates full name input
    */
-  static validateFullName(value: string): ValidationResult {
+  static validateFullname(value: string): ValidationResult {
     if (!value || value.trim().length === 0) {
       return {
         isValid: false,
@@ -93,15 +93,15 @@ export class RegisterValidator {
   /**
    * Validates entire registration form
    */
-  static validateRegisterForm(data: { fullName: string; email: string; password: string; confirmPassword: string }): {
+  static validateRegisterForm(data: { fullname: string; email: string; password: string; confirmPassword: string }): {
     isValid: boolean;
     errors: Record<string, string>;
   } {
     const errors: Record<string, string> = {};
 
-    const fullNameResult = this.validateFullName(data.fullName);
-    if (!fullNameResult.isValid) {
-      errors.fullName = fullNameResult.error!;
+    const fullnameResult = this.validateFullname(data.fullname);
+    if (!fullnameResult.isValid) {
+      errors.fullname = fullnameResult.error!;
     }
 
     const emailResult = this.validateEmail(data.email);

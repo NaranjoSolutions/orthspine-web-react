@@ -10,7 +10,7 @@ export interface LoginCredentials {
 }
 
 export interface RegisterCredentials {
-  fullName: string;
+  fullname: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -55,14 +55,14 @@ export interface LoginFormErrors {
 }
 
 export interface RegisterFormData {
-  fullName: string;
+  fullname: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
 export interface RegisterFormErrors {
-  fullName?: string;
+  fullname?: string;
   email?: string;
   password?: string;
   confirmPassword?: string;
