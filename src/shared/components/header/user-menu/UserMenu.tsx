@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
-import { UserOutlined, LogoutOutlined, DashboardOutlined } from '@ant-design/icons';
+import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { clearAuth } from '@/features/auth/store/authSlice';
@@ -22,20 +22,7 @@ export const UserMenu: React.FC = () => {
     navigate(ROUTE_PATHS.HOME);
   };
 
-  const handleDashboard = () => {
-    navigate(ROUTE_PATHS.ADMIN.DASHBOARD);
-  };
-
   const menuItems: MenuProps['items'] = [
-    {
-      key: 'dashboard',
-      icon: <DashboardOutlined />,
-      label: 'Dashboard',
-      onClick: handleDashboard,
-    },
-    {
-      type: 'divider',
-    },
     {
       key: 'logout',
       icon: <LogoutOutlined />,
