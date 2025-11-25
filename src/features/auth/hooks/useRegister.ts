@@ -87,7 +87,7 @@ export const useRegister = () => {
       try {
         // Call register API
         const response = await register({
-          fullname: formData.fullName,
+          fullname: formData.fullname,
           email: formData.email,
           password: formData.password,
           confirmPassword: formData.confirmPassword,
