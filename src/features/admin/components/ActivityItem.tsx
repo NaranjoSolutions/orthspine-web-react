@@ -6,6 +6,7 @@ import {
   CommentOutlined,
 } from '@ant-design/icons';
 import { RecentActivity, ActivityType } from '../types';
+import { formatRelativeTime } from '@/shared/utils/dateUtils';
 import styles from './ActivityItem.module.scss';
 
 interface ActivityItemProps {
@@ -48,25 +49,6 @@ const getActivityIconAndColor = (type: ActivityType): { icon: React.ReactNode; c
         background: '#fafafa',
       };
   }
-};
-
-/**
- * Format timestamp to relative time
- */
-const formatRelativeTime = (timestamp: string): string => {
-  const now = new Date();
-  const activityTime = new Date(timestamp);
-  const diffInMs = now.getTime() - activityTime.getTime();
-  const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
-  const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
-  const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-
-  if (diffInMinutes < 1) return 'Just now';
-  if (diffInMinutes < 60) return `${diffInMinutes} min ago`;
-  if (diffInHours < 24) return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
-  if (diffInDays === 1) return 'Yesterday';
-  if (diffInDays < 7) return `${diffInDays} days ago`;
-  return activityTime.toLocaleDateString();
 };
 
 /**

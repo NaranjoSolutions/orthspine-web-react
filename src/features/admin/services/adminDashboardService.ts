@@ -1,4 +1,5 @@
 import { DashboardStats, RecentActivity, ActivityType } from '../types';
+import { getRelativeDate } from '@/shared/utils/dateUtils';
 
 /**
  * Admin Dashboard Service
@@ -29,45 +30,43 @@ class AdminDashboardService {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 500));
 
-    const now = new Date();
-
     return [
       {
         id: '1',
         type: ActivityType.PATIENT_REGISTERED,
         title: 'New Patient Registered: John Doe',
         description: 'by Dr. Smith',
-        timestamp: new Date(now.getTime() - 2 * 60 * 1000).toISOString(),
+        timestamp: getRelativeDate(-0.0014), // ~2 minutes ago
         actor: 'Dr. Smith',
       },
       {
         id: '2',
         type: ActivityType.APPOINTMENT_CONFIRMED,
         title: 'Appointment Confirmed: Jane Smith',
-        description: 'for Oct 26, 2023',
-        timestamp: new Date(now.getTime() - 15 * 60 * 1000).toISOString(),
+        description: `for ${new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString()}`,
+        timestamp: getRelativeDate(-0.01), // ~15 minutes ago
       },
       {
         id: '3',
         type: ActivityType.TESTIMONIAL_SUBMITTED,
         title: 'New Testimonial Submitted',
         description: 'by Michael Johnson',
-        timestamp: new Date(now.getTime() - 60 * 60 * 1000).toISOString(),
+        timestamp: getRelativeDate(-0.042), // ~1 hour ago
         actor: 'Michael Johnson',
       },
       {
         id: '4',
         type: ActivityType.APPOINTMENT_CANCELLED,
         title: 'Appointment Canceled: Emily White',
-        description: 'was for Oct 25, 2023',
-        timestamp: new Date(now.getTime() - 3 * 60 * 60 * 1000).toISOString(),
+        description: `was for ${new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toLocaleDateString()}`,
+        timestamp: getRelativeDate(-0.125), // ~3 hours ago
       },
       {
         id: '5',
         type: ActivityType.PATIENT_REGISTERED,
         title: 'New Patient Registered: Sarah Connor',
         description: 'by Dr. Adams',
-        timestamp: new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString(),
+        timestamp: getRelativeDate(-1), // Yesterday
         actor: 'Dr. Adams',
       },
     ];

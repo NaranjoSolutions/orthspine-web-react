@@ -94,6 +94,19 @@ export const AdminLayout: React.FC = () => {
     },
   ];
 
+  /**
+   * Get current page name from pathname
+   */
+  const getCurrentPageName = (): string => {
+    const path = location.pathname;
+    if (path === ROUTE_PATHS.ADMIN.DASHBOARD) return 'Dashboard';
+    if (path === ROUTE_PATHS.ADMIN.PATIENTS) return 'Patients';
+    if (path === ROUTE_PATHS.ADMIN.APPOINTMENTS) return 'Appointments';
+    if (path === ROUTE_PATHS.ADMIN.TESTIMONIALS) return 'Testimonials';
+    if (path === ROUTE_PATHS.ADMIN.SETTINGS) return 'Settings';
+    return 'Dashboard';
+  };
+
   return (
     <Layout className={styles.adminLayout}>
       <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed} className={styles.sider} width={250}>
@@ -110,7 +123,7 @@ export const AdminLayout: React.FC = () => {
           <div className={styles.breadcrumb}>
             <span className={styles.breadcrumbItem}>Home</span>
             <span className={styles.breadcrumbSeparator}>/</span>
-            <span className={styles.breadcrumbItem}>Dashboard</span>
+            <span className={styles.breadcrumbItem}>{getCurrentPageName()}</span>
           </div>
           <div className={styles.headerRight}>
             <div className={styles.userInfo}>
@@ -121,7 +134,7 @@ export const AdminLayout: React.FC = () => {
                 <span className={styles.userName}>
                   {user?.firstName} {user?.lastName}
                 </span>
-                <span className={styles.userRole}>Administrator</span>
+                <span className={styles.userRole}>{user?.userRole === 'admin' ? 'Administrator' : 'User'}</span>
               </div>
             </div>
           </div>
