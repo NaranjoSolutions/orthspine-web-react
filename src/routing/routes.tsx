@@ -2,12 +2,12 @@ import { lazy } from 'react';
 import { RouteObject } from 'react-router-dom';
 import { MainLayout } from '@/shared/layouts/main-layout';
 import { AuthLayout } from '@/shared/layouts/auth-layout';
-// import { AdminLayout } from '@/shared/layouts/AdminLayout';
-// import { AuthGuard } from './guards/AuthGuard';
+import { AdminLayout } from '@/shared/layouts/admin-layout';
+import { AuthGuard } from './guards/AuthGuard';
 import { GuestGuard } from './guards/GuestGuard';
-// import { RoleGuard } from './guards/RoleGuard';
+import { RoleGuard } from './guards/RoleGuard';
 import { ROUTE_PATHS } from './config/routePaths';
-// import { UserRole } from '@/features/auth/types';
+import { UserRole } from '@/features/auth/types';
 
 /**
  * Lazy-loaded page components
@@ -26,8 +26,11 @@ const RegisterPage = lazy(() => import('@/pages/auth/register-page'));
 const ForgotPasswordPage = lazy(() => import('@/pages/auth/forgot-password-page'));
 
 // Admin pages
-// const AdminDashboardPage = lazy(() => import('@/pages/admin/AdminDashboardPage'));
-// const TestimonialsAdminPage = lazy(() => import('@/pages/admin/TestimonialsAdminPage'));
+const AdminDashboardPage = lazy(() => import('@/pages/admin/DashboardPage'));
+const PatientsPage = lazy(() => import('@/pages/admin/PatientsPage'));
+const AppointmentsPage = lazy(() => import('@/pages/admin/AppointmentsPage'));
+const TestimonialsAdminPage = lazy(() => import('@/pages/admin/TestimonialsPage'));
+const SettingsPage = lazy(() => import('@/pages/admin/SettingsPage'));
 
 // Error pages
 // const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
@@ -120,29 +123,41 @@ export const routes: RouteObject[] = [
    * Requires authentication AND admin role
    * Protected by AuthGuard + RoleGuard chain
    */
-  // {
-  //   element: <AuthGuard />,
-  //   children: [
-  //     {
-  //       element: <RoleGuard allowedRoles={[UserRole.ADMIN]} />,
-  //       children: [
-  //         {
-  //           element: <AdminLayout />,
-  //           children: [
-  //             {
-  //               path: ROUTE_PATHS.ADMIN.DASHBOARD,
-  //               element: <AdminDashboardPage />,
-  //             },
-  //             {
-  //               path: ROUTE_PATHS.ADMIN.TESTIMONIALS,
-  //               element: <TestimonialsAdminPage />,
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
+  {
+    element: <AuthGuard />,
+    children: [
+      {
+        element: <RoleGuard allowedRoles={[UserRole.ADMIN]} />,
+        children: [
+          {
+            element: <AdminLayout />,
+            children: [
+              {
+                path: ROUTE_PATHS.ADMIN.DASHBOARD,
+                element: <AdminDashboardPage />,
+              },
+              {
+                path: ROUTE_PATHS.ADMIN.PATIENTS,
+                element: <PatientsPage />,
+              },
+              {
+                path: ROUTE_PATHS.ADMIN.APPOINTMENTS,
+                element: <AppointmentsPage />,
+              },
+              {
+                path: ROUTE_PATHS.ADMIN.TESTIMONIALS,
+                element: <TestimonialsAdminPage />,
+              },
+              {
+                path: ROUTE_PATHS.ADMIN.SETTINGS,
+                element: <SettingsPage />,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 
   /**
    * Error Routes

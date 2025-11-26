@@ -1,4 +1,3 @@
-import { logger } from '@/infrastructure/logger/Logger';
 import { AuthTokens } from '../types';
 
 /**

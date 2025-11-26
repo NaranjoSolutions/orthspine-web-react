@@ -11,7 +11,7 @@ interface RoleGuardProps {
 export const RoleGuard: React.FC<RoleGuardProps> = ({ allowedRoles }) => {
   const { user } = useAppSelector((state) => state.auth);
 
-  const hasPermission = user && allowedRoles.includes(user.role);
+  const hasPermission = user && allowedRoles.includes(user.userRole);
 
   if (!hasPermission) {
     return <Navigate to={ROUTE_PATHS.UNAUTHORIZED} replace />;
