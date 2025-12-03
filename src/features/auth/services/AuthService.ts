@@ -18,7 +18,7 @@ export class AuthService {
 
       // Normalize and validate user role to ensure consistency
       // API might return different casing (e.g., "Admin" vs "admin")
-      const normalizedRole = response.user.userRole.toLowerCase();
+      const normalizedRole = response.user.userRole.toUpperCase();
       const validRole = this.validateUserRole(normalizedRole);
 
       const normalizedUser: User = {
@@ -46,7 +46,7 @@ export class AuthService {
     try {
       // Normalize and validate user role to ensure consistency
       // API might return different casing (e.g., "Admin" vs "admin")
-      const normalizedRole = response.user.userRole.toLowerCase();
+      const normalizedRole = response.user.userRole.toUpperCase();
       const validRole = this.validateUserRole(normalizedRole);
 
       const normalizedUser: User = {
@@ -99,7 +99,7 @@ export class AuthService {
    * Returns a valid UserRole enum value, defaults to USER if invalid
    */
   private static validateUserRole(role: string): UserRole {
-    const normalizedRole = role.toLowerCase();
+    const normalizedRole = role.toUpperCase();
 
     // Check if the normalized role is a valid UserRole enum value
     const isValidRole = Object.values(UserRole).some((value) => value === normalizedRole);
