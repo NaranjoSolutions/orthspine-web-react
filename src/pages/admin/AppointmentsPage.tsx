@@ -479,6 +479,8 @@ const AppointmentsPage: React.FC = () => {
         appointment={selectedAppointment}
         visible={viewModalVisible}
         onClose={handleCloseViewModal}
+        onCancel={handleCancel}
+        onReschedule={handleReschedule}
       />
     </div>
   );

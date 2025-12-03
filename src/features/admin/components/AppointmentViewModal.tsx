@@ -1,5 +1,14 @@
 import React from 'react';
-import { Modal, Descriptions, Tag } from 'antd';
+import { Modal, Tag, Button, Avatar } from 'antd';
+import {
+  UserOutlined,
+  MedicineBoxOutlined,
+  CalendarOutlined,
+  ClockCircleOutlined,
+  PhoneOutlined,
+  MailOutlined,
+  CheckCircleOutlined,
+} from '@ant-design/icons';
 import type { AdminAppointment, AppointmentStatus } from '@/features/admin/types/appointment.types';
 import dayjs from 'dayjs';
 import styles from './AppointmentViewModal.module.scss';
@@ -11,6 +20,8 @@ interface AppointmentViewModalProps {
   appointment: AdminAppointment | null;
   visible: boolean;
   onClose: () => void;
+  onCancel?: (appointment: AdminAppointment) => void;
+  onReschedule?: (appointment: AdminAppointment) => void;
 }
 
 /**
@@ -42,6 +53,17 @@ const getStatusText = (status: AppointmentStatus): string => {
 };
 
 /**
+ * Get initials from full name
+ */
+const getInitials = (name: string): string => {
+  const parts = name.trim().split(' ');
+  if (parts.length === 1) {
+    return parts[0].substring(0, 2).toUpperCase();
+  }
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+};
+
+/**
  * AppointmentViewModal Component
  * Modal for viewing appointment details
  *
@@ -49,39 +71,139 @@ const getStatusText = (status: AppointmentStatus): string => {
  * - Display all appointment information
  * - Status badge
  * - Formatted dates
- * - Read-only view
+ * - Patient contact information
+ * - Action buttons (Cancel, Reschedule)
+ * - Modern card-based design
  */
-export const AppointmentViewModal: React.FC<AppointmentViewModalProps> = ({ appointment, visible, onClose }) => {
+export const AppointmentViewModal: React.FC<AppointmentViewModalProps> = ({
+  appointment,
+  visible,
+  onClose,
+  onCancel,
+  onReschedule,
+}) => {
   if (!appointment) return null;
+
+  const canCancel = appointment.status !== 'cancelled' && appointment.status !== 'completed';
+  const canReschedule = appointment.status !== 'cancelled' && appointment.status !== 'completed';
+
+  const handleCancel = () => {
+    if (onCancel) {
+      onCancel(appointment);
+      onClose();
+    }
+  };
+
+  const handleReschedule = () => {
+    if (onReschedule) {
+      onReschedule(appointment);
+      onClose();
+    }
+  };
 
   return (
     <Modal
-      title="Appointment Details"
+      title={<div className={styles.modalTitle}>Appointment Details</div>}
       open={visible}
       onCancel={onClose}
-      footer={null}
+      footer={
+        <div className={styles.footer}>
+          <Button size="large" onClick={onClose}>
+            Close
+          </Button>
+          {canCancel && (
+            <Button danger size="large" onClick={handleCancel}>
+              Cancel Appointment
+            </Button>
+          )}
+          {canReschedule && (
+            <Button type="primary" size="large" onClick={handleReschedule}>
+              Reschedule
+            </Button>
+          )}
+        </div>
+      }
       width={700}
       className={styles.appointmentViewModal}
+      centered
     >
-      <Descriptions column={1} bordered>
-        <Descriptions.Item label="Patient">{appointment.patientName}</Descriptions.Item>
-        <Descriptions.Item label="Doctor">{appointment.doctorName}</Descriptions.Item>
-        <Descriptions.Item label="Date">
-          {dayjs(appointment.dateTime).format('MMMM DD, YYYY')}
-        </Descriptions.Item>
-        <Descriptions.Item label="Time">{dayjs(appointment.dateTime).format('hh:mm A')}</Descriptions.Item>
-        <Descriptions.Item label="Reason for Visit">{appointment.reasonForVisit}</Descriptions.Item>
-        <Descriptions.Item label="Status">
-          <Tag color={getStatusColor(appointment.status)}>{getStatusText(appointment.status)}</Tag>
-        </Descriptions.Item>
-        {appointment.notes && <Descriptions.Item label="Notes">{appointment.notes}</Descriptions.Item>}
-        <Descriptions.Item label="Created At">
-          {dayjs(appointment.createdAt).format('MMMM DD, YYYY hh:mm A')}
-        </Descriptions.Item>
-        <Descriptions.Item label="Last Updated">
-          {dayjs(appointment.updatedAt).format('MMMM DD, YYYY hh:mm A')}
-        </Descriptions.Item>
-      </Descriptions>
+      {/* Patient Header */}
+      <div className={styles.patientHeader}>
+        <div className={styles.patientInfo}>
+          <Avatar size={64} className={styles.avatar}>
+            {getInitials(appointment.patientName)}
+          </Avatar>
+          <div className={styles.patientDetails}>
+            <h2 className={styles.patientName}>{appointment.patientName}</h2>
+            <p className={styles.patientId}>
+              Patient ID: {appointment.patientDisplayId || appointment.patientId}
+            </p>
+          </div>
+        </div>
+        <Tag color={getStatusColor(appointment.status)} className={styles.statusBadge} icon={<CheckCircleOutlined />}>
+          {getStatusText(appointment.status)}
+        </Tag>
+      </div>
+
+      {/* Appointment Details Grid */}
+      <div className={styles.detailsGrid}>
+        <div className={styles.detailRow}>
+          <div className={styles.detailItem}>
+            <div className={styles.detailLabel}>
+              <UserOutlined className={styles.icon} />
+              <span>Doctor</span>
+            </div>
+            <div className={styles.detailValue}>{appointment.doctorName}</div>
+          </div>
+          <div className={styles.detailItem}>
+            <div className={styles.detailLabel}>
+              <MedicineBoxOutlined className={styles.icon} />
+              <span>Service</span>
+            </div>
+            <div className={styles.detailValue}>{appointment.serviceType || 'Consultation'}</div>
+          </div>
+        </div>
+
+        <div className={styles.detailRow}>
+          <div className={styles.detailItem}>
+            <div className={styles.detailLabel}>
+              <CalendarOutlined className={styles.icon} />
+              <span>Date</span>
+            </div>
+            <div className={styles.detailValue}>{dayjs(appointment.dateTime).format('MMMM DD, YYYY')}</div>
+          </div>
+          <div className={styles.detailItem}>
+            <div className={styles.detailLabel}>
+              <ClockCircleOutlined className={styles.icon} />
+              <span>Time</span>
+            </div>
+            <div className={styles.detailValue}>{dayjs(appointment.dateTime).format('hh:mm A')}</div>
+          </div>
+        </div>
+
+        <div className={styles.detailRow}>
+          <div className={styles.detailItem}>
+            <div className={styles.detailLabel}>
+              <PhoneOutlined className={styles.icon} />
+              <span>Phone</span>
+            </div>
+            <div className={styles.detailValue}>{appointment.patientPhone || 'N/A'}</div>
+          </div>
+          <div className={styles.detailItem}>
+            <div className={styles.detailLabel}>
+              <MailOutlined className={styles.icon} />
+              <span>Email</span>
+            </div>
+            <div className={styles.detailValue}>{appointment.patientEmail || 'N/A'}</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Reason for Visit */}
+      <div className={styles.reasonSection}>
+        <h3 className={styles.reasonTitle}>Reason for Visit</h3>
+        <p className={styles.reasonText}>{appointment.reasonForVisit}</p>
+      </div>
     </Modal>
   );
 };
