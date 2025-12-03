@@ -1,0 +1,8 @@
+.notFoundPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--spacing-lg);
+  background: var(--color-bg-primary);
+}

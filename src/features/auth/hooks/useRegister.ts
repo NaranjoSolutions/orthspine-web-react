@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 import { useRegisterMutation } from '../api/authApi';
-import { RegisterFormData, RegisterFormErrors } from '../types';
+import { RegisterFormData, RegisterFormErrors, UserRole } from '../types';
 import { AuthService } from '../services/AuthService';
 import { RegisterValidator } from '@/shared/utils/validators/RegisterValidator';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
@@ -109,7 +109,7 @@ export const useRegister = () => {
         logger.info('Registration successful', { userId: user.userId, email: user.email });
 
         // Navigate based on user role
-        if (user.userRole.toLowerCase() === 'admin') {
+        if (user.userRole === UserRole.ADMIN) {
           navigate(ROUTE_PATHS.ADMIN.DASHBOARD);
         } else {
           navigate(ROUTE_PATHS.HOME);

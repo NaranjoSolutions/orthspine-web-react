@@ -1,4 +1,4 @@
-import { LoginCredentials, AuthResponse, User } from '../types';
+import { LoginCredentials, AuthResponse, User, UserRole } from '../types';
 import { tokenService } from './TokenService';
 import { logger } from '@/infrastructure/logger/Logger';
 
@@ -16,12 +16,22 @@ export class AuthService {
       // Save tokens using TokenService (Singleton)
       tokenService.saveTokens(response.tokens, rememberMe);
 
+      // Normalize and validate user role to ensure consistency
+      // API might return different casing (e.g., "Admin" vs "admin")
+      const normalizedRole = response.user.userRole.toLowerCase();
+      const validRole = this.validateUserRole(normalizedRole);
+
+      const normalizedUser: User = {
+        ...response.user,
+        userRole: validRole,
+      };
+
       logger.info('User logged in successfully', {
-        userId: response.user.userId,
-        email: response.user.email,
+        userId: normalizedUser.userId,
+        email: normalizedUser.email,
       });
 
-      return response.user;
+      return normalizedUser;
     } catch (error) {
       logger.error('Failed to process login response', error);
       throw new Error('Failed to save authentication data');
@@ -34,12 +44,22 @@ export class AuthService {
    */
   static processRegisterResponse(response: AuthResponse): User {
     try {
+      // Normalize and validate user role to ensure consistency
+      // API might return different casing (e.g., "Admin" vs "admin")
+      const normalizedRole = response.user.userRole.toLowerCase();
+      const validRole = this.validateUserRole(normalizedRole);
+
+      const normalizedUser: User = {
+        ...response.user,
+        userRole: validRole,
+      };
+
       logger.info('User registered successfully', {
-        userId: response.user.userId,
-        email: response.user.email,
+        userId: normalizedUser.userId,
+        email: normalizedUser.email,
       });
 
-      return response.user;
+      return normalizedUser;
     } catch (error) {
       logger.error('Failed to process registration response', error);
       throw new Error('Failed to save authentication data');
@@ -72,6 +92,25 @@ export class AuthService {
    */
   static getAccessToken(): string | null {
     return tokenService.getAccessToken();
+  }
+
+  /**
+   * Validate and normalize user role
+   * Returns a valid UserRole enum value, defaults to USER if invalid
+   */
+  private static validateUserRole(role: string): UserRole {
+    const normalizedRole = role.toLowerCase();
+
+    // Check if the normalized role is a valid UserRole enum value
+    const isValidRole = Object.values(UserRole).some((value) => value === normalizedRole);
+
+    if (isValidRole) {
+      return normalizedRole as UserRole;
+    }
+
+    // Log warning for invalid role and return default
+    logger.warn('Invalid user role received from API, defaulting to USER', { receivedRole: role });
+    return UserRole.USER;
   }
 
   /**

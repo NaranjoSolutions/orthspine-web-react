@@ -33,8 +33,8 @@ const TestimonialsAdminPage = lazy(() => import('@/pages/admin/TestimonialsPage'
 const SettingsPage = lazy(() => import('@/pages/admin/SettingsPage'));
 
 // Error pages
-// const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
-// const UnauthorizedPage = lazy(() => import('@/pages/UnauthorizedPage'));
+const NotFoundPage = lazy(() => import('@/pages/error/NotFoundPage'));
+const UnauthorizedPage = lazy(() => import('@/pages/error/UnauthorizedPage'));
 
 /**
  * Application Routes Configuration
@@ -162,12 +162,12 @@ export const routes: RouteObject[] = [
   /**
    * Error Routes
    */
-  // {
-  //   path: ROUTE_PATHS.UNAUTHORIZED,
-  //   element: <UnauthorizedPage />,
-  // },
-  // {
-  //   path: ROUTE_PATHS.NOT_FOUND,
-  //   element: <NotFoundPage />,
-  // },
+  {
+    path: ROUTE_PATHS.UNAUTHORIZED,
+    element: <UnauthorizedPage />,
+  },
+  {
+    path: ROUTE_PATHS.NOT_FOUND,
+    element: <NotFoundPage />,
+  },
 ];
