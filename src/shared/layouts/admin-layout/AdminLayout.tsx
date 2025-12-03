@@ -9,6 +9,7 @@ import {
   TeamOutlined,
   SettingOutlined,
   LogoutOutlined,
+  MedicineBoxOutlined,
 } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { clearAuth } from '@/features/auth/store/authSlice';
@@ -112,7 +113,7 @@ export const AdminLayout: React.FC = () => {
     <Layout className={styles.adminLayout}>
       <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed} className={styles.sider} width={250}>
         <div className={styles.logo}>
-          <UserOutlined className={styles.logoIcon} />
+          <MedicineBoxOutlined className={styles.logoIcon} />
           <h2>{collapsed ? 'OSC' : 'Ortho Spine Clinic'}</h2>
           {!collapsed && <p className={styles.logoSubtitle}>Admin Panel</p>}
         </div>
