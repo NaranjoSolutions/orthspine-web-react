@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useGetCurrentUserQuery } from '../../api/authApi';
 import { useAppDispatch } from '@/store';
 import { setUser, setTokens } from '../../store/authSlice';
@@ -6,6 +6,12 @@ import { tokenService } from '../../services/TokenService';
 import { AuthService } from '../../services/AuthService';
 import { logger } from '@/infrastructure/logger/Logger';
 import { AuthTokens, User } from '../../types';
+
+/**
+ * Token expiration sentinel value
+ * Used when actual expiration time is unknown but managed by TokenService
+ */
+const UNKNOWN_EXPIRATION = -1;
 
 interface AuthInitializerProps {
   children: React.ReactNode;
@@ -37,7 +43,8 @@ export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) =>
   const dispatch = useAppDispatch();
   
   // Check if we have valid tokens before making the API call
-  const hasValidTokens = tokenService.hasValidAuth();
+  // Memoized to avoid redundant localStorage/sessionStorage access on every render
+  const hasValidTokens = useMemo(() => tokenService.hasValidAuth(), []);
   
   // Only fetch current user if we have valid tokens
   // skip: true will prevent the query from running if we don't have tokens
@@ -63,13 +70,12 @@ export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) =>
       const refreshToken = tokenService.getRefreshToken();
       
       if (accessToken && refreshToken) {
-        // Note: We use -1 for expiration times to indicate they're unknown
-        // The actual expiration is managed by TokenService in storage
+        // Use UNKNOWN_EXPIRATION sentinel value to indicate expiration is managed by TokenService
         const tokens: AuthTokens = {
           accessToken,
           refreshToken,
-          accessTokenExpiresIn: -1, // Unknown - managed by TokenService
-          refreshTokenExpiresIn: -1, // Unknown - managed by TokenService
+          accessTokenExpiresIn: UNKNOWN_EXPIRATION,
+          refreshTokenExpiresIn: UNKNOWN_EXPIRATION,
         };
         dispatch(setTokens(tokens));
       }
