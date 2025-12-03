@@ -136,9 +136,11 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
           placeholder="Select patient"
           showSearch
           loading={loadingData}
-          filterOption={(input, option) =>
-            (option?.children as string)?.toLowerCase().includes(input.toLowerCase())
-          }
+          filterOption={(input, option) => {
+            const label = option?.label || option?.children;
+            const labelStr = typeof label === 'string' ? label : String(label);
+            return labelStr.toLowerCase().includes(input.toLowerCase());
+          }}
           onChange={handlePatientChange}
         >
           {patients.map((patient) => (
@@ -164,9 +166,11 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
           placeholder="Select doctor"
           showSearch
           loading={loadingData}
-          filterOption={(input, option) =>
-            (option?.children as string)?.toLowerCase().includes(input.toLowerCase())
-          }
+          filterOption={(input, option) => {
+            const label = option?.label || option?.children;
+            const labelStr = typeof label === 'string' ? label : String(label);
+            return labelStr.toLowerCase().includes(input.toLowerCase());
+          }}
           onChange={handleDoctorChange}
         >
           {doctors.map((doctor) => (

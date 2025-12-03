@@ -2,7 +2,6 @@ import type {
   AdminAppointment,
   AppointmentFormData,
   AppointmentFilters,
-  AppointmentPagination,
   DoctorOption,
   PatientOption,
 } from '../types/appointment.types';

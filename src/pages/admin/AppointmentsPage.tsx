@@ -7,17 +7,16 @@ import {
   setSelectedAppointment,
   addAppointment,
   updateAppointment,
-  deleteAppointment,
-  setFilters,
-  clearFilters,
-  setPagination,
+  setAppointmentFilters,
+  clearAppointmentFilters,
+  setAppointmentPagination,
   setLoadingAppointments,
   setErrorAppointments,
   selectAppointments,
   selectSelectedAppointment,
-  selectFilters,
-  selectPagination,
-  selectIsLoading,
+  selectAppointmentFilters,
+  selectAppointmentPagination,
+  selectAppointmentIsLoading,
 } from '@/features/admin/store/appointmentsSlice';
 import { appointmentService } from '@/features/admin/services/appointmentService';
 import { AppointmentTable, AppointmentForm, AppointmentViewModal } from '@/features/admin/components';
@@ -45,9 +44,9 @@ const AppointmentsPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const appointments = useAppSelector(selectAppointments);
   const selectedAppointment = useAppSelector(selectSelectedAppointment);
-  const filters = useAppSelector(selectFilters);
-  const pagination = useAppSelector(selectPagination);
-  const isLoading = useAppSelector(selectIsLoading);
+  const filters = useAppSelector(selectAppointmentFilters);
+  const pagination = useAppSelector(selectAppointmentPagination);
+  const isLoading = useAppSelector(selectAppointmentIsLoading);
 
   const [formModalVisible, setFormModalVisible] = useState(false);
   const [viewModalVisible, setViewModalVisible] = useState(false);
@@ -80,7 +79,7 @@ const AppointmentsPage: React.FC = () => {
       dispatch(setLoadingAppointments(true));
       const result = await appointmentService.getAppointments(filters, pagination.page, pagination.pageSize);
       dispatch(setAppointments(result.appointments));
-      dispatch(setPagination({ total: result.total }));
+      dispatch(setAppointmentPagination({ total: result.total }));
     } catch {
       dispatch(setErrorAppointments('Failed to load appointments'));
       notification.error({
@@ -108,8 +107,8 @@ const AppointmentsPage: React.FC = () => {
    * Handle search
    */
   const handleSearch = () => {
-    dispatch(setFilters({ search: searchValue }));
-    dispatch(setPagination({ page: 1 }));
+    dispatch(setAppointmentFilters({ search: searchValue }));
+    dispatch(setAppointmentPagination({ page: 1 }));
   };
 
   /**
@@ -118,8 +117,8 @@ const AppointmentsPage: React.FC = () => {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
     if (e.target.value === '') {
-      dispatch(setFilters({ search: '' }));
-      dispatch(setPagination({ page: 1 }));
+      dispatch(setAppointmentFilters({ search: '' }));
+      dispatch(setAppointmentPagination({ page: 1 }));
     }
   };
 
@@ -127,16 +126,16 @@ const AppointmentsPage: React.FC = () => {
    * Handle doctor filter change
    */
   const handleDoctorFilterChange = (doctorId: string) => {
-    dispatch(setFilters({ doctorId: doctorId === 'all' ? undefined : doctorId }));
-    dispatch(setPagination({ page: 1 }));
+    dispatch(setAppointmentFilters({ doctorId: doctorId === 'all' ? undefined : doctorId }));
+    dispatch(setAppointmentPagination({ page: 1 }));
   };
 
   /**
    * Handle status filter change
    */
   const handleStatusFilterChange = (status: string) => {
-    dispatch(setFilters({ status: status as AppointmentStatus | 'all' }));
-    dispatch(setPagination({ page: 1 }));
+    dispatch(setAppointmentFilters({ status: status as AppointmentStatus | 'all' }));
+    dispatch(setAppointmentPagination({ page: 1 }));
   };
 
   /**
@@ -145,7 +144,7 @@ const AppointmentsPage: React.FC = () => {
   const handleDateRangeChange = (dates: [dayjs.Dayjs | null, dayjs.Dayjs | null] | null) => {
     if (dates && dates[0] && dates[1]) {
       dispatch(
-        setFilters({
+        setAppointmentFilters({
           dateRange: {
             start: dates[0].toISOString(),
             end: dates[1].toISOString(),
@@ -153,18 +152,18 @@ const AppointmentsPage: React.FC = () => {
         })
       );
     } else {
-      dispatch(setFilters({ dateRange: undefined }));
+      dispatch(setAppointmentFilters({ dateRange: undefined }));
     }
-    dispatch(setPagination({ page: 1 }));
+    dispatch(setAppointmentPagination({ page: 1 }));
   };
 
   /**
    * Handle clear filters
    */
   const handleClearFilters = () => {
-    dispatch(clearFilters());
+    dispatch(clearAppointmentFilters());
     setSearchValue('');
-    dispatch(setPagination({ page: 1 }));
+    dispatch(setAppointmentPagination({ page: 1 }));
   };
 
   /**
@@ -285,7 +284,7 @@ const AppointmentsPage: React.FC = () => {
    * Handle page change
    */
   const handlePageChange = (page: number, pageSize: number) => {
-    dispatch(setPagination({ page, pageSize }));
+    dispatch(setAppointmentPagination({ page, pageSize }));
   };
 
   /**

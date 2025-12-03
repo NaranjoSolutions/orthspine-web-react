@@ -134,29 +134,29 @@ const appointmentsSlice = createSlice({
   },
 });
 
-// Export actions
+// Export actions with specific names to avoid conflicts
 export const {
   setAppointments,
   setSelectedAppointment,
   addAppointment,
   updateAppointment,
   deleteAppointment,
-  setFilters,
-  clearFilters,
-  setPagination,
+  setFilters: setAppointmentFilters,
+  clearFilters: clearAppointmentFilters,
+  setPagination: setAppointmentPagination,
   setLoadingAppointments,
   setErrorAppointments,
   resetAppointmentsState,
 } = appointmentsSlice.actions;
 
-// Export selectors
+// Export selectors with specific names to avoid conflicts
 export const selectAppointments = (state: { appointments: AppointmentState }) => state.appointments.appointments;
 export const selectSelectedAppointment = (state: { appointments: AppointmentState }) =>
   state.appointments.selectedAppointment;
-export const selectFilters = (state: { appointments: AppointmentState }) => state.appointments.filters;
-export const selectPagination = (state: { appointments: AppointmentState }) => state.appointments.pagination;
-export const selectIsLoading = (state: { appointments: AppointmentState }) => state.appointments.isLoading;
-export const selectError = (state: { appointments: AppointmentState }) => state.appointments.error;
+export const selectAppointmentFilters = (state: { appointments: AppointmentState }) => state.appointments.filters;
+export const selectAppointmentPagination = (state: { appointments: AppointmentState }) => state.appointments.pagination;
+export const selectAppointmentIsLoading = (state: { appointments: AppointmentState }) => state.appointments.isLoading;
+export const selectAppointmentError = (state: { appointments: AppointmentState }) => state.appointments.error;
 
 // Export reducer
 export default appointmentsSlice.reducer;
