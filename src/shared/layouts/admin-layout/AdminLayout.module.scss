@@ -101,7 +101,7 @@
   .userDetails {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 0;
     min-width: 0;
   }
 
@@ -112,12 +112,14 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1.2;
   }
 
   .userRole {
     color: $color-gray-500;
-    font-size: 12px;
+    font-size: 13px;
     white-space: nowrap;
+    line-height: 1.2;
   }
 }
 
