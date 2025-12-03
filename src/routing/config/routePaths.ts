@@ -26,6 +26,7 @@ export const ROUTE_PATHS = {
   ADMIN: {
     DASHBOARD: '/admin',
     PATIENTS: '/admin/patients',
+    PATIENT_DETAILS: '/admin/patients/:id',
     APPOINTMENTS: '/admin/appointments',
     TESTIMONIALS: '/admin/testimonials',
     SETTINGS: '/admin/settings',

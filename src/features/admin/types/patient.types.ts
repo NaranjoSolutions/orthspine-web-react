@@ -4,6 +4,60 @@
  */
 
 /**
+ * Patient Status
+ */
+export enum PatientStatus {
+  ACTIVE = 'active',
+  INACTIVE = 'inactive',
+  DISCHARGED = 'discharged',
+}
+
+/**
+ * Medical Note Category
+ */
+export enum MedicalNoteCategory {
+  INTAKE = 'Intake',
+  CONSULTATION = 'Consultation',
+  POST_OP = 'Post-Op',
+  FOLLOW_UP = 'Follow-Up',
+  GENERAL = 'General',
+}
+
+/**
+ * Physician entity
+ */
+export interface Physician {
+  id: string;
+  name: string;
+  specialty: string;
+}
+
+/**
+ * Appointment entity
+ */
+export interface Appointment {
+  id: string;
+  patientId: string;
+  physicianId: string;
+  date: string; // ISO 8601 format
+  type: string;
+  status: 'scheduled' | 'completed' | 'cancelled';
+}
+
+/**
+ * Medical Note entity
+ */
+export interface MedicalNote {
+  id: string;
+  patientId: string;
+  date: string; // ISO 8601 format
+  author: string;
+  category: MedicalNoteCategory;
+  content: string;
+  createdAt: string;
+}
+
+/**
  * Patient entity
  */
 export interface Patient {
@@ -16,6 +70,12 @@ export interface Patient {
   medicalHistory?: string;
   createdAt: string;
   updatedAt: string;
+  // Extended fields for details view
+  patientId?: string; // Display ID like "789-123-456"
+  status?: PatientStatus;
+  primaryPhysicianId?: string;
+  nextAppointmentDate?: string;
+  avatarUrl?: string;
 }
 
 /**
@@ -28,6 +88,14 @@ export interface PatientFormData {
   dateOfBirth: string;
   address?: string;
   medicalHistory?: string;
+}
+
+/**
+ * Medical Note form data
+ */
+export interface MedicalNoteFormData {
+  category: MedicalNoteCategory;
+  content: string;
 }
 
 /**
