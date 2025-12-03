@@ -3,8 +3,9 @@ import { useGetCurrentUserQuery } from '../../api/authApi';
 import { useAppDispatch } from '@/store';
 import { setUser, setTokens } from '../../store/authSlice';
 import { tokenService } from '../../services/TokenService';
+import { AuthService } from '../../services/AuthService';
 import { logger } from '@/infrastructure/logger/Logger';
-import { AuthTokens, User, UserRole } from '../../types';
+import { AuthTokens, User } from '../../types';
 
 interface AuthInitializerProps {
   children: React.ReactNode;
@@ -46,11 +47,8 @@ export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) =>
 
   useEffect(() => {
     if (isSuccess && user) {
-      // Normalize user role to ensure consistency (API might return different casing)
-      const normalizedRole = user.userRole.toUpperCase();
-      const validRole = Object.values(UserRole).includes(normalizedRole as UserRole)
-        ? (normalizedRole as UserRole)
-        : UserRole.USER;
+      // Normalize user role using AuthService (centralized validation logic)
+      const validRole = AuthService.validateUserRole(user.userRole);
 
       const normalizedUser: User = {
         ...user,
@@ -65,13 +63,13 @@ export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) =>
       const refreshToken = tokenService.getRefreshToken();
       
       if (accessToken && refreshToken) {
-        // Note: We don't have the exact expiration times from storage,
-        // but they're already validated by hasValidAuth()
+        // Note: We use -1 for expiration times to indicate they're unknown
+        // The actual expiration is managed by TokenService in storage
         const tokens: AuthTokens = {
           accessToken,
           refreshToken,
-          accessTokenExpiresIn: 0, // Not critical for app functionality
-          refreshTokenExpiresIn: 0, // Not critical for app functionality
+          accessTokenExpiresIn: -1, // Unknown - managed by TokenService
+          refreshTokenExpiresIn: -1, // Unknown - managed by TokenService
         };
         dispatch(setTokens(tokens));
       }

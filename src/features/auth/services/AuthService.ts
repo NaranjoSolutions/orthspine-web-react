@@ -98,7 +98,7 @@ export class AuthService {
    * Validate and normalize user role
    * Returns a valid UserRole enum value, defaults to USER if invalid
    */
-  private static validateUserRole(role: string): UserRole {
+  static validateUserRole(role: string): UserRole {
     const normalizedRole = role.toUpperCase();
 
     // Check if the normalized role is a valid UserRole enum value
