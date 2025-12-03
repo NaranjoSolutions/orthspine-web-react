@@ -1,15 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Table, Button, Space, Tooltip } from 'antd';
 import { EyeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import type { ColumnsType, TablePaginationConfig } from 'antd/es/table';
 import type { Patient } from '@/features/admin/types/patient.types';
+import { ROUTE_PATHS, buildRoute } from '@/routing/config/routePaths';
 import styles from './PatientTable.module.scss';
 
 interface PatientTableProps {
   patients: Patient[];
   loading: boolean;
   pagination: TablePaginationConfig;
-  onView: (patient: Patient) => void;
   onEdit: (patient: Patient) => void;
   onDelete: (patient: Patient) => void;
   onPageChange: (page: number, pageSize: number) => void;
@@ -24,16 +25,26 @@ interface PatientTableProps {
  * - Pagination
  * - Action buttons (view, edit, delete)
  * - Responsive design
+ * - Navigation to patient details page
  */
 export const PatientTable: React.FC<PatientTableProps> = ({
   patients,
   loading,
   pagination,
-  onView,
   onEdit,
   onDelete,
   onPageChange,
 }) => {
+  const navigate = useNavigate();
+
+  /**
+   * Handle view patient - navigate to details page
+   */
+  const handleView = (patient: Patient) => {
+    const detailsPath = buildRoute(ROUTE_PATHS.ADMIN.PATIENT_DETAILS, { id: patient.id });
+    navigate(detailsPath);
+  };
+
   /**
    * Table columns configuration
    */
@@ -76,7 +87,7 @@ export const PatientTable: React.FC<PatientTableProps> = ({
             <Button
               type="text"
               icon={<EyeOutlined />}
-              onClick={() => onView(record)}
+              onClick={() => handleView(record)}
               className={styles.actionButton}
             />
           </Tooltip>

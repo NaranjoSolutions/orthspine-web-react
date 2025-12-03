@@ -28,6 +28,7 @@ const ForgotPasswordPage = lazy(() => import('@/pages/auth/forgot-password-page'
 // Admin pages
 const AdminDashboardPage = lazy(() => import('@/pages/admin/DashboardPage'));
 const PatientsPage = lazy(() => import('@/pages/admin/PatientsPage'));
+const PatientDetailsPage = lazy(() => import('@/pages/admin/PatientDetailsPage'));
 const AppointmentsPage = lazy(() => import('@/pages/admin/AppointmentsPage'));
 const TestimonialsAdminPage = lazy(() => import('@/pages/admin/TestimonialsPage'));
 const SettingsPage = lazy(() => import('@/pages/admin/SettingsPage'));
@@ -139,6 +140,10 @@ export const routes: RouteObject[] = [
               {
                 path: ROUTE_PATHS.ADMIN.PATIENTS,
                 element: <PatientsPage />,
+              },
+              {
+                path: ROUTE_PATHS.ADMIN.PATIENT_DETAILS,
+                element: <PatientDetailsPage />,
               },
               {
                 path: ROUTE_PATHS.ADMIN.APPOINTMENTS,

@@ -1,0 +1,99 @@
+import React from 'react';
+import { Card, Badge } from 'antd';
+import { ClockCircleOutlined, UserOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import type { PatientStatus } from '@/features/admin/types/patient.types';
+import styles from './PatientSummaryCards.module.scss';
+
+interface PatientSummaryCardsProps {
+  status?: PatientStatus;
+  nextAppointmentDate?: string;
+  primaryPhysician?: string;
+}
+
+/**
+ * PatientSummaryCards Component
+ * Displays three summary cards with patient status, next appointment, and primary physician
+ *
+ * Features:
+ * - Status badge with color coding
+ * - Next appointment date
+ * - Primary physician name
+ * - Icon indicators
+ */
+export const PatientSummaryCards: React.FC<PatientSummaryCardsProps> = ({
+  status = 'active' as PatientStatus,
+  nextAppointmentDate,
+  primaryPhysician,
+}) => {
+  /**
+   * Format date for display
+   */
+  const formatAppointmentDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+  };
+
+  /**
+   * Get status badge configuration
+   */
+  const getStatusBadge = (currentStatus: PatientStatus) => {
+    const statusConfig: Record<PatientStatus, { text: string; status: 'success' | 'default' | 'warning' }> = {
+      active: { text: 'Active', status: 'success' },
+      inactive: { text: 'Inactive', status: 'default' },
+      discharged: { text: 'Discharged', status: 'warning' },
+    };
+    return statusConfig[currentStatus] || statusConfig.active;
+  };
+
+  const statusBadge = getStatusBadge(status);
+
+  return (
+    <div className={styles.summaryCards}>
+      {/* Patient Status Card */}
+      <Card className={styles.card}>
+        <div className={styles.cardContent}>
+          <div className={styles.iconWrapper}>
+            <CheckCircleOutlined className={styles.icon} />
+          </div>
+          <div className={styles.cardBody}>
+            <div className={styles.label}>Patient Status</div>
+            <div className={styles.value}>
+              <Badge status={statusBadge.status} text={statusBadge.text} />
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      {/* Next Appointment Card */}
+      <Card className={styles.card}>
+        <div className={styles.cardContent}>
+          <div className={styles.iconWrapper}>
+            <ClockCircleOutlined className={styles.icon} />
+          </div>
+          <div className={styles.cardBody}>
+            <div className={styles.label}>Next Appointment</div>
+            <div className={styles.value}>
+              {nextAppointmentDate ? formatAppointmentDate(nextAppointmentDate) : 'Not Scheduled'}
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      {/* Primary Physician Card */}
+      <Card className={styles.card}>
+        <div className={styles.cardContent}>
+          <div className={styles.iconWrapper}>
+            <UserOutlined className={styles.icon} />
+          </div>
+          <div className={styles.cardBody}>
+            <div className={styles.label}>Primary Physician</div>
+            <div className={styles.value}>{primaryPhysician || 'Not Assigned'}</div>
+          </div>
+        </div>
+      </Card>
+    </div>
+  );
+};

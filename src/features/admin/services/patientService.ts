@@ -1,4 +1,58 @@
-import type { Patient, PatientFormData, PatientFilters } from '../types/patient.types';
+import type {
+  Patient,
+  PatientFormData,
+  PatientFilters,
+  MedicalNote,
+  MedicalNoteFormData,
+  Physician,
+} from '../types/patient.types';
+import { MedicalNoteCategory, PatientStatus } from '../types/patient.types';
+
+/**
+ * Mock physicians data
+ */
+const mockPhysicians: Physician[] = [
+  { id: '1', name: 'Dr. Arlene McCoy', specialty: 'Orthopedic Spine Surgeon' },
+  { id: '2', name: 'Dr. Adams', specialty: 'Physical Therapy' },
+  { id: '3', name: 'Dr. Johnson', specialty: 'Pain Management' },
+  { id: '4', name: 'Dr. Smith', specialty: 'Neurosurgeon' },
+];
+
+/**
+ * Mock medical notes data
+ */
+const mockMedicalNotes: MedicalNote[] = [
+  {
+    id: '1',
+    patientId: '1',
+    date: '2023-09-12T10:00:00Z',
+    author: 'Dr. Adams',
+    category: MedicalNoteCategory.POST_OP,
+    content:
+      'Patient is recovering well from spinal fusion surgery. Mobility has improved significantly, and pain levels have decreased. Recommended to continue physical therapy sessions twice a week.',
+    createdAt: '2023-09-12T10:00:00Z',
+  },
+  {
+    id: '2',
+    patientId: '1',
+    date: '2023-08-20T14:30:00Z',
+    author: 'Dr. Arlene McCoy',
+    category: MedicalNoteCategory.CONSULTATION,
+    content:
+      'Initial consultation regarding chronic lower back pain. Patient reports pain level of 7/10. Discussed surgical options including spinal fusion. Scheduled for pre-op assessment next week.',
+    createdAt: '2023-08-20T14:30:00Z',
+  },
+  {
+    id: '3',
+    patientId: '1',
+    date: '2023-07-15T09:00:00Z',
+    author: 'Dr. Johnson',
+    category: MedicalNoteCategory.INTAKE,
+    content:
+      'New patient intake completed. Medical history reviewed. Patient has history of degenerative disc disease at L4-L5. Current medications include ibuprofen 800mg as needed. No known drug allergies.',
+    createdAt: '2023-07-15T09:00:00Z',
+  },
+];
 
 /**
  * Mock patient data for development
@@ -15,6 +69,11 @@ const mockPatients: Patient[] = [
     medicalHistory: 'Lower back pain, previous surgery in 2020',
     createdAt: '2024-01-15T10:00:00Z',
     updatedAt: '2024-01-15T10:00:00Z',
+    patientId: '789-123-456',
+    status: PatientStatus.ACTIVE,
+    primaryPhysicianId: '1',
+    nextAppointmentDate: '2023-10-26T10:00:00Z',
+    avatarUrl: undefined,
   },
   {
     id: '2',
@@ -26,6 +85,10 @@ const mockPatients: Patient[] = [
     medicalHistory: 'Chronic neck pain, physical therapy ongoing',
     createdAt: '2024-01-20T14:30:00Z',
     updatedAt: '2024-01-20T14:30:00Z',
+    patientId: '789-234-567',
+    status: PatientStatus.ACTIVE,
+    primaryPhysicianId: '2',
+    nextAppointmentDate: '2023-11-02T14:00:00Z',
   },
   {
     id: '3',
@@ -146,6 +209,10 @@ for (let i = 11; i <= 50; i++) {
     medicalHistory: 'General spine health monitoring',
     createdAt: new Date(2024, 0, i).toISOString(),
     updatedAt: new Date(2024, 0, i).toISOString(),
+    patientId: `789-${String(i).padStart(3, '0')}-${String(i + 100).padStart(3, '0')}`,
+    status: i % 3 === 0 ? PatientStatus.INACTIVE : PatientStatus.ACTIVE,
+    primaryPhysicianId: `${(i % 4) + 1}`,
+    nextAppointmentDate: i % 2 === 0 ? new Date(2023, 9, i % 28 + 1).toISOString() : undefined,
   });
 }
 
@@ -284,6 +351,60 @@ class PatientService {
     }
 
     mockPatients.splice(index, 1);
+  }
+
+  /**
+   * Get medical notes for a patient
+   */
+  async getMedicalNotes(patientId: string): Promise<MedicalNote[]> {
+    // Simulate API delay
+    await new Promise((resolve) => setTimeout(resolve, 300));
+
+    return mockMedicalNotes
+      .filter((note) => note.patientId === patientId)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  }
+
+  /**
+   * Add a medical note for a patient
+   */
+  async addMedicalNote(patientId: string, data: MedicalNoteFormData): Promise<MedicalNote> {
+    // Simulate API delay
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    const newNote: MedicalNote = {
+      id: String(Date.now()),
+      patientId,
+      date: new Date().toISOString(),
+      author: 'Current User', // In real app, this would come from auth context
+      category: data.category,
+      content: data.content,
+      createdAt: new Date().toISOString(),
+    };
+
+    mockMedicalNotes.unshift(newNote);
+
+    return newNote;
+  }
+
+  /**
+   * Get physician by ID
+   */
+  async getPhysicianById(id: string): Promise<Physician | null> {
+    // Simulate API delay
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
+    return mockPhysicians.find((p) => p.id === id) || null;
+  }
+
+  /**
+   * Get all physicians
+   */
+  async getPhysicians(): Promise<Physician[]> {
+    // Simulate API delay
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
+    return mockPhysicians;
   }
 }
 

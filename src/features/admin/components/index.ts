@@ -3,3 +3,7 @@ export { ActivityItem } from './ActivityItem';
 export { PatientTable } from './PatientTable';
 export { PatientForm } from './PatientForm';
 export { PatientViewModal } from './PatientViewModal';
+export { PatientHeader } from './PatientHeader';
+export { PatientSummaryCards } from './PatientSummaryCards';
+export { MedicalNoteTimeline } from './MedicalNoteTimeline';
+export { AddMedicalNoteModal } from './AddMedicalNoteModal';

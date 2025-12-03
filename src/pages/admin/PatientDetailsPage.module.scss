@@ -1,0 +1,75 @@
+@use '@/styles/abstracts' as *;
+
+.patientDetailsPage {
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: $spacing-xl;
+}
+
+.backButton {
+  margin-bottom: $spacing-lg;
+  padding-left: 0;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  width: 100%;
+}
+
+.mainCard {
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-sm;
+
+  :global(.ant-card-body) {
+    padding: 0;
+  }
+}
+
+.tabs {
+  :global(.ant-tabs-nav) {
+    padding: 0 $spacing-xl;
+    margin-bottom: 0;
+  }
+
+  :global(.ant-tabs-tab) {
+    padding: $spacing-lg $spacing-md;
+    font-weight: 500;
+  }
+}
+
+.tabContent {
+  padding: $spacing-lg;
+  min-height: 400px;
+}
+
+.tabHeader {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: $spacing-lg;
+  padding: 0 $spacing-lg;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  background: var(--color-bg-secondary);
+  border-radius: $border-radius-md;
+  border: 1px dashed var(--color-border);
+  
+  p {
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+}

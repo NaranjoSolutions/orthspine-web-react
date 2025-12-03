@@ -1,0 +1,23 @@
+@use '@/styles/abstracts' as *;
+
+.modal {
+  :global(.ant-modal-body) {
+    padding: $spacing-xl;
+  }
+}
+
+.form {
+  margin-top: $spacing-lg;
+}
+
+.formActions {
+  margin-bottom: 0;
+  display: flex;
+  gap: $spacing-md;
+  justify-content: flex-end;
+
+  :global(.ant-form-item-control-input) {
+    display: flex;
+    gap: $spacing-md;
+  }
+}

@@ -1,0 +1,88 @@
+@use '@/styles/abstracts' as *;
+
+.timeline {
+  padding: $spacing-lg;
+}
+
+.timelineComponent {
+  :global(.ant-timeline-item-tail) {
+    border-left-color: var(--color-border);
+  }
+}
+
+.timelineIcon {
+  font-size: 16px;
+  color: var(--color-primary);
+}
+
+.noteCard {
+  background: var(--color-bg-secondary);
+  border-radius: $border-radius-md;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  border: 1px solid var(--color-border);
+  transition: box-shadow var(--transition-base);
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+}
+
+.noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $spacing-md;
+  gap: $spacing-md;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.noteMetadata {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+.noteDate {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.separator {
+  color: var(--color-text-tertiary);
+}
+
+.noteAuthor {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.categoryTag {
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: $border-radius-sm;
+  padding: 2px $spacing-sm;
+}
+
+.noteContent {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  white-space: pre-wrap;
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-2xl;
+  background: var(--color-bg-secondary);
+  border-radius: $border-radius-md;
+  border: 1px dashed var(--color-border);
+}

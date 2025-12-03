@@ -19,7 +19,7 @@ import {
   selectIsLoading,
 } from '@/features/admin/store/patientsSlice';
 import { patientService } from '@/features/admin/services/patientService';
-import { PatientTable, PatientForm, PatientViewModal } from '@/features/admin/components';
+import { PatientTable, PatientForm } from '@/features/admin/components';
 import type { Patient, PatientFormData } from '@/features/admin/types/patient.types';
 import styles from './PatientsPage.module.scss';
 
@@ -29,9 +29,10 @@ import styles from './PatientsPage.module.scss';
  *
  * Features:
  * - Patient list with search and filter
- * - Add, edit, view, delete operations
+ * - Add, edit, delete operations
  * - Pagination
  * - Loading states
+ * - Navigation to patient details via table
  */
 const PatientsPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -41,7 +42,6 @@ const PatientsPage: React.FC = () => {
   const pagination = useAppSelector(selectPagination);
   const isLoading = useAppSelector(selectIsLoading);
 
-  const [viewModalVisible, setViewModalVisible] = useState(false);
   const [formModalVisible, setFormModalVisible] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -91,14 +91,6 @@ const PatientsPage: React.FC = () => {
       dispatch(setFilters({ search: '' }));
       dispatch(setPagination({ page: 1 }));
     }
-  };
-
-  /**
-   * Handle view patient
-   */
-  const handleView = (patient: Patient) => {
-    dispatch(setSelectedPatient(patient));
-    setViewModalVisible(true);
   };
 
   /**
@@ -187,14 +179,6 @@ const PatientsPage: React.FC = () => {
   };
 
   /**
-   * Close view modal
-   */
-  const handleCloseViewModal = () => {
-    setViewModalVisible(false);
-    dispatch(setSelectedPatient(null));
-  };
-
-  /**
    * Close form modal
    */
   const handleCloseFormModal = () => {
@@ -239,15 +223,11 @@ const PatientsPage: React.FC = () => {
             pageSize: pagination.pageSize,
             total: pagination.total,
           }}
-          onView={handleView}
           onEdit={handleEdit}
           onDelete={handleDelete}
           onPageChange={handlePageChange}
         />
       </Card>
-
-      {/* View Modal */}
-      <PatientViewModal patient={selectedPatient} visible={viewModalVisible} onClose={handleCloseViewModal} />
 
       {/* Add/Edit Modal */}
       <Modal
