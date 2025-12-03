@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 import { useLoginMutation } from '../api/authApi';
-import { LoginFormData, LoginFormErrors } from '../types';
+import { LoginFormData, LoginFormErrors, UserRole } from '../types';
 import { AuthService } from '../services/AuthService';
 import { LoginValidator } from '@/shared/utils/validators/LoginValidator';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
@@ -103,7 +103,7 @@ export const useLogin = () => {
         message.success(`Welcome back, ${user.firstName}!`);
 
         // Navigate based on user role
-        if (user.userRole.toLowerCase() === 'admin') {
+        if (user.userRole === UserRole.ADMIN) {
           navigate(ROUTE_PATHS.ADMIN.DASHBOARD);
         } else {
           navigate(ROUTE_PATHS.HOME);

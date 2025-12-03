@@ -1,4 +1,4 @@
-import { LoginCredentials, AuthResponse, User } from '../types';
+import { LoginCredentials, AuthResponse, User, UserRole } from '../types';
 import { tokenService } from './TokenService';
 import { logger } from '@/infrastructure/logger/Logger';
 
@@ -16,12 +16,19 @@ export class AuthService {
       // Save tokens using TokenService (Singleton)
       tokenService.saveTokens(response.tokens, rememberMe);
 
+      // Normalize user role to lowercase to ensure consistency
+      // API might return different casing (e.g., "Admin" vs "admin")
+      const normalizedUser: User = {
+        ...response.user,
+        userRole: response.user.userRole.toLowerCase() as UserRole,
+      };
+
       logger.info('User logged in successfully', {
-        userId: response.user.userId,
-        email: response.user.email,
+        userId: normalizedUser.userId,
+        email: normalizedUser.email,
       });
 
-      return response.user;
+      return normalizedUser;
     } catch (error) {
       logger.error('Failed to process login response', error);
       throw new Error('Failed to save authentication data');
@@ -34,12 +41,19 @@ export class AuthService {
    */
   static processRegisterResponse(response: AuthResponse): User {
     try {
+      // Normalize user role to lowercase to ensure consistency
+      // API might return different casing (e.g., "Admin" vs "admin")
+      const normalizedUser: User = {
+        ...response.user,
+        userRole: response.user.userRole.toLowerCase() as UserRole,
+      };
+
       logger.info('User registered successfully', {
-        userId: response.user.userId,
-        email: response.user.email,
+        userId: normalizedUser.userId,
+        email: normalizedUser.email,
       });
 
-      return response.user;
+      return normalizedUser;
     } catch (error) {
       logger.error('Failed to process registration response', error);
       throw new Error('Failed to save authentication data');
