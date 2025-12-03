@@ -1,0 +1,105 @@
+.appointmentsPage {
+  width: 100%;
+  max-width: 100%;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    .title {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+  }
+
+  .card {
+    background: var(--color-bg-primary);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      .searchSection {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+
+        .searchInput {
+          min-width: 300px;
+        }
+      }
+    }
+
+    .filters {
+      background: #f5f5f5;
+      padding: 16px;
+      border-radius: 6px;
+      margin-bottom: 24px;
+
+      .filterItem {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        label {
+          font-weight: 500;
+          color: var(--color-text-primary);
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .appointmentsPage {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+
+      .title {
+        font-size: 24px;
+      }
+    }
+
+    .card {
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+
+        .searchSection {
+          flex-direction: column;
+          align-items: stretch;
+
+          .searchInput {
+            min-width: 100%;
+          }
+        }
+      }
+
+      .filters {
+        .filterItem {
+          flex-direction: column;
+          align-items: stretch;
+
+          label {
+            margin-bottom: 4px;
+          }
+        }
+      }
+    }
+  }
+}

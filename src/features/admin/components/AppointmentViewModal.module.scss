@@ -1,0 +1,13 @@
+.appointmentViewModal {
+  :global {
+    .ant-descriptions-item-label {
+      font-weight: 600;
+      width: 180px;
+      background-color: #fafafa;
+    }
+
+    .ant-descriptions-item-content {
+      color: var(--color-text-primary);
+    }
+  }
+}
