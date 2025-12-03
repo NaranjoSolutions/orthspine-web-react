@@ -8,6 +8,7 @@ import {
   PhoneOutlined,
   MailOutlined,
   CheckCircleOutlined,
+  CloseOutlined,
 } from '@ant-design/icons';
 import type { AdminAppointment, AppointmentStatus } from '@/features/admin/types/appointment.types';
 import dayjs from 'dayjs';
@@ -64,6 +65,27 @@ const getInitials = (name: string): string => {
 };
 
 /**
+ * Check if appointment can be cancelled or rescheduled
+ */
+const canModifyAppointment = (status: AppointmentStatus): boolean => {
+  return status !== 'cancelled' && status !== 'completed';
+};
+
+/**
+ * Get status icon based on appointment status
+ */
+const getStatusIcon = (status: AppointmentStatus) => {
+  const statusIcons: Record<AppointmentStatus, React.ReactNode> = {
+    confirmed: <CheckCircleOutlined />,
+    pending: <ClockCircleOutlined />,
+    cancelled: <CloseOutlined />,
+    completed: <CheckCircleOutlined />,
+    rescheduled: <ClockCircleOutlined />,
+  };
+  return statusIcons[status] || <CheckCircleOutlined />;
+};
+
+/**
  * AppointmentViewModal Component
  * Modal for viewing appointment details
  *
@@ -84,8 +106,7 @@ export const AppointmentViewModal: React.FC<AppointmentViewModalProps> = ({
 }) => {
   if (!appointment) return null;
 
-  const canCancel = appointment.status !== 'cancelled' && appointment.status !== 'completed';
-  const canReschedule = appointment.status !== 'cancelled' && appointment.status !== 'completed';
+  const canModify = canModifyAppointment(appointment.status);
 
   const handleCancel = () => {
     if (onCancel) {
@@ -111,15 +132,15 @@ export const AppointmentViewModal: React.FC<AppointmentViewModalProps> = ({
           <Button size="large" onClick={onClose}>
             Close
           </Button>
-          {canCancel && (
-            <Button danger size="large" onClick={handleCancel}>
-              Cancel Appointment
-            </Button>
-          )}
-          {canReschedule && (
-            <Button type="primary" size="large" onClick={handleReschedule}>
-              Reschedule
-            </Button>
+          {canModify && (
+            <>
+              <Button danger size="large" onClick={handleCancel}>
+                Cancel Appointment
+              </Button>
+              <Button type="primary" size="large" onClick={handleReschedule}>
+                Reschedule
+              </Button>
+            </>
           )}
         </div>
       }
@@ -140,7 +161,7 @@ export const AppointmentViewModal: React.FC<AppointmentViewModalProps> = ({
             </p>
           </div>
         </div>
-        <Tag color={getStatusColor(appointment.status)} className={styles.statusBadge} icon={<CheckCircleOutlined />}>
+        <Tag color={getStatusColor(appointment.status)} className={styles.statusBadge} icon={getStatusIcon(appointment.status)}>
           {getStatusText(appointment.status)}
         </Tag>
       </div>
