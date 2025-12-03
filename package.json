@@ -25,6 +25,7 @@
     "@babel/runtime": "^7.27.0",
     "@reduxjs/toolkit": "^2.5.0",
     "antd": "^5.23.2",
+    "dayjs": "^1.11.19",
     "framer-motion": "^12.4.7",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
