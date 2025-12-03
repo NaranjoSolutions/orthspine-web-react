@@ -14,6 +14,7 @@ import { useAppDispatch, useAppSelector } from '@/store';
 import { clearAuth } from '@/features/auth/store/authSlice';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
 import styles from './AdminLayout.module.scss';
+import { UserRole } from '@/features/auth/types';
 
 const { Header, Sider, Content } = Layout;
 
@@ -134,7 +135,7 @@ export const AdminLayout: React.FC = () => {
                 <span className={styles.userName}>
                   {user?.firstName} {user?.lastName}
                 </span>
-                <span className={styles.userRole}>{user?.userRole === 'admin' ? 'Administrator' : 'User'}</span>
+                <span className={styles.userRole}>{user?.userRole === UserRole.ADMIN ? 'Administrator' : 'User'}</span>
               </div>
             </div>
           </div>
