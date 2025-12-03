@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useGetCurrentUserQuery } from '../../api/authApi';
 import { useAppDispatch } from '@/store';
-import { setUser } from '../../store/authSlice';
+import { setUser, setTokens } from '../../store/authSlice';
 import { tokenService } from '../../services/TokenService';
 import { logger } from '@/infrastructure/logger/Logger';
+import { AuthTokens, User, UserRole } from '../../types';
 
 interface AuthInitializerProps {
   children: React.ReactNode;
@@ -45,9 +46,40 @@ export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) =>
 
   useEffect(() => {
     if (isSuccess && user) {
+      // Normalize user role to ensure consistency (API might return different casing)
+      const normalizedRole = user.userRole.toUpperCase();
+      const validRole = Object.values(UserRole).includes(normalizedRole as UserRole)
+        ? (normalizedRole as UserRole)
+        : UserRole.USER;
+
+      const normalizedUser: User = {
+        ...user,
+        userRole: validRole,
+      };
+
       // Successfully fetched user data, restore to Redux
-      dispatch(setUser(user));
-      logger.info('Auth state restored from tokens', { userId: user.userId });
+      dispatch(setUser(normalizedUser));
+      
+      // Also restore tokens to Redux state for consistency
+      const accessToken = tokenService.getAccessToken();
+      const refreshToken = tokenService.getRefreshToken();
+      
+      if (accessToken && refreshToken) {
+        // Note: We don't have the exact expiration times from storage,
+        // but they're already validated by hasValidAuth()
+        const tokens: AuthTokens = {
+          accessToken,
+          refreshToken,
+          accessTokenExpiresIn: 0, // Not critical for app functionality
+          refreshTokenExpiresIn: 0, // Not critical for app functionality
+        };
+        dispatch(setTokens(tokens));
+      }
+      
+      logger.info('Auth state restored from tokens', { 
+        userId: normalizedUser.userId,
+        role: normalizedUser.userRole,
+      });
     }
 
     if (isError) {
