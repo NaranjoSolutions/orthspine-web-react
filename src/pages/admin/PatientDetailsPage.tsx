@@ -50,51 +50,62 @@ const PatientDetailsPage: React.FC = () => {
    * Load patient data on mount
    */
   useEffect(() => {
-    if (id) {
-      loadPatientData(id);
-    }
+    let isMounted = true;
+
+    const loadData = async () => {
+      if (id) {
+        try {
+          setLoading(true);
+
+          // Load patient details
+          const patientData = await patientService.getPatientById(id);
+
+          if (!isMounted) return;
+
+          if (!patientData) {
+            notification.error({
+              message: 'Patient Not Found',
+              description: 'The requested patient could not be found.',
+            });
+            navigate(ROUTE_PATHS.ADMIN.PATIENTS);
+            return;
+          }
+
+          setPatient(patientData);
+
+          // Load medical notes
+          loadMedicalNotes(id);
+
+          // Load primary physician if assigned
+          if (patientData.primaryPhysicianId) {
+            const physician = await patientService.getPhysicianById(patientData.primaryPhysicianId);
+            if (isMounted) {
+              setPrimaryPhysician(physician);
+            }
+          }
+        } catch (error) {
+          if (isMounted) {
+            notification.error({
+              message: 'Error',
+              description: 'Failed to load patient data. Please try again.',
+            });
+            console.error('Failed to load patient:', error);
+          }
+        } finally {
+          if (isMounted) {
+            setLoading(false);
+          }
+        }
+      }
+    };
+
+    loadData();
+
+    return () => {
+      isMounted = false;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-
-  /**
-   * Load patient and related data
-   */
-  const loadPatientData = async (patientId: string) => {
-    try {
-      setLoading(true);
-
-      // Load patient details
-      const patientData = await patientService.getPatientById(patientId);
-
-      if (!patientData) {
-        notification.error({
-          message: 'Patient Not Found',
-          description: 'The requested patient could not be found.',
-        });
-        navigate(ROUTE_PATHS.ADMIN.PATIENTS);
-        return;
-      }
-
-      setPatient(patientData);
-
-      // Load medical notes
-      loadMedicalNotes(patientId);
-
-      // Load primary physician if assigned
-      if (patientData.primaryPhysicianId) {
-        const physician = await patientService.getPhysicianById(patientData.primaryPhysicianId);
-        setPrimaryPhysician(physician);
-      }
-    } catch (error) {
-      notification.error({
-        message: 'Error',
-        description: 'Failed to load patient data. Please try again.',
-      });
-      console.error('Failed to load patient:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   /**
    * Load medical notes for patient

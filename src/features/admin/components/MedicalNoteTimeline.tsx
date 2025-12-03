@@ -1,7 +1,8 @@
 import React from 'react';
 import { Timeline, Tag, Empty } from 'antd';
 import { MedicineBoxOutlined } from '@ant-design/icons';
-import type { MedicalNote, MedicalNoteCategory } from '@/features/admin/types/patient.types';
+import { MedicalNoteCategory } from '@/features/admin/types/patient.types';
+import type { MedicalNote } from '@/features/admin/types/patient.types';
 import styles from './MedicalNoteTimeline.module.scss';
 
 interface MedicalNoteTimelineProps {
@@ -36,11 +37,11 @@ export const MedicalNoteTimeline: React.FC<MedicalNoteTimelineProps> = ({ notes,
    */
   const getCategoryColor = (category: MedicalNoteCategory): string => {
     const colorMap: Record<MedicalNoteCategory, string> = {
-      'Post-Op': 'success',
-      Consultation: 'processing',
-      Intake: 'default',
-      'Follow-Up': 'warning',
-      General: 'default',
+      [MedicalNoteCategory.POST_OP]: 'success',
+      [MedicalNoteCategory.CONSULTATION]: 'processing',
+      [MedicalNoteCategory.INTAKE]: 'default',
+      [MedicalNoteCategory.FOLLOW_UP]: 'warning',
+      [MedicalNoteCategory.GENERAL]: 'default',
     };
     return colorMap[category] || 'default';
   };

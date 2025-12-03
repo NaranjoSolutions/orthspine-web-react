@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Avatar, Dropdown, Space } from 'antd';
+import { Button, Avatar, Dropdown, Space, notification } from 'antd';
 import { EditOutlined, MoreOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import styles from './PatientHeader.module.scss';
@@ -38,6 +38,17 @@ export const PatientHeader: React.FC<PatientHeaderProps> = ({
       year: 'numeric',
       month: 'long',
       day: 'numeric',
+    });
+  };
+
+  /**
+   * Handle menu item clicks
+   */
+  const handleMenuClick: MenuProps['onClick'] = ({ key }) => {
+    // Placeholder for future implementation
+    notification.info({
+      message: 'Coming Soon',
+      description: `The "${key}" feature will be available in a future update.`,
     });
   };
 
@@ -81,7 +92,7 @@ export const PatientHeader: React.FC<PatientHeaderProps> = ({
           <Button type="primary" icon={<EditOutlined />} onClick={onEdit} size="large">
             Edit Patient
           </Button>
-          <Dropdown menu={{ items: menuItems }} trigger={['click']} placement="bottomRight">
+          <Dropdown menu={{ items: menuItems, onClick: handleMenuClick }} trigger={['click']} placement="bottomRight">
             <Button icon={<MoreOutlined />} size="large" />
           </Dropdown>
         </Space>

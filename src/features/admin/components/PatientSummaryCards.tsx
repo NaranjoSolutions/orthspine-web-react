@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Badge } from 'antd';
 import { ClockCircleOutlined, UserOutlined, CheckCircleOutlined } from '@ant-design/icons';
-import type { PatientStatus } from '@/features/admin/types/patient.types';
+import { PatientStatus } from '@/features/admin/types/patient.types';
 import styles from './PatientSummaryCards.module.scss';
 
 interface PatientSummaryCardsProps {
@@ -41,11 +41,11 @@ export const PatientSummaryCards: React.FC<PatientSummaryCardsProps> = ({
    */
   const getStatusBadge = (currentStatus: PatientStatus) => {
     const statusConfig: Record<PatientStatus, { text: string; status: 'success' | 'default' | 'warning' }> = {
-      active: { text: 'Active', status: 'success' },
-      inactive: { text: 'Inactive', status: 'default' },
-      discharged: { text: 'Discharged', status: 'warning' },
+      [PatientStatus.ACTIVE]: { text: 'Active', status: 'success' },
+      [PatientStatus.INACTIVE]: { text: 'Inactive', status: 'default' },
+      [PatientStatus.DISCHARGED]: { text: 'Discharged', status: 'warning' },
     };
-    return statusConfig[currentStatus] || statusConfig.active;
+    return statusConfig[currentStatus] || statusConfig[PatientStatus.ACTIVE];
   };
 
   const statusBadge = getStatusBadge(status);
