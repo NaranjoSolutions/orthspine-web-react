@@ -1,0 +1,33 @@
+@use '@/styles/abstracts' as *;
+
+.form {
+  :global {
+    .ant-form-item-label > label {
+      font-weight: 500;
+      color: $color-gray-700;
+    }
+
+    .ant-input,
+    .ant-picker,
+    .ant-input-textarea {
+      border-radius: $border-radius-sm;
+
+      &:focus,
+      &:hover {
+        border-color: $color-primary;
+      }
+    }
+  }
+}
+
+.actions {
+  margin-top: $spacing-xl;
+  margin-bottom: 0;
+
+  :global {
+    .ant-form-item-control-input-content {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
