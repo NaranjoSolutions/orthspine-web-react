@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Avatar } from 'antd';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import {
   DashboardOutlined,
@@ -129,9 +129,12 @@ export const AdminLayout: React.FC = () => {
           </div>
           <div className={styles.headerRight}>
             <div className={styles.userInfo}>
-              <div className={styles.avatar}>
-                <UserOutlined />
-              </div>
+              <Avatar
+                size={48}
+                src={user?.avatar}
+                icon={!user?.avatar && <UserOutlined />}
+                className={styles.avatar}
+              />
               <div className={styles.userDetails}>
                 <span className={styles.userName}>
                   {user?.firstName} {user?.lastName}
