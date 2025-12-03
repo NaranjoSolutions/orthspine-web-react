@@ -21,8 +21,12 @@ export interface AdminAppointment {
   id: string;
   patientId: string;
   patientName: string;
+  patientDisplayId?: string; // Display ID like "P-12345"
+  patientPhone?: string;
+  patientEmail?: string;
   doctorId: string;
   doctorName: string;
+  serviceType?: string;
   dateTime: string; // ISO 8601 format
   reasonForVisit: string;
   status: AppointmentStatus;
