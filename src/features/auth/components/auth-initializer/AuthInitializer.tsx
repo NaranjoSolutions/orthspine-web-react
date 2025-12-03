@@ -9,7 +9,16 @@ import { AuthTokens, User } from '../../types';
 
 /**
  * Token expiration sentinel value
- * Used when actual expiration time is unknown but managed by TokenService
+ * 
+ * Value: -1
+ * Meaning: Token expiration time is unknown or managed externally
+ * Usage: Set when restoring tokens from storage without expiration metadata
+ * Handling: TokenService manages actual expiration in localStorage/sessionStorage
+ * 
+ * Why -1?
+ * - Distinguishes from 0 (immediate expiration)
+ * - Negative value clearly indicates "not applicable/unknown"
+ * - Matches common sentinel value pattern in systems programming
  */
 const UNKNOWN_EXPIRATION = -1;
 
@@ -43,7 +52,9 @@ export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) =>
   const dispatch = useAppDispatch();
   
   // Check if we have valid tokens before making the API call
-  // Memoized to avoid redundant localStorage/sessionStorage access on every render
+  // Memoized with empty dependency array to run only once on mount
+  // Note: This is intentional for app initialization - we only want to check auth state
+  // on initial load. Token changes after mount are handled by login/logout flows.
   const hasValidTokens = useMemo(() => tokenService.hasValidAuth(), []);
   
   // Only fetch current user if we have valid tokens
