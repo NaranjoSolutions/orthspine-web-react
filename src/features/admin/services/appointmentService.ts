@@ -140,6 +140,11 @@ const mockPatientOptions: PatientOption[] = [
 ];
 
 /**
+ * Counter for generating unique IDs
+ */
+let appointmentIdCounter = 1000;
+
+/**
  * AppointmentService
  * Service layer for appointment management operations
  *
@@ -248,7 +253,7 @@ class AppointmentService {
     await this.delay(500);
 
     const newAppointment: AdminAppointment = {
-      id: String(mockAppointments.length + 1),
+      id: String(++appointmentIdCounter),
       ...data,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),

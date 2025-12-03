@@ -36,6 +36,17 @@ interface AppointmentFormProps {
  * - Validation on submit
  * - Loading states
  */
+
+/**
+ * Helper function for filtering select options
+ */
+const filterSelectOption = (input: string, option: unknown): boolean => {
+  const opt = option as { label?: unknown; children?: unknown };
+  const label = opt?.label || opt?.children;
+  const labelStr = typeof label === 'string' ? label : String(label);
+  return labelStr.toLowerCase().includes(input.toLowerCase());
+};
+
 export const AppointmentForm: React.FC<AppointmentFormProps> = ({
   initialValues,
   onSubmit,
@@ -77,12 +88,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
    * Handle form submission
    */
   const handleSubmit = async (values: AppointmentFormData) => {
-    const formattedValues: AppointmentFormData = {
-      ...values,
-      dateTime: values.dateTime,
-    };
-
-    await onSubmit(formattedValues);
+    await onSubmit(values);
   };
 
   /**
@@ -136,11 +142,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
           placeholder="Select patient"
           showSearch
           loading={loadingData}
-          filterOption={(input, option) => {
-            const label = option?.label || option?.children;
-            const labelStr = typeof label === 'string' ? label : String(label);
-            return labelStr.toLowerCase().includes(input.toLowerCase());
-          }}
+          filterOption={filterSelectOption}
           onChange={handlePatientChange}
         >
           {patients.map((patient) => (
@@ -166,11 +168,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
           placeholder="Select doctor"
           showSearch
           loading={loadingData}
-          filterOption={(input, option) => {
-            const label = option?.label || option?.children;
-            const labelStr = typeof label === 'string' ? label : String(label);
-            return labelStr.toLowerCase().includes(input.toLowerCase());
-          }}
+          filterOption={filterSelectOption}
           onChange={handleDoctorChange}
         >
           {doctors.map((doctor) => (
