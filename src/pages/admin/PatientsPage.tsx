@@ -63,7 +63,7 @@ const PatientsPage: React.FC = () => {
       const result = await patientService.getPatients(filters, pagination.page, pagination.pageSize);
       dispatch(setPatients(result.patients));
       dispatch(setPagination({ total: result.total }));
-    } catch (error) {
+    } catch {
       dispatch(setErrorPatients('Failed to load patients'));
       notification.error({
         message: 'Error',
@@ -128,7 +128,7 @@ const PatientsPage: React.FC = () => {
             message: 'Success',
             description: 'Patient deleted successfully.',
           });
-        } catch (error) {
+        } catch {
           notification.error({
             message: 'Error',
             description: 'Failed to delete patient. Please try again.',
@@ -171,7 +171,7 @@ const PatientsPage: React.FC = () => {
       }
       setFormModalVisible(false);
       dispatch(setSelectedPatient(null));
-    } catch (error) {
+    } catch {
       notification.error({
         message: 'Error',
         description: `Failed to ${isEditing ? 'update' : 'add'} patient. Please try again.`,
