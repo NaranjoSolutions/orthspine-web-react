@@ -5,6 +5,7 @@ import { ConfigProvider } from 'antd';
 import { store } from '@/store/redux/store';
 import { antdTheme } from '@/shared/theme/antd-theme';
 import { ThemeProvider } from '@/shared/theme/theme-context';
+import { AuthInitializer } from '@/features/auth/components/auth-initializer';
 
 interface AppProvidersProps {
   children: React.ReactNode;
@@ -25,7 +26,9 @@ export const AppProviders: React.FC<AppProvidersProps> = ({ children }) => {
     <Provider store={store}>
       <BrowserRouter>
         <ConfigProvider theme={antdTheme}>
-          <ThemeProvider defaultTheme="dark">{children}</ThemeProvider>
+          <ThemeProvider defaultTheme="dark">
+            <AuthInitializer>{children}</AuthInitializer>
+          </ThemeProvider>
         </ConfigProvider>
       </BrowserRouter>
     </Provider>
