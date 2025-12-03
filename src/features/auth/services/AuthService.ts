@@ -16,11 +16,14 @@ export class AuthService {
       // Save tokens using TokenService (Singleton)
       tokenService.saveTokens(response.tokens, rememberMe);
 
-      // Normalize user role to lowercase to ensure consistency
+      // Normalize and validate user role to ensure consistency
       // API might return different casing (e.g., "Admin" vs "admin")
+      const normalizedRole = response.user.userRole.toLowerCase();
+      const validRole = this.validateUserRole(normalizedRole);
+
       const normalizedUser: User = {
         ...response.user,
-        userRole: response.user.userRole.toLowerCase() as UserRole,
+        userRole: validRole,
       };
 
       logger.info('User logged in successfully', {
@@ -41,11 +44,14 @@ export class AuthService {
    */
   static processRegisterResponse(response: AuthResponse): User {
     try {
-      // Normalize user role to lowercase to ensure consistency
+      // Normalize and validate user role to ensure consistency
       // API might return different casing (e.g., "Admin" vs "admin")
+      const normalizedRole = response.user.userRole.toLowerCase();
+      const validRole = this.validateUserRole(normalizedRole);
+
       const normalizedUser: User = {
         ...response.user,
-        userRole: response.user.userRole.toLowerCase() as UserRole,
+        userRole: validRole,
       };
 
       logger.info('User registered successfully', {
@@ -86,6 +92,23 @@ export class AuthService {
    */
   static getAccessToken(): string | null {
     return tokenService.getAccessToken();
+  }
+
+  /**
+   * Validate and normalize user role
+   * Returns a valid UserRole enum value, defaults to USER if invalid
+   */
+  private static validateUserRole(role: string): UserRole {
+    const normalizedRole = role.toLowerCase();
+
+    // Check if the normalized role is a valid UserRole enum value
+    if (Object.values(UserRole).includes(normalizedRole as UserRole)) {
+      return normalizedRole as UserRole;
+    }
+
+    // Log warning for invalid role and return default
+    logger.warn('Invalid user role received from API, defaulting to USER', { receivedRole: role });
+    return UserRole.USER;
   }
 
   /**

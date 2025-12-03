@@ -1,2 +1,2 @@
 export { UnauthorizedPage } from './UnauthorizedPage';
-export { default } from './UnauthorizedPage';
+export { NotFoundPage } from './NotFoundPage';
