@@ -102,7 +102,9 @@ export class AuthService {
     const normalizedRole = role.toLowerCase();
 
     // Check if the normalized role is a valid UserRole enum value
-    if (Object.values(UserRole).includes(normalizedRole as UserRole)) {
+    const isValidRole = Object.values(UserRole).some((value) => value === normalizedRole);
+
+    if (isValidRole) {
       return normalizedRole as UserRole;
     }
 
