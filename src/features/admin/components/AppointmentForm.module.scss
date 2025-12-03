@@ -1,0 +1,33 @@
+.appointmentForm {
+  padding: 16px 0;
+
+  :global {
+    .ant-form-item {
+      margin-bottom: 20px;
+    }
+
+    .ant-form-item-label > label {
+      font-weight: 500;
+      color: var(--color-text-primary);
+    }
+
+    .ant-picker,
+    .ant-select,
+    .ant-input,
+    .ant-input-textarea {
+      border-radius: 6px;
+    }
+  }
+
+  .formActions {
+    margin-top: 24px;
+    margin-bottom: 0;
+    
+    :global {
+      .ant-form-item-control-input-content {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+}

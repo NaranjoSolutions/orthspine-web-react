@@ -7,3 +7,6 @@ export { PatientHeader } from './PatientHeader';
 export { PatientSummaryCards } from './PatientSummaryCards';
 export { MedicalNoteTimeline } from './MedicalNoteTimeline';
 export { AddMedicalNoteModal } from './AddMedicalNoteModal';
+export { AppointmentTable } from './AppointmentTable';
+export { AppointmentForm } from './AppointmentForm';
+export { AppointmentViewModal } from './AppointmentViewModal';

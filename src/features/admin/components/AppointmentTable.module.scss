@@ -1,0 +1,45 @@
+.appointmentTable {
+  width: 100%;
+
+  .table {
+    background: var(--color-bg-primary);
+  }
+
+  .dateTime {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .date {
+      font-weight: 500;
+      color: var(--color-text-primary);
+    }
+
+    .time {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+    }
+  }
+
+  .statusTag {
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 12px;
+    text-transform: capitalize;
+  }
+
+  .actionButton {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .appointmentTable {
+    .actionButton {
+      font-size: 12px;
+      padding: 2px 6px;
+    }
+  }
+}
