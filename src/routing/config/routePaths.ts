@@ -25,7 +25,10 @@ export const ROUTE_PATHS = {
 
   ADMIN: {
     DASHBOARD: '/admin',
+    PATIENTS: '/admin/patients',
+    APPOINTMENTS: '/admin/appointments',
     TESTIMONIALS: '/admin/testimonials',
+    SETTINGS: '/admin/settings',
   },
 
   NOT_FOUND: '*',

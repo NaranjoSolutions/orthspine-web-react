@@ -1,0 +1,55 @@
+@use '@/styles/abstracts' as *;
+
+.statCard {
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-sm;
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.iconContainer {
+  width: 64px;
+  height: 64px;
+  border-radius: $border-radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon {
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stats {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 $spacing-xs 0;
+  font-size: 14px;
+  color: $color-gray-600;
+  font-weight: 500;
+}
+
+.value {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: $color-gray-900;
+  line-height: 1;
+}
