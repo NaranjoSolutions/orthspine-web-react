@@ -1,11 +1,12 @@
 import React from 'react';
 import { Avatar, Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
-import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import { UserOutlined, LogoutOutlined, DashboardOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { clearAuth } from '@/features/auth/store/authSlice';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
+import { UserRole } from '@/features/auth/types';
 import styles from './UserMenu.module.scss';
 
 /**
@@ -22,14 +23,30 @@ export const UserMenu: React.FC = () => {
     navigate(ROUTE_PATHS.HOME);
   };
 
-  const menuItems: MenuProps['items'] = [
-    {
-      key: 'logout',
-      icon: <LogoutOutlined />,
-      label: 'Logout',
-      onClick: handleLogout,
-    },
-  ];
+  const handleDashboard = () => {
+    navigate(ROUTE_PATHS.ADMIN.DASHBOARD);
+  };
+
+  // Build menu items based on user role
+  const menuItems: MenuProps['items'] = [];
+
+  // Add dashboard link for admin users
+  if (user?.userRole === UserRole.ADMIN) {
+    menuItems.push({
+      key: 'dashboard',
+      icon: <DashboardOutlined />,
+      label: 'Admin Dashboard',
+      onClick: handleDashboard,
+    });
+  }
+
+  // Add logout option for all users
+  menuItems.push({
+    key: 'logout',
+    icon: <LogoutOutlined />,
+    label: 'Logout',
+    onClick: handleLogout,
+  });
 
   if (!user) {
     return null;
