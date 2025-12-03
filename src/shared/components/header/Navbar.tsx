@@ -26,15 +26,25 @@ export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
 
-  const handleBookAppointment = () => {
-    navigate(ROUTE_PATHS.BOOK_APPOINTMENT);
+  /**
+   * Helper function to get nav link class with active state
+   */
+  const getNavLinkClass = (path: string, isMobile: boolean = false): string => {
+    const baseClass = isMobile ? styles.mobileNavLink : styles.navLink;
+    const isActive = location.pathname === path;
+    return `${baseClass} ${isActive ? styles.active : ''}`;
+  };
+
+  /**
+   * Helper function to navigate and close mobile menu
+   */
+  const navigateAndCloseMobile = (path: string) => {
+    navigate(path);
     setMobileMenuOpen(false);
   };
 
-  const handleLoginClick = () => {
-    navigate(ROUTE_PATHS.AUTH.LOGIN);
-    setMobileMenuOpen(false);
-  };
+  const handleBookAppointment = () => navigateAndCloseMobile(ROUTE_PATHS.BOOK_APPOINTMENT);
+  const handleLoginClick = () => navigateAndCloseMobile(ROUTE_PATHS.AUTH.LOGIN);
 
   return (
     <Header className={styles.navbar}>
@@ -47,34 +57,19 @@ export const Navbar: React.FC = () => {
         </div>
 
         <nav className={styles.nav}>
-          <Link 
-            to={ROUTE_PATHS.HOME} 
-            className={`${styles.navLink} ${location.pathname === ROUTE_PATHS.HOME ? styles.active : ''}`}
-          >
+          <Link to={ROUTE_PATHS.HOME} className={getNavLinkClass(ROUTE_PATHS.HOME)}>
             Home
           </Link>
-          <Link 
-            to={ROUTE_PATHS.SERVICES} 
-            className={`${styles.navLink} ${location.pathname === ROUTE_PATHS.SERVICES ? styles.active : ''}`}
-          >
+          <Link to={ROUTE_PATHS.SERVICES} className={getNavLinkClass(ROUTE_PATHS.SERVICES)}>
             Services
           </Link>
-          <Link 
-            to={ROUTE_PATHS.TESTIMONIALS} 
-            className={`${styles.navLink} ${location.pathname === ROUTE_PATHS.TESTIMONIALS ? styles.active : ''}`}
-          >
+          <Link to={ROUTE_PATHS.TESTIMONIALS} className={getNavLinkClass(ROUTE_PATHS.TESTIMONIALS)}>
             Testimonials
           </Link>
-          <Link 
-            to={ROUTE_PATHS.CONTACT} 
-            className={`${styles.navLink} ${location.pathname === ROUTE_PATHS.CONTACT ? styles.active : ''}`}
-          >
+          <Link to={ROUTE_PATHS.CONTACT} className={getNavLinkClass(ROUTE_PATHS.CONTACT)}>
             Contact
           </Link>
-          <Link 
-            to={ROUTE_PATHS.ABOUT} 
-            className={`${styles.navLink} ${location.pathname === ROUTE_PATHS.ABOUT ? styles.active : ''}`}
-          >
+          <Link to={ROUTE_PATHS.ABOUT} className={getNavLinkClass(ROUTE_PATHS.ABOUT)}>
             About Us
           </Link>
         </nav>
@@ -121,39 +116,19 @@ export const Navbar: React.FC = () => {
         width={280}
       >
         <div className={styles.mobileMenu}>
-          <Link 
-            to={ROUTE_PATHS.HOME} 
-            onClick={() => setMobileMenuOpen(false)} 
-            className={`${styles.mobileNavLink} ${location.pathname === ROUTE_PATHS.HOME ? styles.active : ''}`}
-          >
+          <Link to={ROUTE_PATHS.HOME} onClick={() => setMobileMenuOpen(false)} className={getNavLinkClass(ROUTE_PATHS.HOME, true)}>
             Home
           </Link>
-          <Link 
-            to={ROUTE_PATHS.SERVICES} 
-            onClick={() => setMobileMenuOpen(false)} 
-            className={`${styles.mobileNavLink} ${location.pathname === ROUTE_PATHS.SERVICES ? styles.active : ''}`}
-          >
+          <Link to={ROUTE_PATHS.SERVICES} onClick={() => setMobileMenuOpen(false)} className={getNavLinkClass(ROUTE_PATHS.SERVICES, true)}>
             Services
           </Link>
-          <Link 
-            to={ROUTE_PATHS.CONTACT} 
-            onClick={() => setMobileMenuOpen(false)} 
-            className={`${styles.mobileNavLink} ${location.pathname === ROUTE_PATHS.CONTACT ? styles.active : ''}`}
-          >
+          <Link to={ROUTE_PATHS.CONTACT} onClick={() => setMobileMenuOpen(false)} className={getNavLinkClass(ROUTE_PATHS.CONTACT, true)}>
             Contact
           </Link>
-          <Link 
-            to={ROUTE_PATHS.ABOUT} 
-            onClick={() => setMobileMenuOpen(false)} 
-            className={`${styles.mobileNavLink} ${location.pathname === ROUTE_PATHS.ABOUT ? styles.active : ''}`}
-          >
+          <Link to={ROUTE_PATHS.ABOUT} onClick={() => setMobileMenuOpen(false)} className={getNavLinkClass(ROUTE_PATHS.ABOUT, true)}>
             About Us
           </Link>
-          <Link 
-            to={ROUTE_PATHS.TESTIMONIALS} 
-            onClick={() => setMobileMenuOpen(false)} 
-            className={`${styles.mobileNavLink} ${location.pathname === ROUTE_PATHS.TESTIMONIALS ? styles.active : ''}`}
-          >
+          <Link to={ROUTE_PATHS.TESTIMONIALS} onClick={() => setMobileMenuOpen(false)} className={getNavLinkClass(ROUTE_PATHS.TESTIMONIALS, true)}>
             Testimonials
           </Link>
           <div className={styles.mobileActions}>
