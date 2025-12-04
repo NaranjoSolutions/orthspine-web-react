@@ -10,3 +10,5 @@ export { AddMedicalNoteModal } from './AddMedicalNoteModal';
 export { AppointmentTable } from './AppointmentTable';
 export { AppointmentForm } from './AppointmentForm';
 export { AppointmentViewModal } from './AppointmentViewModal';
+export { TestimonialTable } from './TestimonialTable';
+export { TestimonialForm } from './TestimonialForm';
