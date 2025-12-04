@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input, Select, Rate, Button, Space } from 'antd';
-import type { TestimonialFormData, TestimonialStatus } from '@/features/admin/types/testimonial.types';
+import type { TestimonialFormData } from '@/features/admin/types/testimonial.types';
+import { TestimonialStatus } from '@/features/admin/types/testimonial.types';
 import styles from './TestimonialForm.module.scss';
 
 const { TextArea } = Input;
@@ -45,7 +46,7 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({
       initialValues={
         initialValues || {
           rating: 5,
-          status: 'pending' as TestimonialStatus,
+          status: TestimonialStatus.PENDING,
         }
       }
       onFinish={handleFinish}

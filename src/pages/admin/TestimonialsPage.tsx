@@ -20,7 +20,8 @@ import {
 } from '@/features/admin/store/testimonialsSlice';
 import { testimonialService } from '@/features/admin/services/testimonialService';
 import { TestimonialTable, TestimonialForm } from '@/features/admin/components';
-import type { Testimonial, TestimonialFormData, TestimonialStatus } from '@/features/admin/types/testimonial.types';
+import type { Testimonial, TestimonialFormData } from '@/features/admin/types/testimonial.types';
+import { TestimonialStatus } from '@/features/admin/types/testimonial.types';
 import styles from './TestimonialsPage.module.scss';
 
 const { Option } = Select;
@@ -145,7 +146,7 @@ const TestimonialsPage: React.FC = () => {
    */
   const handleApprove = async (testimonial: Testimonial) => {
     try {
-      const updated = await testimonialService.updateTestimonialStatus(testimonial.id, 'approved' as TestimonialStatus);
+      const updated = await testimonialService.updateTestimonialStatus(testimonial.id, TestimonialStatus.APPROVED);
       dispatch(updateTestimonial(updated));
       notification.success({
         message: 'Success',
@@ -164,7 +165,7 @@ const TestimonialsPage: React.FC = () => {
    */
   const handleReject = async (testimonial: Testimonial) => {
     try {
-      const updated = await testimonialService.updateTestimonialStatus(testimonial.id, 'rejected' as TestimonialStatus);
+      const updated = await testimonialService.updateTestimonialStatus(testimonial.id, TestimonialStatus.REJECTED);
       dispatch(updateTestimonial(updated));
       notification.success({
         message: 'Success',
