@@ -1,0 +1,110 @@
+@use '@/styles/abstracts' as *;
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  :global {
+    .ant-table {
+      background-color: $color-white;
+      border-radius: $border-radius-md;
+
+      .ant-table-thead > tr > th {
+        background-color: $color-gray-50;
+        color: $color-gray-700;
+        font-weight: 600;
+        font-size: 14px;
+        padding: $spacing-md $spacing-lg;
+        border-bottom: 2px solid $color-gray-200;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .ant-table-tbody > tr > td {
+        padding: $spacing-md $spacing-lg;
+        color: $color-gray-800;
+        font-size: 14px;
+      }
+
+      .ant-table-tbody > tr {
+        &:hover > td {
+          background-color: $color-gray-50;
+        }
+      }
+    }
+
+    .ant-pagination {
+      margin-top: $spacing-lg;
+      text-align: center;
+    }
+  }
+}
+
+.nameColumn {
+  font-weight: 600;
+  color: $color-gray-900;
+}
+
+.messageColumn {
+  color: $color-gray-700;
+}
+
+.messagePreview {
+  display: block;
+  color: $color-gray-600;
+  line-height: 1.5;
+}
+
+.dateColumn {
+  color: $color-gray-700;
+}
+
+.statusTag {
+  font-weight: 500;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: $border-radius-sm;
+}
+
+.approveButton,
+.rejectButton,
+.editButton,
+.deleteButton {
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.approveButton {
+  color: $color-success;
+
+  &:hover {
+    color: $color-success;
+    background-color: rgba($color-success, 0.1);
+  }
+}
+
+.rejectButton {
+  &:hover {
+    background-color: rgba($color-error, 0.1);
+  }
+}
+
+.editButton {
+  color: $color-gray-600;
+
+  &:hover {
+    color: $color-primary;
+    background-color: rgba($color-primary, 0.1);
+  }
+}
+
+.deleteButton {
+  &:hover {
+    background-color: rgba($color-error, 0.1);
+  }
+}
