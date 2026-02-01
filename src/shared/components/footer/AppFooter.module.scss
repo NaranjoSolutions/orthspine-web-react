@@ -60,26 +60,27 @@
   color: #6b7280;
   border-radius: 50%;
   font-size: 20px;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    // Default hover styles
-    background: #007bb9;
     color: #ffffff;
     transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 123, 185, 0.3);
   }
 
+  // Platform-specific hover colors
   &.facebook:hover {
     background: #1877f2; // Facebook blue
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
   }
 
   &.instagram:hover {
     background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); // Instagram gradient
+    box-shadow: 0 4px 12px rgba(214, 41, 118, 0.3);
   }
 
   &.youtube:hover {
     background: #ff0000; // YouTube red
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
   }
 }
 
