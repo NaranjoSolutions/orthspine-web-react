@@ -1,10 +1,7 @@
 import React from 'react';
-import { Button } from 'antd';
-import { PhoneOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { allClinicServices } from '@/shared/resources/services/services';
 import { ServiceCard } from '@/features/home/components/ServiceCard';
-import { VisitOurClinic } from '@/features/home/components/VisitOurClinic';
-import { MedicineBoxOutlined } from '@ant-design/icons';
+import { ServiceCTA } from '@/features/services/components/ServiceCTA';
 import styles from './ServicesPage.module.scss';
 
 /**
@@ -48,7 +45,8 @@ export const ServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* TODO Add `not sure which service you need?` */}
+      {/* Not Sure Which Service CTA Section */}
+      <ServiceCTA />
     </div>
   );
 };
