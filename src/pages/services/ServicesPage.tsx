@@ -38,6 +38,7 @@ export const ServicesPage: React.FC = () => {
                   shortDescription={service.shortDescription}
                   image={service.image}
                   alt={service.alt}
+                  conditionsTreated={service.conditionsTreated}
                 />
               </div>
             ))}
