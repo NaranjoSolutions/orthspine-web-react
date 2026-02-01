@@ -1,8 +1,8 @@
 @use '@/styles/abstracts' as *;
 
 .footer {
-  background: #f3f4f6;
-  color: #6b7280;
+  background: #1f2937;
+  color: #9ca3af;
   padding: 32px 0 24px;
   text-align: center;
 }
@@ -29,14 +29,14 @@
 }
 
 .navLink {
-  color: #6b7280;
+  color: #9ca3af;
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #374151;
+    color: #f3f4f6;
   }
 }
 
@@ -56,36 +56,37 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: #e5e7eb;
-  color: #6b7280;
+  background: #374151;
+  color: #9ca3af;
   border-radius: 50%;
   font-size: 20px;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    // Default hover styles
-    background: #007bb9;
     color: #ffffff;
     transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 123, 185, 0.3);
   }
 
+  // Platform-specific hover colors
   &.facebook:hover {
     background: #1877f2; // Facebook blue
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
   }
 
   &.instagram:hover {
     background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); // Instagram gradient
+    box-shadow: 0 4px 12px rgba(214, 41, 118, 0.3);
   }
 
   &.youtube:hover {
     background: #ff0000; // YouTube red
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
   }
 }
 
 .copyrightRow {
   padding-top: 16px;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #374151;
 }
 
 .copyrightCol {
@@ -93,11 +94,11 @@
 }
 
 .copyrightText {
-  color: #6b7280;
+  color: #9ca3af;
   font-size: 14px;
 }
 
 .developerName {
-  color: #007bb9;
+  color: #60a5fa;
   font-weight: 600;
 }
