@@ -1,0 +1,176 @@
+@use '@/styles/abstracts' as *;
+
+.termsOfServicePage {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-gray-50;
+  padding: 80px 0;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 60px 0;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 40px 0;
+  }
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 60px 80px;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 40px 40px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 30px 20px;
+    border-radius: 0;
+  }
+}
+
+.header {
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $color-gray-200;
+
+  @media (max-width: $breakpoint-sm) {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+  }
+}
+
+.effectiveDate {
+  font-size: $font-size-xs;
+  color: $color-primary;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 1px;
+  margin-bottom: $spacing-md;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin-bottom: $spacing-sm;
+  line-height: 1.2;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 36px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 28px;
+  }
+}
+
+.subtitle {
+  font-size: $font-size-base;
+  color: $color-gray-600;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.section {
+  margin-bottom: 40px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    margin-bottom: 30px;
+  }
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  margin-bottom: $spacing-md;
+  line-height: 1.4;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 20px;
+  }
+}
+
+.paragraph {
+  font-size: $font-size-base;
+  color: $color-gray-700;
+  line-height: 1.8;
+  margin-bottom: $spacing-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.link {
+  color: $color-primary;
+  text-decoration: none;
+  font-weight: $font-weight-medium;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $color-primary-dark;
+    text-decoration: underline;
+  }
+}
+
+.list {
+  list-style-type: disc;
+  padding-left: 24px;
+  margin-bottom: $spacing-md;
+
+  li {
+    font-size: $font-size-base;
+    color: $color-gray-700;
+    line-height: 1.8;
+    margin-bottom: $spacing-sm;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      font-weight: $font-weight-semibold;
+      color: $color-gray-900;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding-left: 20px;
+  }
+}
+
+.policySection {
+  margin-bottom: $spacing-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.policyLabel {
+  font-size: $font-size-base;
+  color: $color-gray-900;
+  font-weight: $font-weight-semibold;
+  margin-bottom: $spacing-xs;
+}
+
+.footer {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid $color-gray-200;
+
+  @media (max-width: $breakpoint-sm) {
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+}
