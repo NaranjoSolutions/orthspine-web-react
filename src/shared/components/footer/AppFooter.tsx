@@ -48,7 +48,7 @@ export const AppFooter: React.FC = () => {
               href={clinicInformation.socialMedia.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.socialIcon}
+              className={`${styles.socialIcon} facebook`}
               aria-label="Facebook"
             >
               <FacebookOutlined />
@@ -57,7 +57,7 @@ export const AppFooter: React.FC = () => {
               href={clinicInformation.socialMedia.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.socialIcon}
+              className={`${styles.socialIcon} instagram`}
               aria-label="Instagram"
             >
               <InstagramOutlined />
@@ -66,7 +66,7 @@ export const AppFooter: React.FC = () => {
               href={clinicInformation.socialMedia.youtube}
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.socialIcon}
+              className={`${styles.socialIcon} youtube`}
               aria-label="YouTube"
             >
               <YoutubeOutlined />
