@@ -20,6 +20,7 @@ const ContactPage = lazy(() => import('@/pages/contact'));
 const TestimonialsPage = lazy(() => import('@/pages/testimonials'));
 const BookAppointmentPage = lazy(() => import('@/pages/book-appointment'));
 const PrivacyPolicyPage = lazy(() => import('@/pages/privacy-policy'));
+const TermsOfServicePage = lazy(() => import('@/pages/terms-of-service'));
 
 // Auth pages
 const LoginPage = lazy(() => import('@/pages/auth/login-page'));
@@ -92,6 +93,10 @@ export const routes: RouteObject[] = [
       {
         path: ROUTE_PATHS.PRIVACY_POLICY,
         element: <PrivacyPolicyPage />,
+      },
+      {
+        path: ROUTE_PATHS.TERMS_OF_SERVICE,
+        element: <TermsOfServicePage />,
       },
     ],
   },
