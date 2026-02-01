@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button } from 'antd';
-import { EnvironmentOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
+import { ClockCircleOutlined, EnvironmentOutlined, PhoneOutlined } from '@ant-design/icons';
 import 'leaflet/dist/leaflet.css';
 import { clinicInformation } from '@/shared/resources/clinic-information';
-import styles from './ContactSection.module.scss';
+import styles from './VisitOurClinic.module.scss';
 
 // Fix for default marker icon in react-leaflet
 import L from 'leaflet';
@@ -20,7 +20,7 @@ const DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 /**
- * ContactSection Component
+ * VisitOurClinic Component
  * Displays clinic contact information and location with navigation buttons
  *
  * Features:
@@ -29,7 +29,7 @@ L.Marker.prototype.options.icon = DefaultIcon;
  * - Google Maps and Waze navigation buttons
  * - Responsive design
  */
-export const ContactSection: React.FC = () => {
+export const VisitOurClinic: React.FC = () => {
   const { location, contact } = clinicInformation;
 
   const handleOpenGoogleMaps = () => {
@@ -43,10 +43,10 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section className={styles.contactSection}>
+    <section className={styles.visitOurClinicSection}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Contact Us</h2>
+          <h2 className={styles.title}>Visit Our Clinic</h2>
           <p className={styles.subtitle}>
             We're here to help you on your journey to better health. Contact us today to schedule an appointment or
             learn more about our services.
@@ -56,30 +56,35 @@ export const ContactSection: React.FC = () => {
         <div className={styles.content}>
           <div className={styles.infoGrid}>
             <div className={styles.infoItem}>
-              <h3 className={styles.infoLabel}>Phone</h3>
+              <h3 className={styles.infoLabel}>Address</h3>
+              <div>
+                <EnvironmentOutlined />
+                <p className={styles.infoValue}>{location.address}</p>
+              </div>
+            </div>
+
+            <div className={styles.infoItem}>
+              <h3 className={styles.infoLabel}>Oppening Hours</h3>
+              <div>
+                <ClockCircleOutlined />
+                <p className={styles.infoValue}>Mon - Fri: 9:00 AM - 5:00 PM</p>
+                <p className={styles.infoValue}>Saturday: 10:00 AM - 2:00 PM</p>
+                <p className={styles.infoValue}>Sunday: Closed</p>
+              </div>
+            </div>
+
+            <div className={styles.infoItem}>
+              <h3 className={styles.infoLabel}>Contact Info</h3>
               <PhoneOutlined />
               <div>
                 <a href={`tel:${contact.phones[0]}`} className={styles.infoValue}>
                   {contact.phones[0]}
                 </a>
               </div>
-            </div>
-
-            <div className={styles.infoItem}>
-              <h3 className={styles.infoLabel}>Email</h3>
               <div>
-                <MailOutlined />
                 <a href={`mailto:${contact.email}`} className={styles.infoValue}>
                   {contact.email}
                 </a>
-              </div>
-            </div>
-
-            <div className={styles.infoItem}>
-              <h3 className={styles.infoLabel}>Address</h3>
-              <div>
-                <EnvironmentOutlined />
-                <p className={styles.infoValue}>{location.address}</p>
               </div>
             </div>
           </div>

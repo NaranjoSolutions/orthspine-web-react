@@ -11,7 +11,7 @@ import {
 } from '@ant-design/icons';
 import { allClinicServices } from '@/shared/resources/services/services';
 import { ServiceCard } from '@/features/home/components/ServiceCard';
-import { ContactSection } from '@/features/home/components/ContactSection';
+import { ContactSection } from '@/features/home/components/VisitOurClinic';
 import { MedicineBoxOutlined, HeartOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import styles from './ServicesPage.module.scss';
 

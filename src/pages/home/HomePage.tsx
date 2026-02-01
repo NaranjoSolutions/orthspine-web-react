@@ -2,8 +2,8 @@ import React from 'react';
 import { HomeHeroSection } from '@/features/home/components/HomeHeroSection';
 import { TestimonialsCarousel } from '@/features/home/components/TestimonialsCarousel';
 import { ServicesCarousel } from '@/features/home/components/ServicesCarousel';
-import { ContactSection } from '@/features/home/components/ContactSection';
 import styles from './HomePage.module.scss';
+import { VisitOurClinic } from '@/features/home/components/VisitOurClinic';
 
 /**
  * HomePage Component
@@ -15,7 +15,7 @@ import styles from './HomePage.module.scss';
  * - Call-to-action button
  * - Services carousel section
  * - Patient testimonials carousel section
- * - Contact Us section with map and navigation buttons
+ * - Visit Our Clinic section with map and navigation buttons
  */
 export const HomePage: React.FC = () => {
   return (
@@ -23,7 +23,7 @@ export const HomePage: React.FC = () => {
       <HomeHeroSection />
       <ServicesCarousel />
       <TestimonialsCarousel />
-      <ContactSection />
+      <VisitOurClinic />
     </div>
   );
 };
