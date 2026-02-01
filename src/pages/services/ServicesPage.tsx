@@ -11,7 +11,7 @@ import {
 } from '@ant-design/icons';
 import { allClinicServices } from '@/shared/resources/services/services';
 import { ServiceCard } from '@/features/home/components/ServiceCard';
-import { ContactSection } from '@/features/home/components/VisitOurClinic';
+import { VisitOurClinic } from '@/features/home/components/VisitOurClinic';
 import { MedicineBoxOutlined, HeartOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import styles from './ServicesPage.module.scss';
 
@@ -102,7 +102,6 @@ export const ServicesPage: React.FC = () => {
                   shortDescription={service.shortDescription}
                   image={service.image}
                   alt={service.alt}
-                  icon={serviceIcons[service.serviceId]}
                 />
               </div>
             ))}
@@ -112,7 +111,7 @@ export const ServicesPage: React.FC = () => {
 
       {/* Contact Section */}
       <div id="contact-section">
-        <ContactSection />
+        <VisitOurClinic />
       </div>
     </div>
   );
