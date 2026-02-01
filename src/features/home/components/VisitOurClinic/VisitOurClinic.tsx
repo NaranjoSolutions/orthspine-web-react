@@ -50,7 +50,8 @@ export const VisitOurClinic: React.FC = () => {
             Visit Our Clinic
           </h2>
           <p className={styles.subtitle}>
-            We are conveniently located in the heart of the city, providing specialized care in a state-of-the-art facility.
+            We are conveniently located in the heart of the city, providing specialized care in a state-of-the-art
+            facility.
           </p>
         </div>
 
@@ -84,7 +85,9 @@ export const VisitOurClinic: React.FC = () => {
               </div>
               <h3 className={styles.infoLabel}>Contact Info</h3>
               <div className={styles.infoContent}>
-                <p className={styles.infoValue}>{contact.phones[0]}</p>
+                <a href={`tel:${contact.phones[0]}`} className={styles.infoLink}>
+                  {contact.phones[0]}
+                </a>
                 <a href={`mailto:${contact.email}`} className={styles.infoLink}>
                   {contact.email}
                 </a>
