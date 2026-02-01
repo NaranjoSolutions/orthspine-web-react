@@ -71,7 +71,7 @@
 .infoGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: $spacing-xl;
+  gap: $spacing-lg;
   margin-bottom: 48px;
 
   @media (max-width: $breakpoint-md) {
@@ -83,50 +83,55 @@
 
 .infoItem {
   text-align: center;
-  padding: $spacing-lg;
-  background: $color-white;
+  padding: $spacing-xl $spacing-lg;
+  background: #f8f9fb;
   border-radius: $border-radius-lg;
-  box-shadow: $shadow-sm;
   transition: all $transition-base;
-  border: 1px solid $color-gray-100;
-
-  &:hover {
-    box-shadow: $shadow-md;
-    transform: translateY(-2px);
-    border-color: rgba($color-primary, 0.18);
-  }
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   @media (max-width: $breakpoint-md) {
-    text-align: left;
+    text-align: center;
   }
 }
 
 .infoLabel {
-  font-size: $font-size-base;
-  font-weight: bold;
-  margin-bottom: $spacing-sm;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: $spacing-md;
+  margin-top: $spacing-md;
+  color: $color-gray-900;
+  letter-spacing: 0px;
+  text-transform: none;
 }
 
 .infoValue {
-  font-size: $font-size-lg;
-  font-weight: $font-weight-medium;
-  color: $color-gray-900;
+  font-size: 14px;
+  font-weight: $font-weight-normal;
+  color: $color-gray-700;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.8;
 }
 
 .infoContent {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-sm;
+  gap: 4px;
+  width: 100%;
+}
 
-  @media (max-width: $breakpoint-md) {
-    flex-direction: row;
-    align-items: flex-start;
-  }
+.iconWrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #e3f2fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
 }
 
 .infoStack {
@@ -136,21 +141,21 @@
 }
 
 .infoIcon {
-  font-size: 22px;
-  color: $color-primary;
+  font-size: 28px;
+  color: #1976d2;
   flex: 0 0 auto;
-  margin-top: 2px;
 }
 
 .infoLink {
-  font-size: $font-size-lg;
-  font-weight: bold;
-  color: $color-primary;
+  font-size: 14px;
+  font-weight: $font-weight-normal;
+  color: #1976d2;
   text-decoration: underline;
+  line-height: 1.8;
 
   &:hover {
-    color: $color-primary-dark;
-    text-decoration: none;
+    color: #1565c0;
+    text-decoration: underline;
   }
 
   &:focus-visible {
