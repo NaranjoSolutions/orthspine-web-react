@@ -21,6 +21,7 @@ export const ROUTE_PATHS = {
 
   // Service Detail Pages
   SERVICE_DETAILS: {
+    BASE: '/services/:serviceId',
     SPINE: '/services/spine',
     KNEE: '/services/knee',
     HIP: '/services/hip',

@@ -80,7 +80,7 @@ export const routes: RouteObject[] = [
         element: <ServicesPage />,
       },
       {
-        path: '/services/:serviceId',
+        path: ROUTE_PATHS.SERVICE_DETAILS.BASE,
         element: <ServiceDetailPage />,
       },
       {
