@@ -36,7 +36,7 @@ export const AppFooter: React.FC = () => {
             <a href={ROUTE_PATHS.PRIVACY_POLICY} className={styles.navLink}>
               Privacy Policy
             </a>
-            <a href="/terms-of-service" className={styles.navLink}>
+            <a href={ROUTE_PATHS.TERMS_OF_SERVICE} className={styles.navLink}>
               Terms of Service
             </a>
           </Col>

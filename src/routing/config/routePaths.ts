@@ -17,6 +17,7 @@ export const ROUTE_PATHS = {
   TESTIMONIALS: '/testimonials',
   BOOK_APPOINTMENT: '/book-appointment',
   PRIVACY_POLICY: '/privacy-policy',
+  TERMS_OF_SERVICE: '/terms-of-service',
 
   AUTH: {
     LOGIN: '/login',
