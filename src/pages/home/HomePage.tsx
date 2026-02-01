@@ -4,6 +4,7 @@ import { TestimonialsCarousel } from '@/features/home/components/TestimonialsCar
 import { ServicesCarousel } from '@/features/home/components/ServicesCarousel';
 import styles from './HomePage.module.scss';
 import { VisitOurClinic } from '@/features/home/components/VisitOurClinic';
+import { RecoveryJourney } from '@/features/home/components/RecoveryJourney';
 
 /**
  * HomePage Component
@@ -16,6 +17,7 @@ import { VisitOurClinic } from '@/features/home/components/VisitOurClinic';
  * - Services carousel section
  * - Patient testimonials carousel section
  * - Visit Our Clinic section with map and navigation buttons
+ * - Recovery Journey call-to-action section
  */
 export const HomePage: React.FC = () => {
   return (
@@ -24,6 +26,7 @@ export const HomePage: React.FC = () => {
       <ServicesCarousel />
       <TestimonialsCarousel />
       <VisitOurClinic />
+      <RecoveryJourney />
     </div>
   );
 };
