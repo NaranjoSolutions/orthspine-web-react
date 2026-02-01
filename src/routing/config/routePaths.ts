@@ -19,6 +19,18 @@ export const ROUTE_PATHS = {
   PRIVACY_POLICY: '/privacy-policy',
   TERMS_OF_SERVICE: '/terms-of-service',
 
+  // Service Detail Pages
+  SERVICE_DETAILS: {
+    SPINE: '/services/spine',
+    KNEE: '/services/knee',
+    HIP: '/services/hip',
+    SHOULDER: '/services/shoulder',
+    FOOT_AND_HAND: '/services/foot-and-hand',
+    REHABILITATION: '/services/rehabilitation',
+    CIRCULATION: '/services/circulation',
+    SPORTS: '/services/sports',
+  },
+
   AUTH: {
     LOGIN: '/login',
     REGISTER: '/register',

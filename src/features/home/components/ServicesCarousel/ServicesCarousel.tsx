@@ -43,6 +43,7 @@ export const ServicesCarousel: React.FC = () => {
                   shortDescription={service.shortDescription}
                   image={service.image}
                   alt={service.alt}
+                  serviceId={service.serviceId}
                 />
               </div>
             ))}
