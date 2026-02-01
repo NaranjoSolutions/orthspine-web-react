@@ -12,6 +12,11 @@ import './styles/variables.css';
 // Import global styles
 import './styles/main.scss';
 
+// Import test utilities in development mode
+if (import.meta.env.DEV) {
+  import('./features/cookie-consent/utils/testUtils');
+}
+
 /**
  * Application Entry Point
  *
