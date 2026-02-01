@@ -1,0 +1,118 @@
+@use '@/styles/abstracts' as *;
+
+.serviceCTA {
+  padding: $spacing-2xl * 2 0;
+  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+  text-align: center;
+}
+
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: #3b82f6;
+  border-radius: 50%;
+  margin-bottom: $spacing-xl;
+
+  @media (max-width: $breakpoint-md) {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.icon {
+  font-size: 40px;
+  color: $color-white;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 32px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin-bottom: $spacing-lg;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 24px;
+  }
+}
+
+.description {
+  font-size: 18px;
+  color: $color-gray-600;
+  line-height: 1.6;
+  margin-bottom: $spacing-xl;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 16px;
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.contactButton,
+.whatsappButton {
+  height: 56px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0 32px;
+  border-radius: $border-radius-lg;
+  transition: all $transition-base;
+
+  @media (max-width: $breakpoint-md) {
+    height: 48px;
+    font-size: 15px;
+    padding: 0 24px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    width: 100%;
+  }
+}
+
+.contactButton {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+
+  &:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.5);
+  }
+}
+
+.whatsappButton {
+  background: #25d366;
+  border-color: #25d366;
+  color: $color-white;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+
+  &:hover {
+    background: #1da851;
+    border-color: #1da851;
+    color: $color-white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
+  }
+}
