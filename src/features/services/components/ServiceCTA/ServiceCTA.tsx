@@ -23,8 +23,15 @@ export const ServiceCTA: React.FC = () => {
   };
 
   const handleWhatsAppChat = () => {
+    // Validate phone number availability
+    const phone = clinicInformation.contact.phones[0];
+    if (!phone) {
+      console.error('No phone number available for WhatsApp');
+      return;
+    }
+
     // Format phone number for WhatsApp (remove + and spaces)
-    const phoneNumber = clinicInformation.contact.phones[0].replace(/[+\s-]/g, '');
+    const phoneNumber = phone.replace(/[+\s-]/g, '');
     const message = encodeURIComponent('Hello! I would like to know more about your services.');
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
