@@ -6,6 +6,10 @@
   background: $color-gray-50;
   overflow: hidden;
 
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba($color-primary, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 85% 0%, rgba($color-primary-light, 0.06) 0%, transparent 45%);
+
   @media (max-width: $breakpoint-md) {
     padding: 60px 0;
   }
@@ -36,6 +40,7 @@
   color: $color-gray-900;
   margin-bottom: $spacing-md;
   line-height: 1.2;
+  letter-spacing: -0.02em;
 
   @media (max-width: $breakpoint-md) {
     font-size: 36px;
@@ -83,10 +88,16 @@
   border-radius: $border-radius-lg;
   box-shadow: $shadow-sm;
   transition: all $transition-base;
+  border: 1px solid $color-gray-100;
 
   &:hover {
     box-shadow: $shadow-md;
     transform: translateY(-2px);
+    border-color: rgba($color-primary, 0.18);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    text-align: left;
   }
 }
 
@@ -105,6 +116,52 @@
   color: $color-gray-900;
   margin: 0;
   line-height: 1.5;
+}
+
+.infoContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.infoStack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.infoIcon {
+  font-size: 22px;
+  color: $color-primary;
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.infoLink {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  color: $color-gray-900;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-primary;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba($color-primary, 0.35);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 }
 
 .mapPlaceholder {
@@ -220,6 +277,7 @@
   gap: $spacing-md;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: $spacing-xl;
 
   @media (max-width: $breakpoint-sm) {
     flex-direction: column;
@@ -241,11 +299,16 @@
   gap: $spacing-sm;
 
   &:hover {
-    border-color: #0ea5e9;
-    color: #0ea5e9;
+    border-color: $color-primary;
+    color: $color-primary;
     background: $color-white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    box-shadow: 0 6px 16px rgba($color-primary, 0.22);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba($color-primary, 0.35);
+    outline-offset: 3px;
   }
 
   @media (max-width: $breakpoint-sm) {

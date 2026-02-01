@@ -43,10 +43,12 @@ export const VisitOurClinic: React.FC = () => {
   };
 
   return (
-    <section className={styles.visitOurClinicSection}>
+    <section id="contact-section" className={styles.visitOurClinic} aria-labelledby="visit-our-clinic-title">
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Visit Our Clinic</h2>
+          <h2 id="visit-our-clinic-title" className={styles.title}>
+            Visit Our Clinic
+          </h2>
           <p className={styles.subtitle}>
             We're here to help you on your journey to better health. Contact us today to schedule an appointment or
             learn more about our services.
@@ -57,34 +59,36 @@ export const VisitOurClinic: React.FC = () => {
           <div className={styles.infoGrid}>
             <div className={styles.infoItem}>
               <h3 className={styles.infoLabel}>Address</h3>
-              <div>
-                <EnvironmentOutlined />
+              <div className={styles.infoContent}>
+                <EnvironmentOutlined className={styles.infoIcon} aria-hidden />
                 <p className={styles.infoValue}>{location.address}</p>
               </div>
             </div>
 
             <div className={styles.infoItem}>
-              <h3 className={styles.infoLabel}>Oppening Hours</h3>
-              <div>
-                <ClockCircleOutlined />
-                <p className={styles.infoValue}>Mon - Fri: 9:00 AM - 5:00 PM</p>
-                <p className={styles.infoValue}>Saturday: 10:00 AM - 2:00 PM</p>
-                <p className={styles.infoValue}>Sunday: Closed</p>
+              <h3 className={styles.infoLabel}>Opening Hours</h3>
+              <div className={styles.infoContent}>
+                <ClockCircleOutlined className={styles.infoIcon} aria-hidden />
+                <div className={styles.infoStack}>
+                  <p className={styles.infoValue}>Mon - Fri: 9:00 AM - 5:00 PM</p>
+                  <p className={styles.infoValue}>Saturday: 10:00 AM - 2:00 PM</p>
+                  <p className={styles.infoValue}>Sunday: Closed</p>
+                </div>
               </div>
             </div>
 
             <div className={styles.infoItem}>
               <h3 className={styles.infoLabel}>Contact Info</h3>
-              <PhoneOutlined />
-              <div>
-                <a href={`tel:${contact.phones[0]}`} className={styles.infoValue}>
-                  {contact.phones[0]}
-                </a>
-              </div>
-              <div>
-                <a href={`mailto:${contact.email}`} className={styles.infoValue}>
-                  {contact.email}
-                </a>
+              <div className={styles.infoContent}>
+                <PhoneOutlined className={styles.infoIcon} aria-hidden />
+                <div className={styles.infoStack}>
+                  <a href={`tel:${contact.phones[0]}`} className={styles.infoLink}>
+                    {contact.phones[0]}
+                  </a>
+                  <a href={`mailto:${contact.email}`} className={styles.infoLink}>
+                    {contact.email}
+                  </a>
+                </div>
               </div>
             </div>
           </div>
