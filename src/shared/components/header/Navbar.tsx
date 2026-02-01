@@ -79,9 +79,9 @@ export const Navbar: React.FC = () => {
             <UserMenu />
           ) : (
             <>
-              <Button type="default" className={styles.loginButton} onClick={handleLoginClick}>
+              {/* <Button type="default" className={styles.loginButton} onClick={handleLoginClick}>
                 Login
-              </Button>
+              </Button> */}
               <Button type="primary" className={styles.bookButton} onClick={handleBookAppointment}>
                 Book Appointment
               </Button>
@@ -116,19 +116,39 @@ export const Navbar: React.FC = () => {
         width={280}
       >
         <div className={styles.mobileMenu}>
-          <Link to={ROUTE_PATHS.HOME} onClick={() => setMobileMenuOpen(false)} className={getNavLinkClass(ROUTE_PATHS.HOME, true)}>
+          <Link
+            to={ROUTE_PATHS.HOME}
+            onClick={() => setMobileMenuOpen(false)}
+            className={getNavLinkClass(ROUTE_PATHS.HOME, true)}
+          >
             Home
           </Link>
-          <Link to={ROUTE_PATHS.SERVICES} onClick={() => setMobileMenuOpen(false)} className={getNavLinkClass(ROUTE_PATHS.SERVICES, true)}>
+          <Link
+            to={ROUTE_PATHS.SERVICES}
+            onClick={() => setMobileMenuOpen(false)}
+            className={getNavLinkClass(ROUTE_PATHS.SERVICES, true)}
+          >
             Services
           </Link>
-          <Link to={ROUTE_PATHS.CONTACT} onClick={() => setMobileMenuOpen(false)} className={getNavLinkClass(ROUTE_PATHS.CONTACT, true)}>
+          <Link
+            to={ROUTE_PATHS.CONTACT}
+            onClick={() => setMobileMenuOpen(false)}
+            className={getNavLinkClass(ROUTE_PATHS.CONTACT, true)}
+          >
             Contact
           </Link>
-          <Link to={ROUTE_PATHS.ABOUT} onClick={() => setMobileMenuOpen(false)} className={getNavLinkClass(ROUTE_PATHS.ABOUT, true)}>
+          <Link
+            to={ROUTE_PATHS.ABOUT}
+            onClick={() => setMobileMenuOpen(false)}
+            className={getNavLinkClass(ROUTE_PATHS.ABOUT, true)}
+          >
             About Us
           </Link>
-          <Link to={ROUTE_PATHS.TESTIMONIALS} onClick={() => setMobileMenuOpen(false)} className={getNavLinkClass(ROUTE_PATHS.TESTIMONIALS, true)}>
+          <Link
+            to={ROUTE_PATHS.TESTIMONIALS}
+            onClick={() => setMobileMenuOpen(false)}
+            className={getNavLinkClass(ROUTE_PATHS.TESTIMONIALS, true)}
+          >
             Testimonials
           </Link>
           <div className={styles.mobileActions}>
@@ -136,9 +156,9 @@ export const Navbar: React.FC = () => {
               <UserMenu />
             ) : (
               <>
-                <Button type="default" className={styles.mobileLoginButton} onClick={handleLoginClick} block>
+                {/* <Button type="default" className={styles.mobileLoginButton} onClick={handleLoginClick} block>
                   Login
-                </Button>
+                </Button> */}
                 <Button type="primary" className={styles.mobileBookButton} onClick={handleBookAppointment} block>
                   Book Appointment
                 </Button>
