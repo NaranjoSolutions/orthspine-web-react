@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Row, Col, Typography } from 'antd';
 import { FacebookOutlined, InstagramOutlined, YoutubeOutlined } from '@ant-design/icons';
 import { clinicInformation } from '@/shared/resources/clinic-information';
+import { ROUTE_PATHS } from '@/routing/config/routePaths';
 import styles from './AppFooter.module.scss';
 
 const { Footer } = Layout;
@@ -20,22 +21,22 @@ export const AppFooter: React.FC = () => {
         {/* Navigation Links */}
         <Row justify="center" className={styles.navRow}>
           <Col xs={24} className={styles.navCol}>
-            <a href="/" className={styles.navLink}>
+            <a href={ROUTE_PATHS.HOME} className={styles.navLink}>
               Home
             </a>
-            <a href="/services" className={styles.navLink}>
+            <a href={ROUTE_PATHS.SERVICES} className={styles.navLink}>
               Services
             </a>
-            <a href="/contact" className={styles.navLink}>
+            <a href={ROUTE_PATHS.CONTACT} className={styles.navLink}>
               Contact
             </a>
-            <a href="/about" className={styles.navLink}>
+            <a href={ROUTE_PATHS.ABOUT} className={styles.navLink}>
               About
             </a>
-            <a href="/privacy-policy" className={styles.navLink}>
+            <a href={ROUTE_PATHS.PRIVACY_POLICY} className={styles.navLink}>
               Privacy Policy
             </a>
-            <a href="/terms-of-service" className={styles.navLink}>
+            <a href={ROUTE_PATHS.TERMS_OF_SERVICE} className={styles.navLink}>
               Terms of Service
             </a>
           </Col>
