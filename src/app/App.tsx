@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
 import { Spin } from 'antd';
 import { routes } from '@/routing/routes';
+import { CookieConsentBanner } from '@/features/cookie-consent';
 import './App.scss';
 
 /**
@@ -16,21 +17,25 @@ import './App.scss';
  * - Routes are lazy-loaded for optimal performance
  * - Suspense boundary provides loading state
  * - Layout components wrapped at route level (not here)
+ * - Cookie consent banner displayed at application level
  */
 export const App: React.FC = () => {
   const element = useRoutes(routes);
 
   return (
-    <Suspense
-      fallback={
-        <div className="app-loading">
-          <Spin size="large" tip="Loading...">
-            <div style={{ minHeight: '200px' }} />
-          </Spin>
-        </div>
-      }
-    >
-      {element}
-    </Suspense>
+    <>
+      <Suspense
+        fallback={
+          <div className="app-loading">
+            <Spin size="large" tip="Loading...">
+              <div style={{ minHeight: '200px' }} />
+            </Spin>
+          </div>
+        }
+      >
+        {element}
+      </Suspense>
+      <CookieConsentBanner />
+    </>
   );
 };

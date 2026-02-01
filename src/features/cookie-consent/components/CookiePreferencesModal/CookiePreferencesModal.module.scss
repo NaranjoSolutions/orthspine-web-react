@@ -1,0 +1,142 @@
+@use '@/styles/abstracts' as *;
+
+.modal {
+  :global(.ant-modal-content) {
+    border-radius: $border-radius-lg;
+  }
+
+  :global(.ant-modal-header) {
+    border-bottom: 1px solid $color-gray-200;
+    padding: $spacing-lg $spacing-xl;
+
+    :global(.ant-modal-title) {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $color-gray-900;
+    }
+  }
+
+  :global(.ant-modal-body) {
+    padding: $spacing-xl;
+  }
+
+  :global(.ant-modal-close) {
+    top: $spacing-lg;
+    right: $spacing-lg;
+  }
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.description {
+  font-size: $font-size-base;
+  color: $color-gray-600;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.categoryItem {
+  padding: $spacing-lg;
+  background-color: $color-gray-50;
+  border-radius: $border-radius-md;
+  border: 1px solid $color-gray-200;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: $color-gray-300;
+    background-color: $color-gray-100;
+  }
+}
+
+.categoryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $spacing-md;
+  margin-bottom: $spacing-sm;
+}
+
+.categoryTitleRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex: 1;
+}
+
+.categoryTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-gray-900;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.alwaysActiveBadge {
+  display: inline-block;
+  padding: 2px $spacing-sm;
+  background-color: $color-gray-300;
+  color: $color-gray-700;
+  font-size: 11px;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.5px;
+  border-radius: $border-radius-sm;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.categoryDescription {
+  font-size: $font-size-sm;
+  color: $color-gray-600;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-top: $spacing-md;
+  border-top: 1px solid $color-gray-200;
+  margin-top: $spacing-md;
+
+  button {
+    min-width: 140px;
+  }
+}
+
+// Responsive styles
+@media (max-width: $breakpoint-sm) {
+  .modal {
+    :global(.ant-modal-header),
+    :global(.ant-modal-body) {
+      padding: $spacing-lg;
+    }
+  }
+
+  .categoryItem {
+    padding: $spacing-md;
+  }
+
+  .categoryHeader {
+    gap: $spacing-sm;
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+    gap: $spacing-sm;
+
+    button {
+      width: 100%;
+    }
+  }
+}
