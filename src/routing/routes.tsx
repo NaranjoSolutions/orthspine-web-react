@@ -16,6 +16,7 @@ import { UserRole } from '@/features/auth/types';
 const HomePage = lazy(() => import('@/pages/home'));
 const AboutPage = lazy(() => import('@/pages/about'));
 const ServicesPage = lazy(() => import('@/pages/services'));
+const ServiceDetailPage = lazy(() => import('@/pages/service-detail'));
 const ContactPage = lazy(() => import('@/pages/contact'));
 const TestimonialsPage = lazy(() => import('@/pages/testimonials'));
 const BookAppointmentPage = lazy(() => import('@/pages/book-appointment'));
@@ -77,6 +78,10 @@ export const routes: RouteObject[] = [
       {
         path: ROUTE_PATHS.SERVICES,
         element: <ServicesPage />,
+      },
+      {
+        path: ROUTE_PATHS.SERVICE_DETAILS.BASE,
+        element: <ServiceDetailPage />,
       },
       {
         path: ROUTE_PATHS.CONTACT,
