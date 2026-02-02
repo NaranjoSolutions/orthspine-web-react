@@ -44,7 +44,7 @@ export const Navbar: React.FC = () => {
   };
 
   const handleBookAppointment = () => navigateAndCloseMobile(ROUTE_PATHS.BOOK_APPOINTMENT);
-  const handleLoginClick = () => navigateAndCloseMobile(ROUTE_PATHS.AUTH.LOGIN);
+  // const handleLoginClick = () => navigateAndCloseMobile(ROUTE_PATHS.AUTH.LOGIN);
 
   return (
     <Header className={styles.navbar}>
