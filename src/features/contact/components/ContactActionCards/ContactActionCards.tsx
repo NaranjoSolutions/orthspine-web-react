@@ -43,7 +43,7 @@ export const ContactActionCards: React.FC = () => {
     if (formElement) {
       formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-      console.warn('Inquiry form element with id="inquiry-form" not found. Please ensure ContactForm component has the correct ID.');
+      console.warn('Inquiry form element not found (id="inquiry-form")');
     }
   };
 

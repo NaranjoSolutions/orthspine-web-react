@@ -181,8 +181,6 @@ export const ContactForm: React.FC = () => {
               validator: (_, value: Dayjs) => {
                 if (!value) return Promise.resolve();
                 
-                // Use current time for validation to ensure selected datetime is in the future
-                // This approach provides accurate validation at the time of each check
                 const now = dayjs();
                 
                 // Check if selected date/time is in the past
