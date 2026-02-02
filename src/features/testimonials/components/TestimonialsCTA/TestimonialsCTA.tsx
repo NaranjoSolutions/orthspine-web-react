@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 import { WhatsAppOutlined } from '@ant-design/icons';
+import { ROUTE_PATHS } from '@/routing/config/routePaths';
+import { clinicInformation } from '@/shared/resources/clinic-information';
 import styles from './TestimonialsCTA.module.scss';
 
 /**
@@ -14,14 +17,16 @@ import styles from './TestimonialsCTA.module.scss';
  * - Responsive design with mobile optimization
  */
 export const TestimonialsCTA: React.FC = () => {
+  const navigate = useNavigate();
+
   const handleContactClick = () => {
-    // Navigate to contact page or open contact modal
-    window.location.href = '/contact';
+    navigate(ROUTE_PATHS.CONTACT);
   };
 
   const handleWhatsAppClick = () => {
-    // Open WhatsApp with clinic number
-    window.open('https://wa.me/1234567890', '_blank');
+    // Format phone number for WhatsApp (remove spaces and special characters)
+    const phoneNumber = clinicInformation.contact.phones[0].replace(/[\s-]/g, '');
+    window.open(`https://wa.me/${phoneNumber}`, '_blank');
   };
 
   return (
