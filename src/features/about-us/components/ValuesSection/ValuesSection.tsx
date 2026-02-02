@@ -1,23 +1,27 @@
 import React from 'react';
 import { Card } from 'antd';
-import { ClockCircleOutlined, BulbOutlined, SafetyOutlined } from '@ant-design/icons';
+import { HeartOutlined, ExperimentOutlined, RiseOutlined } from '@ant-design/icons';
 import styles from './ValuesSection.module.scss';
 
 interface ValueCardProps {
-  icon: 'history' | 'philosophy' | 'commitment';
+  icon: 'patient-centered' | 'evidence-based' | 'continuous-improvement';
   title: string;
   description: string;
 }
 
 const iconMap = {
-  history: ClockCircleOutlined,
-  philosophy: BulbOutlined,
-  commitment: SafetyOutlined,
+  'patient-centered': HeartOutlined,
+  'evidence-based': ExperimentOutlined,
+  'continuous-improvement': RiseOutlined,
 };
 
 /**
  * ValueCard Component
  * Individual card for displaying a clinic value
+ * @param icon - The icon identifier for the value
+ * @param title - The title of the value
+ * @param description - The description of the value
+ * @returns React component displaying a value card
  */
 const ValueCard: React.FC<ValueCardProps> = ({ icon, title, description }) => {
   const IconComponent = iconMap[icon];
@@ -36,26 +40,28 @@ const ValueCard: React.FC<ValueCardProps> = ({ icon, title, description }) => {
 /**
  * ValuesSection Component
  * Displays the three core values of the clinic
+ * @returns React component with core values cards
  */
 export const ValuesSection: React.FC = () => {
   return (
     <section className={styles.valuesSection}>
       <div className={styles.container}>
+        <h2 className={styles.sectionTitle}>Our Core Values</h2>
         <div className={styles.valuesGrid}>
           <ValueCard
-            icon="history"
-            title="Our History"
-            description="Founded with the vision of transforming spinal care, our clinic has grown from a small consulting office to a spine orthopedics reference center, always pioneers in technology and personalized care."
+            icon="patient-centered"
+            title="Patient-Centered Care"
+            description="Tailoring every treatment plan to align with your personal lifestyle goals and recovery journey."
           />
           <ValueCard
-            icon="philosophy"
-            title="Our Philosophy"
-            description="We believe in a holistic approach, treating the patient, not just the pathology. Education, prevention, and empathy are the pillars of our daily practice to ensure the comprehensive well-being of those who trust us."
+            icon="evidence-based"
+            title="Evidence-Based"
+            description="Our methods are grounded in the latest clinical research and orthopedic studies for proven results."
           />
           <ValueCard
-            icon="commitment"
-            title="Our Commitment"
-            description="We are committed to clinical excellence, constant innovation, and above all, to the recovery and quality of life of our patients. Your trust is our greatest responsibility."
+            icon="continuous-improvement"
+            title="Continuous Improvement"
+            description="Investing in ongoing staff education and state-of-the-art medical technology every year."
           />
         </div>
       </div>

@@ -1,26 +1,34 @@
 import React from 'react';
-import { HeroSection } from '@/features/about-us/components/HeroSection';
-import { ValuesSection } from '@/features/about-us/components/ValuesSection';
-import { TeamSection } from '@/features/about-us/components/TeamSection';
-import { CTASection } from '@/features/about-us/components/CTASection';
+import { 
+  HeroSection, 
+  StorySection, 
+  ValuesSection, 
+  TeamSection, 
+  CertificationsSection, 
+  CTASection 
+} from '@/features/about-us/components';
 import styles from './AboutPage.module.scss';
 
 /**
  * AboutPage Component
- * About Us page for the clinic website
+ * About Us page for the clinic website showcasing clinic story, values, team, and certifications
  *
  * Features:
- * - Hero section with page title
- * - Three core values (History, Philosophy, Commitment)
- * - Team section with physiotherapist information
- * - Call-to-action section
+ * - Hero section with page title and subtitle
+ * - Story section with clinic history and mission
+ * - Core values section (Patient-Centered Care, Evidence-Based, Continuous Improvement)
+ * - Team section with specialist information
+ * - Professional certifications display
+ * - Call-to-action section for booking appointments
  */
 export const AboutPage: React.FC = () => {
   return (
     <div className={styles.aboutPage}>
       <HeroSection />
+      <StorySection />
       <ValuesSection />
       <TeamSection />
+      <CertificationsSection />
       <CTASection />
     </div>
   );

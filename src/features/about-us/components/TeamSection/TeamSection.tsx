@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Tag } from 'antd';
-import aaron from '@/assets/images/about-us/aaron.png';
+import teamMemberImage from '@/assets/images/about-us/aaron.png';
 import styles from './TeamSection.module.scss';
 
 interface TeamMemberProps {
@@ -14,6 +14,12 @@ interface TeamMemberProps {
 /**
  * TeamMember Component
  * Individual team member card
+ * @param name - Team member's name
+ * @param title - Team member's professional title
+ * @param description - Team member's description
+ * @param certifications - Array of certifications
+ * @param image - Image source for the team member
+ * @returns React component displaying a team member card
  */
 const TeamMember: React.FC<TeamMemberProps> = ({ name, title, description, certifications, image }) => {
   return (
@@ -37,22 +43,23 @@ const TeamMember: React.FC<TeamMemberProps> = ({ name, title, description, certi
 
 /**
  * TeamSection Component
- * Displays the clinic team members
+ * Displays the clinic specialist
+ * @returns React component with team member card
  */
 export const TeamSection: React.FC = () => {
   return (
     <section className={styles.teamSection}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Our Team</h2>
+          <h2 className={styles.title}>Meet Our Specialist</h2>
         </div>
         <div className={styles.teamGrid}>
           <TeamMember
-            name="Aaron Fallas"
-            title="Principal Physiotherapist"
-            description="Aaron is a certified physiotherapist specializing in spinal rehabilitation. His approach focuses on manual therapies and personalized exercise plans to promote lasting recovery."
-            certifications={['Certified in Manual Orthopedic Therapy', 'Sports Rehabilitation Specialist']}
-            image={aaron}
+            name="Dr. Linda Chen"
+            title="Lead Physiotherapist, DPT"
+            description="With over 15 years of clinical experience, Dr. Chen specializes in manual therapy and advanced spinal alignment techniques. She is dedicated to providing compassionate, evidence-based, and personalized care plans for every patient at Orthopedic Spine."
+            certifications={['Manual Therapy Certified', 'Orthopedic Clinical Specialist']}
+            image={teamMemberImage}
           />
         </div>
       </div>
