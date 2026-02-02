@@ -29,6 +29,12 @@ export const allClinicServices = [
       'Hyperlordosis',
       'Spine surgical procedures',
     ],
+    treatmentApproaches: [
+      'Personalized rehabilitation plans',
+      'Advanced pain management techniques',
+      'Posture correction exercises',
+      'Spinal alignment therapies',
+    ],
   },
   {
     serviceId: 'knee',
@@ -51,6 +57,12 @@ export const allClinicServices = [
       'Knee surgical procedures',
       'Fractures',
     ],
+    treatmentApproaches: [
+      'Strengthening exercises',
+      'Joint mobilization techniques',
+      'Pain relief therapies',
+      'Knee bracing and support',
+    ],
   },
   {
     serviceId: 'hip',
@@ -61,6 +73,12 @@ export const allClinicServices = [
     image: hip,
     isPrimary: true,
     conditionsTreated: ['Hip fractures', 'Bursitis', 'Wear and tear', 'Joint mechanical changes'],
+    treatmentApproaches: [
+      'Targeted strengthening exercises',
+      'Manual therapy sessions',
+      'Pain relief modalities',
+      'Hip joint stabilization techniques',
+    ],
   },
   {
     serviceId: 'shoulder',
@@ -78,6 +96,12 @@ export const allClinicServices = [
       'Rotator cuff problems',
       'Tendinitis',
       'Tears',
+    ],
+    treatmentApproaches: [
+      'Therapeutic exercises',
+      'Soft tissue mobilization',
+      'Rotator cuff strengthening',
+      'Shoulder joint stabilization',
     ],
   },
   {
@@ -99,6 +123,12 @@ export const allClinicServices = [
       "De Quervain's tendinitis",
       'Radiculopathies',
     ],
+    treatmentApproaches: [
+      'Customized splinting',
+      'Therapeutic hand exercises',
+      'Ergonomic adjustments',
+      'Soft tissue therapy',
+    ],
   },
   {
     serviceId: 'rehabilitation',
@@ -109,6 +139,12 @@ export const allClinicServices = [
     image: rehabilitation,
     isPrimary: true,
     conditionsTreated: ['Post-cardiac conditions', 'Pacemakers', 'Open-heart surgeries', 'Cardio-pulmonary conditions'],
+    treatmentApproaches: [
+      'Monitored physical exercises',
+      'Cardio-pulmonary conditioning',
+      'Gradual progression plans',
+      'Post-surgery recovery protocols',
+    ],
   },
   {
     serviceId: 'circulation',
@@ -119,6 +155,12 @@ export const allClinicServices = [
     image: circulation,
     isPrimary: true,
     conditionsTreated: ['Varicose veins', 'Lymphedema', 'Circulation issues', 'Ulcers'],
+    treatmentApproaches: [
+      'Compression therapy',
+      'Manual lymphatic drainage',
+      'Lifestyle modification plans',
+      'Vascular health monitoring',
+    ],
   },
   {
     serviceId: 'sports',
@@ -134,6 +176,12 @@ export const allClinicServices = [
       'Sports readaptation',
       'Cryotherapy',
       'Sports footwear prescription',
+    ],
+    treatmentApproaches: [
+      'Muscle recovery massages',
+      'Biomechanical assessments',
+      'Personalized training plans',
+      'Cryotherapy sessions',
     ],
   },
 ];
