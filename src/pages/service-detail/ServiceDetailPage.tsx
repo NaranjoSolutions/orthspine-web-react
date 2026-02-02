@@ -1,6 +1,7 @@
 import React from 'react';
-import { useParams, Navigate } from 'react-router-dom';
-import { CheckCircleOutlined, FileTextOutlined, MedicineBoxOutlined, RocketOutlined, TrophyOutlined } from '@ant-design/icons';
+import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import { Button } from 'antd';
+import { CheckCircleOutlined, FileTextOutlined, MedicineBoxOutlined, RocketOutlined, TrophyOutlined, CalendarOutlined, TeamOutlined } from '@ant-design/icons';
 import { allClinicServices } from '@/shared/resources/services/services';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
 import styles from './ServiceDetailPage.module.scss';
@@ -15,11 +16,13 @@ import styles from './ServiceDetailPage.module.scss';
  * - Comprehensive description section
  * - Conditions treated list with icons
  * - Treatment approach with numbered steps
+ * - Call-to-action section
  *
  * @returns Service detail page or redirect if service not found
  */
 export const ServiceDetailPage: React.FC = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
+  const navigate = useNavigate();
 
   // Find the service by ID
   const service = allClinicServices.find((s) => s.serviceId === serviceId);
@@ -28,6 +31,15 @@ export const ServiceDetailPage: React.FC = () => {
   if (!service) {
     return <Navigate to={ROUTE_PATHS.SERVICES} replace />;
   }
+
+  // Handle CTA button clicks
+  const handleScheduleAppointment = () => {
+    navigate(ROUTE_PATHS.BOOK_APPOINTMENT);
+  };
+
+  const handleViewTeam = () => {
+    navigate(ROUTE_PATHS.ABOUT);
+  };
 
   // Icons for treatment approach steps
   const approachIcons = [
@@ -92,6 +104,35 @@ export const ServiceDetailPage: React.FC = () => {
               </div>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Call-to-Action Section */}
+      <section className={styles.ctaSection}>
+        <div className={styles.ctaContainer}>
+          <h2 className={styles.ctaTitle}>Don't Let an Injury Keep You Out of the Game</h2>
+          <p className={styles.ctaSubtitle}>
+            Our specialists are here to help you navigate every step of your recovery journey with confidence.
+          </p>
+          <div className={styles.ctaButtons}>
+            <Button
+              type="primary"
+              size="large"
+              icon={<CalendarOutlined />}
+              className={styles.scheduleButton}
+              onClick={handleScheduleAppointment}
+            >
+              Schedule Appointment Now
+            </Button>
+            <Button
+              size="large"
+              icon={<TeamOutlined />}
+              className={styles.teamButton}
+              onClick={handleViewTeam}
+            >
+              View Our Team
+            </Button>
+          </div>
         </div>
       </section>
     </div>
