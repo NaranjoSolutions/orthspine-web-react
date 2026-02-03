@@ -3,16 +3,16 @@ import styles from './HeroSection.module.scss';
 
 /**
  * HeroSection Component
- * Hero banner for the About Us page
+ * Hero banner for the About Us page with centered content
+ * @returns React component with title and subtitle
  */
 export const HeroSection: React.FC = () => {
   return (
     <section className={styles.hero}>
-      <div className={styles.heroOverlay} />
       <div className={styles.heroContent}>
-        <h1 className={styles.heroTitle}>About Us</h1>
+        <h1 className={styles.heroTitle}>About Orthopedic Spine</h1>
         <p className={styles.heroDescription}>
-          Learn more about our clinic, our team, and our commitment to providing exceptional orthopedic care.
+          Dedicated to your spinal health and recovery with expert physiotherapy care, evidence-based treatments, and a compassionate clinical team.
         </p>
       </div>
     </section>

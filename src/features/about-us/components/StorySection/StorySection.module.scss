@@ -1,0 +1,75 @@
+@use '@/styles/abstracts' as *;
+@use '../variables' as aboutVars;
+
+.storySection {
+  padding: $spacing-2xl * 2 0;
+  background-color: $color-white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+}
+
+.contentWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-2xl;
+  align-items: center;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+}
+
+.imageColumn {
+  width: 100%;
+
+  @media (max-width: $breakpoint-lg) {
+    order: 1;
+  }
+}
+
+.storyImage {
+  width: 100%;
+  height: auto;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-lg;
+  object-fit: cover;
+}
+
+.textColumn {
+  @media (max-width: $breakpoint-lg) {
+    order: 2;
+  }
+}
+
+.sectionHeading {
+  font-size: 36px;
+  font-weight: $font-weight-bold;
+  color: aboutVars.$color-about-accent;
+  margin: 0 0 $spacing-xl 0;
+  line-height: 1.2;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 28px;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.storyText {
+  font-size: 18px;
+  color: $color-gray-700;
+  line-height: 1.7;
+  margin: 0 0 $spacing-lg 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 16px;
+  }
+}
