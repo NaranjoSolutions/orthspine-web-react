@@ -17,7 +17,6 @@ export const CTASection: React.FC = () => {
   };
 
   const handleLearnMore = () => {
-    // Navigate to the about-us page as a reasonable alternative
     navigate(ROUTE_PATHS.SERVICES);
   };
 
