@@ -1,50 +1,53 @@
 import React from 'react';
-import { ContactInformation } from '@/features/contact/components/ContactInformation';
-import { OperationalHours } from '@/features/contact/components/OperationalHours';
+import { ContactActionCards } from '@/features/contact/components/ContactActionCards';
 import { ContactForm } from '@/features/contact/components/ContactForm';
 import { LocationMap } from '@/features/contact/components/LocationMap';
+import { ClinicInformationCards } from '@/features/contact/components/ClinicInformationCards';
 import styles from './ContactPage.module.scss';
 
 /**
  * ContactPage Component
- * Contact Us page for the clinic website
+ * Redesigned Contact Us page for the clinic website
  *
  * Features:
- * - Header with title and subtitle
- * - Contact information (phone, email, address)
- * - Operational hours
- * - Contact form for sending messages
+ * - Hero header with updated subtitle
+ * - Quick action cards (WhatsApp, Email, Phone)
+ * - Comprehensive inquiry form with scheduling
  * - Interactive location map
- * - Responsive design
+ * - Clinic information cards (address, hours, parking, accessibility)
+ * - Fully responsive design
+ * - Accessibility compliant
  */
 export const ContactPage: React.FC = () => {
   return (
     <div className={styles.contactPage}>
       <div className={styles.container}>
-        {/* Header */}
+        {/* Header Section */}
         <div className={styles.header}>
           <h1 className={styles.title}>Contact Us</h1>
           <p className={styles.subtitle}>
-            We're here to help. Get in touch with us using the information below.
+            Our team is here to help you get back to your active lifestyle.
+            Reach out via your preferred method or visit our clinic.
           </p>
         </div>
 
-        {/* Main Content Grid */}
-        <div className={styles.contentGrid}>
-          {/* Left Column - Contact Info & Hours */}
-          <div className={styles.leftColumn}>
-            <ContactInformation />
-            <OperationalHours />
-          </div>
+        {/* Action Cards Section */}
+        <ContactActionCards />
 
-          {/* Right Column - Contact Form */}
-          <div className={styles.rightColumn}>
-            <ContactForm />
-          </div>
+        {/* Contact Form Section */}
+        <div className={styles.formSection}>
+          <ContactForm />
         </div>
 
-        {/* Location Map */}
-        <LocationMap />
+        {/* Bottom Section: Map + Info Cards */}
+        <div className={styles.bottomSection}>
+          <div className={styles.mapColumn}>
+            <LocationMap />
+          </div>
+          <div className={styles.infoColumn}>
+            <ClinicInformationCards />
+          </div>
+        </div>
       </div>
     </div>
   );
