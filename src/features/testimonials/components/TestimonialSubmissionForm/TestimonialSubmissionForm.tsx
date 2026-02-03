@@ -22,6 +22,11 @@ interface TestimonialSubmissionFormValues {
   consent: boolean;
 }
 
+interface TestimonialSubmissionFormProps {
+  onSuccess?: () => void;
+  onCancel?: () => void;
+}
+
 /**
  * TestimonialSubmissionForm Component
  * Public-facing form for patients to submit testimonials
@@ -38,7 +43,7 @@ interface TestimonialSubmissionFormValues {
  * - Loading state during submission
  * - Accessibility support
  */
-export const TestimonialSubmissionForm: React.FC = () => {
+export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps> = ({ onSuccess, onCancel }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
@@ -63,6 +68,11 @@ export const TestimonialSubmissionForm: React.FC = () => {
 
       message.success('Thank you for sharing your experience! Your testimonial has been submitted for review.');
       form.resetFields();
+      
+      // Call onSuccess callback if provided
+      if (onSuccess) {
+        onSuccess();
+      }
     } catch (error) {
       message.error('Failed to submit testimonial. Please try again.');
       console.error('Testimonial submission error:', error);
@@ -76,7 +86,11 @@ export const TestimonialSubmissionForm: React.FC = () => {
    */
   const handleCancel = () => {
     form.resetFields();
-    message.info('Form cleared');
+    
+    // Call onCancel callback if provided
+    if (onCancel) {
+      onCancel();
+    }
   };
 
   return (
