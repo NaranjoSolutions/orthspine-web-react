@@ -55,9 +55,9 @@ export const TeamSection: React.FC = () => {
         </div>
         <div className={styles.teamGrid}>
           <TeamMember
-            name="Dr. Linda Chen"
+            name="Dr. Aaron Fallas"
             title="Lead Physiotherapist, DPT"
-            description="With over 15 years of clinical experience, Dr. Chen specializes in manual therapy and advanced spinal alignment techniques. She is dedicated to providing compassionate, evidence-based, and personalized care plans for every patient at Orthopedic Spine."
+            description="With over 15 years of clinical experience, Dr. Fallas specializes in manual therapy and advanced spinal alignment techniques. He is dedicated to providing compassionate, evidence-based, and personalized care plans for every patient at Orthopedic Spine."
             certifications={['Manual Therapy Certified', 'Orthopedic Clinical Specialist']}
             image={teamMemberImage}
           />
