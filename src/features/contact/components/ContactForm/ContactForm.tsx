@@ -58,10 +58,10 @@ export const ContactForm: React.FC = () => {
     try {
       // TODO: Implement actual email sending logic
       console.log('Form submitted:', values);
-      
+
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      
+
       message.success('Message sent successfully! We will get back to you soon.');
       form.resetFields();
     } catch (error) {
@@ -76,9 +76,7 @@ export const ContactForm: React.FC = () => {
     <div id="inquiry-form" className={styles.contactForm}>
       <div className={styles.formHeader}>
         <h2 className={styles.title}>Inquiry Form</h2>
-        <p className={styles.subtitle}>
-          Fill out the details below and a specialist will contact you.
-        </p>
+        <p className={styles.subtitle}>Fill out the details below and a specialist will contact you.</p>
       </div>
 
       <Form
@@ -106,7 +104,7 @@ export const ContactForm: React.FC = () => {
             ]}
             className={styles.formItem}
           >
-            <Input placeholder="John Doe" size="large" />
+            <Input placeholder="Aaron  Fallas" size="large" />
           </Form.Item>
 
           <Form.Item
@@ -118,7 +116,7 @@ export const ContactForm: React.FC = () => {
             ]}
             className={styles.formItem}
           >
-            <Input placeholder="john.doe@example.com" size="large" />
+            <Input placeholder="aaron.fallas@example.com" size="large" />
           </Form.Item>
         </div>
 
@@ -136,7 +134,7 @@ export const ContactForm: React.FC = () => {
             ]}
             className={styles.formItem}
           >
-            <Input placeholder="(555) 123-4567" size="large" />
+            <Input placeholder="8888 8888" size="large" />
           </Form.Item>
 
           <Form.Item
@@ -145,11 +143,7 @@ export const ContactForm: React.FC = () => {
             rules={[{ required: true, message: 'Please select a department' }]}
             className={styles.formItem}
           >
-            <Select
-              placeholder="Select a department"
-              size="large"
-              options={DEPARTMENT_OPTIONS}
-            />
+            <Select placeholder="Select a department" size="large" options={DEPARTMENT_OPTIONS} />
           </Form.Item>
         </div>
 
@@ -157,9 +151,7 @@ export const ContactForm: React.FC = () => {
         <Form.Item
           name="contactMethod"
           label="Preferred Contact Method"
-          rules={[
-            { required: true, message: 'Please select a contact method' },
-          ]}
+          rules={[{ required: true, message: 'Please select a contact method' }]}
         >
           <Radio.Group className={styles.radioGroup}>
             <Radio value="phone">Phone</Radio>
@@ -180,16 +172,14 @@ export const ContactForm: React.FC = () => {
             {
               validator: (_, value: Dayjs) => {
                 if (!value) return Promise.resolve();
-                
+
                 const now = dayjs();
-                
+
                 // Check if selected date/time is in the past
                 if (value.isBefore(now)) {
-                  return Promise.reject(
-                    new Error('Please select a future date and time')
-                  );
+                  return Promise.reject(new Error('Please select a future date and time'));
                 }
-                
+
                 return Promise.resolve();
               },
             },
