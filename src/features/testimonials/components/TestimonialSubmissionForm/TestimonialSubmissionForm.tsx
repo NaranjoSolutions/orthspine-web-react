@@ -5,6 +5,7 @@ import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import { allClinicServices } from '@/shared/resources/services/services';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
+import { SuccessFeedbackModal } from '../SuccessFeedbackModal';
 import styles from './TestimonialSubmissionForm.module.scss';
 
 const { TextArea } = Input;
@@ -46,6 +47,7 @@ interface TestimonialSubmissionFormProps {
 export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps> = ({ onSuccess, onCancel }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // Prepare service options from clinic services
   const serviceOptions = allClinicServices.map((service) => ({
@@ -66,8 +68,9 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      message.success('Thank you for sharing your experience! Your testimonial has been submitted for review.');
+      // Reset form and show success modal
       form.resetFields();
+      setShowSuccessModal(true);
 
       // Call onSuccess callback if provided
       if (onSuccess) {
@@ -79,6 +82,13 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
     } finally {
       setLoading(false);
     }
+  };
+
+  /**
+   * Handle success modal close
+   */
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
   };
 
   /**
@@ -94,11 +104,12 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
   };
 
   return (
-    <div id="testimonial-form" className={styles.testimonialForm}>
-      <div className={styles.formHeader}>
-        <h2 className={styles.title}>Share Your Experience</h2>
-        <p className={styles.subtitle}>Your feedback helps us provide the best possible care for our patients.</p>
-      </div>
+    <>
+      <div id="testimonial-form" className={styles.testimonialForm}>
+        <div className={styles.formHeader}>
+          <h2 className={styles.title}>Share Your Experience</h2>
+          <p className={styles.subtitle}>Your feedback helps us provide the best possible care for our patients.</p>
+        </div>
 
       <Form
         form={form}
@@ -260,5 +271,9 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
         </div>
       </Form>
     </div>
+
+      {/* Success Feedback Modal */}
+      <SuccessFeedbackModal open={showSuccessModal} onClose={handleCloseSuccessModal} />
+    </>
   );
 };
