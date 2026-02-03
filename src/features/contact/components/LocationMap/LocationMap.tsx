@@ -46,8 +46,6 @@ export const LocationMap: React.FC = () => {
 
   return (
     <div className={styles.locationMap}>
-      <h2 className={styles.title}>Our Location</h2>
-
       <div className={styles.mapWrapper}>
         <MapContainer
           className={styles.mapContainer}
@@ -75,20 +73,10 @@ export const LocationMap: React.FC = () => {
       </div>
 
       <div className={styles.buttonGroup}>
-        <Button
-          type="default"
-          size="large"
-          onClick={handleOpenGoogleMaps}
-          className={styles.navButton}
-        >
+        <Button type="default" size="large" onClick={handleOpenGoogleMaps} className={styles.navButton}>
           Open in Google Maps
         </Button>
-        <Button
-          type="primary"
-          size="large"
-          onClick={handleOpenWaze}
-          className={styles.navButton}
-        >
+        <Button type="primary" size="large" onClick={handleOpenWaze} className={styles.navButton}>
           Open in Waze
         </Button>
       </div>

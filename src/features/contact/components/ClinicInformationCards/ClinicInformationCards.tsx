@@ -1,16 +1,6 @@
 import React from 'react';
-import {
-  EnvironmentOutlined,
-  ClockCircleOutlined,
-  CarOutlined,
-  InfoCircleOutlined,
-} from '@ant-design/icons';
-import {
-  CLINIC_ADDRESS,
-  OPERATING_HOURS,
-  PARKING_INFO,
-  ACCESSIBILITY_INFO,
-} from '../../config/contact.config';
+import { EnvironmentOutlined, ClockCircleOutlined, CarOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { CLINIC_ADDRESS, OPERATING_HOURS, PARKING_INFO, ACCESSIBILITY_INFO } from '../../config/contact.config';
 import styles from './ClinicInformationCards.module.scss';
 
 /**
@@ -55,22 +45,11 @@ export const ClinicInformationCards: React.FC = () => {
         </>
       ),
     },
-    {
-      id: 'parking',
-      icon: <CarOutlined />,
-      title: 'Parking',
-      content: PARKING_INFO,
-    },
-    {
-      id: 'accessibility',
-      icon: <InfoCircleOutlined />,
-      title: 'Accessibility',
-      content: ACCESSIBILITY_INFO,
-    },
   ];
 
   return (
     <div className={styles.infoCardsContainer}>
+      <div className={styles.sectionTitle}>Clinic Information</div>
       <div className={styles.cardsGrid}>
         {infoCards.map((card) => (
           <div key={card.id} className={styles.infoCard}>
