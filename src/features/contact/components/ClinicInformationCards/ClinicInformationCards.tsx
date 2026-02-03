@@ -1,6 +1,7 @@
 import React from 'react';
-import { EnvironmentOutlined, ClockCircleOutlined, CarOutlined, InfoCircleOutlined } from '@ant-design/icons';
-import { CLINIC_ADDRESS, OPERATING_HOURS, PARKING_INFO, ACCESSIBILITY_INFO } from '../../config/contact.config';
+import { EnvironmentOutlined, ClockCircleOutlined, PhoneOutlined, MailOutlined } from '@ant-design/icons';
+import { CLINIC_ADDRESS, OPERATING_HOURS } from '../../config/contact.config';
+import { clinicInformation } from '@/shared/resources/clinic-information';
 import styles from './ClinicInformationCards.module.scss';
 
 /**
@@ -18,45 +19,76 @@ interface InfoCard {
  * Displays essential clinic information in card format
  *
  * Features:
- * - Address information
+ * - Clinic name and address
  * - Hours of operation
- * - Parking details
- * - Accessibility information
+ * - Contact phone number
+ * - Email address
  * - Clean, icon-based design
  * - Responsive layout
+ * - Enhanced visual hierarchy
  */
 export const ClinicInformationCards: React.FC = () => {
   const infoCards: InfoCard[] = [
     {
       id: 'address',
       icon: <EnvironmentOutlined />,
-      title: 'Address',
-      content: CLINIC_ADDRESS.FULL,
+      title: 'Location',
+      content: (
+        <>
+          <div className={styles.clinicName}>{clinicInformation.name}</div>
+          <div className={styles.addressText}>{CLINIC_ADDRESS.FULL}</div>
+        </>
+      ),
     },
     {
       id: 'hours',
       icon: <ClockCircleOutlined />,
       title: 'Hours of Operation',
       content: (
-        <>
-          {OPERATING_HOURS.WEEKDAY.LABEL}: {OPERATING_HOURS.WEEKDAY.HOURS}
-          <br />
-          {OPERATING_HOURS.WEEKEND.LABEL}: {OPERATING_HOURS.WEEKEND.HOURS}
-        </>
+        <div className={styles.hoursContent}>
+          <div className={styles.hoursRow}>
+            <span className={styles.hoursLabel}>{OPERATING_HOURS.WEEKDAY.LABEL}:</span>
+            <span className={styles.hoursValue}>{OPERATING_HOURS.WEEKDAY.HOURS}</span>
+          </div>
+          <div className={styles.hoursRow}>
+            <span className={styles.hoursLabel}>{OPERATING_HOURS.WEEKEND.LABEL}:</span>
+            <span className={styles.hoursValue}>{OPERATING_HOURS.WEEKEND.HOURS}</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: 'phone',
+      icon: <PhoneOutlined />,
+      title: 'Phone',
+      content: (
+        <a href={`tel:${clinicInformation.contact.phones[0]}`} className={styles.contactLink}>
+          {clinicInformation.contact.phones[0]}
+        </a>
+      ),
+    },
+    {
+      id: 'email',
+      icon: <MailOutlined />,
+      title: 'Email',
+      content: (
+        <a href={`mailto:${clinicInformation.contact.email}`} className={styles.contactLink}>
+          {clinicInformation.contact.email}
+        </a>
       ),
     },
   ];
 
   return (
     <div className={styles.infoCardsContainer}>
-      <div className={styles.sectionTitle}>Clinic Information</div>
+      <h2 className={styles.sectionTitle}>Clinic Information</h2>
       <div className={styles.cardsGrid}>
         {infoCards.map((card) => (
           <div key={card.id} className={styles.infoCard}>
             <div className={styles.iconWrapper}>{card.icon}</div>
             <div className={styles.cardContent}>
               <h3 className={styles.cardTitle}>{card.title}</h3>
-              <p className={styles.cardText}>{card.content}</p>
+              <div className={styles.cardText}>{card.content}</div>
             </div>
           </div>
         ))}
