@@ -1,7 +1,8 @@
-import React from 'react';
-import { Button } from 'antd';
+import React, { useState } from 'react';
+import { Button, Modal } from 'antd';
 import { StarFilled } from '@ant-design/icons';
 import { RatingBreakdown } from '../RatingBreakdown';
+import { TestimonialSubmissionForm } from '../TestimonialSubmissionForm';
 import styles from './TestimonialsOverview.module.scss';
 
 interface TestimonialsOverviewProps {
@@ -29,6 +30,8 @@ export const TestimonialsOverview: React.FC<TestimonialsOverviewProps> = ({
   totalReviews,
   ratingCounts,
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const renderStars = () => {
     return (
       <div className={styles.stars}>
@@ -39,33 +42,55 @@ export const TestimonialsOverview: React.FC<TestimonialsOverviewProps> = ({
     );
   };
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className={styles.overviewContainer}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Patient Success Stories</h1>
-        <p className={styles.subtitle}>
-          Hear from those who reclaimed their mobility and life through our specialized spine care and expert
-          rehabilitation programs.
-        </p>
+    <>
+      <div className={styles.overviewContainer}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>Patient Success Stories</h1>
+          <p className={styles.subtitle}>
+            Hear from those who reclaimed their mobility and life through our specialized spine care and expert
+            rehabilitation programs.
+          </p>
+        </div>
+
+        <div className={styles.ratingSection}>
+          <div className={styles.averageRating}>
+            <div className={styles.ratingNumber}>{averageRating.toFixed(1)}</div>
+            {renderStars()}
+            <div className={styles.reviewCount}>Based on {totalReviews.toLocaleString()}+ reviews</div>
+          </div>
+
+          <div className={styles.ratingBreakdownWrapper}>
+            <RatingBreakdown totalReviews={totalReviews} ratingCounts={ratingCounts} />
+          </div>
+
+          <div className={styles.actionSection}>
+            <Button type="primary" size="large" className={styles.leaveReviewButton} onClick={handleOpenModal}>
+              Leave a Review
+            </Button>
+          </div>
+        </div>
       </div>
 
-      <div className={styles.ratingSection}>
-        <div className={styles.averageRating}>
-          <div className={styles.ratingNumber}>{averageRating.toFixed(1)}</div>
-          {renderStars()}
-          <div className={styles.reviewCount}>Based on {totalReviews.toLocaleString()}+ reviews</div>
-        </div>
-
-        <div className={styles.ratingBreakdownWrapper}>
-          <RatingBreakdown totalReviews={totalReviews} ratingCounts={ratingCounts} />
-        </div>
-
-        <div className={styles.actionSection}>
-          <Button type="primary" size="large" className={styles.leaveReviewButton}>
-            Leave a Review
-          </Button>
-        </div>
-      </div>
-    </div>
+      <Modal
+        title={null}
+        open={isModalOpen}
+        onCancel={handleCloseModal}
+        footer={null}
+        width={700}
+        centered
+        className={styles.testimonialModal}
+      >
+        <TestimonialSubmissionForm onSuccess={handleCloseModal} onCancel={handleCloseModal} />
+      </Modal>
+    </>
   );
 };

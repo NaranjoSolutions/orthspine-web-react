@@ -119,3 +119,18 @@
   font-weight: $font-weight-semibold;
   border-radius: $border-radius-md;
 }
+
+.testimonialModal {
+  :global {
+    .ant-modal-content {
+      padding: 0;
+      border-radius: $border-radius-lg;
+      overflow: hidden;
+    }
+
+    .ant-modal-close {
+      top: $spacing-md;
+      right: $spacing-md;
+    }
+  }
+}
