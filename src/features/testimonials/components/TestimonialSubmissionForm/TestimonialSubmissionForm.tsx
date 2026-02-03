@@ -68,7 +68,7 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
 
       message.success('Thank you for sharing your experience! Your testimonial has been submitted for review.');
       form.resetFields();
-      
+
       // Call onSuccess callback if provided
       if (onSuccess) {
         onSuccess();
@@ -86,7 +86,7 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
    */
   const handleCancel = () => {
     form.resetFields();
-    
+
     // Call onCancel callback if provided
     if (onCancel) {
       onCancel();
