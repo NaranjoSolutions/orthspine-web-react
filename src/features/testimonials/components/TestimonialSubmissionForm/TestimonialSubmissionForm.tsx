@@ -16,7 +16,7 @@ interface TestimonialSubmissionFormValues {
   fullName: string;
   email: string;
   service: string;
-  dateOfService: string;
+  dateOfService: Dayjs;
   rating: number;
   review: string;
   consent: boolean;
