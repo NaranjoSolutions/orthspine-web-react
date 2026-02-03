@@ -1,0 +1,40 @@
+@use '@/styles/abstracts' as *;
+
+// Comprehensive Section
+.comprehensiveSection {
+  margin-bottom: $spacing-2xl;
+  text-align: left;
+}
+
+.comprehensiveTitle {
+  font-size: 36px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin-bottom: $spacing-xl;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 32px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 28px;
+  }
+}
+
+.comprehensiveDescription {
+  font-size: $font-size-lg;
+  color: $color-gray-700;
+  line-height: 1.8;
+
+  p {
+    margin-bottom: $spacing-lg;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-base;
+  }
+}

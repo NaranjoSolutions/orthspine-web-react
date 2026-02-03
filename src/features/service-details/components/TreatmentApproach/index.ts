@@ -1,0 +1,1 @@
+export { TreatmentApproach } from './TreatmentApproach';
