@@ -1,0 +1,1 @@
+export { TestimonialSubmissionForm } from './TestimonialSubmissionForm';
