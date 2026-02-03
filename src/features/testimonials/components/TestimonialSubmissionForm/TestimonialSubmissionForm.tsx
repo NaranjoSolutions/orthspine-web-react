@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Select, DatePicker, Rate, Checkbox } from 'antd';
+import { Form, Input, Button, message, Select, DatePicker, Rate, Checkbox } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
@@ -77,6 +77,7 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
         onSuccess();
       }
     } catch (error) {
+      message.error('Failed to submit testimonial. Please try again.');
       console.error('Testimonial submission error:', error);
     } finally {
       setLoading(false);
