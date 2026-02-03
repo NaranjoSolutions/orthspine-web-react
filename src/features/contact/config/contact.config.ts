@@ -1,26 +1,35 @@
+import { clinicInformation } from '@/shared/resources/clinic-information';
+
 /**
  * Contact Configuration
  * Centralized contact information for the clinic
+ * Now sourced from shared clinic-information.ts for single source of truth
  */
 
 /**
  * Contact phone numbers
- * @todo Update with actual clinic phone numbers before production deployment
+ * Derived from shared clinic information
  */
 export const CONTACT_PHONE = {
   /** Primary phone number for calls (digits only) */
-  PRIMARY: '5551234567',
+  get PRIMARY() {
+    return clinicInformation.contact.phones[0].replace(/\D/g, '');
+  },
   /** Formatted display phone number */
-  DISPLAY: '(555) 123-4567',
+  get DISPLAY() {
+    return clinicInformation.contact.phones[0];
+  },
 } as const;
 
 /**
  * WhatsApp configuration
- * @todo Update with actual clinic WhatsApp number before production deployment
+ * Derived from shared clinic information
  */
 export const WHATSAPP_CONFIG = {
   /** WhatsApp phone number (digits only) */
-  PHONE: '5551234567',
+  get PHONE() {
+    return clinicInformation.contact.phones[0].replace(/\D/g, '');
+  },
   /** WhatsApp chat URL */
   get URL() {
     return `https://wa.me/${this.PHONE}`;
@@ -29,43 +38,49 @@ export const WHATSAPP_CONFIG = {
 
 /**
  * Clinic address information
- * @todo Update with actual clinic address before production deployment
+ * Derived from shared clinic information
  */
 export const CLINIC_ADDRESS = {
-  STREET: '123 Health Ave',
-  SUITE: 'Suite 400',
-  BUILDING: 'Medical Plaza',
-  CITY: 'New York',
-  STATE: 'NY',
-  ZIP_CODE: '10001',
   get FULL() {
-    return `${this.STREET}, ${this.SUITE}, ${this.BUILDING}, ${this.CITY}, ${this.STATE} ${this.ZIP_CODE}`;
+    return clinicInformation.location.address;
   },
 } as const;
 
 /**
  * Operating hours information
- * @todo Verify operating hours before production deployment
+ * Derived from shared clinic information schedule
  */
 export const OPERATING_HOURS = {
   WEEKDAY: {
-    LABEL: 'Monday - Friday',
-    HOURS: '8:00 AM - 6:00 PM',
+    get LABEL() {
+      return clinicInformation.schedule[0].split(':')[0].trim();
+    },
+    get HOURS() {
+      return clinicInformation.schedule[0].split(':').slice(1).join(':').trim();
+    },
   },
   WEEKEND: {
-    LABEL: 'Saturday',
-    HOURS: '9:00 AM - 1:00 PM (Emergency Only)',
+    get LABEL() {
+      return clinicInformation.schedule[1].split(':')[0].trim();
+    },
+    get HOURS() {
+      return clinicInformation.schedule[1].split(':').slice(1).join(':').trim();
+    },
   },
 } as const;
 
 /**
  * Parking information
+ * Note: This information is not available in shared clinic-information.ts
+ * Consider adding it there if it becomes part of the clinic's core information
  */
 export const PARKING_INFO =
   'Free on-site parking available for patients. Validate your ticket at reception.' as const;
 
 /**
  * Accessibility information
+ * Note: This information is not available in shared clinic-information.ts
+ * Consider adding it there if it becomes part of the clinic's core information
  */
 export const ACCESSIBILITY_INFO =
   'Full wheelchair access via main lobby elevators. Braille signage throughout clinic.' as const;

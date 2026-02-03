@@ -1,20 +1,22 @@
 import React from 'react';
+import { clinicInformation } from '@/shared/resources/clinic-information';
 import styles from './OperationalHours.module.scss';
 
 /**
  * OperationalHours Component
- * Displays clinic operational hours
+ * Displays clinic operational hours from shared clinic information
  *
  * Features:
- * - Weekly schedule display
+ * - Weekly schedule display from clinic-information.ts
  * - Clear visual hierarchy
  */
 export const OperationalHours: React.FC = () => {
-  const schedule = [
-    { day: 'Monday - Friday', hours: '9:00 AM - 5:00 PM' },
-    { day: 'Saturday', hours: '10:00 AM - 2:00 PM' },
-    { day: 'Sunday', hours: 'Closed' },
-  ];
+  // Parse schedule from shared clinic information
+  // Schedule format: ["Lunes a Viernes: 8:00 am - 5:30 pm", "Sábados: 8:30 am - 12:00 pm"]
+  const schedule = clinicInformation.schedule.map((item) => {
+    const [day, hours] = item.split(':').map((part) => part.trim());
+    return { day, hours };
+  });
 
   return (
     <div className={styles.operationalHours}>
