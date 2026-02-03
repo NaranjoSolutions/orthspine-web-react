@@ -1,9 +1,12 @@
 import React from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
-import { Button } from 'antd';
-import { CheckCircleOutlined, FileTextOutlined, MedicineBoxOutlined, RocketOutlined, TrophyOutlined, CalendarOutlined, TeamOutlined } from '@ant-design/icons';
 import { allClinicServices } from '@/shared/resources/services/services';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
+import { ServiceDetailHero } from '@/features/service-details/components/ServiceDetailHero';
+import { ComprehensiveDescription } from '@/features/service-details/components/ComprehensiveDescription';
+import { ConditionsTreated } from '@/features/service-details/components/ConditionsTreated';
+import { TreatmentApproach } from '@/features/service-details/components/TreatmentApproach';
+import { ServiceDetailCTA } from '@/features/service-details/components/ServiceDetailCTA';
 import styles from './ServiceDetailPage.module.scss';
 
 /**
@@ -41,100 +44,20 @@ export const ServiceDetailPage: React.FC = () => {
     navigate(ROUTE_PATHS.ABOUT);
   };
 
-  // Icons for treatment approach steps
-  const approachIcons = [
-    <FileTextOutlined />,
-    <MedicineBoxOutlined />,
-    <RocketOutlined />,
-    <TrophyOutlined />,
-  ];
-
   return (
     <div className={styles.serviceDetailPage}>
-      {/* Hero Section with Title and Short Description */}
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>{service.title}</h1>
-          <p className={styles.heroSubtitle}>{service.shortDescription}</p>
-        </div>
-      </section>
+      <ServiceDetailHero title={service.title} shortDescription={service.shortDescription} />
 
       {/* Service Content Section */}
       <section className={styles.contentSection}>
         <div className={styles.container}>
-          {/* Comprehensive Description */}
-          <div className={styles.comprehensiveSection}>
-            <h2 className={styles.comprehensiveTitle}>Comprehensive Care</h2>
-            <div className={styles.comprehensiveDescription}>
-              <p>{service.description}</p>
-            </div>
-          </div>
-
-          {/* Conditions We Treat Section */}
-          {service.conditionsTreated && service.conditionsTreated.length > 0 && (
-            <div className={styles.conditionsSection}>
-              <h2 className={styles.sectionTitle}>Conditions We Treat</h2>
-              <div className={styles.conditionsGrid}>
-                {service.conditionsTreated.map((condition, index) => (
-                  <div key={index} className={styles.conditionItem}>
-                    <CheckCircleOutlined className={styles.conditionIcon} />
-                    <span className={styles.conditionText}>{condition}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Our Treatment Approach Section */}
-          {service.treatmentApproaches && service.treatmentApproaches.length > 0 && (
-            <div className={styles.approachSection}>
-              <h2 className={styles.sectionTitle}>Our Treatment Approach</h2>
-              <div className={styles.approachGrid}>
-                {service.treatmentApproaches.map((approach, index) => (
-                  <div key={index} className={styles.approachCard}>
-                    <div className={styles.approachNumber}>
-                      <span className={styles.numberText}>{String(index + 1).padStart(2, '0')}</span>
-                      <div className={styles.approachIcon}>
-                        {approachIcons[index] || <MedicineBoxOutlined />}
-                      </div>
-                    </div>
-                    <h3 className={styles.approachTitle}>{approach}</h3>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          <ComprehensiveDescription description={service.description} />
+          <ConditionsTreated conditions={service.conditionsTreated} />
+          <TreatmentApproach approaches={service.treatmentApproaches} />
         </div>
       </section>
 
-      {/* Call-to-Action Section */}
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaContainer}>
-          <h2 className={styles.ctaTitle}>Don't Let an Injury Keep You Out of the Game</h2>
-          <p className={styles.ctaSubtitle}>
-            Our specialists are here to help you navigate every step of your recovery journey with confidence.
-          </p>
-          <div className={styles.ctaButtons}>
-            <Button
-              type="primary"
-              size="large"
-              icon={<CalendarOutlined />}
-              className={styles.scheduleButton}
-              onClick={handleScheduleAppointment}
-            >
-              Schedule Appointment Now
-            </Button>
-            <Button
-              size="large"
-              icon={<TeamOutlined />}
-              className={styles.teamButton}
-              onClick={handleViewTeam}
-            >
-              View Our Team
-            </Button>
-          </div>
-        </div>
-      </section>
+      <ServiceDetailCTA onScheduleAppointment={handleScheduleAppointment} onViewTeam={handleViewTeam} />
     </div>
   );
 };
