@@ -1,6 +1,7 @@
 import React from 'react';
 import { TestimonialsOverview } from '@/features/testimonials/components/TestimonialsOverview';
 import { TestimonialsList } from '@/features/testimonials/components/TestimonialsList';
+import { TestimonialsCTA } from '@/features/testimonials/components/TestimonialsCTA';
 import { patientTestimonials } from '@/shared/resources/testimonials/testimonials';
 import styles from './TestimonialsPage.module.scss';
 
@@ -39,6 +40,8 @@ export const TestimonialsPage: React.FC = () => {
         />
 
         <TestimonialsList testimonials={patientTestimonials} />
+
+        <TestimonialsCTA />
       </div>
     </div>
   );

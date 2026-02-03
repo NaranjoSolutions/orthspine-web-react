@@ -42,26 +42,29 @@ export const TestimonialsOverview: React.FC<TestimonialsOverviewProps> = ({
   return (
     <div className={styles.overviewContainer}>
       <div className={styles.header}>
-        <h1 className={styles.title}>Patient Testimonials</h1>
-        <p className={styles.subtitle}>Read what our patients are saying about their experience at our clinic.</p>
+        <h1 className={styles.title}>Patient Success Stories</h1>
+        <p className={styles.subtitle}>
+          Hear from those who reclaimed their mobility and life through our specialized spine care and expert
+          rehabilitation programs.
+        </p>
       </div>
 
       <div className={styles.ratingSection}>
         <div className={styles.averageRating}>
           <div className={styles.ratingNumber}>{averageRating.toFixed(1)}</div>
           {renderStars()}
-          <div className={styles.reviewCount}>Based on {totalReviews} reviews</div>
+          <div className={styles.reviewCount}>Based on {totalReviews.toLocaleString()}+ reviews</div>
         </div>
 
         <div className={styles.ratingBreakdownWrapper}>
           <RatingBreakdown totalReviews={totalReviews} ratingCounts={ratingCounts} />
         </div>
-      </div>
 
-      <div className={styles.actionSection}>
-        <Button type="primary" size="large" className={styles.leaveReviewButton}>
-          Leave a Review
-        </Button>
+        <div className={styles.actionSection}>
+          <Button type="primary" size="large" className={styles.leaveReviewButton}>
+            Leave a Review
+          </Button>
+        </div>
       </div>
     </div>
   );

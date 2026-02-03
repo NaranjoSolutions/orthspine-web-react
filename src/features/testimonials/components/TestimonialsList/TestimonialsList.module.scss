@@ -65,16 +65,13 @@
 
 .testimonialGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: $spacing-xl;
   margin-bottom: $spacing-2xl;
 
-  @media (max-width: $breakpoint-lg) {
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  }
-
   @media (max-width: $breakpoint-md) {
     grid-template-columns: 1fr;
+    gap: $spacing-lg;
   }
 }
 

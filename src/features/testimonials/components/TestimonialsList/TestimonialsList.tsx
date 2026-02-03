@@ -136,6 +136,8 @@ export const TestimonialsList: React.FC<TestimonialsListProps> = ({ testimonials
             patientName={testimonial.patientName}
             rating={testimonial.rating}
             testimonial={testimonial.testimonial}
+            condition={testimonial.condition}
+            date={testimonial.date}
           />
         ))}
       </div>

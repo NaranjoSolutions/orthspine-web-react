@@ -44,7 +44,6 @@ export const Navbar: React.FC = () => {
   };
 
   const handleBookAppointment = () => navigateAndCloseMobile(ROUTE_PATHS.BOOK_APPOINTMENT);
-  // TODO: Re-enable login functionality when authentication is fully implemented
   // const handleLoginClick = () => navigateAndCloseMobile(ROUTE_PATHS.AUTH.LOGIN);
 
   return (
