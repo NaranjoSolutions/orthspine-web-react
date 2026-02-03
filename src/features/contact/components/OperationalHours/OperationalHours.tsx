@@ -14,8 +14,14 @@ export const OperationalHours: React.FC = () => {
   // Parse schedule from shared clinic information
   // Schedule format: ["Lunes a Viernes: 8:00 am - 5:30 pm", "Sábados: 8:30 am - 12:00 pm"]
   const schedule = clinicInformation.schedule.map((item) => {
-    const [day, hours] = item.split(':').map((part) => part.trim());
-    return { day, hours };
+    const colonIndex = item.indexOf(':');
+    if (colonIndex === -1) {
+      return { day: item, hours: '' };
+    }
+    return {
+      day: item.substring(0, colonIndex).trim(),
+      hours: item.substring(colonIndex + 1).trim(),
+    };
   });
 
   return (

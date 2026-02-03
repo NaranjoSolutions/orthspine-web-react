@@ -53,18 +53,26 @@ export const CLINIC_ADDRESS = {
 export const OPERATING_HOURS = {
   WEEKDAY: {
     get LABEL() {
-      return clinicInformation.schedule[0].split(':')[0].trim();
+      const scheduleItem = clinicInformation.schedule[0] || '';
+      const colonIndex = scheduleItem.indexOf(':');
+      return colonIndex > -1 ? scheduleItem.substring(0, colonIndex).trim() : '';
     },
     get HOURS() {
-      return clinicInformation.schedule[0].split(':').slice(1).join(':').trim();
+      const scheduleItem = clinicInformation.schedule[0] || '';
+      const colonIndex = scheduleItem.indexOf(':');
+      return colonIndex > -1 ? scheduleItem.substring(colonIndex + 1).trim() : '';
     },
   },
   WEEKEND: {
     get LABEL() {
-      return clinicInformation.schedule[1].split(':')[0].trim();
+      const scheduleItem = clinicInformation.schedule[1] || '';
+      const colonIndex = scheduleItem.indexOf(':');
+      return colonIndex > -1 ? scheduleItem.substring(0, colonIndex).trim() : '';
     },
     get HOURS() {
-      return clinicInformation.schedule[1].split(':').slice(1).join(':').trim();
+      const scheduleItem = clinicInformation.schedule[1] || '';
+      const colonIndex = scheduleItem.indexOf(':');
+      return colonIndex > -1 ? scheduleItem.substring(colonIndex + 1).trim() : '';
     },
   },
 } as const;
