@@ -4,26 +4,27 @@
   width: 100%;
 }
 
+.headerSection {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
 .title {
   font-size: 28px;
   font-weight: 700;
-  color: #1f2937;
+  color: #111827;
   text-align: center;
   margin-bottom: 8px;
+  letter-spacing: -0.5px;
 }
 
 .subtitle {
   text-align: center;
   color: #6b7280;
-  margin-bottom: 32px;
   font-size: 14px;
-}
-
-.loginLink {
-  padding: 0;
-  height: auto;
-  font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
+  margin: 0;
 }
 
 .errorAlert {
@@ -34,11 +35,55 @@
   color: #9ca3af;
 }
 
+.passwordGroup {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.passwordHelper {
+  margin-top: -12px;
+  margin-bottom: 0;
+  
+  p {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+.submitButtonWrapper {
+  margin-top: 32px;
+  margin-bottom: 0 !important;
+}
+
 .submitButton {
   height: 48px;
   font-size: 16px;
   font-weight: 600;
-  margin-top: 8px;
+  margin-bottom: 12px;
+  background-color: #1890ff;
+  border-color: #1890ff;
+  
+  &:hover {
+    background-color: #0070e0;
+    border-color: #0070e0;
+  }
+}
+
+.cancelButton {
+  height: 40px;
+  font-size: 14px;
+  color: #6b7280;
+  border-color: #d1d5db;
+  
+  &:hover {
+    color: #374151;
+    border-color: #9ca3af;
+  }
 }
 
 // Ant Design overrides for this component
@@ -47,12 +92,59 @@
     margin-bottom: 20px;
   }
 
+  .ant-form-item-label {
+    padding-bottom: 6px;
+    
+    > label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      height: auto;
+      
+      &::after {
+        display: none;
+      }
+    }
+  }
+
   .ant-input-affix-wrapper,
   .ant-input-password {
     padding: 10px 16px;
+    border-radius: 6px;
+    border-color: #d1d5db;
+    
+    &:hover {
+      border-color: #9ca3af;
+    }
+    
+    &:focus,
+    &.ant-input-affix-wrapper-focused {
+      border-color: #1890ff;
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1);
+    }
   }
 
-  .ant-input-affix-wrapper-lg {
-    font-size: 16px;
+  .ant-input-affix-wrapper-lg,
+  .ant-input-lg {
+    font-size: 15px;
+  }
+}
+
+// Responsive design
+@media (max-width: $breakpoint-sm) {
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+  
+  .passwordGroup {
+    padding: 16px;
+  }
+  
+  .passwordHelper p {
+    font-size: 12px;
   }
 }

@@ -10,7 +10,7 @@ import styles from './LoginForm.module.scss';
  * Follows Single Responsibility Principle - only renders form UI
  */
 export const LoginForm: React.FC = () => {
-  const { formData, errors, isLoading, handleChange, handleLogin, handleForgotPassword } = useLogin();
+  const { formData, errors, isLoading, handleChange, handleLogin, handleForgotPassword, handleRegisterRedirect } = useLogin();
 
   const [form] = Form.useForm();
 
@@ -107,6 +107,14 @@ export const LoginForm: React.FC = () => {
         <div className={styles.forgotPasswordWrapper}>
           <Button type="link" onClick={handleForgotPassword} disabled={isLoading} className={styles.forgotPassword}>
             Forgot password?
+          </Button>
+        </div>
+
+        {/* Create Account Link */}
+        <div className={styles.createAccountWrapper}>
+          <span className={styles.createAccountText}>Need to create an admin account?</span>
+          <Button type="link" onClick={handleRegisterRedirect} disabled={isLoading} className={styles.createAccountLink}>
+            Create Account
           </Button>
         </div>
 
