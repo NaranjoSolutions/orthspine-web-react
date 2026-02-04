@@ -1,0 +1,1 @@
+export { PatientsToolbar } from './PatientsToolbar';

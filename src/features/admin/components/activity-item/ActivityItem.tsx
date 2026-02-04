@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, Avatar, Typography } from 'antd';
 import { UserAddOutlined, CheckCircleOutlined, CloseCircleOutlined, CommentOutlined } from '@ant-design/icons';
-import { RecentActivity, ActivityType } from '../types';
+import { RecentActivity, ActivityType } from '@/features/admin/types';
 import { formatRelativeTime } from '@/shared/utils/dateUtils';
 import styles from './ActivityItem.module.scss';
 
