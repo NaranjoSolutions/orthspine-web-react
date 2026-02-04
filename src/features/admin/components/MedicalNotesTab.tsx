@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from 'antd';
+import { Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { MedicalNoteTimeline } from '@/features/admin/components';
 import type { MedicalNote } from '@/features/admin/types/patient.types';

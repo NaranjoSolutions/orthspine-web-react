@@ -6,10 +6,8 @@ import {
   selectSelectedTestimonial,
   selectTestimonialIsLoading,
 } from '@/features/admin/store/testimonialsSlice';
-import { TestimonialTable, TestimonialForm } from '@/features/admin/components';
-import { TestimonialsToolbar } from './components/TestimonialsToolbar';
-import { useTestimonialModals } from './hooks/useTestimonialModals';
-import { useTestimonialFilters } from './hooks/useTestimonialFilters';
+import { TestimonialTable, TestimonialForm, TestimonialsToolbar } from '@/features/admin/components';
+import { useTestimonialModals, useTestimonialFilters } from '@/features/admin/hooks';
 import styles from './TestimonialsPage.module.scss';
 
 /**
