@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Row, Col, Card, Calendar, Badge, Empty } from 'antd';
+import { Row, Col, Card, Calendar, Badge, Empty, List } from 'antd';
 import { TeamOutlined, CalendarOutlined, CommentOutlined } from '@ant-design/icons';
 import type { Dayjs } from 'dayjs';
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -100,15 +100,17 @@ const DashboardPage: React.FC = () => {
         </Col>
         <Col xs={24} lg={12}>
           <Card title="Recent Activity" bordered={false} className={styles.activityCard}>
-            <div className={styles.activityList}>
-              {isLoading ? (
-                <Empty description="Loading..." />
-              ) : recentActivities.length === 0 ? (
-                <Empty description="No recent activities" />
-              ) : (
-                recentActivities.map((activity) => <ActivityItem key={activity.id} activity={activity} />)
-              )}
-            </div>
+            {isLoading ? (
+              <Empty description="Loading..." />
+            ) : recentActivities.length === 0 ? (
+              <Empty description="No recent activities" />
+            ) : (
+              <List
+                dataSource={recentActivities}
+                renderItem={(activity) => <ActivityItem key={activity.id} activity={activity} />}
+                className={styles.activityList}
+              />
+            )}
           </Card>
         </Col>
       </Row>

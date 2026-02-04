@@ -1,8 +1,11 @@
 import React from 'react';
+import { Card, Row, Col, Typography, Space } from 'antd';
 import { EnvironmentOutlined, ClockCircleOutlined, PhoneOutlined, MailOutlined } from '@ant-design/icons';
 import { CLINIC_ADDRESS, OPERATING_HOURS } from '../../config/contact.config';
 import { clinicInformation } from '@/shared/resources/clinic-information';
 import styles from './ClinicInformationCards.module.scss';
+
+const { Title, Text, Link } = Typography;
 
 /**
  * Information card type definition
@@ -16,15 +19,15 @@ interface InfoCard {
 
 /**
  * ClinicInformationCards Component
- * Displays essential clinic information in card format
+ * Displays essential clinic information in card format using AntD components
  *
  * Features:
  * - Clinic name and address
  * - Hours of operation
  * - Contact phone number
  * - Email address
- * - Clean, icon-based design
- * - Responsive layout
+ * - Clean, icon-based design using AntD Card
+ * - Responsive layout with AntD Grid system
  * - Enhanced visual hierarchy
  */
 export const ClinicInformationCards: React.FC = () => {
@@ -34,10 +37,12 @@ export const ClinicInformationCards: React.FC = () => {
       icon: <EnvironmentOutlined />,
       title: 'Location',
       content: (
-        <>
-          <div className={styles.clinicName}>{clinicInformation.name}</div>
-          <div className={styles.addressText}>{CLINIC_ADDRESS.FULL}</div>
-        </>
+        <Space direction="vertical" size={4}>
+          <Text strong className={styles.clinicName}>
+            {clinicInformation.name}
+          </Text>
+          <Text className={styles.addressText}>{CLINIC_ADDRESS.FULL}</Text>
+        </Space>
       ),
     },
     {
@@ -45,16 +50,20 @@ export const ClinicInformationCards: React.FC = () => {
       icon: <ClockCircleOutlined />,
       title: 'Hours of Operation',
       content: (
-        <div className={styles.hoursContent}>
+        <Space direction="vertical" size={4}>
           <div className={styles.hoursRow}>
-            <span className={styles.hoursLabel}>{OPERATING_HOURS.WEEKDAY.LABEL}:</span>
-            <span className={styles.hoursValue}>{OPERATING_HOURS.WEEKDAY.HOURS}</span>
+            <Text strong className={styles.hoursLabel}>
+              {OPERATING_HOURS.WEEKDAY.LABEL}:
+            </Text>
+            <Text className={styles.hoursValue}>{OPERATING_HOURS.WEEKDAY.HOURS}</Text>
           </div>
           <div className={styles.hoursRow}>
-            <span className={styles.hoursLabel}>{OPERATING_HOURS.WEEKEND.LABEL}:</span>
-            <span className={styles.hoursValue}>{OPERATING_HOURS.WEEKEND.HOURS}</span>
+            <Text strong className={styles.hoursLabel}>
+              {OPERATING_HOURS.WEEKEND.LABEL}:
+            </Text>
+            <Text className={styles.hoursValue}>{OPERATING_HOURS.WEEKEND.HOURS}</Text>
           </div>
-        </div>
+        </Space>
       ),
     },
     {
@@ -62,9 +71,9 @@ export const ClinicInformationCards: React.FC = () => {
       icon: <PhoneOutlined />,
       title: 'Phone',
       content: (
-        <a href={`tel:${clinicInformation.contact.phones[0]}`} className={styles.contactLink}>
+        <Link href={`tel:${clinicInformation.contact.phones[0]}`} className={styles.contactLink}>
           {clinicInformation.contact.phones[0]}
-        </a>
+        </Link>
       ),
     },
     {
@@ -72,27 +81,37 @@ export const ClinicInformationCards: React.FC = () => {
       icon: <MailOutlined />,
       title: 'Email',
       content: (
-        <a href={`mailto:${clinicInformation.contact.email}`} className={styles.contactLink}>
+        <Link href={`mailto:${clinicInformation.contact.email}`} className={styles.contactLink}>
           {clinicInformation.contact.email}
-        </a>
+        </Link>
       ),
     },
   ];
 
   return (
     <div className={styles.infoCardsContainer}>
-      <h2 className={styles.sectionTitle}>Clinic Information</h2>
-      <div className={styles.cardsGrid}>
+      <Title level={2} className={styles.sectionTitle}>
+        Clinic Information
+      </Title>
+      <Space direction="vertical" size="middle" className={styles.cardsGrid}>
         {infoCards.map((card) => (
-          <div key={card.id} className={styles.infoCard}>
-            <div className={styles.iconWrapper}>{card.icon}</div>
-            <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>{card.title}</h3>
-              <div className={styles.cardText}>{card.content}</div>
-            </div>
-          </div>
+          <Card key={card.id} hoverable className={styles.infoCard}>
+            <Row gutter={16} align="middle">
+              <Col flex="none">
+                <div className={styles.iconWrapper}>{card.icon}</div>
+              </Col>
+              <Col flex="auto">
+                <Space direction="vertical" size={4} style={{ width: '100%' }}>
+                  <Title level={5} className={styles.cardTitle}>
+                    {card.title}
+                  </Title>
+                  <div className={styles.cardText}>{card.content}</div>
+                </Space>
+              </Col>
+            </Row>
+          </Card>
         ))}
-      </div>
+      </Space>
     </div>
   );
 };
