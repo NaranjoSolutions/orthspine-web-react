@@ -12,9 +12,9 @@ interface SuccessFeedbackModalProps {
 
 /**
  * SuccessFeedbackModal Component
- * 
+ *
  * Displays a success confirmation modal after a testimonial is submitted.
- * 
+ *
  * Features:
  * - Success checkmark icon
  * - Thank you message with confirmation text
@@ -24,7 +24,7 @@ interface SuccessFeedbackModalProps {
  * - Keyboard navigable (ESC to close, Tab navigation)
  * - Responsive design for mobile, tablet, and desktop
  * - Background overlay to focus attention
- * 
+ *
  * @param open - Controls modal visibility
  * @param onClose - Callback when modal is closed
  */
@@ -78,8 +78,8 @@ export const SuccessFeedbackModal: React.FC<SuccessFeedbackModalProps> = ({ open
 
         {/* Message */}
         <p id="success-modal-description" className={styles.message}>
-          Your review has been successfully submitted and is pending approval. We appreciate you sharing your
-          experience with the Orthopedic Spine community.
+          Your review has been successfully submitted and is pending approval. We appreciate you sharing your experience
+          with the Orthopedic Spine community.
         </p>
 
         {/* Action Buttons */}

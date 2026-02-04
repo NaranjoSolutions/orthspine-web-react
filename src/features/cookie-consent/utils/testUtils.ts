@@ -103,8 +103,8 @@ export class CookieConsentTestUtils {
    */
   static validateState(): boolean {
     const consent = CookieConsentService.getConsent();
-    
-    const isValid = 
+
+    const isValid =
       typeof consent.hasConsented === 'boolean' &&
       typeof consent.strictlyNecessary === 'boolean' &&
       typeof consent.functional === 'boolean' &&
@@ -126,13 +126,13 @@ if (import.meta.env.DEV) {
   window.CookieConsentTestUtils = CookieConsentTestUtils;
   console.log(
     '🍪 Cookie Consent Test Utils available in console:\n' +
-    '  - CookieConsentTestUtils.reset()\n' +
-    '  - CookieConsentTestUtils.logState()\n' +
-    '  - CookieConsentTestUtils.simulateFirstVisit()\n' +
-    '  - CookieConsentTestUtils.simulateAcceptedAll()\n' +
-    '  - CookieConsentTestUtils.simulateRejectedNonEssential()\n' +
-    '  - CookieConsentTestUtils.checkLocalStorage()\n' +
-    '  - CookieConsentTestUtils.getRawValue()\n' +
-    '  - CookieConsentTestUtils.validateState()'
+      '  - CookieConsentTestUtils.reset()\n' +
+      '  - CookieConsentTestUtils.logState()\n' +
+      '  - CookieConsentTestUtils.simulateFirstVisit()\n' +
+      '  - CookieConsentTestUtils.simulateAcceptedAll()\n' +
+      '  - CookieConsentTestUtils.simulateRejectedNonEssential()\n' +
+      '  - CookieConsentTestUtils.checkLocalStorage()\n' +
+      '  - CookieConsentTestUtils.getRawValue()\n' +
+      '  - CookieConsentTestUtils.validateState()',
   );
 }

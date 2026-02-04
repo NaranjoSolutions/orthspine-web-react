@@ -20,12 +20,7 @@ interface AddMedicalNoteModalProps {
  * - Form validation
  * - Loading state
  */
-export const AddMedicalNoteModal: React.FC<AddMedicalNoteModalProps> = ({
-  visible,
-  loading,
-  onSubmit,
-  onCancel,
-}) => {
+export const AddMedicalNoteModal: React.FC<AddMedicalNoteModalProps> = ({ visible, loading, onSubmit, onCancel }) => {
   const [form] = Form.useForm<MedicalNoteFormData>();
 
   /**
@@ -69,17 +64,8 @@ export const AddMedicalNoteModal: React.FC<AddMedicalNoteModalProps> = ({
       className={styles.modal}
     >
       <Form form={form} layout="vertical" onFinish={handleSubmit} className={styles.form}>
-        <Form.Item
-          name="category"
-          label="Category"
-          rules={[{ required: true, message: 'Please select a category' }]}
-        >
-          <Select
-            placeholder="Select note category"
-            options={categoryOptions}
-            size="large"
-            disabled={loading}
-          />
+        <Form.Item name="category" label="Category" rules={[{ required: true, message: 'Please select a category' }]}>
+          <Select placeholder="Select note category" options={categoryOptions} size="large" disabled={loading} />
         </Form.Item>
 
         <Form.Item

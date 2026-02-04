@@ -94,7 +94,10 @@ export const useForgotPassword = () => {
         hideLoading();
 
         // Show success message
-        message.success(response.message || 'Password reset link sent to your email!');
+        message.success(
+          response.message || 'Password reset instructions have been sent to your email. Please check your inbox.',
+          5,
+        );
 
         logger.info('Password reset requested', { email: formData.email });
 
@@ -109,7 +112,9 @@ export const useForgotPassword = () => {
         // Handle API errors
         const apiError = error as { data?: { message?: string }; message?: string };
         const errorMessage =
-          apiError?.data?.message || apiError?.message || 'Failed to send reset link. Please try again.';
+          apiError?.data?.message ||
+          apiError?.message ||
+          'Unable to process your request at this time. Please try again or contact support if the issue persists.';
 
         setErrors({
           general: errorMessage,

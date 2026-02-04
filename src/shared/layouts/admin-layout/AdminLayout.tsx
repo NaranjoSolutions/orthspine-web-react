@@ -129,12 +129,7 @@ export const AdminLayout: React.FC = () => {
           </div>
           <div className={styles.headerRight}>
             <div className={styles.userInfo}>
-              <Avatar
-                size={48}
-                src={user?.avatar}
-                icon={!user?.avatar && <UserOutlined />}
-                className={styles.avatar}
-              />
+              <Avatar size={48} src={user?.avatar} icon={!user?.avatar && <UserOutlined />} className={styles.avatar} />
               <div className={styles.userDetails}>
                 <span className={styles.userName}>
                   {user?.firstName} {user?.lastName}

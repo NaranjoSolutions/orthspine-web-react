@@ -72,28 +72,14 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({
           { max: 1000, message: 'Message must not exceed 1000 characters' },
         ]}
       >
-        <TextArea
-          placeholder="Enter testimonial message"
-          rows={6}
-          showCount
-          maxLength={1000}
-          size="large"
-        />
+        <TextArea placeholder="Enter testimonial message" rows={6} showCount maxLength={1000} size="large" />
       </Form.Item>
 
-      <Form.Item
-        name="rating"
-        label="Rating"
-        rules={[{ required: true, message: 'Please select a rating' }]}
-      >
+      <Form.Item name="rating" label="Rating" rules={[{ required: true, message: 'Please select a rating' }]}>
         <Rate allowHalf className={styles.rating} />
       </Form.Item>
 
-      <Form.Item
-        name="status"
-        label="Status"
-        rules={[{ required: true, message: 'Please select a status' }]}
-      >
+      <Form.Item name="status" label="Status" rules={[{ required: true, message: 'Please select a status' }]}>
         <Select placeholder="Select status" size="large">
           <Option value="pending">Pending</Option>
           <Option value="approved">Approved</Option>

@@ -23,7 +23,8 @@ const mockAppointments: AdminAppointment[] = [
     doctorName: 'Dr. Marcus Holloway',
     serviceType: 'New Patient Consultation',
     dateTime: '2024-10-26T10:30:00Z',
-    reasonForVisit: 'Patient reports experiencing persistent lower back pain for the last two weeks, radiating down the left leg. Pain worsens with prolonged sitting.',
+    reasonForVisit:
+      'Patient reports experiencing persistent lower back pain for the last two weeks, radiating down the left leg. Pain worsens with prolonged sitting.',
     status: AppointmentStatus.CONFIRMED,
     notes: 'First visit for spine evaluation',
     createdAt: '2024-10-20T10:00:00Z',
@@ -201,7 +202,7 @@ class AppointmentService {
   async getAppointments(
     filters: AppointmentFilters,
     page: number,
-    pageSize: number
+    pageSize: number,
   ): Promise<{ appointments: AdminAppointment[]; total: number }> {
     // Simulate API delay
     await this.delay(300);
@@ -215,7 +216,7 @@ class AppointmentService {
         (apt) =>
           apt.patientName.toLowerCase().includes(searchLower) ||
           apt.doctorName.toLowerCase().includes(searchLower) ||
-          apt.reasonForVisit.toLowerCase().includes(searchLower)
+          apt.reasonForVisit.toLowerCase().includes(searchLower),
       );
     }
 

@@ -82,8 +82,7 @@ export const OPERATING_HOURS = {
  * Note: This information is not available in shared clinic-information.ts
  * Consider adding it there if it becomes part of the clinic's core information
  */
-export const PARKING_INFO =
-  'Free on-site parking available for patients. Validate your ticket at reception.' as const;
+export const PARKING_INFO = 'Free on-site parking available for patients. Validate your ticket at reception.' as const;
 
 /**
  * Accessibility information

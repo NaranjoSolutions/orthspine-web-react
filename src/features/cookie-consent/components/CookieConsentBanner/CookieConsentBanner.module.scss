@@ -10,7 +10,7 @@
   box-shadow: $shadow-xl;
   z-index: 1000;
   animation: slideUp 0.3s ease-out;
-  
+
   @keyframes slideUp {
     from {
       transform: translateY(100%);
@@ -138,10 +138,10 @@
   @media (max-width: $breakpoint-sm) {
     :global(.ant-space) {
       width: 100%;
-      
+
       :global(.ant-space-item) {
         flex: 1;
-        
+
         button {
           width: 100%;
         }
@@ -161,7 +161,9 @@
 
 // Accessibility improvements
 .banner:focus-within {
-  box-shadow: $shadow-xl, 0 0 0 3px rgba($color-primary, 0.1);
+  box-shadow:
+    $shadow-xl,
+    0 0 0 3px rgba($color-primary, 0.1);
 }
 
 // Print styles

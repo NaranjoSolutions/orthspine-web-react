@@ -9,6 +9,7 @@ This guide helps you test the cookie consent feature manually in the browser.
 ## Prerequisites
 
 1. Start the development server:
+
    ```bash
    npm run dev
    ```
@@ -27,6 +28,7 @@ This guide helps you test the cookie consent feature manually in the browser.
 ### ✅ Test 1: First Visit (Banner Appears)
 
 **Steps:**
+
 1. Clear localStorage:
    - Open Console
    - Run: `localStorage.removeItem('cookie-consent')`
@@ -34,6 +36,7 @@ This guide helps you test the cookie consent feature manually in the browser.
 2. Refresh the page (F5)
 
 **Expected Result:**
+
 - ✅ Cookie consent banner appears at bottom of page
 - ✅ Banner shows cookie icon (🍪)
 - ✅ Title reads "Cookie Consent"
@@ -45,6 +48,7 @@ This guide helps you test the cookie consent feature manually in the browser.
 - ✅ Banner has smooth slide-up animation
 
 **Screenshot Checklist:**
+
 - [ ] Banner positioned at bottom
 - [ ] Cookie icon displayed
 - [ ] All text readable
@@ -56,10 +60,12 @@ This guide helps you test the cookie consent feature manually in the browser.
 ### ✅ Test 2: Accept All Cookies
 
 **Steps:**
+
 1. Ensure banner is visible (Test 1)
 2. Click "Accept All" button
 
 **Expected Result:**
+
 - ✅ Banner disappears immediately
 - ✅ Check localStorage:
   - Open Application > Local Storage
@@ -77,8 +83,9 @@ This guide helps you test the cookie consent feature manually in the browser.
 - ✅ Refresh page - banner should NOT reappear
 
 **Console Check:**
+
 ```javascript
-CookieConsentTestUtils.logState()
+CookieConsentTestUtils.logState();
 // Should show all categories as true
 ```
 
@@ -87,10 +94,12 @@ CookieConsentTestUtils.logState()
 ### ✅ Test 3: Reject Non-Essential Cookies
 
 **Steps:**
+
 1. Clear localStorage and refresh (Test 1)
 2. Click "Reject Non-Essential" button
 
 **Expected Result:**
+
 - ✅ Banner disappears
 - ✅ Check localStorage value:
   ```json
@@ -110,10 +119,12 @@ CookieConsentTestUtils.logState()
 ### ✅ Test 4: Manage Preferences (Open Modal)
 
 **Steps:**
+
 1. Clear localStorage and refresh
 2. Click "Manage Preferences" button
 
 **Expected Result:**
+
 - ✅ Modal opens centered on screen
 - ✅ Modal title: "Cookie Preferences"
 - ✅ Close button (X) visible in top right
@@ -134,6 +145,7 @@ CookieConsentTestUtils.logState()
   - "Accept All" (default/white)
 
 **Interactive Checks:**
+
 - [ ] Click outside modal - should NOT close
 - [ ] Click X button - modal closes, no changes saved
 - [ ] Try to toggle "Strictly Necessary" - should not work
@@ -145,12 +157,14 @@ CookieConsentTestUtils.logState()
 ### ✅ Test 5: Save Custom Preferences
 
 **Steps:**
+
 1. Open Manage Preferences modal
 2. Enable ONLY "Functional Cookies"
 3. Keep "Performance & Analytics" disabled
 4. Click "Save Settings"
 
 **Expected Result:**
+
 - ✅ Modal closes
 - ✅ Banner disappears
 - ✅ localStorage value:
@@ -167,8 +181,9 @@ CookieConsentTestUtils.logState()
 - ✅ Settings are persisted
 
 **Console Verification:**
+
 ```javascript
-CookieConsentTestUtils.logState()
+CookieConsentTestUtils.logState();
 // functional: true
 // performance: false
 ```
@@ -178,12 +193,14 @@ CookieConsentTestUtils.logState()
 ### ✅ Test 6: Accept All from Modal
 
 **Steps:**
+
 1. Clear localStorage and refresh
 2. Click "Manage Preferences"
 3. Toggle some switches OFF
 4. Click "Accept All" button in modal
 
 **Expected Result:**
+
 - ✅ Modal closes
 - ✅ Banner disappears
 - ✅ All categories set to true (even ones you toggled off)
@@ -194,12 +211,14 @@ CookieConsentTestUtils.logState()
 ### ✅ Test 7: Cross-Tab Synchronization
 
 **Steps:**
+
 1. Open app in TWO browser tabs
 2. In Tab 1: Clear localStorage and refresh
 3. Both tabs should show banner
 4. In Tab 1: Click "Accept All"
 
 **Expected Result:**
+
 - ✅ Banner disappears in Tab 1
 - ✅ Banner automatically disappears in Tab 2 (within 1-2 seconds)
 - ✅ Both tabs have same localStorage value
@@ -212,11 +231,14 @@ CookieConsentTestUtils.logState()
 ### ✅ Test 8: Responsive Design
 
 #### Desktop (> 992px)
-**Steps:** 
+
+**Steps:**
+
 1. Resize browser window to > 992px width
 2. Clear localStorage and refresh
 
 **Expected Result:**
+
 - ✅ Banner content displayed horizontally
 - ✅ Cookie icon on left
 - ✅ Text in center
@@ -224,22 +246,28 @@ CookieConsentTestUtils.logState()
 - ✅ All content fits without wrapping
 
 #### Tablet (576px - 992px)
+
 **Steps:**
+
 1. Resize to ~768px width
 2. Clear localStorage and refresh
 
 **Expected Result:**
+
 - ✅ Banner adjusts layout
 - ✅ Buttons may wrap to next line
 - ✅ Content remains readable
 - ✅ No horizontal scroll
 
 #### Mobile (< 576px)
+
 **Steps:**
+
 1. Resize to ~375px width (iPhone size)
 2. Clear localStorage and refresh
 
 **Expected Result:**
+
 - ✅ Stacked vertical layout
 - ✅ Icon and text stacked
 - ✅ Buttons full-width and stacked
@@ -247,6 +275,7 @@ CookieConsentTestUtils.logState()
 - ✅ Easy to tap buttons
 
 **Modal Responsive:**
+
 - ✅ Modal scales to fit screen
 - ✅ Buttons stack on mobile
 - ✅ Content scrollable if needed
@@ -256,32 +285,40 @@ CookieConsentTestUtils.logState()
 ### ✅ Test 9: Accessibility
 
 #### Keyboard Navigation
+
 **Steps:**
+
 1. Clear localStorage and refresh
 2. Press TAB key repeatedly
 
 **Expected Result:**
+
 - ✅ Focus moves to banner buttons
 - ✅ Clear focus indicator visible
 - ✅ Can press ENTER to activate button
 - ✅ Can TAB through all interactive elements
 
 **Modal Keyboard:**
+
 1. Open modal with keyboard
 2. Tab through elements
 
 **Expected Result:**
+
 - ✅ Tab cycles through toggles and buttons
 - ✅ ESC key closes modal
 - ✅ SPACE toggles switches
 - ✅ ENTER activates buttons
 
 #### Screen Reader
+
 **Steps:**
+
 1. Enable screen reader (NVDA, JAWS, VoiceOver)
 2. Navigate to banner
 
 **Expected Result:**
+
 - ✅ Banner announced as dialog
 - ✅ Title read correctly
 - ✅ Description read
@@ -293,10 +330,12 @@ CookieConsentTestUtils.logState()
 ### ✅ Test 10: Cookie Policy Link
 
 **Steps:**
+
 1. Banner visible
 2. Click "Cookie Policy" link in description
 
 **Expected Result:**
+
 - ✅ Navigates to /cookie-policy
 - ✅ Link styled with primary color
 - ✅ Link has underline
@@ -314,34 +353,34 @@ Open browser console and use these commands:
 
 ```javascript
 // View current consent state
-CookieConsentTestUtils.logState()
+CookieConsentTestUtils.logState();
 
 // Clear all consent (reset to first visit)
-CookieConsentTestUtils.reset()
+CookieConsentTestUtils.reset();
 
 // Simulate first visit
-CookieConsentTestUtils.simulateFirstVisit()
+CookieConsentTestUtils.simulateFirstVisit();
 
 // Simulate user who accepted all
-CookieConsentTestUtils.simulateAcceptedAll()
+CookieConsentTestUtils.simulateAcceptedAll();
 
 // Simulate user who rejected non-essential
-CookieConsentTestUtils.simulateRejectedNonEssential()
+CookieConsentTestUtils.simulateRejectedNonEssential();
 
 // Check if localStorage works
-CookieConsentTestUtils.checkLocalStorage()
+CookieConsentTestUtils.checkLocalStorage();
 
 // Get raw localStorage value
-CookieConsentTestUtils.getRawValue()
+CookieConsentTestUtils.getRawValue();
 
 // Validate state structure
-CookieConsentTestUtils.validateState()
+CookieConsentTestUtils.validateState();
 
 // Set custom state
 CookieConsentTestUtils.setCustomState({
   functional: true,
-  performance: false
-})
+  performance: false,
+});
 ```
 
 ---
@@ -351,6 +390,7 @@ CookieConsentTestUtils.setCustomState({
 Use this checklist to verify visual appearance:
 
 ### Banner
+
 - [ ] Background: Clean white
 - [ ] Shadow: Subtle shadow visible
 - [ ] Border: Top border visible
@@ -364,6 +404,7 @@ Use this checklist to verify visual appearance:
 - [ ] Animation: Smooth slide-up on appear
 
 ### Modal
+
 - [ ] Overlay: Semi-transparent dark background
 - [ ] Modal: Centered, white background
 - [ ] Title: Bold at top
@@ -382,6 +423,7 @@ Use this checklist to verify visual appearance:
 ## Performance Checks
 
 ### Bundle Size
+
 ```bash
 npm run build
 # Check output for cookie consent chunks
@@ -389,15 +431,18 @@ npm run build
 ```
 
 **Expected:**
+
 - ✅ No significant bundle size increase
 - ✅ No console warnings about chunk size from our code
 
 ### Lighthouse Audit
+
 1. Build production version
 2. Run Lighthouse audit
 3. Check scores
 
 **Expected:**
+
 - ✅ Performance: No degradation
 - ✅ Accessibility: 95+
 - ✅ Best Practices: No issues from consent feature
@@ -408,31 +453,39 @@ npm run build
 ## Edge Cases to Test
 
 ### ✅ LocalStorage Disabled
+
 **Steps:**
+
 1. Disable localStorage in browser settings
 2. Refresh page
 
 **Expected:**
+
 - ✅ App doesn't crash
 - ✅ Banner may show repeatedly (acceptable fallback)
 - ✅ Console shows error message but app continues
 
 ### ✅ Corrupted localStorage Data
+
 **Steps:**
+
 ```javascript
-localStorage.setItem('cookie-consent', 'invalid json{]')
+localStorage.setItem('cookie-consent', 'invalid json{]');
 ```
 
 **Expected:**
+
 - ✅ App doesn't crash
 - ✅ Falls back to default state
 - ✅ Console warning about invalid data
 - ✅ Banner appears as if first visit
 
 ### ✅ Very Long Text
+
 Test with extreme zoom levels (200%+)
 
 **Expected:**
+
 - ✅ Text remains readable
 - ✅ No overflow issues
 - ✅ Layout adapts appropriately
@@ -442,35 +495,36 @@ Test with extreme zoom levels (200%+)
 ## Automated Testing (Future)
 
 ### Unit Tests Structure
+
 ```typescript
 describe('CookieConsentBanner', () => {
-  test('renders when user has not consented')
-  test('does not render when user has consented')
-  test('calls acceptAll when Accept All clicked')
-  test('calls rejectNonEssential when Reject clicked')
-  test('opens modal when Manage Preferences clicked')
-})
+  test('renders when user has not consented');
+  test('does not render when user has consented');
+  test('calls acceptAll when Accept All clicked');
+  test('calls rejectNonEssential when Reject clicked');
+  test('opens modal when Manage Preferences clicked');
+});
 
 describe('CookiePreferencesModal', () => {
-  test('displays all three categories')
-  test('disables Strictly Necessary toggle')
-  test('enables other toggles')
-  test('saves preferences correctly')
-  test('accepts all from modal')
-})
+  test('displays all three categories');
+  test('disables Strictly Necessary toggle');
+  test('enables other toggles');
+  test('saves preferences correctly');
+  test('accepts all from modal');
+});
 
 describe('useCookieConsent', () => {
-  test('reads from localStorage on mount')
-  test('updates state on consent change')
-  test('syncs across tabs')
-})
+  test('reads from localStorage on mount');
+  test('updates state on consent change');
+  test('syncs across tabs');
+});
 
 describe('CookieConsentService', () => {
-  test('saves to localStorage')
-  test('reads from localStorage')
-  test('handles errors gracefully')
-  test('validates data structure')
-})
+  test('saves to localStorage');
+  test('reads from localStorage');
+  test('handles errors gracefully');
+  test('validates data structure');
+});
 ```
 
 ---
@@ -497,30 +551,35 @@ Before marking as complete, verify:
 ## Troubleshooting
 
 ### Banner doesn't appear
+
 - Check localStorage is cleared
 - Check browser console for errors
 - Verify App.tsx imports CookieConsentBanner
 - Check z-index isn't being overridden
 
 ### Modal doesn't open
+
 - Check console for errors
 - Verify button click handler
 - Check Ant Design Modal is imported
 - Verify modal state management
 
 ### LocalStorage not persisting
+
 - Check browser storage settings
 - Verify storage isn't full
 - Check incognito/private mode limitations
 - Test in regular browser window
 
 ### Styles not applied
+
 - Verify SCSS modules compiled
 - Check import paths
 - Verify Vite config for SCSS
 - Clear build cache and rebuild
 
 ### Test utilities not available
+
 - Ensure in development mode
 - Check console for import errors
 - Verify main.tsx imports utils
@@ -531,6 +590,7 @@ Before marking as complete, verify:
 ## Reporting Issues
 
 If you find bugs, please report:
+
 1. Browser and version
 2. Steps to reproduce
 3. Expected vs actual behavior

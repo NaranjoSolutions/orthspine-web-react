@@ -42,10 +42,10 @@ export const RegisterForm: React.FC = () => {
         requiredMark="optional"
       >
         {/* Full Name Field */}
-        <Form.Item 
-          label="Full Name" 
-          name="fullname" 
-          validateStatus={errors.fullname ? 'error' : ''} 
+        <Form.Item
+          label="Full Name"
+          name="fullname"
+          validateStatus={errors.fullname ? 'error' : ''}
           help={errors.fullname}
           required
         >
@@ -62,10 +62,10 @@ export const RegisterForm: React.FC = () => {
         </Form.Item>
 
         {/* Email Field */}
-        <Form.Item 
-          label="Email Address" 
-          name="email" 
-          validateStatus={errors.email ? 'error' : ''} 
+        <Form.Item
+          label="Email Address"
+          name="email"
+          validateStatus={errors.email ? 'error' : ''}
           help={errors.email}
           required
         >
@@ -83,10 +83,10 @@ export const RegisterForm: React.FC = () => {
 
         <div className={styles.passwordGroup}>
           {/* Password Field */}
-          <Form.Item 
-            label="Password" 
-            name="password" 
-            validateStatus={errors.password ? 'error' : ''} 
+          <Form.Item
+            label="Password"
+            name="password"
+            validateStatus={errors.password ? 'error' : ''}
             help={errors.password}
             required
           >
@@ -124,7 +124,10 @@ export const RegisterForm: React.FC = () => {
 
           {/* Password Requirements Helper Text */}
           <div className={styles.passwordHelper}>
-            <p>Password must contain at least 8 characters, including uppercase, lowercase, number, and special character.</p>
+            <p>
+              Password must contain at least 8 characters, including uppercase, lowercase, number, and special
+              character.
+            </p>
           </div>
         </div>
 

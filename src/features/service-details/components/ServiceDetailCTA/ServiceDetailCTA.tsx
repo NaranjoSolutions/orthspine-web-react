@@ -33,12 +33,7 @@ export const ServiceDetailCTA: React.FC<ServiceDetailCTAProps> = ({ onScheduleAp
           >
             Schedule Appointment Now
           </Button>
-          <Button
-            size="large"
-            icon={<TeamOutlined />}
-            className={styles.teamButton}
-            onClick={onViewTeam}
-          >
+          <Button size="large" icon={<TeamOutlined />} className={styles.teamButton} onClick={onViewTeam}>
             View Our Team
           </Button>
         </div>

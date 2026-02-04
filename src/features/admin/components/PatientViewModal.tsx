@@ -29,14 +29,7 @@ export const PatientViewModal: React.FC<PatientViewModalProps> = ({ patient, vis
   };
 
   return (
-    <Modal
-      title="Patient Details"
-      open={visible}
-      onCancel={onClose}
-      footer={null}
-      width={700}
-      className={styles.modal}
-    >
+    <Modal title="Patient Details" open={visible} onCancel={onClose} footer={null} width={700} className={styles.modal}>
       <Descriptions bordered column={1} className={styles.descriptions}>
         <Descriptions.Item label="Full Name">{patient.fullName}</Descriptions.Item>
         <Descriptions.Item label="Phone">{patient.phone}</Descriptions.Item>

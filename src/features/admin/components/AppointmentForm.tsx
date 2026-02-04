@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Input, Select, DatePicker, Button, Space } from 'antd';
-import { AppointmentStatus, type AppointmentFormData, type DoctorOption, type PatientOption } from '@/features/admin/types/appointment.types';
+import {
+  AppointmentStatus,
+  type AppointmentFormData,
+  type DoctorOption,
+  type PatientOption,
+} from '@/features/admin/types/appointment.types';
 import { appointmentService } from '@/features/admin/services/appointmentService';
 import dayjs from 'dayjs';
 import styles from './AppointmentForm.module.scss';
@@ -133,11 +138,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
       className={styles.appointmentForm}
     >
       {/* Patient Selection */}
-      <Form.Item
-        name="patientId"
-        label="Patient"
-        rules={[{ required: true, message: 'Please select a patient' }]}
-      >
+      <Form.Item name="patientId" label="Patient" rules={[{ required: true, message: 'Please select a patient' }]}>
         <Select
           placeholder="Select patient"
           showSearch
@@ -159,11 +160,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
       </Form.Item>
 
       {/* Doctor Selection */}
-      <Form.Item
-        name="doctorId"
-        label="Doctor"
-        rules={[{ required: true, message: 'Please select a doctor' }]}
-      >
+      <Form.Item name="doctorId" label="Doctor" rules={[{ required: true, message: 'Please select a doctor' }]}>
         <Select
           placeholder="Select doctor"
           showSearch
@@ -190,12 +187,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
         label="Date & Time"
         rules={[{ required: true, message: 'Please select date and time' }]}
       >
-        <DatePicker
-          showTime
-          format="YYYY-MM-DD hh:mm A"
-          placeholder="Select date and time"
-          style={{ width: '100%' }}
-        />
+        <DatePicker showTime format="YYYY-MM-DD hh:mm A" placeholder="Select date and time" style={{ width: '100%' }} />
       </Form.Item>
 
       {/* Reason for Visit */}
@@ -211,11 +203,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
       </Form.Item>
 
       {/* Status */}
-      <Form.Item
-        name="status"
-        label="Status"
-        rules={[{ required: true, message: 'Please select status' }]}
-      >
+      <Form.Item name="status" label="Status" rules={[{ required: true, message: 'Please select status' }]}>
         <Select placeholder="Select status">
           <Option value={AppointmentStatus.PENDING}>Pending</Option>
           <Option value={AppointmentStatus.CONFIRMED}>Confirmed</Option>
@@ -227,12 +215,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
 
       {/* Notes */}
       <Form.Item name="notes" label="Notes (Optional)">
-        <TextArea
-          rows={3}
-          placeholder="Add any additional notes about this appointment..."
-          maxLength={500}
-          showCount
-        />
+        <TextArea rows={3} placeholder="Add any additional notes about this appointment..." maxLength={500} showCount />
       </Form.Item>
 
       {/* Form Actions */}

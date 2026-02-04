@@ -11,16 +11,16 @@ import styles from './CookieConsentBanner.module.scss';
 
 /**
  * CookieConsentBanner Component
- * 
+ *
  * Displays a cookie consent banner at the bottom of the page when the user
  * hasn't yet made a consent decision. The banner provides three options:
  * - Manage Preferences: Opens detailed preferences modal
  * - Reject Non-Essential: Only enables strictly necessary cookies
  * - Accept All: Enables all cookie categories
- * 
+ *
  * The banner automatically hides once the user makes a consent decision.
  * State is persisted in localStorage and synchronized across tabs.
- * 
+ *
  * @component
  * @example
  * ```tsx
@@ -78,9 +78,8 @@ export const CookieConsentBanner: React.FC = () => {
             <div className={styles.text}>
               <h3 className={styles.title}>Cookie Consent</h3>
               <p className={styles.description}>
-                We use cookies to enhance your browsing experience, serve personalized content, and
-                analyze our traffic. By clicking 'Accept All', you consent to our use of cookies.
-                For more information, please read our{' '}
+                We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic.
+                By clicking 'Accept All', you consent to our use of cookies. For more information, please read our{' '}
                 <a href="/cookie-policy" className={styles.link}>
                   Cookie Policy
                 </a>

@@ -19,7 +19,7 @@ export const patientTestimonials: Testimonial[] = [
     patientName: 'John D.',
     rating: 5,
     testimonial:
-      'The care I received was life-changing. I struggled with chronic back pain for years, and now I\'m back to hiking without any discomfort. The team is truly expert.',
+      "The care I received was life-changing. I struggled with chronic back pain for years, and now I'm back to hiking without any discomfort. The team is truly expert.",
     condition: 'Post-Surgical Rehab',
     date: 'October 2023',
   },
@@ -28,7 +28,7 @@ export const patientTestimonials: Testimonial[] = [
     patientName: 'Sarah M.',
     rating: 5,
     testimonial:
-      'Expert physiotherapists who truly understand spine health. They didn\'t just treat the symptoms, they found the root cause of my sciatica.',
+      "Expert physiotherapists who truly understand spine health. They didn't just treat the symptoms, they found the root cause of my sciatica.",
     condition: 'Chronic Back Pain Management',
     date: 'September 2023',
   },

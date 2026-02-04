@@ -9,12 +9,12 @@ import { AuthTokens, User } from '../../types';
 
 /**
  * Token expiration sentinel value
- * 
+ *
  * Value: -1
  * Meaning: Token expiration time is unknown or managed externally
  * Usage: Set when restoring tokens from storage without expiration metadata
  * Handling: TokenService manages actual expiration in localStorage/sessionStorage
- * 
+ *
  * Why -1?
  * - Distinguishes from 0 (immediate expiration)
  * - Negative value clearly indicates "not applicable/unknown"
@@ -50,16 +50,21 @@ interface AuthInitializerProps {
  */
 export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) => {
   const dispatch = useAppDispatch();
-  
+
   // Check if we have valid tokens before making the API call
   // Memoized with empty dependency array to run only once on mount
   // Note: This is intentional for app initialization - we only want to check auth state
   // on initial load. Token changes after mount are handled by login/logout flows.
   const hasValidTokens = useMemo(() => tokenService.hasValidAuth(), []);
-  
+
   // Only fetch current user if we have valid tokens
   // skip: true will prevent the query from running if we don't have tokens
-  const { data: user, error, isSuccess, isError } = useGetCurrentUserQuery(undefined, {
+  const {
+    data: user,
+    error,
+    isSuccess,
+    isError,
+  } = useGetCurrentUserQuery(undefined, {
     skip: !hasValidTokens,
   });
 
@@ -75,11 +80,11 @@ export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) =>
 
       // Successfully fetched user data, restore to Redux
       dispatch(setUser(normalizedUser));
-      
+
       // Also restore tokens to Redux state for consistency
       const accessToken = tokenService.getAccessToken();
       const refreshToken = tokenService.getRefreshToken();
-      
+
       if (accessToken && refreshToken) {
         // Use UNKNOWN_EXPIRATION sentinel value to indicate expiration is managed by TokenService
         const tokens: AuthTokens = {
@@ -90,8 +95,8 @@ export const AuthInitializer: React.FC<AuthInitializerProps> = ({ children }) =>
         };
         dispatch(setTokens(tokens));
       }
-      
-      logger.info('Auth state restored from tokens', { 
+
+      logger.info('Auth state restored from tokens', {
         userId: normalizedUser.userId,
         role: normalizedUser.userRole,
       });

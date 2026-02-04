@@ -36,7 +36,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
             <StarFilled key={star} className={styles.starFilled} />
           ) : (
             <StarOutlined key={star} className={styles.starOutlined} />
-          )
+          ),
         )}
       </div>
     );

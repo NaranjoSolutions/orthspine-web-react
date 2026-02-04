@@ -111,166 +111,164 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
           <p className={styles.subtitle}>Your feedback helps us provide the best possible care for our patients.</p>
         </div>
 
-      <Form
-        form={form}
-        layout="vertical"
-        onFinish={handleSubmit}
-        autoComplete="off"
-        requiredMark={false}
-        initialValues={{
-          rating: 5,
-        }}
-      >
-        {/* Overall Rating */}
-        <Form.Item
-          name="rating"
-          label="Overall Rating"
-          rules={[{ required: true, message: 'Please select a rating' }]}
-          className={styles.ratingItem}
+        <Form
+          form={form}
+          layout="vertical"
+          onFinish={handleSubmit}
+          autoComplete="off"
+          requiredMark={false}
+          initialValues={{
+            rating: 5,
+          }}
         >
-          <Rate className={styles.rating} />
-        </Form.Item>
-
-        {/* Row 1: Full Name & Email */}
-        <div className={styles.formRow}>
+          {/* Overall Rating */}
           <Form.Item
-            name="fullName"
-            label="Full Name"
-            rules={[
-              { required: true, message: 'Please enter your full name' },
-              { min: 2, message: 'Name must be at least 2 characters' },
-              {
-                pattern: /^[a-zA-Z\s]+$/,
-                message: 'Name can only contain letters and spaces',
-              },
-            ]}
-            className={styles.formItem}
+            name="rating"
+            label="Overall Rating"
+            rules={[{ required: true, message: 'Please select a rating' }]}
+            className={styles.ratingItem}
           >
-            <Input placeholder="John Doe" size="large" />
+            <Rate className={styles.rating} />
           </Form.Item>
 
-          <Form.Item
-            name="email"
-            label="Email"
-            rules={[
-              { required: true, message: 'Please enter your email address' },
-              { type: 'email', message: 'Please enter a valid email address' },
-            ]}
-            className={styles.formItem}
-          >
-            <Input placeholder="john@example.com" size="large" />
-          </Form.Item>
-        </div>
-
-        {/* Row 2: Service Received & Date of Service */}
-        <div className={styles.formRow}>
-          <Form.Item
-            name="service"
-            label="Service Received"
-            rules={[{ required: true, message: 'Please select a service' }]}
-            className={styles.formItem}
-          >
-            <Select placeholder="Select a service" size="large" options={serviceOptions} />
-          </Form.Item>
-
-          <Form.Item
-            name="dateOfService"
-            label="Date of Service"
-            rules={[
-              {
-                required: true,
-                message: 'Please select the date of service',
-              },
-              {
-                validator: (_, value: Dayjs) => {
-                  if (!value) return Promise.resolve();
-
-                  const now = dayjs();
-
-                  // Check if selected date is in the future
-                  if (value.isAfter(now)) {
-                    return Promise.reject(new Error('Date of service cannot be in the future'));
-                  }
-
-                  return Promise.resolve();
+          {/* Row 1: Full Name & Email */}
+          <div className={styles.formRow}>
+            <Form.Item
+              name="fullName"
+              label="Full Name"
+              rules={[
+                { required: true, message: 'Please enter your full name' },
+                { min: 2, message: 'Name must be at least 2 characters' },
+                {
+                  pattern: /^[a-zA-Z\s]+$/,
+                  message: 'Name can only contain letters and spaces',
                 },
-              },
+              ]}
+              className={styles.formItem}
+            >
+              <Input placeholder="John Doe" size="large" />
+            </Form.Item>
+
+            <Form.Item
+              name="email"
+              label="Email"
+              rules={[
+                { required: true, message: 'Please enter your email address' },
+                { type: 'email', message: 'Please enter a valid email address' },
+              ]}
+              className={styles.formItem}
+            >
+              <Input placeholder="john@example.com" size="large" />
+            </Form.Item>
+          </div>
+
+          {/* Row 2: Service Received & Date of Service */}
+          <div className={styles.formRow}>
+            <Form.Item
+              name="service"
+              label="Service Received"
+              rules={[{ required: true, message: 'Please select a service' }]}
+              className={styles.formItem}
+            >
+              <Select placeholder="Select a service" size="large" options={serviceOptions} />
+            </Form.Item>
+
+            <Form.Item
+              name="dateOfService"
+              label="Date of Service"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please select the date of service',
+                },
+                {
+                  validator: (_, value: Dayjs) => {
+                    if (!value) return Promise.resolve();
+
+                    const now = dayjs();
+
+                    // Check if selected date is in the future
+                    if (value.isAfter(now)) {
+                      return Promise.reject(new Error('Date of service cannot be in the future'));
+                    }
+
+                    return Promise.resolve();
+                  },
+                },
+              ]}
+              className={styles.formItem}
+            >
+              <DatePicker
+                format="MM/DD/YYYY"
+                placeholder="mm/dd/yyyy"
+                size="large"
+                className={styles.datePicker}
+                disabledDate={(current: Dayjs) => {
+                  // Disable future dates
+                  return current && current > dayjs().endOf('day');
+                }}
+              />
+            </Form.Item>
+          </div>
+
+          {/* Your Review */}
+          <Form.Item
+            name="review"
+            label="Your Review"
+            rules={[
+              { required: true, message: 'Please enter your review' },
+              { min: 20, message: 'Review must be at least 20 characters' },
+              { max: 1000, message: 'Review must not exceed 1000 characters' },
             ]}
-            className={styles.formItem}
           >
-            <DatePicker
-              format="MM/DD/YYYY"
-              placeholder="mm/dd/yyyy"
+            <TextArea
+              placeholder="Tell us about your recovery journey..."
+              rows={6}
               size="large"
-              className={styles.datePicker}
-              disabledDate={(current: Dayjs) => {
-                // Disable future dates
-                return current && current > dayjs().endOf('day');
-              }}
+              showCount
+              maxLength={1000}
             />
           </Form.Item>
-        </div>
 
-        {/* Your Review */}
-        <Form.Item
-          name="review"
-          label="Your Review"
-          rules={[
-            { required: true, message: 'Please enter your review' },
-            { min: 20, message: 'Review must be at least 20 characters' },
-            { max: 1000, message: 'Review must not exceed 1000 characters' },
-          ]}
-        >
-          <TextArea
-            placeholder="Tell us about your recovery journey..."
-            rows={6}
-            size="large"
-            showCount
-            maxLength={1000}
-          />
-        </Form.Item>
-
-        {/* Consent Checkbox */}
-        <Form.Item
-          name="consent"
-          valuePropName="checked"
-          rules={[
-            {
-              validator: (_, value) =>
-                value
-                  ? Promise.resolve()
-                  : Promise.reject(new Error('Please agree to have your review published')),
-            },
-          ]}
-        >
-          <Checkbox className={styles.consent}>
-            I consent to having this review published on the website in accordance with the{' '}
-            <a href={ROUTE_PATHS.PRIVACY_POLICY} target="_blank" rel="noopener noreferrer" className={styles.link}>
-              Privacy Policy
-            </a>
-            .
-          </Checkbox>
-        </Form.Item>
-
-        {/* Action Buttons */}
-        <div className={styles.buttonGroup}>
-          <Button size="large" onClick={handleCancel} className={styles.cancelButton}>
-            Cancel
-          </Button>
-          <Button
-            type="primary"
-            htmlType="submit"
-            size="large"
-            loading={loading}
-            icon={<RightOutlined />}
-            iconPosition="end"
-            className={styles.submitButton}
+          {/* Consent Checkbox */}
+          <Form.Item
+            name="consent"
+            valuePropName="checked"
+            rules={[
+              {
+                validator: (_, value) =>
+                  value ? Promise.resolve() : Promise.reject(new Error('Please agree to have your review published')),
+              },
+            ]}
           >
-            Submit Review
-          </Button>
-        </div>
-      </Form>
-    </div>
+            <Checkbox className={styles.consent}>
+              I consent to having this review published on the website in accordance with the{' '}
+              <a href={ROUTE_PATHS.PRIVACY_POLICY} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                Privacy Policy
+              </a>
+              .
+            </Checkbox>
+          </Form.Item>
+
+          {/* Action Buttons */}
+          <div className={styles.buttonGroup}>
+            <Button size="large" onClick={handleCancel} className={styles.cancelButton}>
+              Cancel
+            </Button>
+            <Button
+              type="primary"
+              htmlType="submit"
+              size="large"
+              loading={loading}
+              icon={<RightOutlined />}
+              iconPosition="end"
+              className={styles.submitButton}
+            >
+              Submit Review
+            </Button>
+          </div>
+        </Form>
+      </div>
 
       {/* Success Feedback Modal */}
       <SuccessFeedbackModal open={showSuccessModal} onClose={handleCloseSuccessModal} />

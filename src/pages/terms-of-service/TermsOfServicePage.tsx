@@ -30,13 +30,14 @@ export const TermsOfServicePage: React.FC = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>1. Acceptance of Terms</h2>
           <p className={styles.paragraph}>
-            By accessing, visiting, or using this website or mobile app (the "Platform") owned by Orthopedic Spine ("we",
-            "us", or "our") and/or by scheduling an appointment, making use of or receiving our clinic services, you agree
-            to these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms,
-            you are prohibited from using or accessing this Platform or receiving our clinic services. The materials
-            contained in this Platform are protected by applicable copyright and trademark law. We reserve the right to
-            modify these terms at any time. Changes will be effective immediately upon posting to this site. Your continued
-            use or receipt of our clinic services following such changes constitutes your acceptance of the new terms.
+            By accessing, visiting, or using this website or mobile app (the "Platform") owned by Orthopedic Spine
+            ("we", "us", or "our") and/or by scheduling an appointment, making use of or receiving our clinic services,
+            you agree to these Terms of Service and all applicable laws and regulations. If you do not agree with any of
+            these terms, you are prohibited from using or accessing this Platform or receiving our clinic services. The
+            materials contained in this Platform are protected by applicable copyright and trademark law. We reserve the
+            right to modify these terms at any time. Changes will be effective immediately upon posting to this site.
+            Your continued use or receipt of our clinic services following such changes constitutes your acceptance of
+            the new terms.
           </p>
         </div>
 
@@ -87,9 +88,9 @@ export const TermsOfServicePage: React.FC = () => {
           <div className={styles.policySection}>
             <p className={styles.policyLabel}>Fees:</p>
             <p className={styles.paragraph}>
-              Cancellations made with less than 24 hours' notice or failure to attend a scheduled appointment will result
-              in a cancellation/missed appointment fee, equal to the full cost of the scheduled appointment, which you must
-              pay/remit before your next scheduled appointment.
+              Cancellations made with less than 24 hours' notice or failure to attend a scheduled appointment will
+              result in a cancellation/missed appointment fee, equal to the full cost of the scheduled appointment,
+              which you must pay/remit before your next scheduled appointment.
             </p>
           </div>
         </div>
@@ -98,8 +99,8 @@ export const TermsOfServicePage: React.FC = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>5. Privacy & Data Protection</h2>
           <p className={styles.paragraph}>
-            Your privacy is of paramount importance to us. All personal health information is handled in strict accordance
-            with Healthcare privacy regulations. Please refer to our{' '}
+            Your privacy is of paramount importance to us. All personal health information is handled in strict
+            accordance with Healthcare privacy regulations. Please refer to our{' '}
             <a href="/privacy-policy" className={styles.link}>
               Privacy Policy
             </a>{' '}

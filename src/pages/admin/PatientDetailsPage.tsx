@@ -195,12 +195,7 @@ const PatientDetailsPage: React.FC = () => {
       children: (
         <div className={styles.tabContent}>
           <div className={styles.tabHeader}>
-            <Button
-              type="primary"
-              icon={<PlusOutlined />}
-              onClick={() => setAddNoteModalVisible(true)}
-              size="large"
-            >
+            <Button type="primary" icon={<PlusOutlined />} onClick={() => setAddNoteModalVisible(true)} size="large">
               Add New Note
             </Button>
           </div>
@@ -249,13 +244,7 @@ const PatientDetailsPage: React.FC = () => {
   return (
     <div className={styles.patientDetailsPage}>
       {/* Back button */}
-      <Button
-        type="text"
-        icon={<ArrowLeftOutlined />}
-        onClick={handleBack}
-        className={styles.backButton}
-        size="large"
-      >
+      <Button type="text" icon={<ArrowLeftOutlined />} onClick={handleBack} className={styles.backButton} size="large">
         Back to Patients
       </Button>
 

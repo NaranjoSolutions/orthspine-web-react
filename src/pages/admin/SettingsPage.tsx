@@ -13,10 +13,7 @@ const SettingsPage: React.FC = () => {
         <h1 className={styles.title}>Settings</h1>
       </div>
       <Card bordered={false} className={styles.card}>
-        <Empty
-          description="Settings module coming soon"
-          image={Empty.PRESENTED_IMAGE_SIMPLE}
-        />
+        <Empty description="Settings module coming soon" image={Empty.PRESENTED_IMAGE_SIMPLE} />
       </Card>
     </div>
   );

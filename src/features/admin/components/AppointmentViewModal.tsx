@@ -156,12 +156,14 @@ export const AppointmentViewModal: React.FC<AppointmentViewModalProps> = ({
           </Avatar>
           <div className={styles.patientDetails}>
             <h2 className={styles.patientName}>{appointment.patientName}</h2>
-            <p className={styles.patientId}>
-              Patient ID: {appointment.patientDisplayId || appointment.patientId}
-            </p>
+            <p className={styles.patientId}>Patient ID: {appointment.patientDisplayId || appointment.patientId}</p>
           </div>
         </div>
-        <Tag color={getStatusColor(appointment.status)} className={styles.statusBadge} icon={getStatusIcon(appointment.status)}>
+        <Tag
+          color={getStatusColor(appointment.status)}
+          className={styles.statusBadge}
+          icon={getStatusIcon(appointment.status)}
+        >
           {getStatusText(appointment.status)}
         </Tag>
       </div>
