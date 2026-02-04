@@ -1,4 +1,23 @@
-import { TimeSlot, AppointmentService, Doctor } from '@/features/appointments/types/appointment.types';
+/**
+ * Type definitions for mock appointment data
+ */
+interface TimeSlot {
+  id: string;
+  time: string;
+  available: boolean;
+}
+
+interface AppointmentService {
+  id: string;
+  name: string;
+  description: string;
+}
+
+interface Doctor {
+  id: string;
+  name: string;
+  specialty: string;
+}
 
 /**
  * Mock data for available time slots
