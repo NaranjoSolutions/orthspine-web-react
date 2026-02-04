@@ -42,7 +42,7 @@ import { chromium } from 'playwright';
     }
   } catch (error) {
     console.error('Error capturing screenshot:', error);
+  } finally {
+    await browser.close();
   }
-  
-  await browser.close();
 })();
