@@ -12,7 +12,7 @@ const { Option } = Select;
  */
 interface TestimonialsToolbarProps {
   searchValue: string;
-  statusFilter: TestimonialStatus | 'all';
+  statusFilter: TestimonialStatus | 'all' | undefined;
   onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSearch: () => void;
   onStatusFilterChange: (value: TestimonialStatus | 'all') => void;

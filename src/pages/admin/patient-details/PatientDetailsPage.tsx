@@ -1,12 +1,10 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Card, Tabs, Button, Modal, Spin } from 'antd';
-import { ArrowLeftOutlined, PlusOutlined } from '@ant-design/icons';
-import { PatientHeader, PatientSummaryCards, AddMedicalNoteModal, PatientForm } from '@/features/admin/components';
+import { ArrowLeftOutlined } from '@ant-design/icons';
+import { PatientHeader, PatientSummaryCards, AddMedicalNoteModal, PatientForm, MedicalNotesTab } from '@/features/admin/components';
+import { usePatientData, usePatientDetailsModals } from '@/features/admin/hooks';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
-import { MedicalNotesTab } from './components/MedicalNotesTab';
-import { usePatientData } from './hooks/usePatientData';
-import { usePatientDetailsModals } from './hooks/usePatientDetailsModals';
 import styles from './PatientDetailsPage.module.scss';
 
 /**

@@ -12,3 +12,7 @@ export { AppointmentForm } from './AppointmentForm';
 export { AppointmentViewModal } from './AppointmentViewModal';
 export { TestimonialTable } from './TestimonialTable';
 export { TestimonialForm } from './TestimonialForm';
+export { PatientsToolbar } from './PatientsToolbar';
+export { AppointmentsToolbar } from './AppointmentsToolbar';
+export { TestimonialsToolbar } from './TestimonialsToolbar';
+export { MedicalNotesTab } from './MedicalNotesTab';

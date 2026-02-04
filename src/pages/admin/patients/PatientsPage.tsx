@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { Card, Modal } from 'antd';
 import { useAppSelector } from '@/store';
 import { selectPatients, selectSelectedPatient, selectIsLoading } from '@/features/admin/store/patientsSlice';
-import { PatientTable, PatientForm } from '@/features/admin/components';
-import { PatientsToolbar } from './components/PatientsToolbar';
-import { usePatientModals } from './hooks/usePatientModals';
-import { usePatientFilters } from './hooks/usePatientFilters';
+import { PatientTable, PatientForm, PatientsToolbar } from '@/features/admin/components';
+import { usePatientModals, usePatientFilters } from '@/features/admin/hooks';
 import styles from './PatientsPage.module.scss';
 
 /**

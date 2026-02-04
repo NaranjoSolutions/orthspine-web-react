@@ -8,12 +8,10 @@ import {
   selectAppointmentIsLoading,
 } from '@/features/admin/store/appointmentsSlice';
 import { appointmentService } from '@/features/admin/services/appointmentService';
-import { AppointmentTable, AppointmentForm, AppointmentViewModal } from '@/features/admin/components';
+import { AppointmentTable, AppointmentForm, AppointmentViewModal, AppointmentsToolbar } from '@/features/admin/components';
+import { useAppointmentModals, useAppointmentFilters } from '@/features/admin/hooks';
 import { AppointmentStatus } from '@/features/admin/types/appointment.types';
 import type { DoctorOption } from '@/features/admin/types/appointment.types';
-import { AppointmentsToolbar } from './components/AppointmentsToolbar';
-import { useAppointmentModals } from './hooks/useAppointmentModals';
-import { useAppointmentFilters } from './hooks/useAppointmentFilters';
 import styles from './AppointmentsPage.module.scss';
 
 /**
