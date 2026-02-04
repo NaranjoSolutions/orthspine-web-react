@@ -36,6 +36,7 @@ export const ROUTE_PATHS = {
     LOGIN: '/login',
     REGISTER: '/register',
     FORGOT_PASSWORD: '/forgot-password',
+    ADMIN_REQUEST_CONFIRMATION: '/admin-request-confirmation',
   },
 
   ADMIN: {

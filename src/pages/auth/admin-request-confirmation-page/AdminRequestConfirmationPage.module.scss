@@ -1,0 +1,240 @@
+@use '@/styles/abstracts' as *;
+
+.confirmationCard {
+  box-shadow: $shadow-lg;
+  border-radius: $border-radius-lg;
+  padding: $spacing-md;
+  max-width: 560px;
+  width: 100%;
+
+  :global(.ant-card-body) {
+    padding: $spacing-xl;
+  }
+}
+
+.contentWrapper {
+  width: 100%;
+  text-align: center;
+}
+
+// Icon Section
+.iconWrapper {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.successIcon {
+  font-size: 72px;
+  color: #52c41a;
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// Header Section
+.headerSection {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.title {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  margin-bottom: 12px !important;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 16px !important;
+  color: #6b7280 !important;
+  font-weight: 500;
+  margin-bottom: 0 !important;
+}
+
+// Message Section
+.messageSection {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.message {
+  font-size: 15px !important;
+  color: #374151 !important;
+  line-height: 1.6 !important;
+  margin-bottom: 16px !important;
+
+  &:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  strong {
+    color: #111827;
+    font-weight: 600;
+  }
+}
+
+// Next Steps Section
+.nextStepsSection {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.nextStepsTitle {
+  font-size: 15px !important;
+  color: #1e40af !important;
+  margin-bottom: 12px !important;
+  font-weight: 600;
+}
+
+.nextStepsList {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+
+  li {
+    font-size: 14px;
+    color: #1e3a8a;
+    line-height: 1.7;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Action Buttons
+.actionButtons {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.primaryButton {
+  height: 48px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  background-color: #1890ff !important;
+  border-color: #1890ff !important;
+  
+  &:hover {
+    background-color: #0070e0 !important;
+    border-color: #0070e0 !important;
+  }
+
+  &:focus {
+    background-color: #0070e0 !important;
+    border-color: #0070e0 !important;
+  }
+}
+
+// Support Section
+.supportSection {
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.supportText {
+  font-size: 14px !important;
+  color: #6b7280 !important;
+  margin-bottom: 0 !important;
+}
+
+.supportLink {
+  color: #1890ff !important;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    color: #0070e0 !important;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 2px solid #1890ff;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+// Responsive Design
+@media (max-width: $breakpoint-md) {
+  .confirmationCard {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+
+    :global(.ant-card-body) {
+      padding: $spacing-lg $spacing-md;
+    }
+  }
+
+  .successIcon {
+    font-size: 64px;
+  }
+
+  .title {
+    font-size: 24px !important;
+  }
+
+  .subtitle {
+    font-size: 15px !important;
+  }
+
+  .messageSection,
+  .nextStepsSection {
+    padding: 20px;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .successIcon {
+    font-size: 56px;
+  }
+
+  .title {
+    font-size: 22px !important;
+  }
+
+  .subtitle {
+    font-size: 14px !important;
+  }
+
+  .message {
+    font-size: 14px !important;
+  }
+
+  .messageSection,
+  .nextStepsSection {
+    padding: 16px;
+  }
+
+  .nextStepsList li {
+    font-size: 13px;
+  }
+
+  .primaryButton {
+    height: 44px !important;
+    font-size: 15px !important;
+  }
+}

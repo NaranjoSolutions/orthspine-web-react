@@ -27,6 +27,7 @@ const TermsOfServicePage = lazy(() => import('@/pages/terms-of-service'));
 const LoginPage = lazy(() => import('@/pages/auth/login-page'));
 const RegisterPage = lazy(() => import('@/pages/auth/register-page'));
 const ForgotPasswordPage = lazy(() => import('@/pages/auth/forgot-password-page'));
+const AdminRequestConfirmationPage = lazy(() => import('@/pages/auth/admin-request-confirmation-page'));
 
 // Admin pages
 const AdminDashboardPage = lazy(() => import('@/pages/admin/DashboardPage'));
@@ -128,6 +129,10 @@ export const routes: RouteObject[] = [
           {
             path: ROUTE_PATHS.AUTH.FORGOT_PASSWORD,
             element: <ForgotPasswordPage />,
+          },
+          {
+            path: ROUTE_PATHS.AUTH.ADMIN_REQUEST_CONFIRMATION,
+            element: <AdminRequestConfirmationPage />,
           },
         ],
       },
