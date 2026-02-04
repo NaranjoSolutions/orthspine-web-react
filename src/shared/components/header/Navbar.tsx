@@ -50,9 +50,7 @@ export const Navbar: React.FC = () => {
     <Header className={styles.navbar}>
       <div className={styles.container}>
         <div className={styles.logo} onClick={() => navigate(ROUTE_PATHS.HOME)}>
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path d="M16 2L4 8v12c0 7.3 5.3 14.1 12 16 6.7-1.9 12-8.7 12-16V8L16 2z" fill="#007BB9" />
-          </svg>
+          <img src="/src/assets/logo/logo.svg" alt="Orthopedic Spine Logo" className={styles.logoImage} />
           <span className={styles.logoText}>Orthopedic Spine</span>
         </div>
 
