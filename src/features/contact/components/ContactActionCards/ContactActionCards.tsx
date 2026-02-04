@@ -62,27 +62,27 @@ export const ContactActionCards: React.FC = () => {
     {
       id: 'whatsapp',
       icon: <WhatsAppOutlined />,
-      title: 'Chat on WhatsApp',
-      subtitle: 'Get quick answers to your questions',
-      buttonText: 'Message Now',
+      title: 'Chatea en WhatsApp',
+      subtitle: 'Obtén respuestas rápidas a tus preguntas',
+      buttonText: 'Enviar Mensaje',
       buttonColor: 'whatsapp',
       action: handleWhatsAppClick,
     },
     {
       id: 'email',
       icon: <MailOutlined />,
-      title: 'Send Us a Message',
-      subtitle: 'Fill out our contact form below',
-      buttonText: 'Scroll to Form',
+      title: 'Envíanos un Mensaje',
+      subtitle: 'Llena nuestro formulario de contacto abajo',
+      buttonText: 'Ir al Formulario',
       buttonColor: 'primary',
       action: handleScrollToForm,
     },
     {
       id: 'phone',
       icon: <PhoneOutlined />,
-      title: 'Call Us',
+      title: 'Llámanos',
       subtitle: CONTACT_PHONE.DISPLAY,
-      buttonText: 'Call Now',
+      buttonText: 'Llamar Ahora',
       buttonColor: 'teal',
       action: handlePhoneClick,
     },
@@ -95,9 +95,7 @@ export const ContactActionCards: React.FC = () => {
           <Col key={card.id} xs={24} md={8}>
             <Card hoverable className={styles.actionCard}>
               <Space direction="vertical" size="large" style={{ width: '100%', textAlign: 'center' }}>
-                <div className={`${styles.iconWrapper} ${styles[`iconWrapper--${card.buttonColor}`]}`}>
-                  {card.icon}
-                </div>
+                <div className={`${styles.iconWrapper} ${styles[`iconWrapper--${card.buttonColor}`]}`}>{card.icon}</div>
 
                 <div>
                   <Title level={4} className={styles.cardTitle}>

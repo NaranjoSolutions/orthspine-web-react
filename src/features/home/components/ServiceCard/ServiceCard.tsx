@@ -45,7 +45,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         <p className={styles.cardDescription}>{shortDescription}</p>
         {conditionsTreated && conditionsTreated.length > 0 && (
           <div className={styles.conditionsSection}>
-            <h4 className={styles.conditionsTitle}>CONDITIONS TREATED</h4>
+            <h4 className={styles.conditionsTitle}>CONDICIONES TRATADAS</h4>
             <ul className={styles.conditionsList}>
               {conditionsTreated.slice(0, 3).map((condition, index) => (
                 <li key={index} className={styles.conditionItem}>
@@ -62,7 +62,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
           icon={<ArrowRightOutlined />}
           iconPosition="end"
         >
-          Learn More
+          Saber Más
         </Button>
       </div>
     </Card>

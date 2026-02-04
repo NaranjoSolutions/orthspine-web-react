@@ -18,110 +18,112 @@ export const TermsOfServicePage: React.FC = () => {
       <div className={styles.container}>
         {/* Header */}
         <div className={styles.header}>
-          <p className={styles.effectiveDate}>EFFECTIVE DATE - JANUARY 1, 2025</p>
-          <h1 className={styles.title}>Terms of Service</h1>
+          <p className={styles.effectiveDate}>FECHA DE VIGENCIA - 1 DE ENERO DE 2025</p>
+          <h1 className={styles.title}>Términos de Servicio</h1>
           <p className={styles.subtitle}>
-            Please read these terms carefully before using our services. Your agreement with Orthopedic Spine starts
-            here.
+            Por favor, lea estos términos detenidamente antes de utilizar nuestros servicios. Su acuerdo con Orthopedic
+            Spine comienza aquí.
           </p>
         </div>
 
         {/* Section 1: Acceptance of Terms */}
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>1. Acceptance of Terms</h2>
+          <h2 className={styles.sectionTitle}>1. Aceptación de Términos</h2>
           <p className={styles.paragraph}>
-            By accessing, visiting, or using this website or mobile app (the "Platform") owned by Orthopedic Spine
-            ("we", "us", or "our") and/or by scheduling an appointment, making use of or receiving our clinic services,
-            you agree to these Terms of Service and all applicable laws and regulations. If you do not agree with any of
-            these terms, you are prohibited from using or accessing this Platform or receiving our clinic services. The
-            materials contained in this Platform are protected by applicable copyright and trademark law. We reserve the
-            right to modify these terms at any time. Changes will be effective immediately upon posting to this site.
-            Your continued use or receipt of our clinic services following such changes constitutes your acceptance of
-            the new terms.
+            Al acceder, visitar o utilizar este sitio web o aplicación móvil (la "Plataforma") propiedad de Orthopedic
+            Spine ("nosotros"), y/o al programar una cita o recibir nuestros servicios clínicos, usted acepta estos
+            Términos de Servicio y todas las leyes y regulaciones aplicables. Si no está de acuerdo con alguno de estos
+            términos, tiene prohibido utilizar o acceder a esta Plataforma o recibir nuestros servicios clínicos. Los
+            materiales contenidos en esta Plataforma están protegidos por las leyes de derechos de autor y marcas
+            registradas aplicables. Nos reservamos el derecho de modificar estos términos en cualquier momento. Los
+            cambios serán efectivos inmediatamente después de su publicación en este sitio. Su uso continuo de la
+            Plataforma o recepción de nuestros servicios clínicos después de dichos cambios constituye su aceptación de
+            los nuevos términos.
           </p>
         </div>
 
         {/* Section 2: Services Provided */}
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>2. Services Provided</h2>
+          <h2 className={styles.sectionTitle}>2. Servicios Proporcionados</h2>
           <p className={styles.paragraph}>
-            Orthopedic Spine provides specialized physiotherapy services, including but not limited to spinal alignment,
-            pain management, recovery sports injury rehabilitation, and chronic pain treatment when necessary.
+            Orthopedic Spine proporciona servicios especializados de fisioterapia, que incluyen, entre otros, alineación
+            espinal, manejo del dolor, rehabilitación de lesiones deportivas y tratamiento de dolor crónico cuando sea
+            necesario.
           </p>
           <ul className={styles.list}>
-            <li>Comprehensive physical assessments and diagnosis</li>
-            <li>Dedicated treatment planning and goal setting</li>
-            <li>Manual therapy, therapeutic exercises, and education</li>
-            <li>Referral to other healthcare professionals when necessary.</li>
+            <li>Evaluaciones físicas completas y diagnóstico</li>
+            <li>Planificación de tratamientos y establecimiento de metas</li>
+            <li>Terapia manual, ejercicios terapéuticos y educación</li>
+            <li>Referencia a otros profesionales de la salud cuando sea necesario</li>
           </ul>
         </div>
 
         {/* Section 3: Patient Responsibilities */}
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>3. Patient Responsibilities</h2>
+          <h2 className={styles.sectionTitle}>3. Responsabilidades del Paciente</h2>
           <p className={styles.paragraph}>
-            Effective treatment requires a collaborative effort. As a patient of Orthopedic Spine, you agree to:
+            Un tratamiento efectivo requiere un esfuerzo colaborativo. Como paciente de Orthopedic Spine, usted acepta:
           </p>
           <ul className={styles.list}>
-            <li>Provide accurate and complete information about your medical history and current conditions</li>
-            <li>Follow the prescribed treatment plan and home exercise programs to the best of your ability</li>
+            <li>Proporcionar información precisa y completa sobre su historial médico y condiciones actuales</li>
+            <li>Seguir el plan de tratamiento prescrito y los programas de ejercicios en casa lo mejor posible</li>
             <li>
-              Inform your Physiotherapist immediately of any unexpected changes to your condition or if any prescribed
-              treatment worsens your symptoms or causes significant distress/discomfort/pain or other adverse reaction
+              Informar a su fisioterapeuta de inmediato sobre cualquier cambio inesperado en su condición o si algún
+              tratamiento prescrito empeora sus síntomas o causa molestias significativas
             </li>
-            <li>Respect the clinic environment and other patients.</li>
+            <li>Respetar el entorno de la clínica y a otros pacientes</li>
           </ul>
         </div>
 
         {/* Section 4: Cancellation Policy */}
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>4. Cancellation Policy</h2>
+          <h2 className={styles.sectionTitle}>4. Política de Cancelación</h2>
           <p className={styles.paragraph}>
-            We have limited first and last appointment slots for all patients, we have established the following policy:
+            Dado que tenemos un número limitado de citas disponibles, hemos establecido la siguiente política:
           </p>
           <div className={styles.policySection}>
-            <p className={styles.policyLabel}>Notice Period:</p>
+            <p className={styles.policyLabel}>Período de Aviso:</p>
             <p className={styles.paragraph}>
-              A minimum of 24 hours notice is required for any appointment cancellation or rescheduling.
+              Se requiere un aviso mínimo de 24 horas para cualquier cancelación o reprogramación de citas.
             </p>
           </div>
           <div className={styles.policySection}>
-            <p className={styles.policyLabel}>Fees:</p>
+            <p className={styles.policyLabel}>Cargos:</p>
             <p className={styles.paragraph}>
-              Cancellations made with less than 24 hours' notice or failure to attend a scheduled appointment will
-              result in a cancellation/missed appointment fee, equal to the full cost of the scheduled appointment,
-              which you must pay/remit before your next scheduled appointment.
+              Las cancelaciones realizadas con menos de 24 horas de aviso o la falta de asistencia a una cita programada
+              resultarán en un cargo por cancelación o cita perdida, equivalente al costo total de la cita programada,
+              el cual deberá pagarse antes de su próxima cita.
             </p>
           </div>
         </div>
 
         {/* Section 5: Privacy & Data Protection */}
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>5. Privacy & Data Protection</h2>
+          <h2 className={styles.sectionTitle}>5. Privacidad y Protección de Datos</h2>
           <p className={styles.paragraph}>
-            Your privacy is of paramount importance to us. All personal health information is handled in strict
-            accordance with Healthcare privacy regulations. Please refer to our{' '}
+            Su privacidad es de suma importancia para nosotros. Toda la información personal de salud se maneja en
+            estricta conformidad con las regulaciones de privacidad de la atención médica. Por favor, consulte nuestra{' '}
             <a href="/privacy-policy" className={styles.link}>
-              Privacy Policy
+              Política de Privacidad
             </a>{' '}
-            for detailed information on how we collect, use, and protect your data.
+            para obtener información detallada sobre cómo recopilamos, usamos y protegemos sus datos.
           </p>
         </div>
 
         {/* Section 6: Limitation of Liability */}
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>6. Limitation of Liability</h2>
+          <h2 className={styles.sectionTitle}>6. Limitación de Responsabilidad</h2>
           <p className={styles.paragraph}>
-            To the maximum extent permitted by law, Orthopedic Spine and our employees shall not be liable for any
-            indirect, incidental, special, consequential or punitive damages resulting from your use of our service or
-            website.
+            En la máxima medida permitida por la ley, Orthopedic Spine y nuestros empleados no serán responsables por
+            daños indirectos, incidentales, especiales, consecuentes o punitivos que resulten del uso de nuestros
+            servicios o sitio web.
           </p>
         </div>
 
         {/* Footer - Contact Information */}
         <div className={styles.footer}>
           <p className={styles.paragraph}>
-            If you have any questions regarding these Terms of Service, please contact us at:{' '}
+            Si tiene alguna pregunta sobre estos Términos de Servicio, por favor contáctenos en:{' '}
             <a href={`mailto:${clinicInformation.contact.email}`} className={styles.link}>
               {clinicInformation.contact.email}
             </a>

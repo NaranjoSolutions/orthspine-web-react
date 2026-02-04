@@ -18,111 +18,112 @@ export const PrivacyPolicyPage: React.FC = () => {
       <div className={styles.container}>
         {/* Header */}
         <div className={styles.header}>
-          <h1 className={styles.title}>Privacy Policy</h1>
-          <p className={styles.lastUpdated}>Last Updated: February 1, 2026</p>
+          <h1 className={styles.title}>Política de Privacidad</h1>
+          <p className={styles.lastUpdated}>Última Actualización: 1 de febrero de 2026</p>
         </div>
 
         {/* Introduction */}
         <div className={styles.section}>
           <p className={styles.paragraph}>
-            At Orthopedic Spine, we take your privacy seriously. This Privacy Policy explains how we collect, use,
-            disclose, and safeguard your information when you visit our clinic or use our services. Please read this
-            privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access
-            the site.
+            En Orthopedic Spine, tomamos su privacidad en serio. Esta Política de Privacidad explica cómo recopilamos,
+            usamos, divulgamos y protegemos su información cuando visita nuestra clínica o utiliza nuestros servicios.
+            Por favor, lea esta política de privacidad detenidamente. Si no está de acuerdo con los términos de esta
+            política de privacidad, por favor no acceda al sitio.
           </p>
         </div>
 
         {/* Section 1: Collection of Your Information */}
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>1. Collection of Your Information</h2>
+          <h2 className={styles.sectionTitle}>1. Recopilación de su Información</h2>
           <p className={styles.paragraph}>
-            We may collect information about you in a variety of ways. The information we may collect on the Site
-            includes:
+            Podemos recopilar información sobre usted de diversas maneras. La información que podemos recopilar en el
+            sitio incluye:
           </p>
           <ul className={styles.list}>
             <li>
-              <strong>Personal Data:</strong> Personally identifiable information, such as your name, shipping address,
-              email address, and telephone number, and demographic information, such as your age, gender, hometown, and
-              interests, that you voluntarily give to us when you register with the Site or when you choose to
-              participate in various activities related to the Site.
+              <strong>Datos Personales:</strong> Información personalmente identificable, como su nombre, dirección de
+              envío, dirección de correo electrónico y número de teléfono, así como información demográfica, como su
+              edad, género, ciudad de origen e intereses, que usted nos proporciona voluntariamente al registrarse en el
+              sitio o al participar en diversas actividades relacionadas con el sitio.
             </li>
             <li>
-              <strong>Derivative Data:</strong> Information our servers automatically collect when you access the Site,
-              such as your IP address and browser type.
+              <strong>Datos Derivados:</strong> Información que nuestros servidores recopilan automáticamente cuando
+              accede al sitio, como su dirección IP y tipo de navegador.
             </li>
             <li>
-              <strong>Medical Information:</strong> Details regarding your physical health or conditions provided
-              through our contact forms or during consultations.
+              <strong>Información Médica:</strong> Detalles sobre su salud física o condiciones proporcionados a través
+              de nuestros formularios de contacto o durante consultas.
             </li>
           </ul>
         </div>
 
         {/* Section 2: Use of Your Information */}
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>2. Use of Your Information</h2>
+          <h2 className={styles.sectionTitle}>2. Uso de su Información</h2>
           <p className={styles.paragraph}>
-            Having accurate information about you permits us to provide you with a smooth, efficient, and customized
-            experience. Specifically, we may use information collected about you via the Site to:
+            Tener información precisa sobre usted nos permite brindarle una experiencia fluida, eficiente y
+            personalizada. Específicamente, podemos usar la información recopilada sobre usted a través del sitio para:
           </p>
           <ul className={styles.list}>
-            <li>Provide and manage healthcare services.</li>
-            <li>Respond to inquiries and provide customer support.</li>
-            <li>Improve our services and develop new features.</li>
+            <li>Proporcionar y gestionar servicios de salud.</li>
+            <li>Responder a consultas y brindar soporte al cliente.</li>
+            <li>Mejorar nuestros servicios y desarrollar nuevas funciones.</li>
           </ul>
         </div>
 
         {/* Section 3: Disclosure of Your Information */}
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>3. Disclosure of Your Information</h2>
+          <h2 className={styles.sectionTitle}>3. Divulgación de su Información</h2>
           <p className={styles.paragraph}>
-            We may share information we have collected about you in certain situations. Your information may be
-            disclosed as follows:
+            Podemos compartir la información que hemos recopilado sobre usted en ciertas situaciones. Su información
+            puede ser divulgada de la siguiente manera:
           </p>
           <ul className={styles.list}>
             <li>
-              <strong>By Law or to Protect Rights:</strong> If we believe the release of information about you is
-              necessary to respond to legal process, to investigate or remedy potential violations of our policies, or
-              to protect the rights, property, and safety of others, we may share your information as permitted or
-              required by any applicable law, rule, or regulation.
+              <strong>Por Ley o para Proteger Derechos:</strong> Si creemos que la divulgación de información sobre
+              usted es necesaria para responder a procesos legales, investigar o remediar posibles violaciones de
+              nuestras políticas, o proteger los derechos, la propiedad y la seguridad de otros, podemos compartir su
+              información según lo permitido o requerido por cualquier ley, norma o regulación aplicable.
             </li>
             <li>
-              <strong>Third-Party Service Providers:</strong> We may share your information with third parties that
-              perform services for us or on our behalf, including data analysis, email delivery, hosting services,
-              customer service, and marketing assistance.
+              <strong>Proveedores de Servicios de Terceros:</strong> Podemos compartir su información con terceros que
+              realizan servicios para nosotros o en nuestro nombre, incluidos análisis de datos, entrega de correos
+              electrónicos, servicios de alojamiento, atención al cliente y asistencia de marketing.
             </li>
             <li>
-              <strong>Professional Advisors:</strong> We may share your information with our lawyers, accountants, and
-              other professional advisors.
+              <strong>Asesores Profesionales:</strong> Podemos compartir su información con nuestros abogados,
+              contadores y otros asesores profesionales.
             </li>
           </ul>
         </div>
 
         {/* Section 4: Security of Your Information */}
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>4. Security of Your Information</h2>
+          <h2 className={styles.sectionTitle}>4. Seguridad de su Información</h2>
           <p className={styles.paragraph}>
-            We use administrative, technical, and physical security measures to help protect your personal information.
-            While we have taken reasonable steps to secure the personal information you provide to us, please be aware
-            that despite our efforts, no security measures are perfect or impenetrable, and no method of data
-            transmission can be guaranteed against any interception or other type of misuse.
+            Utilizamos medidas de seguridad administrativas, técnicas y físicas para ayudar a proteger su información
+            personal. Aunque hemos tomado medidas razonables para asegurar la información personal que nos proporciona,
+            tenga en cuenta que, a pesar de nuestros esfuerzos, ninguna medida de seguridad es perfecta o impenetrable,
+            y ningún método de transmisión de datos puede garantizarse contra cualquier tipo de interceptación o uso
+            indebido.
           </p>
         </div>
 
-        {/* Section 5: Your Privacy Rights */}
+        {/* Section 5: Sus Derechos de Privacidad */}
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>5. Your Privacy Rights</h2>
+          <h2 className={styles.sectionTitle}>5. Sus Derechos de Privacidad</h2>
           <p className={styles.paragraph}>
-            Depending on your location, you may have certain rights regarding your personal data, including the right to
-            access, correct, or delete the personal information we hold about you. You may also have the right to object
-            to or limit certain types of processing.
+            Dependiendo de su ubicación, puede tener ciertos derechos con respecto a sus datos personales, incluidos el
+            derecho a acceder, corregir o eliminar la información personal que tenemos sobre usted. También puede tener
+            derecho a oponerse o limitar ciertos tipos de procesamiento.
           </p>
         </div>
 
         {/* Section 6: Contact Us */}
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>6. Contact Us</h2>
+          <h2 className={styles.sectionTitle}>6. Contáctenos</h2>
           <p className={styles.paragraph}>
-            If you have questions or comments about this Privacy Policy, please contact us at:
+            Si tiene preguntas o comentarios sobre esta Política de Privacidad, por favor contáctenos en:
           </p>
           <div className={styles.contactInfo}>
             <p className={styles.paragraph}>
@@ -130,10 +131,11 @@ export const PrivacyPolicyPage: React.FC = () => {
             </p>
             <p className={styles.paragraph}>{clinicInformation.location.address}</p>
             <p className={styles.paragraph}>
-              Email: <a href={`mailto:${clinicInformation.contact.email}`}>{clinicInformation.contact.email}</a>
+              Correo Electrónico:{' '}
+              <a href={`mailto:${clinicInformation.contact.email}`}>{clinicInformation.contact.email}</a>
             </p>
             <p className={styles.paragraph}>
-              Phone: <a href={`tel:${clinicInformation.contact.phones[0]}`}>{clinicInformation.contact.phones[0]}</a>
+              Teléfono: <a href={`tel:${clinicInformation.contact.phones[0]}`}>{clinicInformation.contact.phones[0]}</a>
             </p>
           </div>
         </div>
