@@ -46,22 +46,22 @@ export const ValuesSection: React.FC = () => {
   return (
     <section className={styles.valuesSection}>
       <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>Our Core Values</h2>
+        <h2 className={styles.sectionTitle}>Nuestros Valores Fundamentales</h2>
         <div className={styles.valuesGrid}>
           <ValueCard
             icon="patient-centered"
-            title="Patient-Centered Care"
-            description="Tailoring every treatment plan to align with your personal lifestyle goals and recovery journey."
+            title="Atención Centrada en el Paciente"
+            description="Adaptamos cada plan de tratamiento para alinearse con sus objetivos de estilo de vida personal y trayectoria de recuperación."
           />
           <ValueCard
             icon="evidence-based"
-            title="Evidence-Based"
-            description="Our methods are grounded in the latest clinical research and orthopedic studies for proven results."
+            title="Basado en Evidencia"
+            description="Nuestros métodos se fundamentan en las últimas investigaciones clínicas y estudios ortopédicos para resultados comprobados."
           />
           <ValueCard
             icon="continuous-improvement"
-            title="Continuous Improvement"
-            description="Investing in ongoing staff education and state-of-the-art medical technology every year."
+            title="Mejora Continua"
+            description="Invertimos en educación continua del personal y tecnología médica de vanguardia cada año."
           />
         </div>
       </div>

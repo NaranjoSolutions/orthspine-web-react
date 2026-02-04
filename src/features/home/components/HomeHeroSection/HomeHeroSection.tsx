@@ -15,13 +15,14 @@ export const HomeHeroSection: React.FC = () => {
       <section className={styles.hero}>
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Your Path to Pain-Free Living</h1>
+          <h1 className={styles.heroTitle}>Su Camino Hacia una Vida sin Dolor</h1>
           <p className={styles.heroSubtitle}>
-            At Orthopedic Spine, we specialize in comprehensive orthopedic care. Our expert team is dedicated to
-            providing personalized treatment plans to help you regain mobility and live a healthier life.
+            En Orthopedic Spine, nos especializamos en atención ortopédica integral. Nuestro equipo de expertos está
+            dedicado a proporcionar planes de tratamiento personalizados para ayudarle a recuperar su movilidad y vivir
+            una vida más saludable.
           </p>
           <Button type="primary" size="large" className={styles.heroButton} onClick={handleBookAppointment}>
-            Book Appointment
+            Reservar Cita
           </Button>
         </div>
       </section>

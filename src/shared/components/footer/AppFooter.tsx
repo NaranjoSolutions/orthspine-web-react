@@ -22,22 +22,22 @@ export const AppFooter: React.FC = () => {
         <Row justify="center" className={styles.navRow}>
           <Col xs={24} className={styles.navCol}>
             <a href={ROUTE_PATHS.HOME} className={styles.navLink}>
-              Home
+              Inicio
             </a>
             <a href={ROUTE_PATHS.SERVICES} className={styles.navLink}>
-              Services
+              Servicios
             </a>
             <a href={ROUTE_PATHS.CONTACT} className={styles.navLink}>
-              Contact
+              Contacto
             </a>
             <a href={ROUTE_PATHS.ABOUT} className={styles.navLink}>
-              About
+              Sobre Nosotros
             </a>
             <a href={ROUTE_PATHS.PRIVACY_POLICY} className={styles.navLink}>
-              Privacy Policy
+              Política de Privacidad
             </a>
             <a href={ROUTE_PATHS.TERMS_OF_SERVICE} className={styles.navLink}>
-              Terms of Service
+              Términos de Servicio
             </a>
           </Col>
         </Row>
@@ -79,7 +79,7 @@ export const AppFooter: React.FC = () => {
         <Row justify="center" className={styles.copyrightRow}>
           <Col xs={24} className={styles.copyrightCol}>
             <Text className={styles.copyrightText}>
-              © {currentYear} {clinicInformation.name}. All rights reserved. - Developed by{' '}
+              © {currentYear} {clinicInformation.name}. Todos los derechos reservados. - Desarrollado por{' '}
               <Text strong className={styles.developerName}>
                 Naranjo Solutions
               </Text>

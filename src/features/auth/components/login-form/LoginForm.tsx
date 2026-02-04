@@ -24,8 +24,8 @@ export const LoginForm: React.FC = () => {
 
   return (
     <div className={styles.loginFormWrapper}>
-      <h1 className={styles.title}>Admin Portal</h1>
-      <p className={styles.subtitle}>Staff and administrators only</p>
+      <h1 className={styles.title}>Portal Administrativo</h1>
+      <p className={styles.subtitle}>Solo para personal y administradores</p>
 
       {errors.general && (
         <Alert message={errors.general} type="error" showIcon closable className={styles.errorAlert} />
@@ -41,34 +41,34 @@ export const LoginForm: React.FC = () => {
         requiredMark={false}
       >
         {/* Email Field */}
-        <Form.Item name="email" label="Email Address" validateStatus={errors.email ? 'error' : ''} help={errors.email}>
+        <Form.Item name="email" label="Correo electrónico" validateStatus={errors.email ? 'error' : ''} help={errors.email}>
           <Input
             prefix={<UserOutlined className={styles.inputIcon} />}
-            placeholder="Enter your email"
+            placeholder="Ingrese su correo electrónico"
             value={formData.email}
             onChange={(e) => handleChange('email', e.target.value)}
             disabled={isLoading}
             autoComplete="username"
             autoFocus
-            aria-label="Email Address"
+            aria-label="Correo electrónico"
           />
         </Form.Item>
 
         {/* Password Field */}
         <Form.Item
           name="password"
-          label="Password"
+          label="Contraseña"
           validateStatus={errors.password ? 'error' : ''}
           help={errors.password}
         >
           <Input.Password
             prefix={<LockOutlined className={styles.inputIcon} />}
-            placeholder="Enter your password"
+            placeholder="Ingrese su contraseña"
             value={formData.password}
             onChange={(e) => handleChange('password', e.target.value)}
             disabled={isLoading}
             autoComplete="current-password"
-            aria-label="Password"
+            aria-label="Contraseña"
           />
         </Form.Item>
 
@@ -79,7 +79,7 @@ export const LoginForm: React.FC = () => {
             onChange={(e) => handleChange('rememberMe', e.target.checked)}
             disabled={isLoading}
           >
-            Remember me
+            Recordarme
           </Checkbox>
         </Form.Item>
 
@@ -93,33 +93,33 @@ export const LoginForm: React.FC = () => {
             size="large"
             className={styles.submitButton}
           >
-            Sign In
+            Iniciar sesión
           </Button>
         </Form.Item>
 
         {/* Forgot Password Link */}
         <div className={styles.forgotPasswordWrapper}>
           <Button type="link" onClick={handleForgotPassword} disabled={isLoading} className={styles.forgotPassword}>
-            Forgot password?
+            ¿Olvidó su contraseña?
           </Button>
         </div>
 
         {/* Create Account Link */}
         <div className={styles.createAccountWrapper}>
-          <span className={styles.createAccountText}>Need to create an admin account?</span>
+          <span className={styles.createAccountText}>¿Necesita crear una cuenta de administrador?</span>
           <Button
             type="link"
             onClick={handleRegisterRedirect}
             disabled={isLoading}
             className={styles.createAccountLink}
           >
-            Create Account
+            Crear cuenta
           </Button>
         </div>
 
         {/* Security Note */}
         <div className={styles.securityNote}>
-          <p>🔒 This is a secure admin portal. All activity is monitored and logged.</p>
+          <p>🔒 Este es un portal administrativo seguro. Toda actividad es monitoreada y registrada.</p>
         </div>
       </Form>
     </div>

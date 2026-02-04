@@ -32,14 +32,13 @@ export const TestimonialsCTA: React.FC = () => {
   return (
     <div className={styles.ctaContainer}>
       <div className={styles.ctaContent}>
-        <h2 className={styles.heading}>Ready to Write Your Success Story?</h2>
+        <h2 className={styles.heading}>¿Listo para Escribir Su Historia de Éxito?</h2>
         <p className={styles.description}>
-          Our specialists are ready to help you navigate your journey back to a pain-free life. Book your initial
-          assessment today.
+          Nuestros especialistas están listos para ayudarle a navegar su trayectoria de regreso a una vida sin dolor. Reserve su evaluación inicial hoy.
         </p>
         <div className={styles.buttonGroup}>
           <Button type="default" size="large" className={styles.contactButton} onClick={handleContactClick}>
-            Contact Us
+            Contáctenos
           </Button>
           <Button
             type="primary"

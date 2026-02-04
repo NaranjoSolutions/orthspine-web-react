@@ -24,10 +24,10 @@ export const ContactPage: React.FC = () => {
       <div className={styles.container}>
         {/* Header Section */}
         <div className={styles.header}>
-          <h1 className={styles.title}>Contact Us</h1>
+          <h1 className={styles.title}>Contáctenos</h1>
           <p className={styles.subtitle}>
-            Our team is here to help you get back to your active lifestyle. Reach out via your preferred method or visit
-            our clinic.
+            Nuestro equipo está aquí para ayudarle a volver a su estilo de vida activo. Comuníquese por su método
+            preferido o visite nuestra clínica.
           </p>
         </div>
 

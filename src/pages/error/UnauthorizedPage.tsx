@@ -25,10 +25,10 @@ export const UnauthorizedPage: React.FC = () => {
       <Result
         status="403"
         title="403"
-        subTitle="Sorry, you are not authorized to access this page."
+        subTitle="Lo sentimos, no está autorizado para acceder a esta página."
         extra={
           <Button type="primary" onClick={handleGoHome}>
-            Back to Home
+            Volver al inicio
           </Button>
         }
       />

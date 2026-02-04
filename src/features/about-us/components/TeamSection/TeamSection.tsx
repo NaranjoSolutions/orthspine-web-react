@@ -51,14 +51,14 @@ export const TeamSection: React.FC = () => {
     <section className={styles.teamSection}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Meet Our Specialist</h2>
+          <h2 className={styles.title}>Conozca a Nuestro Especialista</h2>
         </div>
         <div className={styles.teamGrid}>
           <TeamMember
             name="Dr. Aaron Fallas"
-            title="Lead Physiotherapist, DPT"
-            description="With over 15 years of clinical experience, Dr. Fallas specializes in manual therapy and advanced spinal alignment techniques. He is dedicated to providing compassionate, evidence-based, and personalized care plans for every patient at Orthopedic Spine."
-            certifications={['Manual Therapy Certified', 'Orthopedic Clinical Specialist']}
+            title="Fisioterapeuta Principal, DPT"
+            description="Con más de 15 años de experiencia clínica, el Dr. Fallas se especializa en terapia manual y técnicas avanzadas de alineación espinal. Se dedica a proporcionar planes de atención compasivos, basados en evidencia y personalizados para cada paciente en Orthopedic Spine."
+            certifications={['Certificado en Terapia Manual', 'Especialista Clínico Ortopédico']}
             image={teamMemberImage}
           />
         </div>

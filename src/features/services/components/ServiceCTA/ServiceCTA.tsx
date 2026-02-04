@@ -32,7 +32,7 @@ export const ServiceCTA: React.FC = () => {
 
     // Format phone number for WhatsApp (remove + and spaces)
     const phoneNumber = phone.replace(/[+\s-]/g, '');
-    const message = encodeURIComponent('Hello! I would like to know more about your services.');
+    const message = encodeURIComponent('¡Hola! Me gustaría saber más sobre sus servicios.');
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
@@ -42,10 +42,9 @@ export const ServiceCTA: React.FC = () => {
         <div className={styles.iconWrapper}>
           <QuestionCircleOutlined className={styles.icon} />
         </div>
-        <h2 className={styles.title}>Not sure which service you need?</h2>
+        <h2 className={styles.title}>¿No está seguro de qué servicio necesita?</h2>
         <p className={styles.description}>
-          Speak with our specialists today to find the right treatment plan for your condition. We offer initial
-          assessments to guide your recovery journey.
+          Hable con nuestros especialistas hoy para encontrar el plan de tratamiento adecuado para su condición. Ofrecemos evaluaciones iniciales para guiar su trayectoria de recuperación.
         </p>
         <div className={styles.buttonGroup}>
           <Button
@@ -55,7 +54,7 @@ export const ServiceCTA: React.FC = () => {
             className={styles.contactButton}
             onClick={handleContactUs}
           >
-            Contact Us
+            Contáctenos
           </Button>
           <Button
             size="large"
@@ -63,7 +62,7 @@ export const ServiceCTA: React.FC = () => {
             className={styles.whatsappButton}
             onClick={handleWhatsAppChat}
           >
-            Chat on WhatsApp
+            Chat por WhatsApp
           </Button>
         </div>
       </div>

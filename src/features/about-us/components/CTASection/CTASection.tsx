@@ -23,17 +23,16 @@ export const CTASection: React.FC = () => {
   return (
     <section className={styles.ctaSection}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Ready to start your recovery?</h2>
+        <h2 className={styles.title}>¿Listo para comenzar su recuperación?</h2>
         <p className={styles.description}>
-          Join hundreds of patients who have found relief through our expert care. Schedule your initial consultation
-          today.
+          Únase a cientos de pacientes que han encontrado alivio a través de nuestra atención especializada. Programe su consulta inicial hoy.
         </p>
         <div className={styles.buttonGroup}>
           <Button type="primary" size="large" className={styles.primaryButton} onClick={handleBookAppointment}>
-            Book Appointment Now
+            Agendar Cita Ahora
           </Button>
           <Button size="large" className={styles.secondaryButton} onClick={handleLearnMore}>
-            Learn More
+            Más Información
           </Button>
         </div>
       </div>

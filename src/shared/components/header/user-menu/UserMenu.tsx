@@ -35,7 +35,7 @@ export const UserMenu: React.FC = () => {
     menuItems.push({
       key: 'dashboard',
       icon: <DashboardOutlined />,
-      label: 'Admin Dashboard',
+      label: 'Panel de administración',
       onClick: handleDashboard,
     });
   }
@@ -44,7 +44,7 @@ export const UserMenu: React.FC = () => {
   menuItems.push({
     key: 'logout',
     icon: <LogoutOutlined />,
-    label: 'Logout',
+    label: 'Cerrar sesión',
     onClick: handleLogout,
   });
 

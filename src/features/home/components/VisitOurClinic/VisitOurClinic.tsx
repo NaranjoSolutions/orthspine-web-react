@@ -47,11 +47,11 @@ export const VisitOurClinic: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 id="visit-our-clinic-title" className={styles.title}>
-            Visit Our Clinic
+            Visite Nuestra Clínica
           </h2>
           <p className={styles.subtitle}>
-            We are conveniently located in the heart of the city, providing specialized care in a state-of-the-art
-            facility.
+            Estamos convenientemente ubicados en el corazón de la ciudad, brindando atención especializada en una
+            instalación de última generación.
           </p>
         </div>
 
@@ -61,7 +61,7 @@ export const VisitOurClinic: React.FC = () => {
               <div className={styles.iconWrapper}>
                 <EnvironmentOutlined className={styles.infoIcon} aria-hidden />
               </div>
-              <h3 className={styles.infoLabel}>Address</h3>
+              <h3 className={styles.infoLabel}>Dirección</h3>
               <div className={styles.infoContent}>
                 <p className={styles.infoValue}>{location.address}</p>
               </div>
@@ -71,11 +71,11 @@ export const VisitOurClinic: React.FC = () => {
               <div className={styles.iconWrapper}>
                 <ClockCircleOutlined className={styles.infoIcon} aria-hidden />
               </div>
-              <h3 className={styles.infoLabel}>Opening Hours</h3>
+              <h3 className={styles.infoLabel}>Horario de Atención</h3>
               <div className={styles.infoContent}>
-                <p className={styles.infoValue}>Mon - Fri: 8:00 - 19:00</p>
-                <p className={styles.infoValue}>Saturday: 9:00 - 14:00</p>
-                <p className={styles.infoValue}>Sunday: Closed</p>
+                <p className={styles.infoValue}>Lun - Vie: 8:00 - 19:00</p>
+                <p className={styles.infoValue}>Sábado: 9:00 - 14:00</p>
+                <p className={styles.infoValue}>Domingo: Cerrado</p>
               </div>
             </div>
 
@@ -83,7 +83,7 @@ export const VisitOurClinic: React.FC = () => {
               <div className={styles.iconWrapper}>
                 <PhoneOutlined className={styles.infoIcon} aria-hidden />
               </div>
-              <h3 className={styles.infoLabel}>Contact Info</h3>
+              <h3 className={styles.infoLabel}>Información de Contacto</h3>
               <div className={styles.infoContent}>
                 <a href={`tel:${contact.phones[0]}`} className={styles.infoLink}>
                   {contact.phones[0]}
@@ -103,7 +103,7 @@ export const VisitOurClinic: React.FC = () => {
               className={styles.mapButton}
               onClick={handleOpenGoogleMaps}
             >
-              Open in Google Maps
+              Abrir en Google Maps
             </Button>
             <Button
               type="default"
@@ -112,7 +112,7 @@ export const VisitOurClinic: React.FC = () => {
               className={styles.mapButton}
               onClick={handleOpenWaze}
             >
-              Open in Waze
+              Abrir en Waze
             </Button>
           </div>
         </div>

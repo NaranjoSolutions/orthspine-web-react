@@ -73,13 +73,12 @@ export const SuccessFeedbackModal: React.FC<SuccessFeedbackModalProps> = ({ open
 
         {/* Title */}
         <h2 id="success-modal-title" className={styles.title}>
-          Thank You for Your Feedback!
+          ¡Gracias por Sus Comentarios!
         </h2>
 
         {/* Message */}
         <p id="success-modal-description" className={styles.message}>
-          Your review has been successfully submitted and is pending approval. We appreciate you sharing your experience
-          with the Orthopedic Spine community.
+          Su reseña ha sido enviada exitosamente y está pendiente de aprobación. Agradecemos que comparta su experiencia con la comunidad de Orthopedic Spine.
         </p>
 
         {/* Action Buttons */}
@@ -89,17 +88,17 @@ export const SuccessFeedbackModal: React.FC<SuccessFeedbackModalProps> = ({ open
             size="large"
             onClick={handleBackToHome}
             className={styles.primaryButton}
-            aria-label="Navigate back to home page"
+            aria-label="Navegar de regreso a la página de inicio"
           >
-            Back to Home
+            Volver al Inicio
           </Button>
           <Button
             size="large"
             onClick={handleReadMoreReviews}
             className={styles.secondaryButton}
-            aria-label="Read more testimonials"
+            aria-label="Leer más testimonios"
           >
-            Read More Reviews
+            Leer Más Reseñas
           </Button>
         </div>
       </div>
