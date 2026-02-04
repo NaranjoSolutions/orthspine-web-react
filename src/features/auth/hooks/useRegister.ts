@@ -2,13 +2,10 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 import { useRegisterMutation } from '../api/authApi';
-import { RegisterFormData, RegisterFormErrors, UserRole } from '../types';
-import { AuthService } from '../services/AuthService';
+import { RegisterFormData, RegisterFormErrors } from '../types';
 import { RegisterValidator } from '@/shared/utils/validators/RegisterValidator';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
 import { logger } from '@/infrastructure/logger/Logger';
-import { useAppDispatch } from '@/store/redux/hooks';
-import { setUser, setTokens } from '../store/authSlice';
 
 /**
  * useRegister Hook - Facade Pattern
@@ -16,7 +13,6 @@ import { setUser, setTokens } from '../store/authSlice';
  * Integrated with Ant Design message notifications
  */
 export const useRegister = () => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const [register, { isLoading }] = useRegisterMutation();
@@ -93,27 +89,15 @@ export const useRegister = () => {
           confirmPassword: formData.confirmPassword,
         }).unwrap();
 
-        // Process response using AuthService (Repository Pattern)
-        const user = AuthService.processRegisterResponse(response);
-
-        // Update Redux state
-        dispatch(setUser(user));
-        dispatch(setTokens(response.tokens));
-
         // Hide loading message
         hideLoading();
 
-        // Show success message
-        message.success(`Welcome, ${user.firstName}! Your account has been created.`);
+        // Log success for monitoring
+        logger.info('Admin account request submitted', { email: formData.email });
 
-        logger.info('Registration successful', { userId: user.userId, email: user.email });
-
-        // Navigate based on user role
-        if (user.userRole === UserRole.ADMIN) {
-          navigate(ROUTE_PATHS.ADMIN.DASHBOARD);
-        } else {
-          navigate(ROUTE_PATHS.HOME);
-        }
+        // Redirect to confirmation page (UI-only feedback)
+        // Note: The actual account will need admin approval before login is possible
+        navigate(ROUTE_PATHS.AUTH.ADMIN_REQUEST_CONFIRMATION);
       } catch (error: any) {
         // Hide loading message
         hideLoading();
