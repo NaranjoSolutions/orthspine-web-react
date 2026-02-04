@@ -81,24 +81,19 @@
 
 .cardWrapper {
   flex-shrink: 0;
-  width: 420px;
-  max-width: 90vw;
 
   // Constrain width on large screens
   @media (min-width: $breakpoint-lg) {
     width: 420px;
-    max-width: 420px;
   }
 
   // Full width on mobile/tablet
   @media (max-width: $breakpoint-md) {
     width: 90vw;
-    max-width: 90vw;
   }
 
   @media (max-width: $breakpoint-sm) {
     width: 85vw;
-    max-width: 85vw;
   }
 }
 
