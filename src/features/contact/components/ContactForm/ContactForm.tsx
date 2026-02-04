@@ -76,7 +76,9 @@ export const ContactForm: React.FC = () => {
     <div id="inquiry-form" className={styles.contactForm}>
       <div className={styles.formHeader}>
         <h2 className={styles.title}>Formulario de Consulta</h2>
-        <p className={styles.subtitle}>Complete los detalles a continuación y un especialista se pondrá en contacto con usted.</p>
+        <p className={styles.subtitle}>
+          Complete los detalles a continuación y un especialista se pondrá en contacto con usted.
+        </p>
       </div>
 
       <Form
@@ -156,7 +158,6 @@ export const ContactForm: React.FC = () => {
           <Radio.Group className={styles.radioGroup}>
             <Radio value="phone">Teléfono</Radio>
             <Radio value="email">Correo Electrónico</Radio>
-            <Radio value="text">Mensaje de Texto</Radio>
           </Radio.Group>
         </Form.Item>
 
