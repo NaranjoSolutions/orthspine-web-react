@@ -47,6 +47,8 @@
   margin-bottom: $spacing-lg;
   flex: 1;
   font-style: italic;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .authorInfo {
@@ -66,12 +68,14 @@
   color: $color-primary;
   font-weight: $font-weight-semibold;
   margin: 0 0 $spacing-xs 0;
+  overflow-wrap: break-word;
 }
 
 .condition {
   font-size: $font-size-sm;
   color: $color-gray-600;
   margin: 0;
+  overflow-wrap: break-word;
 }
 
 .date {
