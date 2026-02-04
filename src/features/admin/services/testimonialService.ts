@@ -1,9 +1,4 @@
-import {
-  Testimonial,
-  TestimonialFormData,
-  TestimonialFilters,
-  TestimonialStatus,
-} from '../types/testimonial.types';
+import { Testimonial, TestimonialFormData, TestimonialFilters, TestimonialStatus } from '../types/testimonial.types';
 
 /**
  * Mock testimonials data for development
@@ -134,8 +129,7 @@ class TestimonialService {
     if (filters.search) {
       const searchLower = filters.search.toLowerCase();
       filtered = filtered.filter(
-        (t) =>
-          t.patientName.toLowerCase().includes(searchLower) || t.message.toLowerCase().includes(searchLower),
+        (t) => t.patientName.toLowerCase().includes(searchLower) || t.message.toLowerCase().includes(searchLower),
       );
     }
 

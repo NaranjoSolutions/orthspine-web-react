@@ -26,8 +26,8 @@ export const ContactPage: React.FC = () => {
         <div className={styles.header}>
           <h1 className={styles.title}>Contact Us</h1>
           <p className={styles.subtitle}>
-            Our team is here to help you get back to your active lifestyle.
-            Reach out via your preferred method or visit our clinic.
+            Our team is here to help you get back to your active lifestyle. Reach out via your preferred method or visit
+            our clinic.
           </p>
         </div>
 

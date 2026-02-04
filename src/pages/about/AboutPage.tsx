@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  HeroSection, 
-  StorySection, 
-  ValuesSection, 
-  TeamSection, 
-  CertificationsSection, 
-  CTASection 
+import {
+  HeroSection,
+  StorySection,
+  ValuesSection,
+  TeamSection,
+  CertificationsSection,
+  CTASection,
 } from '@/features/about-us/components';
 import styles from './AboutPage.module.scss';
 

@@ -18,8 +18,8 @@ export const BookAppointmentPage: React.FC = () => {
           <h1 className={styles.title}>Book an Appointment</h1>
           <p className={styles.comingSoonBadge}>Coming Soon</p>
           <p className={styles.description}>
-            We're working on making it easier than ever to book your appointment online.
-            In the meantime, please call us or visit our clinic to schedule your visit.
+            We're working on making it easier than ever to book your appointment online. In the meantime, please call us
+            or visit our clinic to schedule your visit.
           </p>
         </div>
       </section>

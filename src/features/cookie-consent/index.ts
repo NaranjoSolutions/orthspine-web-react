@@ -1,16 +1,16 @@
 /**
  * Cookie Consent Feature
  * Public API for cookie consent functionality
- * 
+ *
  * This feature provides a complete cookie consent solution following GDPR guidelines.
  * It includes a banner for first-time visitors and a preferences modal for managing
  * cookie categories.
- * 
+ *
  * @example
  * ```tsx
  * // In your App.tsx or root component
  * import { CookieConsentBanner } from '@/features/cookie-consent';
- * 
+ *
  * function App() {
  *   return (
  *     <>
@@ -20,15 +20,15 @@
  *   );
  * }
  * ```
- * 
+ *
  * @example
  * ```tsx
  * // Using the hook in a component
  * import { useCookieConsent } from '@/features/cookie-consent';
- * 
+ *
  * function MyComponent() {
  *   const { consent, hasConsented } = useCookieConsent();
- *   
+ *
  *   // Only load analytics if user consented to performance cookies
  *   useEffect(() => {
  *     if (consent.performance) {

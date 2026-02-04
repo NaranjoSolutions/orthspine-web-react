@@ -27,22 +27,20 @@ interface UseCookieConsentReturn {
 
 /**
  * Custom hook for managing cookie consent
- * 
+ *
  * @returns Cookie consent state and management functions
- * 
+ *
  * @example
  * ```tsx
  * const { consent, hasConsented, acceptAll, rejectNonEssential } = useCookieConsent();
- * 
+ *
  * if (!hasConsented) {
  *   return <CookieConsentBanner onAccept={acceptAll} onReject={rejectNonEssential} />;
  * }
  * ```
  */
 export const useCookieConsent = (): UseCookieConsentReturn => {
-  const [consent, setConsent] = useState<CookieConsentState>(() => 
-    CookieConsentService.getConsent()
-  );
+  const [consent, setConsent] = useState<CookieConsentState>(() => CookieConsentService.getConsent());
 
   // Sync state with localStorage changes (e.g., from other tabs)
   useEffect(() => {

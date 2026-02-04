@@ -1,11 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import {
-  WhatsAppOutlined,
-  MailOutlined,
-  PhoneOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
+import { WhatsAppOutlined, MailOutlined, PhoneOutlined, RightOutlined } from '@ant-design/icons';
 import { WHATSAPP_CONFIG, CONTACT_PHONE } from '../../config/contact.config';
 import styles from './ContactActionCards.module.scss';
 
@@ -96,13 +91,7 @@ export const ContactActionCards: React.FC = () => {
       <div className={styles.cardsGrid}>
         {actionCards.map((card) => (
           <div key={card.id} className={styles.actionCard}>
-            <div
-              className={`${styles.iconWrapper} ${
-                styles[`iconWrapper--${card.buttonColor}`]
-              }`}
-            >
-              {card.icon}
-            </div>
+            <div className={`${styles.iconWrapper} ${styles[`iconWrapper--${card.buttonColor}`]}`}>{card.icon}</div>
 
             <h3 className={styles.cardTitle}>{card.title}</h3>
             <p className={styles.cardSubtitle}>{card.subtitle}</p>
@@ -113,9 +102,7 @@ export const ContactActionCards: React.FC = () => {
               icon={<RightOutlined />}
               iconPosition="end"
               onClick={card.action}
-              className={`${styles.actionButton} ${
-                styles[`actionButton--${card.buttonColor}`]
-              }`}
+              className={`${styles.actionButton} ${styles[`actionButton--${card.buttonColor}`]}`}
               block
             >
               {card.buttonText}

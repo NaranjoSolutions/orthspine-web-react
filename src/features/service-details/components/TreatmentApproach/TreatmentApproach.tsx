@@ -18,12 +18,7 @@ export const TreatmentApproach: React.FC<TreatmentApproachProps> = ({ approaches
   }
 
   // Icons for treatment approach steps
-  const approachIcons = [
-    <FileTextOutlined />,
-    <MedicineBoxOutlined />,
-    <RocketOutlined />,
-    <TrophyOutlined />,
-  ];
+  const approachIcons = [<FileTextOutlined />, <MedicineBoxOutlined />, <RocketOutlined />, <TrophyOutlined />];
 
   return (
     <div className={styles.approachSection}>
@@ -33,9 +28,7 @@ export const TreatmentApproach: React.FC<TreatmentApproachProps> = ({ approaches
           <div key={index} className={styles.approachCard}>
             <div className={styles.approachNumber}>
               <span className={styles.numberText}>{String(index + 1).padStart(2, '0')}</span>
-              <div className={styles.approachIcon}>
-                {approachIcons[index] || <MedicineBoxOutlined />}
-              </div>
+              <div className={styles.approachIcon}>{approachIcons[index] || <MedicineBoxOutlined />}</div>
             </div>
             <h3 className={styles.approachTitle}>{approach}</h3>
           </div>

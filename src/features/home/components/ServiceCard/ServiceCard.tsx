@@ -24,13 +24,13 @@ interface ServiceCardProps {
  * @param conditionsTreated - List of conditions treated by the service
  * @param serviceId - Unique service identifier for navigation
  */
-export const ServiceCard: React.FC<ServiceCardProps> = ({ 
-  title, 
-  shortDescription, 
-  image, 
-  alt, 
+export const ServiceCard: React.FC<ServiceCardProps> = ({
+  title,
+  shortDescription,
+  image,
+  alt,
   conditionsTreated,
-  serviceId 
+  serviceId,
 }) => {
   const navigate = useNavigate();
 
@@ -55,8 +55,8 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
             </ul>
           </div>
         )}
-        <Button 
-          type="link" 
+        <Button
+          type="link"
           className={styles.learnMoreButton}
           onClick={handleLearnMore}
           icon={<ArrowRightOutlined />}

@@ -7,12 +7,7 @@ import styles from './CertificationsSection.module.scss';
  * @returns React component with certification logos
  */
 export const CertificationsSection: React.FC = () => {
-  const certifications = [
-    'CERT LOGO 1',
-    'CERT LOGO 2',
-    'CERT LOGO 3',
-    'CERT LOGO 4',
-  ];
+  const certifications = ['CERT LOGO 1', 'CERT LOGO 2', 'CERT LOGO 3', 'CERT LOGO 4'];
 
   return (
     <section className={styles.certificationsSection}>

@@ -23,9 +23,9 @@ export class CookieConsentService {
       if (!stored) {
         return DEFAULT_COOKIE_CONSENT;
       }
-      
+
       const parsed = JSON.parse(stored) as CookieConsentState;
-      
+
       // Validate the stored data structure
       if (
         typeof parsed.hasConsented !== 'boolean' ||
@@ -37,7 +37,7 @@ export class CookieConsentService {
         console.warn('Invalid cookie consent data in localStorage, using defaults');
         return DEFAULT_COOKIE_CONSENT;
       }
-      
+
       return parsed;
     } catch (error) {
       console.error('Error reading cookie consent from localStorage:', error);
@@ -80,7 +80,7 @@ export class CookieConsentService {
       performance: true,
       timestamp: Date.now(),
     };
-    
+
     this.setConsent(consent);
     return consent;
   }
@@ -97,7 +97,7 @@ export class CookieConsentService {
       performance: false,
       timestamp: Date.now(),
     };
-    
+
     this.setConsent(consent);
     return consent;
   }
@@ -116,7 +116,7 @@ export class CookieConsentService {
       performance,
       timestamp: Date.now(),
     };
-    
+
     this.setConsent(consent);
     return consent;
   }

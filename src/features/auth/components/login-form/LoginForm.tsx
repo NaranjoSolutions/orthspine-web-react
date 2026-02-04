@@ -10,7 +10,8 @@ import styles from './LoginForm.module.scss';
  * Follows Single Responsibility Principle - only renders form UI
  */
 export const LoginForm: React.FC = () => {
-  const { formData, errors, isLoading, handleChange, handleLogin, handleForgotPassword, handleRegisterRedirect } = useLogin();
+  const { formData, errors, isLoading, handleChange, handleLogin, handleForgotPassword, handleRegisterRedirect } =
+    useLogin();
 
   const [form] = Form.useForm();
 
@@ -24,9 +25,7 @@ export const LoginForm: React.FC = () => {
   return (
     <div className={styles.loginFormWrapper}>
       <h1 className={styles.title}>Admin Portal</h1>
-      <p className={styles.subtitle}>
-        Staff and administrators only
-      </p>
+      <p className={styles.subtitle}>Staff and administrators only</p>
 
       {errors.general && (
         <Alert message={errors.general} type="error" showIcon closable className={styles.errorAlert} />
@@ -42,12 +41,7 @@ export const LoginForm: React.FC = () => {
         requiredMark={false}
       >
         {/* Email Field */}
-        <Form.Item 
-          name="email" 
-          label="Email Address"
-          validateStatus={errors.email ? 'error' : ''} 
-          help={errors.email}
-        >
+        <Form.Item name="email" label="Email Address" validateStatus={errors.email ? 'error' : ''} help={errors.email}>
           <Input
             prefix={<UserOutlined className={styles.inputIcon} />}
             placeholder="Enter your email"
@@ -61,10 +55,10 @@ export const LoginForm: React.FC = () => {
         </Form.Item>
 
         {/* Password Field */}
-        <Form.Item 
-          name="password" 
+        <Form.Item
+          name="password"
           label="Password"
-          validateStatus={errors.password ? 'error' : ''} 
+          validateStatus={errors.password ? 'error' : ''}
           help={errors.password}
         >
           <Input.Password
@@ -113,7 +107,12 @@ export const LoginForm: React.FC = () => {
         {/* Create Account Link */}
         <div className={styles.createAccountWrapper}>
           <span className={styles.createAccountText}>Need to create an admin account?</span>
-          <Button type="link" onClick={handleRegisterRedirect} disabled={isLoading} className={styles.createAccountLink}>
+          <Button
+            type="link"
+            onClick={handleRegisterRedirect}
+            disabled={isLoading}
+            className={styles.createAccountLink}
+          >
             Create Account
           </Button>
         </div>

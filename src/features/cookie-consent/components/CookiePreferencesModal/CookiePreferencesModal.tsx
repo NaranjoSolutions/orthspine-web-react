@@ -52,11 +52,11 @@ const COOKIE_CATEGORIES: CookieCategory[] = [
 
 /**
  * CookiePreferencesModal Component
- * 
+ *
  * Displays a modal that allows users to customize their cookie preferences.
  * Users can toggle functional and performance cookies on/off, while
  * strictly necessary cookies are always enabled.
- * 
+ *
  * @component
  * @example
  * ```tsx
@@ -147,8 +147,8 @@ export const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({
     >
       <div className={styles.modalContent}>
         <p className={styles.description}>
-          We use cookies to improve your experience on our site. You can manage your preferences
-          below or accept all cookies for the best browsing experience.
+          We use cookies to improve your experience on our site. You can manage your preferences below or accept all
+          cookies for the best browsing experience.
         </p>
 
         <div className={styles.categories}>
@@ -157,9 +157,7 @@ export const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({
               <div className={styles.categoryHeader}>
                 <div className={styles.categoryTitleRow}>
                   <h4 className={styles.categoryTitle}>{category.title}</h4>
-                  {category.isRequired && (
-                    <span className={styles.alwaysActiveBadge}>ALWAYS ACTIVE</span>
-                  )}
+                  {category.isRequired && <span className={styles.alwaysActiveBadge}>ALWAYS ACTIVE</span>}
                 </div>
                 <Switch
                   checked={getCategoryValue(category.key)}

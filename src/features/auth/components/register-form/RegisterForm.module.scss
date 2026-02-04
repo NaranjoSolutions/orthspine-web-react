@@ -46,7 +46,7 @@
 .passwordHelper {
   margin-top: -12px;
   margin-bottom: 0;
-  
+
   p {
     font-size: 13px;
     color: #6b7280;
@@ -67,7 +67,7 @@
   margin-bottom: 12px;
   background-color: #1890ff;
   border-color: #1890ff;
-  
+
   &:hover {
     background-color: #0070e0;
     border-color: #0070e0;
@@ -79,7 +79,7 @@
   font-size: 14px;
   color: #6b7280;
   border-color: #d1d5db;
-  
+
   &:hover {
     color: #374151;
     border-color: #9ca3af;
@@ -94,13 +94,13 @@
 
   .ant-form-item-label {
     padding-bottom: 6px;
-    
+
     > label {
       font-size: 14px;
       font-weight: 600;
       color: #374151;
       height: auto;
-      
+
       &::after {
         display: none;
       }
@@ -112,11 +112,11 @@
     padding: 10px 16px;
     border-radius: 6px;
     border-color: #d1d5db;
-    
+
     &:hover {
       border-color: #9ca3af;
     }
-    
+
     &:focus,
     &.ant-input-affix-wrapper-focused {
       border-color: #1890ff;
@@ -139,11 +139,11 @@
   .subtitle {
     font-size: 13px;
   }
-  
+
   .passwordGroup {
     padding: 16px;
   }
-  
+
   .passwordHelper p {
     font-size: 12px;
   }

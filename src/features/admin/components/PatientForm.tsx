@@ -58,7 +58,7 @@ export const PatientForm: React.FC<PatientFormProps> = ({ initialValues, onSubmi
         name="fullName"
         label="Full Name"
         rules={[
-          { required: true, message: 'Please enter the patient\'s full name' },
+          { required: true, message: "Please enter the patient's full name" },
           { min: 2, message: 'Name must be at least 2 characters' },
         ]}
       >
@@ -92,10 +92,10 @@ export const PatientForm: React.FC<PatientFormProps> = ({ initialValues, onSubmi
         label="Date of Birth"
         rules={[{ required: true, message: 'Please select date of birth' }]}
       >
-        <DatePicker 
-          placeholder="Select date" 
-          size="large" 
-          style={{ width: '100%' }} 
+        <DatePicker
+          placeholder="Select date"
+          size="large"
+          style={{ width: '100%' }}
           format="MM/DD/YYYY"
           disabledDate={(current) => current && current > dayjs().endOf('day')}
         />

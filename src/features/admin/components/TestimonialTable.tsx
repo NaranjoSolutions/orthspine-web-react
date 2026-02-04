@@ -138,12 +138,7 @@ export const TestimonialTable: React.FC<TestimonialTableProps> = ({
             </>
           )}
           <Tooltip title="Edit">
-            <Button
-              type="text"
-              icon={<EditOutlined />}
-              onClick={() => onEdit(record)}
-              className={styles.editButton}
-            />
+            <Button type="text" icon={<EditOutlined />} onClick={() => onEdit(record)} className={styles.editButton} />
           </Tooltip>
           <Tooltip title="Delete">
             <Button

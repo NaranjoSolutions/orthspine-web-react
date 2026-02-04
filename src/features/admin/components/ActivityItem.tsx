@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  UserAddOutlined,
-  CheckCircleOutlined,
-  CloseCircleOutlined,
-  CommentOutlined,
-} from '@ant-design/icons';
+import { UserAddOutlined, CheckCircleOutlined, CloseCircleOutlined, CommentOutlined } from '@ant-design/icons';
 import { RecentActivity, ActivityType } from '../types';
 import { formatRelativeTime } from '@/shared/utils/dateUtils';
 import styles from './ActivityItem.module.scss';

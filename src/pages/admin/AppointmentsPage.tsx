@@ -149,7 +149,7 @@ const AppointmentsPage: React.FC = () => {
             start: dates[0].toISOString(),
             end: dates[1].toISOString(),
           },
-        })
+        }),
       );
     } else {
       dispatch(setAppointmentFilters({ dateRange: undefined }));
@@ -263,7 +263,7 @@ const AppointmentsPage: React.FC = () => {
     try {
       const updatedAppointment = await appointmentService.rescheduleAppointment(
         selectedAppointment.id,
-        dayjs(values.dateTime).toISOString()
+        dayjs(values.dateTime).toISOString(),
       );
       dispatch(updateAppointment(updatedAppointment));
       notification.success({
@@ -356,22 +356,14 @@ const AppointmentsPage: React.FC = () => {
               <div className={styles.filterItem}>
                 <label>Date Range:</label>
                 <RangePicker
-                  value={
-                    filters.dateRange
-                      ? [dayjs(filters.dateRange.start), dayjs(filters.dateRange.end)]
-                      : null
-                  }
+                  value={filters.dateRange ? [dayjs(filters.dateRange.start), dayjs(filters.dateRange.end)] : null}
                   onChange={handleDateRangeChange}
                   style={{ width: 280 }}
                 />
               </div>
               <div className={styles.filterItem}>
                 <label>Doctor:</label>
-                <Select
-                  value={filters.doctorId || 'all'}
-                  onChange={handleDoctorFilterChange}
-                  style={{ width: 200 }}
-                >
+                <Select value={filters.doctorId || 'all'} onChange={handleDoctorFilterChange} style={{ width: 200 }}>
                   <Select.Option value="all">All Doctors</Select.Option>
                   {doctors.map((doctor) => (
                     <Select.Option key={doctor.id} value={doctor.id}>
@@ -382,11 +374,7 @@ const AppointmentsPage: React.FC = () => {
               </div>
               <div className={styles.filterItem}>
                 <label>Status:</label>
-                <Select
-                  value={filters.status || 'all'}
-                  onChange={handleStatusFilterChange}
-                  style={{ width: 160 }}
-                >
+                <Select value={filters.status || 'all'} onChange={handleStatusFilterChange} style={{ width: 160 }}>
                   <Select.Option value="all">All Status</Select.Option>
                   <Select.Option value={AppointmentStatus.CONFIRMED}>Confirmed</Select.Option>
                   <Select.Option value={AppointmentStatus.PENDING}>Pending</Select.Option>

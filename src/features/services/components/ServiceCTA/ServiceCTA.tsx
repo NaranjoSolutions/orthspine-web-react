@@ -9,7 +9,7 @@ import styles from './ServiceCTA.module.scss';
 /**
  * ServiceCTA Component
  * Call-to-action section for users unsure about which service they need
- * 
+ *
  * Features:
  * - Question icon with descriptive text
  * - Contact Us button (navigates to contact page)
@@ -44,8 +44,8 @@ export const ServiceCTA: React.FC = () => {
         </div>
         <h2 className={styles.title}>Not sure which service you need?</h2>
         <p className={styles.description}>
-          Speak with our specialists today to find the right treatment plan for your condition. 
-          We offer initial assessments to guide your recovery journey.
+          Speak with our specialists today to find the right treatment plan for your condition. We offer initial
+          assessments to guide your recovery journey.
         </p>
         <div className={styles.buttonGroup}>
           <Button

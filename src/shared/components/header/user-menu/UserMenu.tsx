@@ -60,12 +60,7 @@ export const UserMenu: React.FC = () => {
   return (
     <Dropdown menu={{ items: menuItems }} trigger={['click']} placement="bottomRight">
       <div className={styles.userMenu}>
-        <Avatar
-          size={36}
-          src={user.avatar}
-          icon={!user.avatar && <UserOutlined />}
-          className={styles.avatar}
-        >
+        <Avatar size={36} src={user.avatar} icon={!user.avatar && <UserOutlined />} className={styles.avatar}>
           {!user.avatar && initials}
         </Avatar>
         <span className={styles.userName}>{displayName}</span>

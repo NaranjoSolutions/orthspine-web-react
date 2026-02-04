@@ -12,7 +12,8 @@ export const HeroSection: React.FC = () => {
       <div className={styles.heroContent}>
         <h1 className={styles.heroTitle}>About Orthopedic Spine</h1>
         <p className={styles.heroDescription}>
-          Dedicated to your spinal health and recovery with expert physiotherapy care, evidence-based treatments, and a compassionate clinical team.
+          Dedicated to your spinal health and recovery with expert physiotherapy care, evidence-based treatments, and a
+          compassionate clinical team.
         </p>
       </div>
     </section>

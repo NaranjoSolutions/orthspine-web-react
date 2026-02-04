@@ -183,18 +183,7 @@ const mockPatients: Patient[] = [
 // Extend mock data to 50 patients
 for (let i = 11; i <= 50; i++) {
   const firstNames = ['James', 'Emma', 'William', 'Sophia', 'Lucas', 'Amelia', 'Henry', 'Mia', 'Alexander', 'Evelyn'];
-  const lastNames = [
-    'Johnson',
-    'Smith',
-    'Wilson',
-    'Garcia',
-    'Taylor',
-    'Lee',
-    'Walker',
-    'Hall',
-    'Allen',
-    'Young',
-  ];
+  const lastNames = ['Johnson', 'Smith', 'Wilson', 'Garcia', 'Taylor', 'Lee', 'Walker', 'Hall', 'Allen', 'Young'];
 
   const firstName = firstNames[(i - 1) % firstNames.length];
   const lastName = lastNames[Math.floor((i - 1) / 5) % lastNames.length];
@@ -212,7 +201,7 @@ for (let i = 11; i <= 50; i++) {
     patientId: `789-${String(i).padStart(3, '0')}-${String(i + 100).padStart(3, '0')}`,
     status: i % 3 === 0 ? PatientStatus.INACTIVE : PatientStatus.ACTIVE,
     primaryPhysicianId: `${(i % 4) + 1}`,
-    nextAppointmentDate: i % 2 === 0 ? new Date(2023, 9, i % 28 + 1).toISOString() : undefined,
+    nextAppointmentDate: i % 2 === 0 ? new Date(2023, 9, (i % 28) + 1).toISOString() : undefined,
   });
 }
 
@@ -234,7 +223,7 @@ class PatientService {
   async getPatients(
     filters?: PatientFilters,
     page: number = 1,
-    pageSize: number = 5
+    pageSize: number = 5,
   ): Promise<{
     patients: Patient[];
     total: number;
@@ -253,7 +242,7 @@ class PatientService {
         (p) =>
           p.fullName.toLowerCase().includes(searchLower) ||
           p.email.toLowerCase().includes(searchLower) ||
-          p.phone.includes(searchLower)
+          p.phone.includes(searchLower),
       );
     }
 

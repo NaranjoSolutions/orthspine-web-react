@@ -139,12 +139,7 @@ export const AppointmentTable: React.FC<AppointmentTableProps> = ({
         return (
           <Space size="small">
             <Tooltip title="View Details">
-              <Button
-                type="link"
-                icon={<EyeOutlined />}
-                onClick={() => onView(record)}
-                className={styles.actionButton}
-              >
+              <Button type="link" icon={<EyeOutlined />} onClick={() => onView(record)} className={styles.actionButton}>
                 View
               </Button>
             </Tooltip>

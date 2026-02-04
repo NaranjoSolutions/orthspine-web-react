@@ -73,7 +73,8 @@ export const PatientTable: React.FC<PatientTableProps> = ({
       dataIndex: 'dateOfBirth',
       key: 'dateOfBirth',
       sorter: (a, b) => new Date(a.dateOfBirth).getTime() - new Date(b.dateOfBirth).getTime(),
-      render: (date: string) => new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }),
+      render: (date: string) =>
+        new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }),
       className: styles.dateColumn,
     },
     {

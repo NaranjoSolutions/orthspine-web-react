@@ -9,10 +9,10 @@ const { Title, Paragraph } = Typography;
 
 /**
  * AdminRequestConfirmationPage Component
- * 
+ *
  * UI-only confirmation page displayed after admin account creation request.
  * Provides clear feedback about the request status and next steps.
- * 
+ *
  * Features:
  * - Success icon and confirmation message
  * - Information about approval process
@@ -35,10 +35,7 @@ export const AdminRequestConfirmationPage: React.FC = () => {
       <div className={styles.contentWrapper}>
         {/* Success Icon */}
         <div className={styles.iconWrapper}>
-          <CheckCircleOutlined 
-            className={styles.successIcon} 
-            aria-hidden="true"
-          />
+          <CheckCircleOutlined className={styles.successIcon} aria-hidden="true" />
         </div>
 
         {/* Header Section */}
@@ -57,12 +54,12 @@ export const AdminRequestConfirmationPage: React.FC = () => {
             <strong>What happens next?</strong>
           </Paragraph>
           <Paragraph className={styles.message}>
-            Your request is currently pending approval from our system administrators. 
-            This process typically takes 1-2 business days.
+            Your request is currently pending approval from our system administrators. This process typically takes 1-2
+            business days.
           </Paragraph>
           <Paragraph className={styles.message}>
-            You will receive an email notification once your account has been reviewed 
-            and approved. After approval, you'll be able to log in with your credentials.
+            You will receive an email notification once your account has been reviewed and approved. After approval,
+            you'll be able to log in with your credentials.
           </Paragraph>
         </div>
 
@@ -96,8 +93,8 @@ export const AdminRequestConfirmationPage: React.FC = () => {
         <div className={styles.supportSection}>
           <Paragraph className={styles.supportText}>
             Need help? Contact us at{' '}
-            <a 
-              href="mailto:support@orthospine.com" 
+            <a
+              href="mailto:support@orthospine.com"
               className={styles.supportLink}
               aria-label="Contact support via email"
             >
