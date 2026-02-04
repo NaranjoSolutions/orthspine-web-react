@@ -52,29 +52,29 @@ const PatientDetailsPage: React.FC = () => {
   const tabItems = [
     {
       key: 'medical-notes',
-      label: 'Medical Notes',
+      label: 'Notas Médicas',
       children: (
         <MedicalNotesTab notes={medicalNotes} loading={notesLoading} onAddNote={() => setAddNoteModalVisible(true)} />
       ),
     },
     {
       key: 'appointment-history',
-      label: 'Appointment History',
+      label: 'Historial de Citas',
       children: (
         <div className={styles.tabContent}>
           <div className={styles.placeholder}>
-            <p>Appointment history will be displayed here.</p>
+            <p>El historial de citas se mostrará aquí.</p>
           </div>
         </div>
       ),
     },
     {
       key: 'contact-insurance',
-      label: 'Contact & Insurance Info',
+      label: 'Información de Contacto y Seguro',
       children: (
         <div className={styles.tabContent}>
           <div className={styles.placeholder}>
-            <p>Contact and insurance information will be displayed here.</p>
+            <p>La información de contacto y seguro se mostrará aquí.</p>
           </div>
         </div>
       ),
@@ -85,7 +85,7 @@ const PatientDetailsPage: React.FC = () => {
   if (loading) {
     return (
       <div className={styles.loadingContainer}>
-        <Spin size="large" tip="Loading patient details..." />
+        <Spin size="large" tip="Cargando detalles del paciente..." />
       </div>
     );
   }
@@ -99,7 +99,7 @@ const PatientDetailsPage: React.FC = () => {
     <div className={styles.patientDetailsPage}>
       {/* Back button */}
       <Button type="text" icon={<ArrowLeftOutlined />} onClick={handleBack} className={styles.backButton} size="large">
-        Back to Patients
+        Volver a Pacientes
       </Button>
 
       {/* Patient Header */}
@@ -133,7 +133,7 @@ const PatientDetailsPage: React.FC = () => {
 
       {/* Edit Patient Modal */}
       <Modal
-        title="Edit Patient"
+        title="Editar Paciente"
         open={editModalVisible}
         onCancel={() => setEditModalVisible(false)}
         footer={null}

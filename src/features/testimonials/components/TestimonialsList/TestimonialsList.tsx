@@ -69,7 +69,7 @@ export const TestimonialsList: React.FC<TestimonialsListProps> = ({ testimonials
               setCurrentPage(1);
             }}
           >
-            All
+            Todas
           </Button>
           <Button
             type={filterRating === '5' ? 'primary' : 'default'}
@@ -78,7 +78,7 @@ export const TestimonialsList: React.FC<TestimonialsListProps> = ({ testimonials
               setCurrentPage(1);
             }}
           >
-            5 stars
+            5 estrellas
           </Button>
           <Button
             type={filterRating === '4' ? 'primary' : 'default'}
@@ -87,7 +87,7 @@ export const TestimonialsList: React.FC<TestimonialsListProps> = ({ testimonials
               setCurrentPage(1);
             }}
           >
-            4 stars
+            4 estrellas
           </Button>
           <Button
             type={filterRating === '3' ? 'primary' : 'default'}
@@ -96,7 +96,7 @@ export const TestimonialsList: React.FC<TestimonialsListProps> = ({ testimonials
               setCurrentPage(1);
             }}
           >
-            3 stars
+            3 estrellas
           </Button>
           <Button
             type={filterRating === '2' ? 'primary' : 'default'}
@@ -105,7 +105,7 @@ export const TestimonialsList: React.FC<TestimonialsListProps> = ({ testimonials
               setCurrentPage(1);
             }}
           >
-            2 stars
+            2 estrellas
           </Button>
           <Button
             type={filterRating === '1' ? 'primary' : 'default'}
@@ -114,17 +114,17 @@ export const TestimonialsList: React.FC<TestimonialsListProps> = ({ testimonials
               setCurrentPage(1);
             }}
           >
-            1 star
+            1 estrella
           </Button>
         </div>
 
         <div className={styles.sortControl}>
-          <span className={styles.sortLabel}>Sort by:</span>
+          <span className={styles.sortLabel}>Ordenar por:</span>
           <Select value={sortBy} onChange={(value: SortOption) => setSortBy(value)} className={styles.sortSelect}>
-            <Option value="newest">Newest</Option>
-            <Option value="oldest">Oldest</Option>
-            <Option value="highest">Highest Rated</Option>
-            <Option value="lowest">Lowest Rated</Option>
+            <Option value="newest">Más Recientes</Option>
+            <Option value="oldest">Más Antiguos</Option>
+            <Option value="highest">Mejor Valoradas</Option>
+            <Option value="lowest">Menor Valoradas</Option>
           </Select>
         </div>
       </div>
@@ -144,7 +144,7 @@ export const TestimonialsList: React.FC<TestimonialsListProps> = ({ testimonials
 
       {sortedTestimonials.length === 0 && (
         <div className={styles.emptyState}>
-          <p>No testimonials found for the selected filter.</p>
+          <p>No se encontraron testimonios para el filtro seleccionado.</p>
         </div>
       )}
 

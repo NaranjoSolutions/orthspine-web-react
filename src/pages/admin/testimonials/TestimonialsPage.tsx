@@ -66,8 +66,8 @@ const TestimonialsPage: React.FC = () => {
       <div className={styles.header}>
         <div className={styles.headerContent}>
           <div>
-            <h1 className={styles.title}>Testimonials Management</h1>
-            <p className={styles.subtitle}>View, manage, and add patient testimonials.</p>
+            <h1 className={styles.title}>Gestión de Testimonios</h1>
+            <p className={styles.subtitle}>Ver, gestionar y agregar testimonios de pacientes.</p>
           </div>
         </div>
       </div>
@@ -100,7 +100,7 @@ const TestimonialsPage: React.FC = () => {
 
       {/* Add/Edit Modal */}
       <Modal
-        title={isEditing ? 'Edit Testimonial' : 'Add New Testimonial'}
+        title={isEditing ? 'Editar Testimonio' : 'Agregar Nuevo Testimonio'}
         open={formModalVisible}
         onCancel={handleCloseFormModal}
         footer={null}

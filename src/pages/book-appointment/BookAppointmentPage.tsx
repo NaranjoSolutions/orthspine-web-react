@@ -15,11 +15,10 @@ export const BookAppointmentPage: React.FC = () => {
     <div className={styles.bookAppointmentPage}>
       <section className={styles.comingSoonSection}>
         <div className={styles.content}>
-          <h1 className={styles.title}>Book an Appointment</h1>
-          <p className={styles.comingSoonBadge}>Coming Soon</p>
+          <h1 className={styles.title}>Reservar una cita</h1>
+          <p className={styles.comingSoonBadge}>Próximamente</p>
           <p className={styles.description}>
-            We're working on making it easier than ever to book your appointment online. In the meantime, please call us
-            or visit our clinic to schedule your visit.
+            Estamos trabajando para hacer más fácil que nunca reservar su cita en línea. Mientras tanto, por favor llámenos o visite nuestra clínica para programar su visita.
           </p>
         </div>
       </section>

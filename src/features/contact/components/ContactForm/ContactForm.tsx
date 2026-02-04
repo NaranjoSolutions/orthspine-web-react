@@ -24,11 +24,11 @@ interface ContactFormValues {
  * Department options for the contact form
  */
 const DEPARTMENT_OPTIONS = [
-  { value: 'general', label: 'General Inquiry' },
-  { value: 'appointment', label: 'Appointment Request' },
-  { value: 'records', label: 'Medical Records' },
-  { value: 'billing', label: 'Billing' },
-  { value: 'other', label: 'Other' },
+  { value: 'general', label: 'Consulta General' },
+  { value: 'appointment', label: 'Solicitud de Cita' },
+  { value: 'records', label: 'Registros Médicos' },
+  { value: 'billing', label: 'Facturación' },
+  { value: 'other', label: 'Otro' },
 ];
 
 /**
@@ -62,10 +62,10 @@ export const ContactForm: React.FC = () => {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      message.success('Message sent successfully! We will get back to you soon.');
+      message.success('¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.');
       form.resetFields();
     } catch (error) {
-      message.error('Failed to send message. Please try again.');
+      message.error('Error al enviar el mensaje. Por favor intente nuevamente.');
       console.error('Form submission error:', error);
     } finally {
       setLoading(false);
@@ -75,8 +75,8 @@ export const ContactForm: React.FC = () => {
   return (
     <div id="inquiry-form" className={styles.contactForm}>
       <div className={styles.formHeader}>
-        <h2 className={styles.title}>Inquiry Form</h2>
-        <p className={styles.subtitle}>Fill out the details below and a specialist will contact you.</p>
+        <h2 className={styles.title}>Formulario de Consulta</h2>
+        <p className={styles.subtitle}>Complete los detalles a continuación y un especialista se pondrá en contacto con usted.</p>
       </div>
 
       <Form
@@ -93,26 +93,26 @@ export const ContactForm: React.FC = () => {
         <div className={styles.formRow}>
           <Form.Item
             name="fullName"
-            label="Full Name"
+            label="Nombre Completo"
             rules={[
-              { required: true, message: 'Please enter your full name' },
-              { min: 2, message: 'Name must be at least 2 characters' },
+              { required: true, message: 'Por favor ingrese su nombre completo' },
+              { min: 2, message: 'El nombre debe tener al menos 2 caracteres' },
               {
                 pattern: /^[a-zA-Z\s]+$/,
-                message: 'Name can only contain letters and spaces',
+                message: 'El nombre solo puede contener letras y espacios',
               },
             ]}
             className={styles.formItem}
           >
-            <Input placeholder="Aaron  Fallas" size="large" />
+            <Input placeholder="Aaron Fallas" size="large" />
           </Form.Item>
 
           <Form.Item
             name="email"
-            label="Email Address"
+            label="Correo Electrónico"
             rules={[
-              { required: true, message: 'Please enter your email address' },
-              { type: 'email', message: 'Please enter a valid email address' },
+              { required: true, message: 'Por favor ingrese su correo electrónico' },
+              { type: 'email', message: 'Por favor ingrese un correo electrónico válido' },
             ]}
             className={styles.formItem}
           >
@@ -124,12 +124,12 @@ export const ContactForm: React.FC = () => {
         <div className={styles.formRow}>
           <Form.Item
             name="phone"
-            label="Phone Number"
+            label="Número de Teléfono"
             rules={[
-              { required: true, message: 'Please enter your phone number' },
+              { required: true, message: 'Por favor ingrese su número de teléfono' },
               {
                 pattern: /^[\d\s\-+()]+$/,
-                message: 'Please enter a valid phone number',
+                message: 'Por favor ingrese un número de teléfono válido',
               },
             ]}
             className={styles.formItem}
@@ -139,35 +139,35 @@ export const ContactForm: React.FC = () => {
 
           <Form.Item
             name="department"
-            label="Department"
-            rules={[{ required: true, message: 'Please select a department' }]}
+            label="Departamento"
+            rules={[{ required: true, message: 'Por favor seleccione un departamento' }]}
             className={styles.formItem}
           >
-            <Select placeholder="Select a department" size="large" options={DEPARTMENT_OPTIONS} />
+            <Select placeholder="Seleccione un departamento" size="large" options={DEPARTMENT_OPTIONS} />
           </Form.Item>
         </div>
 
         {/* Preferred Contact Method */}
         <Form.Item
           name="contactMethod"
-          label="Preferred Contact Method"
-          rules={[{ required: true, message: 'Please select a contact method' }]}
+          label="Método de Contacto Preferido"
+          rules={[{ required: true, message: 'Por favor seleccione un método de contacto' }]}
         >
           <Radio.Group className={styles.radioGroup}>
-            <Radio value="phone">Phone</Radio>
-            <Radio value="email">Email</Radio>
-            <Radio value="text">Text Message</Radio>
+            <Radio value="phone">Teléfono</Radio>
+            <Radio value="email">Correo Electrónico</Radio>
+            <Radio value="text">Mensaje de Texto</Radio>
           </Radio.Group>
         </Form.Item>
 
         {/* Preferred Date/Time */}
         <Form.Item
           name="preferredDateTime"
-          label="Preferred Date/Time"
+          label="Fecha/Hora Preferida"
           rules={[
             {
               required: true,
-              message: 'Please select your preferred date and time',
+              message: 'Por favor seleccione su fecha y hora preferida',
             },
             {
               validator: (_, value: Dayjs) => {
@@ -177,7 +177,7 @@ export const ContactForm: React.FC = () => {
 
                 // Check if selected date/time is in the past
                 if (value.isBefore(now)) {
-                  return Promise.reject(new Error('Please select a future date and time'));
+                  return Promise.reject(new Error('Por favor seleccione una fecha y hora futura'));
                 }
 
                 return Promise.resolve();
@@ -188,7 +188,7 @@ export const ContactForm: React.FC = () => {
           <DatePicker
             showTime
             format="YYYY-MM-DD HH:mm"
-            placeholder="Select date and time"
+            placeholder="Seleccione fecha y hora"
             size="large"
             className={styles.dateTimePicker}
             disabledDate={(current: Dayjs) => {
@@ -202,15 +202,15 @@ export const ContactForm: React.FC = () => {
         {/* Message */}
         <Form.Item
           name="message"
-          label="Message"
+          label="Mensaje"
           rules={[
-            { required: true, message: 'Please enter your message' },
-            { min: 10, message: 'Message must be at least 10 characters' },
-            { max: 1000, message: 'Message must not exceed 1000 characters' },
+            { required: true, message: 'Por favor ingrese su mensaje' },
+            { min: 10, message: 'El mensaje debe tener al menos 10 caracteres' },
+            { max: 1000, message: 'El mensaje no debe exceder 1000 caracteres' },
           ]}
         >
           <TextArea
-            placeholder="Please describe your inquiry in detail..."
+            placeholder="Por favor describa su consulta en detalle..."
             rows={6}
             size="large"
             showCount
@@ -230,7 +230,7 @@ export const ContactForm: React.FC = () => {
             className={styles.submitButton}
             block
           >
-            Send Message
+            Enviar Mensaje
           </Button>
         </Form.Item>
       </Form>

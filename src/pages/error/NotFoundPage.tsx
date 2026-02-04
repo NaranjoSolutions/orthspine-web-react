@@ -25,10 +25,10 @@ export const NotFoundPage: React.FC = () => {
       <Result
         status="404"
         title="404"
-        subTitle="Sorry, the page you visited does not exist."
+        subTitle="Lo sentimos, la página que visitó no existe."
         extra={
           <Button type="primary" onClick={handleGoHome}>
-            Back to Home
+            Volver al inicio
           </Button>
         }
       />

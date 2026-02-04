@@ -22,7 +22,7 @@ export const TreatmentApproach: React.FC<TreatmentApproachProps> = ({ approaches
 
   return (
     <div className={styles.approachSection}>
-      <h2 className={styles.sectionTitle}>Our Treatment Approach</h2>
+      <h2 className={styles.sectionTitle}>Nuestro Enfoque de Tratamiento</h2>
       <div className={styles.approachGrid}>
         {approaches.map((approach, index) => (
           <div key={index} className={styles.approachCard}>

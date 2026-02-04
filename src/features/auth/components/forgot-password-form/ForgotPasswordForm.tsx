@@ -30,9 +30,9 @@ export const ForgotPasswordForm: React.FC = () => {
       </div>
 
       {/* Header Section */}
-      <h1 className={styles.title}>Admin Password Recovery</h1>
+      <h1 className={styles.title}>Recuperación de contraseña administrativa</h1>
       <p className={styles.subtitle}>
-        Enter your registered admin email address to receive password reset instructions
+        Ingrese su correo electrónico de administrador registrado para recibir instrucciones de restablecimiento de contraseña
       </p>
 
       {errors.general && (
@@ -49,23 +49,23 @@ export const ForgotPasswordForm: React.FC = () => {
         requiredMark={false}
       >
         {/* Email Field */}
-        <Form.Item name="email" label="Email Address" validateStatus={errors.email ? 'error' : ''} help={errors.email}>
+        <Form.Item name="email" label="Correo electrónico" validateStatus={errors.email ? 'error' : ''} help={errors.email}>
           <Input
             prefix={<MailOutlined className={styles.inputIcon} />}
-            placeholder="Enter your admin email"
+            placeholder="Ingrese su correo electrónico de administrador"
             value={formData.email}
             onChange={(e) => handleChange('email', e.target.value)}
             disabled={isLoading}
             autoComplete="email"
             autoFocus
-            aria-label="Email Address"
+            aria-label="Correo electrónico"
           />
         </Form.Item>
 
         {/* Captcha Display and Input */}
-        <Form.Item label="Security Verification">
+        <Form.Item label="Verificación de seguridad">
           <Space direction="vertical" style={{ width: '100%' }} size="middle">
-            <p className={styles.captchaHelperText}>Please enter the numbers shown below to verify your request</p>
+            <p className={styles.captchaHelperText}>Por favor ingrese los números mostrados a continuación para verificar su solicitud</p>
             <div className={styles.captchaContainer}>
               <div className={styles.captchaImage} dangerouslySetInnerHTML={{ __html: captchaSvg }} />
               <Button
@@ -73,20 +73,20 @@ export const ForgotPasswordForm: React.FC = () => {
                 onClick={refreshCaptcha}
                 disabled={isLoading}
                 className={styles.refreshButton}
-                title="Refresh captcha"
-                aria-label="Refresh captcha"
+                title="Actualizar captcha"
+                aria-label="Actualizar captcha"
               />
             </div>
 
             <Form.Item name="captcha" validateStatus={errors.captcha ? 'error' : ''} help={errors.captcha}>
               <Input
-                placeholder="Enter the numbers shown above"
+                placeholder="Ingrese los números mostrados arriba"
                 value={formData.captcha}
                 onChange={(e) => handleChange('captcha', e.target.value)}
                 disabled={isLoading}
                 maxLength={4}
                 autoComplete="off"
-                aria-label="Captcha verification code"
+                aria-label="Código de verificación captcha"
               />
             </Form.Item>
           </Space>
@@ -95,8 +95,7 @@ export const ForgotPasswordForm: React.FC = () => {
         {/* Helper Text */}
         <div className={styles.helperTextSection}>
           <p className={styles.helperText}>
-            After clicking the button below, check your email for a secure reset link. The link will be valid for 24
-            hours.
+            Después de hacer clic en el botón a continuación, revise su correo electrónico para encontrar un enlace de restablecimiento seguro. El enlace será válido por 24 horas.
           </p>
         </div>
 
@@ -110,7 +109,7 @@ export const ForgotPasswordForm: React.FC = () => {
             size="large"
             className={styles.submitButton}
           >
-            Send Reset Instructions
+            Enviar instrucciones de restablecimiento
           </Button>
         </Form.Item>
 
@@ -124,7 +123,7 @@ export const ForgotPasswordForm: React.FC = () => {
             className={styles.backButton}
             block
           >
-            Back to Login
+            Volver a inicio de sesión
           </Button>
         </Form.Item>
       </Form>
@@ -132,8 +131,7 @@ export const ForgotPasswordForm: React.FC = () => {
       {/* Security Note */}
       <div className={styles.securityNote}>
         <p>
-          🔒 This system is for authorized personnel only. All access and activity is monitored and logged according to
-          HIPAA compliance standards.
+          🔒 Este sistema es solo para personal autorizado. Todo acceso y actividad es monitoreado y registrado de acuerdo con los estándares de cumplimiento HIPAA.
         </p>
       </div>
     </div>

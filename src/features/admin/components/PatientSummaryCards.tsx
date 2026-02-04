@@ -41,9 +41,9 @@ export const PatientSummaryCards: React.FC<PatientSummaryCardsProps> = ({
    */
   const getStatusBadge = (currentStatus: PatientStatus) => {
     const statusConfig: Record<PatientStatus, { text: string; status: 'success' | 'default' | 'warning' }> = {
-      [PatientStatus.ACTIVE]: { text: 'Active', status: 'success' },
-      [PatientStatus.INACTIVE]: { text: 'Inactive', status: 'default' },
-      [PatientStatus.DISCHARGED]: { text: 'Discharged', status: 'warning' },
+      [PatientStatus.ACTIVE]: { text: 'Activo', status: 'success' },
+      [PatientStatus.INACTIVE]: { text: 'Inactivo', status: 'default' },
+      [PatientStatus.DISCHARGED]: { text: 'Dado de Alta', status: 'warning' },
     };
     return statusConfig[currentStatus] || statusConfig[PatientStatus.ACTIVE];
   };
@@ -59,7 +59,7 @@ export const PatientSummaryCards: React.FC<PatientSummaryCardsProps> = ({
             <CheckCircleOutlined className={styles.icon} />
           </div>
           <div className={styles.cardBody}>
-            <div className={styles.label}>Patient Status</div>
+            <div className={styles.label}>Estado del Paciente</div>
             <div className={styles.value}>
               <Badge status={statusBadge.status} text={statusBadge.text} />
             </div>
@@ -74,9 +74,9 @@ export const PatientSummaryCards: React.FC<PatientSummaryCardsProps> = ({
             <ClockCircleOutlined className={styles.icon} />
           </div>
           <div className={styles.cardBody}>
-            <div className={styles.label}>Next Appointment</div>
+            <div className={styles.label}>Próxima Cita</div>
             <div className={styles.value}>
-              {nextAppointmentDate ? formatAppointmentDate(nextAppointmentDate) : 'Not Scheduled'}
+              {nextAppointmentDate ? formatAppointmentDate(nextAppointmentDate) : 'No Programada'}
             </div>
           </div>
         </div>
@@ -89,8 +89,8 @@ export const PatientSummaryCards: React.FC<PatientSummaryCardsProps> = ({
             <UserOutlined className={styles.icon} />
           </div>
           <div className={styles.cardBody}>
-            <div className={styles.label}>Primary Physician</div>
-            <div className={styles.value}>{primaryPhysician || 'Not Assigned'}</div>
+            <div className={styles.label}>Médico de Cabecera</div>
+            <div className={styles.value}>{primaryPhysician || 'No Asignado'}</div>
           </div>
         </div>
       </Card>

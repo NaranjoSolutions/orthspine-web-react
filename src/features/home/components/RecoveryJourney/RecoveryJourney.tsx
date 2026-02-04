@@ -29,11 +29,11 @@ export const RecoveryJourney: React.FC = () => {
     <section className={styles.recoveryJourney} aria-labelledby="recovery-journey-title">
       <div className={styles.container}>
         <h2 id="recovery-journey-title" className={styles.title}>
-          Ready to Start Your Recovery Journey?
+          ¿Listo para Comenzar su Viaje de Recuperación?
         </h2>
         <p className={styles.subtitle}>
-          Take the first step towards a pain-free life today. Our experts are standing by to help you recover and
-          thrive.
+          Dé el primer paso hacia una vida sin dolor hoy. Nuestros expertos están listos para ayudarle a recuperarse y
+          prosperar.
         </p>
         <div className={styles.buttonGroup}>
           <Button
@@ -41,18 +41,18 @@ export const RecoveryJourney: React.FC = () => {
             size="large"
             className={styles.primaryButton}
             onClick={handleScheduleAppointment}
-            aria-label="Schedule an appointment with our clinic"
+            aria-label="Agendar una cita con nuestra clínica"
           >
-            Schedule an Appointment
+            Agendar una Cita
           </Button>
           <Button
             type="default"
             size="large"
             className={styles.secondaryButton}
             onClick={handleLearnMore}
-            aria-label="Learn more about our services"
+            aria-label="Conocer más sobre nuestros servicios"
           >
-            Learn More
+            Conocer Más
           </Button>
         </div>
       </div>

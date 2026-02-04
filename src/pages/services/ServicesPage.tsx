@@ -19,10 +19,10 @@ export const ServicesPage: React.FC = () => {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Our Physiotherapy Services</h1>
+          <h1 className={styles.heroTitle}>Nuestros Servicios de Fisioterapia</h1>
           <p className={styles.heroSubtitle}>
-            At Orthopedic Spine, we offer specialized medical care and comprehensive rehabilitation to help you regain
-            your mobility and quality of life. Our team of professionals is committed to your well-being.
+            En Orthopedic Spine, ofrecemos atención médica especializada y rehabilitación integral para ayudarle a
+            recuperar su movilidad y calidad de vida. Nuestro equipo de profesionales está comprometido con su bienestar.
           </p>
         </div>
       </section>

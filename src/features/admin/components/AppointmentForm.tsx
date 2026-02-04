@@ -138,9 +138,9 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
       className={styles.appointmentForm}
     >
       {/* Patient Selection */}
-      <Form.Item name="patientId" label="Patient" rules={[{ required: true, message: 'Please select a patient' }]}>
+      <Form.Item name="patientId" label="Paciente" rules={[{ required: true, message: 'Por favor seleccione un paciente' }]}>
         <Select
-          placeholder="Select patient"
+          placeholder="Seleccione un paciente"
           showSearch
           loading={loadingData}
           filterOption={filterSelectOption}
@@ -160,9 +160,9 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
       </Form.Item>
 
       {/* Doctor Selection */}
-      <Form.Item name="doctorId" label="Doctor" rules={[{ required: true, message: 'Please select a doctor' }]}>
+      <Form.Item name="doctorId" label="Médico" rules={[{ required: true, message: 'Por favor seleccione un médico' }]}>
         <Select
-          placeholder="Select doctor"
+          placeholder="Seleccione un médico"
           showSearch
           loading={loadingData}
           filterOption={filterSelectOption}
@@ -184,46 +184,46 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
       {/* Date and Time */}
       <Form.Item
         name="dateTime"
-        label="Date & Time"
-        rules={[{ required: true, message: 'Please select date and time' }]}
+        label="Fecha y Hora"
+        rules={[{ required: true, message: 'Por favor seleccione fecha y hora' }]}
       >
-        <DatePicker showTime format="YYYY-MM-DD hh:mm A" placeholder="Select date and time" style={{ width: '100%' }} />
+        <DatePicker showTime format="YYYY-MM-DD hh:mm A" placeholder="Seleccione fecha y hora" style={{ width: '100%' }} />
       </Form.Item>
 
       {/* Reason for Visit */}
       <Form.Item
         name="reasonForVisit"
-        label="Reason for Visit"
+        label="Motivo de Consulta"
         rules={[
-          { required: true, message: 'Please enter reason for visit' },
-          { min: 3, message: 'Reason must be at least 3 characters' },
+          { required: true, message: 'Por favor ingrese el motivo de consulta' },
+          { min: 3, message: 'El motivo debe tener al menos 3 caracteres' },
         ]}
       >
-        <Input placeholder="e.g., Initial Consultation, Follow-up, Post-Op Check" />
+        <Input placeholder="ej., Consulta Inicial, Seguimiento, Chequeo Post-Operatorio" />
       </Form.Item>
 
       {/* Status */}
-      <Form.Item name="status" label="Status" rules={[{ required: true, message: 'Please select status' }]}>
-        <Select placeholder="Select status">
-          <Option value={AppointmentStatus.PENDING}>Pending</Option>
-          <Option value={AppointmentStatus.CONFIRMED}>Confirmed</Option>
-          <Option value={AppointmentStatus.RESCHEDULED}>Rescheduled</Option>
-          <Option value={AppointmentStatus.COMPLETED}>Completed</Option>
-          <Option value={AppointmentStatus.CANCELLED}>Cancelled</Option>
+      <Form.Item name="status" label="Estado" rules={[{ required: true, message: 'Por favor seleccione el estado' }]}>
+        <Select placeholder="Seleccione el estado">
+          <Option value={AppointmentStatus.PENDING}>Pendiente</Option>
+          <Option value={AppointmentStatus.CONFIRMED}>Confirmada</Option>
+          <Option value={AppointmentStatus.RESCHEDULED}>Reprogramada</Option>
+          <Option value={AppointmentStatus.COMPLETED}>Completada</Option>
+          <Option value={AppointmentStatus.CANCELLED}>Cancelada</Option>
         </Select>
       </Form.Item>
 
       {/* Notes */}
-      <Form.Item name="notes" label="Notes (Optional)">
-        <TextArea rows={3} placeholder="Add any additional notes about this appointment..." maxLength={500} showCount />
+      <Form.Item name="notes" label="Notas (Opcional)">
+        <TextArea rows={3} placeholder="Agregue notas adicionales sobre esta cita..." maxLength={500} showCount />
       </Form.Item>
 
       {/* Form Actions */}
       <Form.Item className={styles.formActions}>
         <Space>
-          <Button onClick={onCancel}>Cancel</Button>
+          <Button onClick={onCancel}>Cancelar</Button>
           <Button type="primary" htmlType="submit" loading={loading}>
-            {initialValues ? 'Update Appointment' : 'Create Appointment'}
+            {initialValues ? 'Actualizar Cita' : 'Crear Cita'}
           </Button>
         </Space>
       </Form.Item>

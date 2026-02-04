@@ -73,7 +73,7 @@ export const TestimonialTable: React.FC<TestimonialTableProps> = ({
    */
   const columns: ColumnsType<Testimonial> = [
     {
-      title: 'Patient Name',
+      title: 'Nombre del Paciente',
       dataIndex: 'patientName',
       key: 'patientName',
       sorter: (a, b) => a.patientName.localeCompare(b.patientName),
@@ -81,14 +81,14 @@ export const TestimonialTable: React.FC<TestimonialTableProps> = ({
       width: 180,
     },
     {
-      title: 'Message Preview',
+      title: 'Vista Previa del Mensaje',
       dataIndex: 'message',
       key: 'message',
       className: styles.messageColumn,
       render: (message: string) => <span className={styles.messagePreview}>{truncateText(message)}</span>,
     },
     {
-      title: 'Status',
+      title: 'Estado',
       dataIndex: 'status',
       key: 'status',
       width: 120,
@@ -100,7 +100,7 @@ export const TestimonialTable: React.FC<TestimonialTableProps> = ({
       sorter: (a, b) => a.status.localeCompare(b.status),
     },
     {
-      title: 'Date Added',
+      title: 'Fecha de Registro',
       dataIndex: 'dateAdded',
       key: 'dateAdded',
       width: 130,
@@ -110,7 +110,7 @@ export const TestimonialTable: React.FC<TestimonialTableProps> = ({
       className: styles.dateColumn,
     },
     {
-      title: 'Actions',
+      title: 'Acciones',
       key: 'actions',
       fixed: 'right',
       width: 180,
@@ -118,7 +118,7 @@ export const TestimonialTable: React.FC<TestimonialTableProps> = ({
         <Space size="small">
           {record.status === 'pending' && (
             <>
-              <Tooltip title="Approve">
+              <Tooltip title="Aprobar">
                 <Button
                   type="text"
                   icon={<CheckOutlined />}
@@ -126,7 +126,7 @@ export const TestimonialTable: React.FC<TestimonialTableProps> = ({
                   className={styles.approveButton}
                 />
               </Tooltip>
-              <Tooltip title="Reject">
+              <Tooltip title="Rechazar">
                 <Button
                   type="text"
                   danger
@@ -137,10 +137,10 @@ export const TestimonialTable: React.FC<TestimonialTableProps> = ({
               </Tooltip>
             </>
           )}
-          <Tooltip title="Edit">
+          <Tooltip title="Editar">
             <Button type="text" icon={<EditOutlined />} onClick={() => onEdit(record)} className={styles.editButton} />
           </Tooltip>
-          <Tooltip title="Delete">
+          <Tooltip title="Eliminar">
             <Button
               type="text"
               danger
@@ -165,7 +165,7 @@ export const TestimonialTable: React.FC<TestimonialTableProps> = ({
           ...pagination,
           onChange: onPageChange,
           showSizeChanger: false,
-          showTotal: (total, range) => `Showing ${range[0]}-${range[1]} of ${total}`,
+          showTotal: (total, range) => `Mostrando ${range[0]}-${range[1]} de ${total}`,
         }}
         className={styles.table}
         scroll={{ x: 900 }}

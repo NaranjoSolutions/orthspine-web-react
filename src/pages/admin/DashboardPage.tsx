@@ -57,14 +57,14 @@ const DashboardPage: React.FC = () => {
   return (
     <div className={styles.dashboardPage}>
       <div className={styles.header}>
-        <h1 className={styles.title}>Dashboard Overview</h1>
+        <h1 className={styles.title}>Panel de Control</h1>
       </div>
 
       {/* Statistics Cards */}
       <Row gutter={[24, 24]} className={styles.statsRow}>
         <Col xs={24} sm={24} md={8}>
           <StatCard
-            title="Total Patients"
+            title="Total de Pacientes"
             value={stats?.totalPatients || 0}
             icon={<TeamOutlined />}
             iconColor="#1890ff"
@@ -73,7 +73,7 @@ const DashboardPage: React.FC = () => {
         </Col>
         <Col xs={24} sm={24} md={8}>
           <StatCard
-            title="Upcoming Appointments"
+            title="Citas Próximas"
             value={stats?.upcomingAppointments || 0}
             icon={<CalendarOutlined />}
             iconColor="#52c41a"
@@ -82,7 +82,7 @@ const DashboardPage: React.FC = () => {
         </Col>
         <Col xs={24} sm={24} md={8}>
           <StatCard
-            title="Pending Testimonials"
+            title="Testimonios Pendientes"
             value={stats?.pendingTestimonials || 0}
             icon={<CommentOutlined />}
             iconColor="#faad14"
@@ -94,16 +94,16 @@ const DashboardPage: React.FC = () => {
       {/* Calendar and Recent Activity */}
       <Row gutter={[24, 24]} className={styles.contentRow}>
         <Col xs={24} lg={12}>
-          <Card title="Appointments Calendar" bordered={false} className={styles.calendarCard}>
+          <Card title="Calendario de Citas" bordered={false} className={styles.calendarCard}>
             <Calendar fullscreen={false} dateCellRender={dateCellRender} />
           </Card>
         </Col>
         <Col xs={24} lg={12}>
-          <Card title="Recent Activity" bordered={false} className={styles.activityCard}>
+          <Card title="Actividad Reciente" bordered={false} className={styles.activityCard}>
             {isLoading ? (
-              <Empty description="Loading..." />
+              <Empty description="Cargando..." />
             ) : recentActivities.length === 0 ? (
-              <Empty description="No recent activities" />
+              <Empty description="No hay actividades recientes" />
             ) : (
               <List
                 dataSource={recentActivities}

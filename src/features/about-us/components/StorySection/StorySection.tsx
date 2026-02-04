@@ -16,16 +16,12 @@ export const StorySection: React.FC = () => {
             <img src={santaPaulaImage} alt="Orthopedic Spine Clinic" className={styles.storyImage} />
           </div>
           <div className={styles.textColumn}>
-            <h2 className={styles.sectionHeading}>Our Story</h2>
+            <h2 className={styles.sectionHeading}>Nuestra Historia</h2>
             <p className={styles.storyText}>
-              Founded with a mission to provide specialized care for complex spine issues, Orthopedic Spine has grown
-              into a leading clinic for rehabilitation, filling a gap in the community for highly specialized spinal
-              care that combines expertise and compassionate clinical support.
+              Fundada con la misión de brindar atención especializada para problemas complejos de columna vertebral, Orthopedic Spine se ha convertido en una clínica líder en rehabilitación, llenando un vacío en la comunidad para atención espinal altamente especializada que combina experiencia y apoyo clínico compasivo.
             </p>
             <p className={styles.storyText}>
-              Our patient-first approach ensures that every individual receives a personalized path to recovery. Over
-              the last decade, we have helped thousands of patients reclaim their quality of life through dedicated
-              expertise and clinical excellence.
+              Nuestro enfoque centrado en el paciente garantiza que cada persona reciba un plan de recuperación personalizado. Durante la última década, hemos ayudado a miles de pacientes a recuperar su calidad de vida a través de experiencia dedicada y excelencia clínica.
             </p>
           </div>
         </div>

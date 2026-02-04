@@ -29,23 +29,23 @@ interface CookiePreferencesModalProps {
 const COOKIE_CATEGORIES: CookieCategory[] = [
   {
     key: 'strictlyNecessary',
-    title: 'Strictly Necessary',
+    title: 'Estrictamente Necesarias',
     description:
-      'These cookies are essential for the website to function and cannot be switched off in our system. They are usually only set in response to actions made by you.',
+      'Estas cookies son esenciales para el funcionamiento del sitio web y no pueden desactivarse en nuestro sistema. Generalmente solo se configuran en respuesta a acciones realizadas por usted.',
     isRequired: true,
   },
   {
     key: 'functional',
-    title: 'Functional Cookies',
+    title: 'Cookies Funcionales',
     description:
-      'These cookies enable the website to provide enhanced functionality and personalization, such as remembering your language preferences.',
+      'Estas cookies permiten que el sitio web proporcione funcionalidad mejorada y personalización, como recordar sus preferencias de idioma.',
     isRequired: false,
   },
   {
     key: 'performance',
-    title: 'Performance & Analytics',
+    title: 'Rendimiento y Análisis',
     description:
-      "These cookies help us measure how visitors use our site and track traffic sources so we can measure and improve our site's performance.",
+      'Estas cookies nos ayudan a medir cómo los visitantes utilizan nuestro sitio y rastrear fuentes de tráfico para que podamos medir y mejorar el rendimiento de nuestro sitio.',
     isRequired: false,
   },
 ];
@@ -137,7 +137,7 @@ export const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({
 
   return (
     <Modal
-      title="Cookie Preferences"
+      title="Preferencias de Cookies"
       open={visible}
       onCancel={onClose}
       footer={null}
@@ -147,8 +147,8 @@ export const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({
     >
       <div className={styles.modalContent}>
         <p className={styles.description}>
-          We use cookies to improve your experience on our site. You can manage your preferences below or accept all
-          cookies for the best browsing experience.
+          Utilizamos cookies para mejorar su experiencia en nuestro sitio. Puede gestionar sus preferencias a continuación o aceptar todas
+          las cookies para obtener la mejor experiencia de navegación.
         </p>
 
         <div className={styles.categories}>
@@ -157,13 +157,13 @@ export const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({
               <div className={styles.categoryHeader}>
                 <div className={styles.categoryTitleRow}>
                   <h4 className={styles.categoryTitle}>{category.title}</h4>
-                  {category.isRequired && <span className={styles.alwaysActiveBadge}>ALWAYS ACTIVE</span>}
+                  {category.isRequired && <span className={styles.alwaysActiveBadge}>SIEMPRE ACTIVAS</span>}
                 </div>
                 <Switch
                   checked={getCategoryValue(category.key)}
                   disabled={category.isRequired}
                   onChange={(checked) => handleToggleChange(category.key, checked)}
-                  aria-label={`Toggle ${category.title}`}
+                  aria-label={`Alternar ${category.title}`}
                 />
               </div>
               <p className={styles.categoryDescription}>{category.description}</p>
@@ -173,10 +173,10 @@ export const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({
 
         <Space className={styles.actions} size="middle">
           <Button type="primary" size="large" onClick={handleSavePreferences}>
-            Save Settings
+            Guardar Configuración
           </Button>
           <Button size="large" onClick={handleAcceptAll}>
-            Accept All
+            Aceptar Todas
           </Button>
         </Space>
       </div>

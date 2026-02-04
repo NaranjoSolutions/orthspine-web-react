@@ -77,7 +77,7 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
         onSuccess();
       }
     } catch (error) {
-      message.error('Failed to submit testimonial. Please try again.');
+      message.error('Error al enviar el testimonio. Por favor, inténtelo de nuevo.');
       console.error('Testimonial submission error:', error);
     } finally {
       setLoading(false);
@@ -107,8 +107,8 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
     <>
       <div id="testimonial-form" className={styles.testimonialForm}>
         <div className={styles.formHeader}>
-          <h2 className={styles.title}>Share Your Experience</h2>
-          <p className={styles.subtitle}>Your feedback helps us provide the best possible care for our patients.</p>
+          <h2 className={styles.title}>Comparta Su Experiencia</h2>
+          <p className={styles.subtitle}>Sus comentarios nos ayudan a proporcionar la mejor atención posible para nuestros pacientes.</p>
         </div>
 
         <Form
@@ -124,8 +124,8 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
           {/* Overall Rating */}
           <Form.Item
             name="rating"
-            label="Overall Rating"
-            rules={[{ required: true, message: 'Please select a rating' }]}
+            label="Calificación General"
+            rules={[{ required: true, message: 'Por favor, seleccione una calificación' }]}
             className={styles.ratingItem}
           >
             <Rate className={styles.rating} />
@@ -135,30 +135,30 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
           <div className={styles.formRow}>
             <Form.Item
               name="fullName"
-              label="Full Name"
+              label="Nombre Completo"
               rules={[
-                { required: true, message: 'Please enter your full name' },
-                { min: 2, message: 'Name must be at least 2 characters' },
+                { required: true, message: 'Por favor, ingrese su nombre completo' },
+                { min: 2, message: 'El nombre debe tener al menos 2 caracteres' },
                 {
-                  pattern: /^[a-zA-Z\s]+$/,
-                  message: 'Name can only contain letters and spaces',
+                  pattern: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/,
+                  message: 'El nombre solo puede contener letras y espacios',
                 },
               ]}
               className={styles.formItem}
             >
-              <Input placeholder="John Doe" size="large" />
+              <Input placeholder="Juan Pérez" size="large" />
             </Form.Item>
 
             <Form.Item
               name="email"
-              label="Email"
+              label="Correo Electrónico"
               rules={[
-                { required: true, message: 'Please enter your email address' },
-                { type: 'email', message: 'Please enter a valid email address' },
+                { required: true, message: 'Por favor, ingrese su correo electrónico' },
+                { type: 'email', message: 'Por favor, ingrese un correo electrónico válido' },
               ]}
               className={styles.formItem}
             >
-              <Input placeholder="john@example.com" size="large" />
+              <Input placeholder="juan@ejemplo.com" size="large" />
             </Form.Item>
           </div>
 
@@ -166,20 +166,20 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
           <div className={styles.formRow}>
             <Form.Item
               name="service"
-              label="Service Received"
-              rules={[{ required: true, message: 'Please select a service' }]}
+              label="Servicio Recibido"
+              rules={[{ required: true, message: 'Por favor, seleccione un servicio' }]}
               className={styles.formItem}
             >
-              <Select placeholder="Select a service" size="large" options={serviceOptions} />
+              <Select placeholder="Seleccione un servicio" size="large" options={serviceOptions} />
             </Form.Item>
 
             <Form.Item
               name="dateOfService"
-              label="Date of Service"
+              label="Fecha del Servicio"
               rules={[
                 {
                   required: true,
-                  message: 'Please select the date of service',
+                  message: 'Por favor, seleccione la fecha del servicio',
                 },
                 {
                   validator: (_, value: Dayjs) => {
@@ -189,7 +189,7 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
 
                     // Check if selected date is in the future
                     if (value.isAfter(now)) {
-                      return Promise.reject(new Error('Date of service cannot be in the future'));
+                      return Promise.reject(new Error('La fecha del servicio no puede ser futura'));
                     }
 
                     return Promise.resolve();
@@ -199,8 +199,8 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
               className={styles.formItem}
             >
               <DatePicker
-                format="MM/DD/YYYY"
-                placeholder="mm/dd/yyyy"
+                format="DD/MM/YYYY"
+                placeholder="dd/mm/aaaa"
                 size="large"
                 className={styles.datePicker}
                 disabledDate={(current: Dayjs) => {
@@ -214,15 +214,15 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
           {/* Your Review */}
           <Form.Item
             name="review"
-            label="Your Review"
+            label="Su Reseña"
             rules={[
-              { required: true, message: 'Please enter your review' },
-              { min: 20, message: 'Review must be at least 20 characters' },
-              { max: 1000, message: 'Review must not exceed 1000 characters' },
+              { required: true, message: 'Por favor, ingrese su reseña' },
+              { min: 20, message: 'La reseña debe tener al menos 20 caracteres' },
+              { max: 1000, message: 'La reseña no debe exceder 1000 caracteres' },
             ]}
           >
             <TextArea
-              placeholder="Tell us about your recovery journey..."
+              placeholder="Cuéntenos sobre su trayectoria de recuperación..."
               rows={6}
               size="large"
               showCount
@@ -237,14 +237,14 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
             rules={[
               {
                 validator: (_, value) =>
-                  value ? Promise.resolve() : Promise.reject(new Error('Please agree to have your review published')),
+                  value ? Promise.resolve() : Promise.reject(new Error('Por favor, acepte que su reseña sea publicada')),
               },
             ]}
           >
             <Checkbox className={styles.consent}>
-              I consent to having this review published on the website in accordance with the{' '}
+              Consiento que esta reseña sea publicada en el sitio web de acuerdo con la{' '}
               <a href={ROUTE_PATHS.PRIVACY_POLICY} target="_blank" rel="noopener noreferrer" className={styles.link}>
-                Privacy Policy
+                Política de Privacidad
               </a>
               .
             </Checkbox>
@@ -253,7 +253,7 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
           {/* Action Buttons */}
           <div className={styles.buttonGroup}>
             <Button size="large" onClick={handleCancel} className={styles.cancelButton}>
-              Cancel
+              Cancelar
             </Button>
             <Button
               type="primary"
@@ -264,7 +264,7 @@ export const TestimonialSubmissionForm: React.FC<TestimonialSubmissionFormProps>
               iconPosition="end"
               className={styles.submitButton}
             >
-              Submit Review
+              Enviar Reseña
             </Button>
           </div>
         </Form>

@@ -24,7 +24,7 @@ export const PatientsToolbar: React.FC<PatientsToolbarProps> = ({
     <div className={styles.toolbar}>
       <Space size="middle" className={styles.searchSection}>
         <Input
-          placeholder="Search by name, email..."
+          placeholder="Buscar por nombre, correo..."
           prefix={<SearchOutlined />}
           value={searchValue}
           onChange={onSearchChange}
@@ -34,11 +34,11 @@ export const PatientsToolbar: React.FC<PatientsToolbarProps> = ({
           allowClear
         />
         <Button icon={<FilterOutlined />} size="large" disabled>
-          Filter
+          Filtro
         </Button>
       </Space>
       <Button type="primary" icon={<PlusOutlined />} onClick={onAddNew} size="large">
-        Add New Patient
+        Agregar Nuevo Paciente
       </Button>
     </div>
   );

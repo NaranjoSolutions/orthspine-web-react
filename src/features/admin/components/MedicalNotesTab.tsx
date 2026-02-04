@@ -20,7 +20,7 @@ export const MedicalNotesTab: React.FC<MedicalNotesTabProps> = ({ notes, loading
     <div className={styles.tabContent}>
       <div className={styles.tabHeader}>
         <Button type="primary" icon={<PlusOutlined />} onClick={onAddNote} size="large">
-          Add New Note
+          Agregar Nueva Nota
         </Button>
       </div>
       <MedicalNoteTimeline notes={notes} loading={loading} />

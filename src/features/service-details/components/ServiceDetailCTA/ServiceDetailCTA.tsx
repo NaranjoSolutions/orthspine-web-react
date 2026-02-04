@@ -19,9 +19,9 @@ export const ServiceDetailCTA: React.FC<ServiceDetailCTAProps> = ({ onScheduleAp
   return (
     <section className={styles.ctaSection}>
       <div className={styles.ctaContainer}>
-        <h2 className={styles.ctaTitle}>Don't Let an Injury Keep You Out of the Game</h2>
+        <h2 className={styles.ctaTitle}>No Permita que una Lesión lo Mantenga Fuera del Juego</h2>
         <p className={styles.ctaSubtitle}>
-          Our specialists are here to help you navigate every step of your recovery journey with confidence.
+          Nuestros especialistas están aquí para ayudarle a navegar cada paso de su proceso de recuperación con confianza.
         </p>
         <div className={styles.ctaButtons}>
           <Button
@@ -31,10 +31,10 @@ export const ServiceDetailCTA: React.FC<ServiceDetailCTAProps> = ({ onScheduleAp
             className={styles.scheduleButton}
             onClick={onScheduleAppointment}
           >
-            Schedule Appointment Now
+            Agendar Cita Ahora
           </Button>
           <Button size="large" icon={<TeamOutlined />} className={styles.teamButton} onClick={onViewTeam}>
-            View Our Team
+            Ver Nuestro Equipo
           </Button>
         </div>
       </div>

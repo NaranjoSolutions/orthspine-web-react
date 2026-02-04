@@ -12,7 +12,7 @@ export const CertificationsSection: React.FC = () => {
   return (
     <section className={styles.certificationsSection}>
       <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>OUR PROFESSIONAL CERTIFICATIONS</h2>
+        <h2 className={styles.sectionTitle}>NUESTRAS CERTIFICACIONES PROFESIONALES</h2>
         <div className={styles.logosGrid}>
           {certifications.map((cert, index) => (
             <div key={index} className={styles.logoPlaceholder}>

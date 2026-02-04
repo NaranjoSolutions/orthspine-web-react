@@ -24,8 +24,8 @@ export const RegisterForm: React.FC = () => {
   return (
     <div className={styles.registerFormWrapper}>
       <div className={styles.headerSection}>
-        <h1 className={styles.title}>Create Admin Account</h1>
-        <p className={styles.subtitle}>For authorized personnel only</p>
+        <h1 className={styles.title}>Crear cuenta de administrador</h1>
+        <p className={styles.subtitle}>Solo para personal autorizado</p>
       </div>
 
       {errors.general && (
@@ -43,7 +43,7 @@ export const RegisterForm: React.FC = () => {
       >
         {/* Full Name Field */}
         <Form.Item
-          label="Full Name"
+          label="Nombre completo"
           name="fullname"
           validateStatus={errors.fullname ? 'error' : ''}
           help={errors.fullname}
@@ -51,19 +51,19 @@ export const RegisterForm: React.FC = () => {
         >
           <Input
             prefix={<UserOutlined className={styles.inputIcon} />}
-            placeholder="Enter full name"
+            placeholder="Ingrese nombre completo"
             value={formData.fullname}
             onChange={(e) => handleChange('fullname', e.target.value)}
             disabled={isLoading}
             autoFocus
-            aria-label="Full Name"
+            aria-label="Nombre completo"
             aria-required="true"
           />
         </Form.Item>
 
         {/* Email Field */}
         <Form.Item
-          label="Email Address"
+          label="Correo electrónico"
           name="email"
           validateStatus={errors.email ? 'error' : ''}
           help={errors.email}
@@ -71,12 +71,12 @@ export const RegisterForm: React.FC = () => {
         >
           <Input
             prefix={<MailOutlined className={styles.inputIcon} />}
-            placeholder="Enter email address"
+            placeholder="Ingrese correo electrónico"
             value={formData.email}
             onChange={(e) => handleChange('email', e.target.value)}
             disabled={isLoading}
             autoComplete="username"
-            aria-label="Email Address"
+            aria-label="Correo electrónico"
             aria-required="true"
           />
         </Form.Item>
@@ -84,7 +84,7 @@ export const RegisterForm: React.FC = () => {
         <div className={styles.passwordGroup}>
           {/* Password Field */}
           <Form.Item
-            label="Password"
+            label="Contraseña"
             name="password"
             validateStatus={errors.password ? 'error' : ''}
             help={errors.password}
@@ -92,19 +92,19 @@ export const RegisterForm: React.FC = () => {
           >
             <Input.Password
               prefix={<LockOutlined className={styles.inputIcon} />}
-              placeholder="Enter password"
+              placeholder="Ingrese contraseña"
               value={formData.password}
               onChange={(e) => handleChange('password', e.target.value)}
               disabled={isLoading}
               autoComplete="new-password"
-              aria-label="Password"
+              aria-label="Contraseña"
               aria-required="true"
             />
           </Form.Item>
 
           {/* Confirm Password Field */}
           <Form.Item
-            label="Confirm Password"
+            label="Confirmar contraseña"
             name="confirmPassword"
             validateStatus={errors.confirmPassword ? 'error' : ''}
             help={errors.confirmPassword}
@@ -112,12 +112,12 @@ export const RegisterForm: React.FC = () => {
           >
             <Input.Password
               prefix={<LockOutlined className={styles.inputIcon} />}
-              placeholder="Re-enter password"
+              placeholder="Reingrese contraseña"
               value={formData.confirmPassword}
               onChange={(e) => handleChange('confirmPassword', e.target.value)}
               disabled={isLoading}
               autoComplete="new-password"
-              aria-label="Confirm Password"
+              aria-label="Confirmar contraseña"
               aria-required="true"
             />
           </Form.Item>
@@ -125,8 +125,7 @@ export const RegisterForm: React.FC = () => {
           {/* Password Requirements Helper Text */}
           <div className={styles.passwordHelper}>
             <p>
-              Password must contain at least 8 characters, including uppercase, lowercase, number, and special
-              character.
+              La contraseña debe contener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y caracteres especiales.
             </p>
           </div>
         </div>
@@ -141,7 +140,7 @@ export const RegisterForm: React.FC = () => {
             size="large"
             className={styles.submitButton}
           >
-            Create Account
+            Crear cuenta
           </Button>
           <Button
             type="default"
@@ -151,7 +150,7 @@ export const RegisterForm: React.FC = () => {
             size="large"
             className={styles.cancelButton}
           >
-            Back to Login
+            Volver a inicio de sesión
           </Button>
         </Form.Item>
       </Form>

@@ -24,9 +24,9 @@ export const ServicesCarousel: React.FC = () => {
     <section className={styles.servicesSection}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Our Services</h2>
+          <h2 className={styles.title}>Nuestros Servicios</h2>
           <p className={styles.subtitle}>
-            We offer a wide range of specialized services to address your orthopedic needs.
+            Ofrecemos una amplia gama de servicios especializados para atender sus necesidades ortopédicas.
           </p>
         </div>
 

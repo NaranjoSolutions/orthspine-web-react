@@ -58,7 +58,7 @@ const PatientsPage: React.FC = () => {
   return (
     <div className={styles.patientsPage}>
       <div className={styles.header}>
-        <h1 className={styles.title}>Patient Records</h1>
+        <h1 className={styles.title}>Expedientes de Pacientes</h1>
       </div>
 
       <Card bordered={false} className={styles.card}>
@@ -85,7 +85,7 @@ const PatientsPage: React.FC = () => {
 
       {/* Add/Edit Modal */}
       <Modal
-        title={isEditing ? 'Edit Patient' : 'Add New Patient'}
+        title={isEditing ? 'Editar Paciente' : 'Agregar Nuevo Paciente'}
         open={formModalVisible}
         onCancel={handleCloseFormModal}
         footer={null}

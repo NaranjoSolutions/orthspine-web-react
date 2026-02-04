@@ -54,10 +54,9 @@ export const TestimonialsOverview: React.FC<TestimonialsOverviewProps> = ({
     <>
       <div className={styles.overviewContainer}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Patient Success Stories</h1>
+          <h1 className={styles.title}>Historias de Éxito de Pacientes</h1>
           <p className={styles.subtitle}>
-            Hear from those who reclaimed their mobility and life through our specialized spine care and expert
-            rehabilitation programs.
+            Escuche a quienes recuperaron su movilidad y vida a través de nuestra atención especializada de columna vertebral y programas expertos de rehabilitación.
           </p>
         </div>
 
@@ -65,7 +64,7 @@ export const TestimonialsOverview: React.FC<TestimonialsOverviewProps> = ({
           <div className={styles.averageRating}>
             <div className={styles.ratingNumber}>{averageRating.toFixed(1)}</div>
             {renderStars()}
-            <div className={styles.reviewCount}>Based on {totalReviews.toLocaleString()}+ reviews</div>
+            <div className={styles.reviewCount}>Basado en {totalReviews.toLocaleString()}+ reseñas</div>
           </div>
 
           <div className={styles.ratingBreakdownWrapper}>
@@ -74,7 +73,7 @@ export const TestimonialsOverview: React.FC<TestimonialsOverviewProps> = ({
 
           <div className={styles.actionSection}>
             <Button type="primary" size="large" className={styles.leaveReviewButton} onClick={handleOpenModal}>
-              Leave a Review
+              Dejar una Reseña
             </Button>
           </div>
         </div>

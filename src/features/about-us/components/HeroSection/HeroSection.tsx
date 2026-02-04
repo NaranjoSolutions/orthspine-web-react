@@ -10,10 +10,9 @@ export const HeroSection: React.FC = () => {
   return (
     <section className={styles.hero}>
       <div className={styles.heroContent}>
-        <h1 className={styles.heroTitle}>About Orthopedic Spine</h1>
+        <h1 className={styles.heroTitle}>Acerca de Orthopedic Spine</h1>
         <p className={styles.heroDescription}>
-          Dedicated to your spinal health and recovery with expert physiotherapy care, evidence-based treatments, and a
-          compassionate clinical team.
+          Dedicados a su salud espinal y recuperación con atención fisioterapéutica especializada, tratamientos basados en evidencia y un equipo clínico compasivo.
         </p>
       </div>
     </section>
