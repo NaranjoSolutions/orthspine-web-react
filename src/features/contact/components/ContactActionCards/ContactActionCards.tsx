@@ -1,8 +1,10 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Card, Row, Col, Space, Typography } from 'antd';
 import { WhatsAppOutlined, MailOutlined, PhoneOutlined, RightOutlined } from '@ant-design/icons';
 import { WHATSAPP_CONFIG, CONTACT_PHONE } from '../../config/contact.config';
 import styles from './ContactActionCards.module.scss';
+
+const { Title, Paragraph } = Typography;
 
 /**
  * Action card type definition
@@ -19,13 +21,13 @@ interface ActionCard {
 
 /**
  * ContactActionCards Component
- * Displays three action cards for different contact methods
+ * Displays three action cards for different contact methods using AntD Card
  *
  * Features:
  * - WhatsApp quick contact
  * - Scroll to contact form
  * - Direct phone call
- * - Responsive layout (horizontal on desktop, stacked on mobile)
+ * - Responsive layout using AntD Grid system
  * - Hover effects and smooth interactions
  */
 export const ContactActionCards: React.FC = () => {
@@ -88,28 +90,38 @@ export const ContactActionCards: React.FC = () => {
 
   return (
     <div className={styles.actionCardsContainer}>
-      <div className={styles.cardsGrid}>
+      <Row gutter={[24, 24]}>
         {actionCards.map((card) => (
-          <div key={card.id} className={styles.actionCard}>
-            <div className={`${styles.iconWrapper} ${styles[`iconWrapper--${card.buttonColor}`]}`}>{card.icon}</div>
+          <Col key={card.id} xs={24} md={8}>
+            <Card hoverable className={styles.actionCard}>
+              <Space direction="vertical" size="large" style={{ width: '100%', textAlign: 'center' }}>
+                <div className={`${styles.iconWrapper} ${styles[`iconWrapper--${card.buttonColor}`]}`}>
+                  {card.icon}
+                </div>
 
-            <h3 className={styles.cardTitle}>{card.title}</h3>
-            <p className={styles.cardSubtitle}>{card.subtitle}</p>
+                <div>
+                  <Title level={4} className={styles.cardTitle}>
+                    {card.title}
+                  </Title>
+                  <Paragraph className={styles.cardSubtitle}>{card.subtitle}</Paragraph>
+                </div>
 
-            <Button
-              type="primary"
-              size="large"
-              icon={<RightOutlined />}
-              iconPosition="end"
-              onClick={card.action}
-              className={`${styles.actionButton} ${styles[`actionButton--${card.buttonColor}`]}`}
-              block
-            >
-              {card.buttonText}
-            </Button>
-          </div>
+                <Button
+                  type="primary"
+                  size="large"
+                  icon={<RightOutlined />}
+                  iconPosition="end"
+                  onClick={card.action}
+                  className={`${styles.actionButton} ${styles[`actionButton--${card.buttonColor}`]}`}
+                  block
+                >
+                  {card.buttonText}
+                </Button>
+              </Space>
+            </Card>
+          </Col>
         ))}
-      </div>
+      </Row>
     </div>
   );
 };

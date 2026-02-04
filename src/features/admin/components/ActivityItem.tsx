@@ -1,8 +1,11 @@
 import React from 'react';
+import { List, Avatar, Typography, Space } from 'antd';
 import { UserAddOutlined, CheckCircleOutlined, CloseCircleOutlined, CommentOutlined } from '@ant-design/icons';
 import { RecentActivity, ActivityType } from '../types';
 import { formatRelativeTime } from '@/shared/utils/dateUtils';
 import styles from './ActivityItem.module.scss';
+
+const { Text } = Typography;
 
 interface ActivityItemProps {
   activity: RecentActivity;
@@ -48,23 +51,31 @@ const getActivityIconAndColor = (type: ActivityType): { icon: React.ReactNode; c
 
 /**
  * ActivityItem Component
- * Displays a single activity item in the recent activities list
+ * Displays a single activity item in the recent activities list using AntD List.Item
  */
 export const ActivityItem: React.FC<ActivityItemProps> = ({ activity }) => {
   const { icon, color, background } = getActivityIconAndColor(activity.type);
 
   return (
-    <div className={styles.activityItem}>
-      <div className={styles.iconContainer} style={{ backgroundColor: background }}>
-        <span className={styles.icon} style={{ color }}>
-          {icon}
-        </span>
-      </div>
-      <div className={styles.content}>
-        <p className={styles.title}>{activity.title}</p>
-        <p className={styles.description}>{activity.description}</p>
-      </div>
-      <span className={styles.time}>{formatRelativeTime(activity.timestamp)}</span>
-    </div>
+    <List.Item className={styles.activityItem}>
+      <List.Item.Meta
+        avatar={
+          <Avatar
+            icon={icon}
+            style={{
+              backgroundColor: background,
+              color: color,
+            }}
+            size={48}
+            className={styles.avatar}
+          />
+        }
+        title={<Text strong>{activity.title}</Text>}
+        description={<Text type="secondary">{activity.description}</Text>}
+      />
+      <Text type="secondary" className={styles.time}>
+        {formatRelativeTime(activity.timestamp)}
+      </Text>
+    </List.Item>
   );
 };
