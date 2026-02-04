@@ -1,0 +1,1 @@
+export { TestimonialsToolbar } from './TestimonialsToolbar';
