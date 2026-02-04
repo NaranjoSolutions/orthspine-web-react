@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Empty } from 'antd';
-import styles from './PlaceholderPage.module.scss';
+import styles from './SettingsPage.module.scss';
 
 /**
  * SettingsPage Component

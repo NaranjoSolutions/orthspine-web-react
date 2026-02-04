@@ -30,12 +30,12 @@ const ForgotPasswordPage = lazy(() => import('@/pages/auth/forgot-password-page'
 const AdminRequestConfirmationPage = lazy(() => import('@/pages/auth/admin-request-confirmation-page'));
 
 // Admin pages
-const AdminDashboardPage = lazy(() => import('@/pages/admin/DashboardPage'));
+const AdminDashboardPage = lazy(() => import('@/pages/admin/dashboard'));
 const PatientsPage = lazy(() => import('@/pages/admin/patients'));
 const PatientDetailsPage = lazy(() => import('@/pages/admin/patient-details'));
 const AppointmentsPage = lazy(() => import('@/pages/admin/appointments'));
 const TestimonialsAdminPage = lazy(() => import('@/pages/admin/testimonials'));
-const SettingsPage = lazy(() => import('@/pages/admin/SettingsPage'));
+const SettingsPage = lazy(() => import('@/pages/admin/settings'));
 
 // Error pages
 const NotFoundPage = lazy(() => import('@/pages/error/NotFoundPage'));
