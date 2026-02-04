@@ -31,10 +31,10 @@ const AdminRequestConfirmationPage = lazy(() => import('@/pages/auth/admin-reque
 
 // Admin pages
 const AdminDashboardPage = lazy(() => import('@/pages/admin/DashboardPage'));
-const PatientsPage = lazy(() => import('@/pages/admin/PatientsPage'));
-const PatientDetailsPage = lazy(() => import('@/pages/admin/PatientDetailsPage'));
-const AppointmentsPage = lazy(() => import('@/pages/admin/AppointmentsPage'));
-const TestimonialsAdminPage = lazy(() => import('@/pages/admin/TestimonialsPage'));
+const PatientsPage = lazy(() => import('@/pages/admin/patients'));
+const PatientDetailsPage = lazy(() => import('@/pages/admin/patient-details'));
+const AppointmentsPage = lazy(() => import('@/pages/admin/appointments'));
+const TestimonialsAdminPage = lazy(() => import('@/pages/admin/testimonials'));
 const SettingsPage = lazy(() => import('@/pages/admin/SettingsPage'));
 
 // Error pages
