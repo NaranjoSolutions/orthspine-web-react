@@ -44,11 +44,11 @@ const getStatusColor = (status: AppointmentStatus): string => {
  */
 const getStatusText = (status: AppointmentStatus): string => {
   const statusText: Record<AppointmentStatus, string> = {
-    confirmed: 'Confirmed',
-    pending: 'Pending',
-    cancelled: 'Cancelled',
-    completed: 'Completed',
-    rescheduled: 'Rescheduled',
+    confirmed: 'Confirmada',
+    pending: 'Pendiente',
+    cancelled: 'Cancelada',
+    completed: 'Completada',
+    rescheduled: 'Reprogramada',
   };
   return statusText[status] || status;
 };
@@ -124,21 +124,21 @@ export const AppointmentViewModal: React.FC<AppointmentViewModalProps> = ({
 
   return (
     <Modal
-      title={<div className={styles.modalTitle}>Appointment Details</div>}
+      title={<div className={styles.modalTitle}>Detalles de la Cita</div>}
       open={visible}
       onCancel={onClose}
       footer={
         <div className={styles.footer}>
           <Button size="large" onClick={onClose}>
-            Close
+            Cerrar
           </Button>
           {canModify && (
             <>
               <Button danger size="large" onClick={handleCancel}>
-                Cancel Appointment
+                Cancelar Cita
               </Button>
               <Button type="primary" size="large" onClick={handleReschedule}>
-                Reschedule
+                Reprogramar
               </Button>
             </>
           )}
@@ -156,7 +156,7 @@ export const AppointmentViewModal: React.FC<AppointmentViewModalProps> = ({
           </Avatar>
           <div className={styles.patientDetails}>
             <h2 className={styles.patientName}>{appointment.patientName}</h2>
-            <p className={styles.patientId}>Patient ID: {appointment.patientDisplayId || appointment.patientId}</p>
+            <p className={styles.patientId}>ID del Paciente: {appointment.patientDisplayId || appointment.patientId}</p>
           </div>
         </div>
         <Tag
@@ -174,16 +174,16 @@ export const AppointmentViewModal: React.FC<AppointmentViewModalProps> = ({
           <div className={styles.detailItem}>
             <div className={styles.detailLabel}>
               <UserOutlined className={styles.icon} />
-              <span>Doctor</span>
+              <span>Médico</span>
             </div>
             <div className={styles.detailValue}>{appointment.doctorName}</div>
           </div>
           <div className={styles.detailItem}>
             <div className={styles.detailLabel}>
               <MedicineBoxOutlined className={styles.icon} />
-              <span>Service</span>
+              <span>Servicio</span>
             </div>
-            <div className={styles.detailValue}>{appointment.serviceType || 'Consultation'}</div>
+            <div className={styles.detailValue}>{appointment.serviceType || 'Consulta'}</div>
           </div>
         </div>
 
@@ -191,14 +191,14 @@ export const AppointmentViewModal: React.FC<AppointmentViewModalProps> = ({
           <div className={styles.detailItem}>
             <div className={styles.detailLabel}>
               <CalendarOutlined className={styles.icon} />
-              <span>Date</span>
+              <span>Fecha</span>
             </div>
             <div className={styles.detailValue}>{dayjs(appointment.dateTime).format('MMMM DD, YYYY')}</div>
           </div>
           <div className={styles.detailItem}>
             <div className={styles.detailLabel}>
               <ClockCircleOutlined className={styles.icon} />
-              <span>Time</span>
+              <span>Hora</span>
             </div>
             <div className={styles.detailValue}>{dayjs(appointment.dateTime).format('hh:mm A')}</div>
           </div>
@@ -208,23 +208,23 @@ export const AppointmentViewModal: React.FC<AppointmentViewModalProps> = ({
           <div className={styles.detailItem}>
             <div className={styles.detailLabel}>
               <PhoneOutlined className={styles.icon} />
-              <span>Phone</span>
+              <span>Teléfono</span>
             </div>
-            <div className={styles.detailValue}>{appointment.patientPhone || 'N/A'}</div>
+            <div className={styles.detailValue}>{appointment.patientPhone || 'N/D'}</div>
           </div>
           <div className={styles.detailItem}>
             <div className={styles.detailLabel}>
               <MailOutlined className={styles.icon} />
-              <span>Email</span>
+              <span>Correo Electrónico</span>
             </div>
-            <div className={styles.detailValue}>{appointment.patientEmail || 'N/A'}</div>
+            <div className={styles.detailValue}>{appointment.patientEmail || 'N/D'}</div>
           </div>
         </div>
       </div>
 
       {/* Reason for Visit */}
       <div className={styles.reasonSection}>
-        <h3 className={styles.reasonTitle}>Reason for Visit</h3>
+        <h3 className={styles.reasonTitle}>Motivo de Consulta</h3>
         <p className={styles.reasonText}>{appointment.reasonForVisit}</p>
       </div>
     </Modal>

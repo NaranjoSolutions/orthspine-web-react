@@ -19,7 +19,7 @@ export const ConditionsTreated: React.FC<ConditionsTreatedProps> = ({ conditions
 
   return (
     <div className={styles.conditionsSection}>
-      <h2 className={styles.sectionTitle}>Conditions We Treat</h2>
+      <h2 className={styles.sectionTitle}>Condiciones que Tratamos</h2>
       <div className={styles.conditionsGrid}>
         {conditions.map((condition, index) => (
           <div key={index} className={styles.conditionItem}>

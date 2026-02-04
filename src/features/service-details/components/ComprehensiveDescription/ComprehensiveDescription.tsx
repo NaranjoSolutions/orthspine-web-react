@@ -14,7 +14,7 @@ interface ComprehensiveDescriptionProps {
 export const ComprehensiveDescription: React.FC<ComprehensiveDescriptionProps> = ({ description }) => {
   return (
     <div className={styles.comprehensiveSection}>
-      <h2 className={styles.comprehensiveTitle}>Comprehensive Care</h2>
+      <h2 className={styles.comprehensiveTitle}>Atención Integral</h2>
       <div className={styles.comprehensiveDescription}>
         <p>{description}</p>
       </div>

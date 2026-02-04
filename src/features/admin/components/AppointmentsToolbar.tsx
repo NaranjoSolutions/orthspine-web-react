@@ -47,7 +47,7 @@ export const AppointmentsToolbar: React.FC<AppointmentsToolbarProps> = ({
       <div className={styles.toolbar}>
         <Space size="middle" className={styles.searchSection}>
           <Input
-            placeholder="Search patients, doctors..."
+            placeholder="Buscar pacientes, médicos..."
             prefix={<SearchOutlined />}
             value={searchValue}
             onChange={onSearchChange}
@@ -62,11 +62,11 @@ export const AppointmentsToolbar: React.FC<AppointmentsToolbarProps> = ({
             onClick={onToggleFilters}
             type={showFilters ? 'primary' : 'default'}
           >
-            Filter
+            Filtro
           </Button>
           {hasActiveFilters && (
             <Button icon={<CloseCircleOutlined />} size="large" onClick={onClearFilters}>
-              Clear Filters
+              Limpiar Filtros
             </Button>
           )}
         </Space>
@@ -76,7 +76,7 @@ export const AppointmentsToolbar: React.FC<AppointmentsToolbarProps> = ({
         <div className={styles.filters}>
           <Space size="middle" wrap>
             <div className={styles.filterItem}>
-              <label>Date Range:</label>
+              <label>Rango de Fechas:</label>
               <RangePicker
                 value={filters.dateRange ? [dayjs(filters.dateRange.start), dayjs(filters.dateRange.end)] : null}
                 onChange={onDateRangeChange}
@@ -84,9 +84,9 @@ export const AppointmentsToolbar: React.FC<AppointmentsToolbarProps> = ({
               />
             </div>
             <div className={styles.filterItem}>
-              <label>Doctor:</label>
+              <label>Médico:</label>
               <Select value={filters.doctorId || 'all'} onChange={onDoctorFilterChange} style={{ width: 200 }}>
-                <Select.Option value="all">All Doctors</Select.Option>
+                <Select.Option value="all">Todos los Médicos</Select.Option>
                 {doctors.map((doctor) => (
                   <Select.Option key={doctor.id} value={doctor.id}>
                     {doctor.name}
@@ -95,14 +95,14 @@ export const AppointmentsToolbar: React.FC<AppointmentsToolbarProps> = ({
               </Select>
             </div>
             <div className={styles.filterItem}>
-              <label>Status:</label>
+              <label>Estado:</label>
               <Select value={filters.status || 'all'} onChange={onStatusFilterChange} style={{ width: 160 }}>
-                <Select.Option value="all">All Status</Select.Option>
-                <Select.Option value={AppointmentStatus.CONFIRMED}>Confirmed</Select.Option>
-                <Select.Option value={AppointmentStatus.PENDING}>Pending</Select.Option>
-                <Select.Option value={AppointmentStatus.CANCELLED}>Cancelled</Select.Option>
-                <Select.Option value={AppointmentStatus.COMPLETED}>Completed</Select.Option>
-                <Select.Option value={AppointmentStatus.RESCHEDULED}>Rescheduled</Select.Option>
+                <Select.Option value="all">Todos los Estados</Select.Option>
+                <Select.Option value={AppointmentStatus.CONFIRMED}>Confirmada</Select.Option>
+                <Select.Option value={AppointmentStatus.PENDING}>Pendiente</Select.Option>
+                <Select.Option value={AppointmentStatus.CANCELLED}>Cancelada</Select.Option>
+                <Select.Option value={AppointmentStatus.COMPLETED}>Completada</Select.Option>
+                <Select.Option value={AppointmentStatus.RESCHEDULED}>Reprogramada</Select.Option>
               </Select>
             </div>
           </Space>

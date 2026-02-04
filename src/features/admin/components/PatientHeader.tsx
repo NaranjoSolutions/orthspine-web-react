@@ -58,18 +58,18 @@ export const PatientHeader: React.FC<PatientHeaderProps> = ({
   const menuItems: MenuProps['items'] = [
     {
       key: 'export',
-      label: 'Export Records',
+      label: 'Exportar Expedientes',
     },
     {
       key: 'print',
-      label: 'Print Summary',
+      label: 'Imprimir Resumen',
     },
     {
       type: 'divider',
     },
     {
       key: 'archive',
-      label: 'Archive Patient',
+      label: 'Archivar Paciente',
       danger: true,
     },
   ];
@@ -81,16 +81,16 @@ export const PatientHeader: React.FC<PatientHeaderProps> = ({
         <div className={styles.details}>
           <h1 className={styles.name}>{fullName}</h1>
           <div className={styles.metadata}>
-            {patientId && <span className={styles.patientId}>Patient ID: {patientId}</span>}
+            {patientId && <span className={styles.patientId}>ID del Paciente: {patientId}</span>}
             <span className={styles.separator}>•</span>
-            <span className={styles.dob}>DOB: {formatDate(dateOfBirth)}</span>
+            <span className={styles.dob}>Fecha de Nacimiento: {formatDate(dateOfBirth)}</span>
           </div>
         </div>
       </div>
       <div className={styles.actions}>
         <Space size="middle">
           <Button type="primary" icon={<EditOutlined />} onClick={onEdit} size="large">
-            Edit Patient
+            Editar Paciente
           </Button>
           <Dropdown menu={{ items: menuItems, onClick: handleMenuClick }} trigger={['click']} placement="bottomRight">
             <Button icon={<MoreOutlined />} size="large" />

@@ -41,11 +41,11 @@ const getStatusColor = (status: AppointmentStatus): string => {
  */
 const getStatusText = (status: AppointmentStatus): string => {
   const statusText: Record<AppointmentStatus, string> = {
-    confirmed: 'Confirmed',
-    pending: 'Pending',
-    cancelled: 'Cancelled',
-    completed: 'Completed',
-    rescheduled: 'Rescheduled',
+    confirmed: 'Confirmada',
+    pending: 'Pendiente',
+    cancelled: 'Cancelada',
+    completed: 'Completada',
+    rescheduled: 'Reprogramada',
   };
   return statusText[status] || status;
 };
@@ -77,14 +77,14 @@ export const AppointmentTable: React.FC<AppointmentTableProps> = ({
 }) => {
   const columns = [
     {
-      title: 'Patient',
+      title: 'Paciente',
       dataIndex: 'patientName',
       key: 'patientName',
       width: 180,
       sorter: true,
     },
     {
-      title: 'Date & Time',
+      title: 'Fecha y Hora',
       dataIndex: 'dateTime',
       key: 'dateTime',
       width: 200,
@@ -97,20 +97,20 @@ export const AppointmentTable: React.FC<AppointmentTableProps> = ({
       sorter: true,
     },
     {
-      title: 'Doctor',
+      title: 'Médico',
       dataIndex: 'doctorName',
       key: 'doctorName',
       width: 180,
       sorter: true,
     },
     {
-      title: 'Reason for Visit',
+      title: 'Motivo de Consulta',
       dataIndex: 'reasonForVisit',
       key: 'reasonForVisit',
       width: 200,
     },
     {
-      title: 'Status',
+      title: 'Estado',
       dataIndex: 'status',
       key: 'status',
       width: 130,
@@ -120,15 +120,15 @@ export const AppointmentTable: React.FC<AppointmentTableProps> = ({
         </Tag>
       ),
       filters: [
-        { text: 'Confirmed', value: 'confirmed' },
-        { text: 'Pending', value: 'pending' },
-        { text: 'Cancelled', value: 'cancelled' },
-        { text: 'Completed', value: 'completed' },
-        { text: 'Rescheduled', value: 'rescheduled' },
+        { text: 'Confirmada', value: 'confirmed' },
+        { text: 'Pendiente', value: 'pending' },
+        { text: 'Cancelada', value: 'cancelled' },
+        { text: 'Completada', value: 'completed' },
+        { text: 'Reprogramada', value: 'rescheduled' },
       ],
     },
     {
-      title: 'Actions',
+      title: 'Acciones',
       key: 'actions',
       width: 180,
       fixed: 'right' as const,
@@ -138,25 +138,25 @@ export const AppointmentTable: React.FC<AppointmentTableProps> = ({
 
         return (
           <Space size="small">
-            <Tooltip title="View Details">
+            <Tooltip title="Ver Detalles">
               <Button type="link" icon={<EyeOutlined />} onClick={() => onView(record)} className={styles.actionButton}>
-                View
+                Ver
               </Button>
             </Tooltip>
             {canReschedule && (
-              <Tooltip title="Reschedule">
+              <Tooltip title="Reprogramar">
                 <Button
                   type="link"
                   icon={<EditOutlined />}
                   onClick={() => onReschedule(record)}
                   className={styles.actionButton}
                 >
-                  Reschedule
+                  Reprogramar
                 </Button>
               </Tooltip>
             )}
             {canCancel && (
-              <Tooltip title="Cancel Appointment">
+              <Tooltip title="Cancelar Cita">
                 <Button
                   type="link"
                   danger
@@ -164,7 +164,7 @@ export const AppointmentTable: React.FC<AppointmentTableProps> = ({
                   onClick={() => onCancel(record)}
                   className={styles.actionButton}
                 >
-                  Cancel
+                  Cancelar
                 </Button>
               </Tooltip>
             )}
@@ -186,7 +186,7 @@ export const AppointmentTable: React.FC<AppointmentTableProps> = ({
           pageSize: pagination.pageSize,
           total: pagination.total,
           showSizeChanger: true,
-          showTotal: (total, range) => `Showing ${range[0]} to ${range[1]} of ${total} results`,
+          showTotal: (total, range) => `Mostrando ${range[0]} a ${range[1]} de ${total} resultados`,
           onChange: onPageChange,
           pageSizeOptions: ['5', '10', '20', '50'],
         }}

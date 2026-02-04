@@ -31,7 +31,7 @@ export const TestimonialsToolbar: React.FC<TestimonialsToolbarProps> = ({
     <div className={styles.toolbar}>
       <Space size="middle" className={styles.searchSection}>
         <Input
-          placeholder="Find by patient name"
+          placeholder="Buscar por nombre de paciente"
           prefix={<SearchOutlined />}
           value={searchValue}
           onChange={onSearchChange}
@@ -41,20 +41,20 @@ export const TestimonialsToolbar: React.FC<TestimonialsToolbarProps> = ({
           allowClear
         />
         <Select
-          placeholder="All Statuses"
+          placeholder="Todos los Estados"
           value={statusFilter}
           onChange={onStatusFilterChange}
           size="large"
           className={styles.statusFilter}
         >
-          <Option value="all">All Statuses</Option>
-          <Option value="pending">Pending</Option>
-          <Option value="approved">Approved</Option>
-          <Option value="rejected">Rejected</Option>
+          <Option value="all">Todos los Estados</Option>
+          <Option value="pending">Pendiente</Option>
+          <Option value="approved">Aprobado</Option>
+          <Option value="rejected">Rechazado</Option>
         </Select>
       </Space>
       <Button type="primary" icon={<PlusOutlined />} onClick={onAddNew} size="large">
-        Add New Testimonial
+        Agregar Nuevo Testimonio
       </Button>
     </div>
   );

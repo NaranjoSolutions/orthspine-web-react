@@ -50,26 +50,26 @@ export const PatientTable: React.FC<PatientTableProps> = ({
    */
   const columns: ColumnsType<Patient> = [
     {
-      title: 'Full Name',
+      title: 'Nombre Completo',
       dataIndex: 'fullName',
       key: 'fullName',
       sorter: (a, b) => a.fullName.localeCompare(b.fullName),
       className: styles.nameColumn,
     },
     {
-      title: 'Phone',
+      title: 'Teléfono',
       dataIndex: 'phone',
       key: 'phone',
       className: styles.phoneColumn,
     },
     {
-      title: 'Email',
+      title: 'Correo Electrónico',
       dataIndex: 'email',
       key: 'email',
       className: styles.emailColumn,
     },
     {
-      title: 'Date of Birth',
+      title: 'Fecha de Nacimiento',
       dataIndex: 'dateOfBirth',
       key: 'dateOfBirth',
       sorter: (a, b) => new Date(a.dateOfBirth).getTime() - new Date(b.dateOfBirth).getTime(),
@@ -78,13 +78,13 @@ export const PatientTable: React.FC<PatientTableProps> = ({
       className: styles.dateColumn,
     },
     {
-      title: 'Actions',
+      title: 'Acciones',
       key: 'actions',
       fixed: 'right',
       width: 150,
       render: (_, record) => (
         <Space size="small">
-          <Tooltip title="View">
+          <Tooltip title="Ver">
             <Button
               type="text"
               icon={<EyeOutlined />}
@@ -92,7 +92,7 @@ export const PatientTable: React.FC<PatientTableProps> = ({
               className={styles.actionButton}
             />
           </Tooltip>
-          <Tooltip title="Edit">
+          <Tooltip title="Editar">
             <Button
               type="text"
               icon={<EditOutlined />}
@@ -100,7 +100,7 @@ export const PatientTable: React.FC<PatientTableProps> = ({
               className={styles.actionButton}
             />
           </Tooltip>
-          <Tooltip title="Delete">
+          <Tooltip title="Eliminar">
             <Button
               type="text"
               danger
@@ -125,7 +125,7 @@ export const PatientTable: React.FC<PatientTableProps> = ({
           ...pagination,
           onChange: onPageChange,
           showSizeChanger: false,
-          showTotal: (total, range) => `Showing ${range[0]}-${range[1]} of ${total} records`,
+          showTotal: (total, range) => `Mostrando ${range[0]}-${range[1]} de ${total} registros`,
         }}
         className={styles.table}
         scroll={{ x: 800 }}

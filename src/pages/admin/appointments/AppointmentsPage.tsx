@@ -108,9 +108,9 @@ const AppointmentsPage: React.FC = () => {
   return (
     <div className={styles.appointmentsPage}>
       <div className={styles.header}>
-        <h1 className={styles.title}>Appointments Management</h1>
+        <h1 className={styles.title}>Gestión de Citas</h1>
         <Button type="primary" icon={<PlusOutlined />} onClick={handleAddNew} size="large">
-          Add New Appointment
+          Agregar Nueva Cita
         </Button>
       </div>
 
@@ -146,7 +146,7 @@ const AppointmentsPage: React.FC = () => {
 
       {/* Add/Edit Modal */}
       <Modal
-        title={isEditing ? 'Edit Appointment' : 'Add New Appointment'}
+        title={isEditing ? 'Editar Cita' : 'Agregar Nueva Cita'}
         open={formModalVisible}
         onCancel={handleCloseFormModal}
         footer={null}
@@ -176,7 +176,7 @@ const AppointmentsPage: React.FC = () => {
 
       {/* Reschedule Modal */}
       <Modal
-        title="Reschedule Appointment"
+        title="Reprogramar Cita"
         open={rescheduleModalVisible}
         onCancel={handleCloseRescheduleModal}
         footer={null}

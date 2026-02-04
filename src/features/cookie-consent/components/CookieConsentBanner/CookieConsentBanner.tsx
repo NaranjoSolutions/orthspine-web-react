@@ -67,7 +67,7 @@ export const CookieConsentBanner: React.FC = () => {
 
   return (
     <>
-      <div className={styles.banner} role="dialog" aria-label="Cookie Consent Banner">
+      <div className={styles.banner} role="dialog" aria-label="Banner de Consentimiento de Cookies">
         <div className={styles.container}>
           <div className={styles.content}>
             <div className={styles.iconWrapper}>
@@ -76,12 +76,12 @@ export const CookieConsentBanner: React.FC = () => {
               </span>
             </div>
             <div className={styles.text}>
-              <h3 className={styles.title}>Cookie Consent</h3>
+              <h3 className={styles.title}>Consentimiento de Cookies</h3>
               <p className={styles.description}>
-                We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic.
-                By clicking 'Accept All', you consent to our use of cookies. For more information, please read our{' '}
+                Utilizamos cookies para mejorar su experiencia de navegación, ofrecer contenido personalizado y analizar nuestro tráfico.
+                Al hacer clic en 'Aceptar Todas', usted consiente el uso de cookies. Para más información, por favor lea nuestra{' '}
                 <a href="/cookie-policy" className={styles.link}>
-                  Cookie Policy
+                  Política de Cookies
                 </a>
                 .
               </p>
@@ -90,13 +90,13 @@ export const CookieConsentBanner: React.FC = () => {
           <div className={styles.actions}>
             <Space size="middle" wrap>
               <Button size="large" onClick={handleManagePreferences}>
-                Manage Preferences
+                Gestionar Preferencias
               </Button>
               <Button size="large" onClick={handleRejectNonEssential}>
-                Reject Non-Essential
+                Rechazar No Esenciales
               </Button>
               <Button type="primary" size="large" onClick={handleAcceptAll}>
-                Accept All
+                Aceptar Todas
               </Button>
             </Space>
           </div>

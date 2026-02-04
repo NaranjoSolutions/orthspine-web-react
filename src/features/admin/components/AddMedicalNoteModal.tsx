@@ -55,7 +55,7 @@ export const AddMedicalNoteModal: React.FC<AddMedicalNoteModalProps> = ({ visibl
 
   return (
     <Modal
-      title="Add New Medical Note"
+      title="Agregar Nueva Nota Médica"
       open={visible}
       onCancel={handleCancel}
       footer={null}
@@ -64,20 +64,20 @@ export const AddMedicalNoteModal: React.FC<AddMedicalNoteModalProps> = ({ visibl
       className={styles.modal}
     >
       <Form form={form} layout="vertical" onFinish={handleSubmit} className={styles.form}>
-        <Form.Item name="category" label="Category" rules={[{ required: true, message: 'Please select a category' }]}>
-          <Select placeholder="Select note category" options={categoryOptions} size="large" disabled={loading} />
+        <Form.Item name="category" label="Categoría" rules={[{ required: true, message: 'Por favor seleccione una categoría' }]}>
+          <Select placeholder="Seleccione la categoría de la nota" options={categoryOptions} size="large" disabled={loading} />
         </Form.Item>
 
         <Form.Item
           name="content"
-          label="Note Content"
+          label="Contenido de la Nota"
           rules={[
-            { required: true, message: 'Please enter note content' },
-            { min: 10, message: 'Note must be at least 10 characters' },
+            { required: true, message: 'Por favor ingrese el contenido de la nota' },
+            { min: 10, message: 'La nota debe tener al menos 10 caracteres' },
           ]}
         >
           <Input.TextArea
-            placeholder="Enter detailed medical note..."
+            placeholder="Ingrese la nota médica detallada..."
             rows={6}
             showCount
             maxLength={1000}
@@ -87,10 +87,10 @@ export const AddMedicalNoteModal: React.FC<AddMedicalNoteModalProps> = ({ visibl
 
         <Form.Item className={styles.formActions}>
           <Button onClick={handleCancel} size="large" disabled={loading}>
-            Cancel
+            Cancelar
           </Button>
           <Button type="primary" htmlType="submit" size="large" loading={loading}>
-            Add Note
+            Agregar Nota
           </Button>
         </Form.Item>
       </Form>

@@ -49,7 +49,7 @@ export const MedicalNoteTimeline: React.FC<MedicalNoteTimelineProps> = ({ notes,
   if (!loading && notes.length === 0) {
     return (
       <div className={styles.emptyState}>
-        <Empty description="No medical notes available" />
+        <Empty description="No hay notas médicas disponibles" />
       </div>
     );
   }

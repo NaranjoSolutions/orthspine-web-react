@@ -56,21 +56,21 @@ export const PatientForm: React.FC<PatientFormProps> = ({ initialValues, onSubmi
     >
       <Form.Item
         name="fullName"
-        label="Full Name"
+        label="Nombre Completo"
         rules={[
-          { required: true, message: "Please enter the patient's full name" },
-          { min: 2, message: 'Name must be at least 2 characters' },
+          { required: true, message: 'Por favor ingrese el nombre completo del paciente' },
+          { min: 2, message: 'El nombre debe tener al menos 2 caracteres' },
         ]}
       >
-        <Input placeholder="Enter full name" size="large" />
+        <Input placeholder="Ingrese el nombre completo" size="large" />
       </Form.Item>
 
       <Form.Item
         name="phone"
-        label="Phone"
+        label="Teléfono"
         rules={[
-          { required: true, message: 'Please enter phone number' },
-          { pattern: /^\(\d{3}\) \d{3}-\d{4}$/, message: 'Phone must be in format (555) 123-4567' },
+          { required: true, message: 'Por favor ingrese el número de teléfono' },
+          { pattern: /^\(\d{3}\) \d{3}-\d{4}$/, message: 'El teléfono debe estar en formato (555) 123-4567' },
         ]}
       >
         <Input placeholder="(555) 123-4567" size="large" />
@@ -78,22 +78,22 @@ export const PatientForm: React.FC<PatientFormProps> = ({ initialValues, onSubmi
 
       <Form.Item
         name="email"
-        label="Email"
+        label="Correo Electrónico"
         rules={[
-          { required: true, message: 'Please enter email address' },
-          { type: 'email', message: 'Please enter a valid email address' },
+          { required: true, message: 'Por favor ingrese el correo electrónico' },
+          { type: 'email', message: 'Por favor ingrese un correo electrónico válido' },
         ]}
       >
-        <Input placeholder="example@email.com" size="large" />
+        <Input placeholder="ejemplo@correo.com" size="large" />
       </Form.Item>
 
       <Form.Item
         name="dateOfBirth"
-        label="Date of Birth"
-        rules={[{ required: true, message: 'Please select date of birth' }]}
+        label="Fecha de Nacimiento"
+        rules={[{ required: true, message: 'Por favor seleccione la fecha de nacimiento' }]}
       >
         <DatePicker
-          placeholder="Select date"
+          placeholder="Seleccione fecha"
           size="large"
           style={{ width: '100%' }}
           format="MM/DD/YYYY"
@@ -101,21 +101,21 @@ export const PatientForm: React.FC<PatientFormProps> = ({ initialValues, onSubmi
         />
       </Form.Item>
 
-      <Form.Item name="address" label="Address">
-        <Input placeholder="Enter address (optional)" size="large" />
+      <Form.Item name="address" label="Dirección">
+        <Input placeholder="Ingrese la dirección (opcional)" size="large" />
       </Form.Item>
 
-      <Form.Item name="medicalHistory" label="Medical History">
-        <Input.TextArea placeholder="Enter medical history (optional)" rows={4} size="large" />
+      <Form.Item name="medicalHistory" label="Historial Médico">
+        <Input.TextArea placeholder="Ingrese el historial médico (opcional)" rows={4} size="large" />
       </Form.Item>
 
       <Form.Item className={styles.actions}>
         <Space size="middle">
           <Button onClick={onCancel} size="large">
-            Cancel
+            Cancelar
           </Button>
           <Button type="primary" htmlType="submit" loading={loading} size="large">
-            {initialValues ? 'Update Patient' : 'Add Patient'}
+            {initialValues ? 'Actualizar Paciente' : 'Agregar Paciente'}
           </Button>
         </Space>
       </Form.Item>
