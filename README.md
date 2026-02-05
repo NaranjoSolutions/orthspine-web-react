@@ -1,4 +1,4 @@
-# clinic-ui
+# clinic-ui 
 
 A modern React web application for Orthopedic Spine, a physiotherapy clinic. This app provides general information, client testimonials, services, and an easy way for clients to contact the clinic owner.
 
