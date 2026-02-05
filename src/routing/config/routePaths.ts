@@ -16,16 +16,36 @@ export const ROUTE_PATHS = {
   CONTACT: '/contact',
   TESTIMONIALS: '/testimonials',
   BOOK_APPOINTMENT: '/book-appointment',
+  PRIVACY_POLICY: '/privacy-policy',
+  TERMS_OF_SERVICE: '/terms-of-service',
+
+  // Service Detail Pages
+  SERVICE_DETAILS: {
+    BASE: '/services/:serviceId',
+    SPINE: '/services/spine',
+    KNEE: '/services/knee',
+    HIP: '/services/hip',
+    SHOULDER: '/services/shoulder',
+    FOOT_AND_HAND: '/services/foot-and-hand',
+    REHABILITATION: '/services/rehabilitation',
+    CIRCULATION: '/services/circulation',
+    SPORTS: '/services/sports',
+  },
 
   AUTH: {
     LOGIN: '/login',
     REGISTER: '/register',
     FORGOT_PASSWORD: '/forgot-password',
+    ADMIN_REQUEST_CONFIRMATION: '/admin-request-confirmation',
   },
 
   ADMIN: {
     DASHBOARD: '/admin',
+    PATIENTS: '/admin/patients',
+    PATIENT_DETAILS: '/admin/patients/:id',
+    APPOINTMENTS: '/admin/appointments',
     TESTIMONIALS: '/admin/testimonials',
+    SETTINGS: '/admin/settings',
   },
 
   NOT_FOUND: '*',

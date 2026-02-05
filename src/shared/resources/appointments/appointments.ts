@@ -1,4 +1,23 @@
-import { TimeSlot, AppointmentService, Doctor } from '@/features/appointments/types/appointment.types';
+/**
+ * Type definitions for mock appointment data
+ */
+interface TimeSlot {
+  id: string;
+  time: string;
+  available: boolean;
+}
+
+interface AppointmentService {
+  id: string;
+  name: string;
+  description: string;
+}
+
+interface Doctor {
+  id: string;
+  name: string;
+  specialty: string;
+}
 
 /**
  * Mock data for available time slots
@@ -20,23 +39,23 @@ export const availableTimeSlots: TimeSlot[] = [
 export const appointmentServices: AppointmentService[] = [
   {
     id: 'spine-consultation',
-    name: 'Spine Consultation',
-    description: 'Comprehensive evaluation and treatment for spine conditions',
+    name: 'Consulta de Columna',
+    description: 'Evaluación integral y tratamiento para afecciones de la columna',
   },
   {
     id: 'knee-consultation',
-    name: 'Knee Consultation',
-    description: 'Assessment and treatment for knee problems',
+    name: 'Consulta de Rodilla',
+    description: 'Evaluación y tratamiento para problemas de rodilla',
   },
   {
     id: 'initial-consultation',
-    name: 'Initial Consultation',
-    description: 'First-time patient consultation and evaluation',
+    name: 'Consulta Inicial',
+    description: 'Consulta y evaluación para pacientes nuevos',
   },
   {
     id: 'follow-up',
-    name: 'Follow-up Appointment',
-    description: 'Follow-up visit for ongoing treatment',
+    name: 'Consulta de Seguimiento',
+    description: 'Visita de seguimiento para tratamiento en curso',
   },
 ];
 
@@ -47,12 +66,12 @@ export const appointmentServices: AppointmentService[] = [
 export const doctors: Doctor[] = [
   {
     id: 'dr-carter',
-    name: 'Dr. Emily Carter',
-    specialty: 'Orthopedic Spine Specialist',
+    name: 'Dra. Emily Carter',
+    specialty: 'Especialista en Columna Ortopédica',
   },
   {
     id: 'dr-martinez',
-    name: 'Dr. Carlos Martinez',
-    specialty: 'Physical Therapist',
+    name: 'Dr. Carlos Martínez',
+    specialty: 'Fisioterapeuta',
   },
 ];

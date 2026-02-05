@@ -27,7 +27,13 @@
   .calendarContainer {
     margin-bottom: var(--spacing-xl);
     display: flex;
+    gap: var(--spacing-md);
     justify-content: center;
+
+    .calendarWrapper {
+      flex: 1;
+      max-width: 400px;
+    }
   }
 
   .timeSlotsSection {
@@ -46,25 +52,28 @@
       gap: var(--spacing-md);
 
       .timeSlot {
-        padding: var(--spacing-md) var(--spacing-lg);
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius-md);
+        padding: 12px var(--spacing-lg);
+        border: 2px solid var(--color-border);
+        border-radius: 20px;
         background: var(--color-bg-primary);
         font-size: 16px;
         font-weight: 500;
         color: var(--color-text-primary);
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
 
         &:hover {
           border-color: var(--color-primary);
           color: var(--color-primary);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 123, 185, 0.15);
         }
 
         &.selected {
           background: var(--color-primary);
           color: white;
           border-color: var(--color-primary);
+          box-shadow: 0 4px 12px rgba(0, 123, 185, 0.3);
         }
 
         &:disabled {
@@ -92,6 +101,14 @@
 
     .title {
       font-size: 24px;
+    }
+
+    .calendarContainer {
+      flex-direction: column;
+
+      .calendarWrapper {
+        max-width: 100%;
+      }
     }
 
     .timeSlotsSection {

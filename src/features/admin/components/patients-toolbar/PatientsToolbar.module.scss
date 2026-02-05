@@ -1,0 +1,36 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  .searchSection {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    .searchInput {
+      min-width: 300px;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+
+    .searchSection {
+      flex-direction: column;
+      align-items: stretch;
+
+      .searchInput {
+        min-width: 100%;
+      }
+    }
+  }
+}

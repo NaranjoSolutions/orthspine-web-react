@@ -1,31 +1,8 @@
 import React, { useState } from 'react';
 import { ServiceCard } from '../ServiceCard';
 import { allClinicServices } from '@/shared/resources/services/services';
-import {
-  MedicineBoxOutlined,
-  HeartOutlined,
-  ThunderboltOutlined,
-  SafetyCertificateOutlined,
-  HddOutlined,
-  DeploymentUnitOutlined,
-  BranchesOutlined,
-  SyncOutlined,
-} from '@ant-design/icons';
-import styles from './ServicesCarousel.module.scss';
 
-/**
- * Map service IDs to icons for visual representation
- */
-const serviceIcons: Record<string, React.ReactNode> = {
-  spine: <MedicineBoxOutlined />, // Represents spine care
-  knee: <SafetyCertificateOutlined />, // Icon for knee treatments
-  hip: <HddOutlined />, // Icon representing hip care
-  shoulder: <DeploymentUnitOutlined />, // Icon for shoulder care
-  'foot-and-hand': <BranchesOutlined />, // Represents foot and hand medical services
-  rehabilitation: <HeartOutlined />, // Heart icon for rehabilitation services
-  circulation: <SyncOutlined />, // Icon for circulatory treatments
-  sports: <ThunderboltOutlined />, // Symbolizing sports recovery
-};
+import styles from './ServicesCarousel.module.scss';
 
 /**
  * ServicesCarousel Component
@@ -47,9 +24,9 @@ export const ServicesCarousel: React.FC = () => {
     <section className={styles.servicesSection}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Our Services</h2>
+          <h2 className={styles.title}>Nuestros Servicios</h2>
           <p className={styles.subtitle}>
-            We offer a wide range of specialized services to address your orthopedic needs.
+            Ofrecemos una amplia gama de servicios especializados para atender sus necesidades ortopédicas.
           </p>
         </div>
 
@@ -66,7 +43,7 @@ export const ServicesCarousel: React.FC = () => {
                   shortDescription={service.shortDescription}
                   image={service.image}
                   alt={service.alt}
-                  icon={serviceIcons[service.serviceId]}
+                  serviceId={service.serviceId}
                 />
               </div>
             ))}

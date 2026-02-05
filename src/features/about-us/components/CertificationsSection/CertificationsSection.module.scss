@@ -1,0 +1,68 @@
+@use '@/styles/abstracts' as *;
+
+.certificationsSection {
+  padding: $spacing-2xl * 2 0;
+  background-color: $color-white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: $font-weight-semibold;
+  color: $color-gray-500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 0 $spacing-xl 0;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 12px;
+  }
+}
+
+.logosGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-xl;
+  align-items: center;
+  justify-items: center;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-lg;
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.logoPlaceholder {
+  width: 100%;
+  max-width: 200px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-gray-100;
+  border-radius: $border-radius-md;
+  border: 2px dashed $color-gray-300;
+  transition: all $transition-base;
+
+  &:hover {
+    background-color: $color-gray-200;
+    border-color: $color-gray-400;
+  }
+}
+
+.logoText {
+  font-size: 14px;
+  font-weight: $font-weight-medium;
+  color: $color-gray-500;
+  text-align: center;
+}

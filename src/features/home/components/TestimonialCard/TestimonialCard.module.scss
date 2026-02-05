@@ -1,29 +1,21 @@
 @use '@/styles/abstracts' as *;
 
 .testimonialCard {
-  width: 420px;
-  min-height: 280px;
+  width: 100%;
+  min-height: 240px;
   border-radius: $border-radius-lg;
-  background: $color-gray-50;
+  background: $color-white;
   border: 1px solid $color-gray-200;
-  transition: all $transition-base;
+  border-left: 4px solid #17a2b8;
+  transition: box-shadow $transition-base;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: $shadow-lg;
+    box-shadow: $shadow-md;
   }
 
   :global(.ant-card-body) {
     padding: $spacing-xl;
     height: 100%;
-  }
-
-  @media (max-width: $breakpoint-md) {
-    width: 360px;
-  }
-
-  @media (max-width: $breakpoint-sm) {
-    width: 320px;
   }
 }
 
@@ -37,7 +29,7 @@
   display: flex;
   gap: 4px;
   margin-bottom: $spacing-lg;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .starFilled {
@@ -51,16 +43,44 @@
 .testimonial {
   font-size: $font-size-base;
   color: $color-gray-700;
-  line-height: 1.8;
+  line-height: 1.7;
   margin-bottom: $spacing-lg;
   flex: 1;
   font-style: italic;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.authorInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: $spacing-md;
+  margin-top: auto;
+}
+
+.authorDetails {
+  flex: 1;
 }
 
 .patientName {
   font-size: $font-size-base;
-  color: $color-gray-900;
-  font-weight: $font-weight-bold;
+  color: $color-primary;
+  font-weight: $font-weight-semibold;
+  margin: 0 0 $spacing-xs 0;
+  overflow-wrap: break-word;
+}
+
+.condition {
+  font-size: $font-size-sm;
+  color: $color-gray-600;
   margin: 0;
-  align-self: flex-start;
+  overflow-wrap: break-word;
+}
+
+.date {
+  font-size: $font-size-sm;
+  color: $color-gray-500;
+  margin: 0;
+  white-space: nowrap;
 }

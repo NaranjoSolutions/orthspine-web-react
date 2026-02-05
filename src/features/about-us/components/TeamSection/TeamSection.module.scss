@@ -1,8 +1,9 @@
 @use '@/styles/abstracts' as *;
+@use '../variables' as aboutVars;
 
 .teamSection {
-  padding: $spacing-2xl 0;
-  background-color: $color-white;
+  padding: $spacing-2xl * 2 0;
+  background-color: aboutVars.$color-about-team-bg;
 }
 
 .container {
@@ -55,7 +56,7 @@
   margin: 0 auto $spacing-lg;
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid #0ea5e9;
+  border: 4px solid aboutVars.$color-about-accent;
   box-shadow: $shadow-md;
 }
 
@@ -75,7 +76,7 @@
 .memberTitle {
   font-size: 16px;
   font-weight: $font-weight-medium;
-  color: #0ea5e9;
+  color: aboutVars.$color-about-accent;
   margin-bottom: $spacing-md;
 }
 

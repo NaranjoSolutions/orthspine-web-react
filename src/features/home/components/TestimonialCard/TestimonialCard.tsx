@@ -7,6 +7,8 @@ interface TestimonialCardProps {
   patientName: string;
   rating: number;
   testimonial: string;
+  condition?: string;
+  date?: string;
 }
 
 /**
@@ -16,8 +18,16 @@ interface TestimonialCardProps {
  * @param patientName - Name of the patient
  * @param rating - Rating out of 5 stars
  * @param testimonial - Patient testimonial text
+ * @param condition - Patient's condition or treatment (optional)
+ * @param date - Date of the testimonial (optional)
  */
-export const TestimonialCard: React.FC<TestimonialCardProps> = ({ patientName, rating, testimonial }) => {
+export const TestimonialCard: React.FC<TestimonialCardProps> = ({
+  patientName,
+  rating,
+  testimonial,
+  condition,
+  date,
+}) => {
   const renderStars = () => {
     return (
       <div className={styles.stars}>
@@ -26,7 +36,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ patientName, r
             <StarFilled key={star} className={styles.starFilled} />
           ) : (
             <StarOutlined key={star} className={styles.starOutlined} />
-          )
+          ),
         )}
       </div>
     );
@@ -37,7 +47,13 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ patientName, r
       <div className={styles.cardContent}>
         {renderStars()}
         <p className={styles.testimonial}>"{testimonial}"</p>
-        <p className={styles.patientName}>- {patientName}</p>
+        <div className={styles.authorInfo}>
+          <div className={styles.authorDetails}>
+            <p className={styles.patientName}>{patientName}</p>
+            {condition && <p className={styles.condition}>{condition}</p>}
+          </div>
+          {date && <p className={styles.date}>{date}</p>}
+        </div>
       </div>
     </Card>
   );

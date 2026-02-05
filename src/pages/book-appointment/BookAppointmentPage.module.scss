@@ -1,5 +1,76 @@
+@use '@/styles/abstracts' as *;
+
 .bookAppointmentPage {
-  min-height: calc(100vh - 64px - 200px); // viewport height minus navbar and footer
-  background: var(--color-bg-secondary);
-  padding: var(--spacing-lg) 0;
+  width: 100%;
+}
+
+.comingSoonSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  padding: $spacing-2xl $spacing-lg;
+  background-color: $color-gray-50;
+
+  @media (max-width: $breakpoint-md) {
+    min-height: 400px;
+    padding: $spacing-xl $spacing-lg;
+  }
+}
+
+.content {
+  max-width: 600px;
+  text-align: center;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin: 0 0 $spacing-lg;
+  line-height: 1.2;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 36px;
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    font-size: 32px;
+  }
+}
+
+.comingSoonBadge {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  background-color: $color-white;
+  padding: $spacing-md $spacing-xl;
+  border-radius: $border-radius-lg;
+  margin: 0 0 $spacing-xl;
+  box-shadow: $shadow-md;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 20px;
+    padding: $spacing-sm $spacing-lg;
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    font-size: 18px;
+  }
+}
+
+.description {
+  font-size: 18px;
+  color: $color-gray-600;
+  line-height: 1.6;
+  margin: 0;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 16px;
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    font-size: 15px;
+  }
 }

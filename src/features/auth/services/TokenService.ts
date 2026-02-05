@@ -4,11 +4,15 @@ import { AuthTokens } from '../types';
  * TokenService - Singleton Pattern
  * Manages authentication tokens in localStorage/sessionStorage
  */
+
 class TokenService {
   private static instance: TokenService;
-  private readonly ACCESS_TOKEN_KEY = 'orthspine_access_token';
-  private readonly REFRESH_TOKEN_KEY = 'orthspine_refresh_token';
-  private readonly TOKEN_EXPIRY_KEY = 'orthspine_token_expiry';
+
+  private readonly ACCESS_TOKEN_KEY = 'access_token';
+  private readonly ACCESS_TOKEN_EXPIRES_IN_KEY = 'access_token_expires_in';
+
+  private readonly REFRESH_TOKEN_KEY = 'refresh_token';
+  private readonly REFRESH_TOKEN_EXPIRES_IN_KEY = 'refresh_token_expires_in';
 
   private constructor() {}
 
@@ -30,11 +34,15 @@ class TokenService {
   saveTokens(tokens: AuthTokens, rememberMe: boolean = false): void {
     const storage = rememberMe ? localStorage : sessionStorage;
 
-    storage.setItem(this.ACCESS_TOKEN_KEY, tokens.accessToken);
-    storage.setItem(this.REFRESH_TOKEN_KEY, tokens.refreshToken);
+    // Calculate absolute expiration time (current time + TTL in seconds * 1000 for milliseconds)
+    const accessTokenExpiryTime = Date.now() + parseInt(tokens.accessTokenExpiresIn.toString(), 10) * 1000;
+    const refreshTokenExpiryTime = Date.now() + parseInt(tokens.refreshTokenExpiresIn.toString(), 10) * 1000;
 
-    const expiryTime = Date.now() + tokens.expiresIn * 1000;
-    storage.setItem(this.TOKEN_EXPIRY_KEY, expiryTime.toString());
+    storage.setItem(this.ACCESS_TOKEN_KEY, tokens.accessToken);
+    storage.setItem(this.ACCESS_TOKEN_EXPIRES_IN_KEY, accessTokenExpiryTime.toString());
+
+    storage.setItem(this.REFRESH_TOKEN_KEY, tokens.refreshToken);
+    storage.setItem(this.REFRESH_TOKEN_EXPIRES_IN_KEY, refreshTokenExpiryTime.toString());
   }
 
   /**
@@ -54,8 +62,10 @@ class TokenService {
   /**
    * Check if token is expired
    */
-  isTokenExpired(): boolean {
-    const expiry = localStorage.getItem(this.TOKEN_EXPIRY_KEY) || sessionStorage.getItem(this.TOKEN_EXPIRY_KEY);
+  isAccessTokenExpired(): boolean {
+    const expiry =
+      localStorage.getItem(this.ACCESS_TOKEN_EXPIRES_IN_KEY) ||
+      sessionStorage.getItem(this.ACCESS_TOKEN_EXPIRES_IN_KEY);
 
     if (!expiry) return true;
 
@@ -67,12 +77,16 @@ class TokenService {
    */
   clearTokens(): void {
     localStorage.removeItem(this.ACCESS_TOKEN_KEY);
+    localStorage.removeItem(this.ACCESS_TOKEN_EXPIRES_IN_KEY);
+
     localStorage.removeItem(this.REFRESH_TOKEN_KEY);
-    localStorage.removeItem(this.TOKEN_EXPIRY_KEY);
+    localStorage.removeItem(this.REFRESH_TOKEN_EXPIRES_IN_KEY);
 
     sessionStorage.removeItem(this.ACCESS_TOKEN_KEY);
+    sessionStorage.removeItem(this.ACCESS_TOKEN_EXPIRES_IN_KEY);
+
     sessionStorage.removeItem(this.REFRESH_TOKEN_KEY);
-    sessionStorage.removeItem(this.TOKEN_EXPIRY_KEY);
+    sessionStorage.removeItem(this.REFRESH_TOKEN_EXPIRES_IN_KEY);
   }
 
   /**
@@ -80,7 +94,7 @@ class TokenService {
    */
   hasValidAuth(): boolean {
     const token = this.getAccessToken();
-    return !!token && !this.isTokenExpired();
+    return !!token && !this.isAccessTokenExpired();
   }
 }
 

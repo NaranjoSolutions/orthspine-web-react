@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox, Alert, Space } from 'antd';
+import { Form, Input, Button, Checkbox, Alert } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useLogin } from '../../hooks/useLogin';
 import styles from './LoginForm.module.scss';
@@ -10,7 +10,8 @@ import styles from './LoginForm.module.scss';
  * Follows Single Responsibility Principle - only renders form UI
  */
 export const LoginForm: React.FC = () => {
-  const { formData, errors, isLoading, handleChange, handleLogin, handleForgotPassword, handleRegisterRedirect } = useLogin();
+  const { formData, errors, isLoading, handleChange, handleLogin, handleForgotPassword, handleRegisterRedirect } =
+    useLogin();
 
   const [form] = Form.useForm();
 
@@ -23,13 +24,8 @@ export const LoginForm: React.FC = () => {
 
   return (
     <div className={styles.loginFormWrapper}>
-      <h1 className={styles.title}>Sign in to your account</h1>
-      <p className={styles.subtitle}>
-        Don't have an account?{' '}
-        <Button type="link" onClick={handleRegisterRedirect} disabled={isLoading} className={styles.registerLink}>
-          Sign up
-        </Button>
-      </p>
+      <h1 className={styles.title}>Portal Administrativo</h1>
+      <p className={styles.subtitle}>Solo para personal y administradores</p>
 
       {errors.general && (
         <Alert message={errors.general} type="error" showIcon closable className={styles.errorAlert} />
@@ -45,45 +41,46 @@ export const LoginForm: React.FC = () => {
         requiredMark={false}
       >
         {/* Email Field */}
-        <Form.Item name="email" validateStatus={errors.email ? 'error' : ''} help={errors.email}>
+        <Form.Item name="email" label="Correo electrónico" validateStatus={errors.email ? 'error' : ''} help={errors.email}>
           <Input
             prefix={<UserOutlined className={styles.inputIcon} />}
-            placeholder="Email address"
+            placeholder="Ingrese su correo electrónico"
             value={formData.email}
             onChange={(e) => handleChange('email', e.target.value)}
             disabled={isLoading}
             autoComplete="username"
             autoFocus
+            aria-label="Correo electrónico"
           />
         </Form.Item>
 
         {/* Password Field */}
-        <Form.Item name="password" validateStatus={errors.password ? 'error' : ''} help={errors.password}>
+        <Form.Item
+          name="password"
+          label="Contraseña"
+          validateStatus={errors.password ? 'error' : ''}
+          help={errors.password}
+        >
           <Input.Password
             prefix={<LockOutlined className={styles.inputIcon} />}
-            placeholder="Password"
+            placeholder="Ingrese su contraseña"
             value={formData.password}
             onChange={(e) => handleChange('password', e.target.value)}
             disabled={isLoading}
             autoComplete="current-password"
+            aria-label="Contraseña"
           />
         </Form.Item>
 
-        {/* Remember Me & Forgot Password */}
-        <Form.Item>
-          <Space className={styles.formOptions}>
-            <Checkbox
-              checked={formData.rememberMe}
-              onChange={(e) => handleChange('rememberMe', e.target.checked)}
-              disabled={isLoading}
-            >
-              Remember me?
-            </Checkbox>
-
-            <Button type="link" onClick={handleForgotPassword} disabled={isLoading} className={styles.forgotPassword}>
-              Forgot your password?
-            </Button>
-          </Space>
+        {/* Remember Me */}
+        <Form.Item className={styles.rememberMeItem}>
+          <Checkbox
+            checked={formData.rememberMe}
+            onChange={(e) => handleChange('rememberMe', e.target.checked)}
+            disabled={isLoading}
+          >
+            Recordarme
+          </Checkbox>
         </Form.Item>
 
         {/* Submit Button */}
@@ -96,9 +93,34 @@ export const LoginForm: React.FC = () => {
             size="large"
             className={styles.submitButton}
           >
-            Login
+            Iniciar sesión
           </Button>
         </Form.Item>
+
+        {/* Forgot Password Link */}
+        <div className={styles.forgotPasswordWrapper}>
+          <Button type="link" onClick={handleForgotPassword} disabled={isLoading} className={styles.forgotPassword}>
+            ¿Olvidó su contraseña?
+          </Button>
+        </div>
+
+        {/* Create Account Link */}
+        <div className={styles.createAccountWrapper}>
+          <span className={styles.createAccountText}>¿Necesita crear una cuenta de administrador?</span>
+          <Button
+            type="link"
+            onClick={handleRegisterRedirect}
+            disabled={isLoading}
+            className={styles.createAccountLink}
+          >
+            Crear cuenta
+          </Button>
+        </div>
+
+        {/* Security Note */}
+        <div className={styles.securityNote}>
+          <p>🔒 Este es un portal administrativo seguro. Toda actividad es monitoreada y registrada.</p>
+        </div>
       </Form>
     </div>
   );

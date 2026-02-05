@@ -26,32 +26,6 @@
   margin: 0 auto;
 }
 
-.iconWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 24px;
-  background: #4285f4;
-  border-radius: 50%;
-
-  @media (max-width: $breakpoint-sm) {
-    width: 64px;
-    height: 64px;
-    margin-bottom: 20px;
-  }
-}
-
-.heroIcon {
-  font-size: 40px;
-  color: white;
-
-  @media (max-width: $breakpoint-sm) {
-    font-size: 32px;
-  }
-}
-
 .heroTitle {
   font-size: 56px;
   font-weight: $font-weight-bold;
@@ -89,60 +63,6 @@
   }
 }
 
-.buttonGroup {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  @media (max-width: $breakpoint-sm) {
-    flex-direction: column;
-    gap: 12px;
-    max-width: 320px;
-    margin: 0 auto;
-  }
-}
-
-.primaryButton,
-.secondaryButton {
-  min-width: 180px;
-  height: 48px;
-  font-size: 16px;
-  font-weight: $font-weight-semibold;
-  border-radius: 8px;
-  transition: all $transition-base;
-
-  @media (max-width: $breakpoint-sm) {
-    width: 100%;
-    min-width: auto;
-  }
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: $shadow-lg;
-  }
-}
-
-.primaryButton {
-  background: #4285f4;
-  border-color: #4285f4;
-
-  &:hover {
-    background: #1967d2 !important;
-    border-color: #1967d2 !important;
-  }
-}
-
-.secondaryButton {
-  background: #4285f4;
-  border-color: #4285f4;
-
-  &:hover {
-    background: #1967d2 !important;
-    border-color: #1967d2 !important;
-  }
-}
-
 // Services Section
 .servicesSection {
   width: 100%;
@@ -165,52 +85,6 @@
 
   @media (max-width: $breakpoint-sm) {
     padding: 0 16px;
-  }
-}
-
-.sectionHeader {
-  text-align: center;
-  margin-bottom: 60px;
-
-  @media (max-width: $breakpoint-md) {
-    margin-bottom: 40px;
-  }
-
-  @media (max-width: $breakpoint-sm) {
-    margin-bottom: 32px;
-  }
-}
-
-.sectionTitle {
-  font-size: 48px;
-  font-weight: $font-weight-bold;
-  color: $color-gray-900;
-  margin-bottom: 16px;
-  line-height: 1.2;
-
-  @media (max-width: $breakpoint-md) {
-    font-size: 36px;
-  }
-
-  @media (max-width: $breakpoint-sm) {
-    font-size: 28px;
-    margin-bottom: 12px;
-  }
-}
-
-.sectionSubtitle {
-  font-size: 18px;
-  color: $color-gray-600;
-  max-width: 700px;
-  margin: 0 auto;
-  line-height: 1.6;
-
-  @media (max-width: $breakpoint-md) {
-    font-size: 16px;
-  }
-
-  @media (max-width: $breakpoint-sm) {
-    font-size: 15px;
   }
 }
 

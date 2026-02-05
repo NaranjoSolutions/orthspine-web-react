@@ -49,7 +49,7 @@
 .subtitle {
   font-size: $font-size-lg;
   color: $color-gray-600;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   line-height: 1.6;
 
@@ -58,6 +58,33 @@
   }
 }
 
+.formSection {
+  margin-bottom: $spacing-2xl;
+}
+
+.bottomSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-xl;
+  margin-top: $spacing-2xl;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+}
+
+.mapColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+// Legacy styles (for backwards compatibility if needed)
 .contentGrid {
   display: grid;
   grid-template-columns: 400px 1fr;

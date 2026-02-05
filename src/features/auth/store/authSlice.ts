@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AuthState, User, AuthTokens } from '../types';
-// import { authApi } from '../api/authApi';
 
 /**
  * Authentication State Slice
@@ -59,33 +58,6 @@ const authSlice = createSlice({
       state.error = null;
     },
   },
-  //   extraReducers: (builder) => {
-  //     // Handle login mutation
-  //     builder
-  //       .addMatcher(authApi.endpoints.login.matchPending, (state) => {
-  //         state.isLoading = true;
-  //         state.error = null;
-  //       })
-  //       .addMatcher(authApi.endpoints.login.matchFulfilled, (state, action) => {
-  //         state.user = action.payload.user;
-  //         state.tokens = action.payload.tokens;
-  //         state.isAuthenticated = true;
-  //         state.isLoading = false;
-  //         state.error = null;
-  //       })
-  //       .addMatcher(authApi.endpoints.login.matchRejected, (state, action) => {
-  //         state.isLoading = false;
-  //         state.error = action.error.message || 'Login failed';
-  //       });
-
-  //     // Handle logout mutation
-  //     builder.addMatcher(authApi.endpoints.logout.matchFulfilled, (state) => {
-  //       state.user = null;
-  //       state.tokens = null;
-  //       state.isAuthenticated = false;
-  //       state.error = null;
-  //     });
-  //   },
 });
 
 export const { setUser, setTokens, clearAuth, setAuthError, clearAuthError } = authSlice.actions;

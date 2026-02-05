@@ -1,0 +1,81 @@
+@use '@/styles/abstracts' as *;
+
+.patientHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-xl;
+  background: var(--color-bg-primary);
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-sm;
+  margin-bottom: $spacing-lg;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-lg;
+  }
+}
+
+.patientInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.avatar {
+  flex-shrink: 0;
+  background: var(--color-primary);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.name {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.metadata {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  flex-wrap: wrap;
+}
+
+.patientId {
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.separator {
+  color: var(--color-text-tertiary);
+}
+
+.dob {
+  color: var(--color-text-secondary);
+}
+
+.actions {
+  @media (max-width: 768px) {
+    width: 100%;
+
+    :global(.ant-space) {
+      width: 100%;
+      justify-content: flex-end;
+    }
+  }
+}

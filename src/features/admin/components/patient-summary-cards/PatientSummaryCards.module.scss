@@ -1,0 +1,74 @@
+@use '@/styles/abstracts' as *;
+
+.summaryCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-lg;
+  margin-bottom: $spacing-xl;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-sm;
+  transition: box-shadow var(--transition-base);
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+
+  :global(.ant-card-body) {
+    padding: $spacing-lg;
+  }
+}
+
+.cardContent {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: $border-radius-md;
+  background: var(--color-gray-100);
+  flex-shrink: 0;
+}
+
+.icon {
+  font-size: 24px;
+  color: var(--color-primary);
+}
+
+.cardBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}

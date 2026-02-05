@@ -1,0 +1,20 @@
+@use '@/styles/abstracts' as *;
+
+.serviceDetailPage {
+  min-height: 100vh;
+  background: $color-white;
+}
+
+// Content Section
+.contentSection {
+  padding: $spacing-2xl $spacing-lg;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-xl $spacing-lg;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}

@@ -9,17 +9,38 @@
 }
 
 .logo {
-  height: 64px;
+  height: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.1);
+  padding: $spacing-lg $spacing-md;
+  gap: $spacing-xs;
+
+  .logoIcon {
+    font-size: 24px;
+    color: white;
+    background-color: #4a7c7e;
+    border-radius: 50%;
+    padding: $spacing-md;
+    margin-bottom: $spacing-xs;
+  }
 
   h2 {
     color: white;
     margin: 0;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .logoSubtitle {
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+    font-size: 11px;
+    text-align: center;
   }
 }
 
@@ -32,19 +53,74 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.pageTitle {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 600;
-  color: $color-gray-800;
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: 14px;
+  color: $color-gray-600;
+
+  .breadcrumbItem {
+    &:last-child {
+      color: $color-gray-800;
+      font-weight: 500;
+    }
+  }
+
+  .breadcrumbSeparator {
+    color: $color-gray-400;
+  }
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
 }
 
 .userInfo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: $color-gray-700;
-  font-size: 14px;
+  gap: $spacing-md;
+  cursor: pointer;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+  .avatar {
+    background-color: #f0f5f0;
+    color: #4a7c7e;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .userDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-width: 0;
+  }
+
+  .userName {
+    color: $color-gray-800;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+  }
+
+  .userRole {
+    color: $color-gray-500;
+    font-size: 13px;
+    white-space: nowrap;
+    line-height: 1.2;
+  }
 }
 
 .content {
@@ -54,8 +130,6 @@
 }
 
 .contentInner {
-  background-color: white;
-  padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  max-width: 1600px;
+  margin: 0 auto;
 }

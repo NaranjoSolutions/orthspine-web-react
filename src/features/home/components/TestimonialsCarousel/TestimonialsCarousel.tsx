@@ -24,7 +24,7 @@ export const TestimonialsCarousel: React.FC = () => {
     <section className={styles.testimonialsSection}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Patient Testimonials</h2>
+          <h2 className={styles.title}>Testimonios de Pacientes</h2>
         </div>
 
         <div
@@ -47,7 +47,7 @@ export const TestimonialsCarousel: React.FC = () => {
 
         <div className={styles.footer}>
           <Link to={ROUTE_PATHS.TESTIMONIALS} className={styles.viewMoreLink}>
-            View more
+            Ver más
           </Link>
         </div>
       </div>

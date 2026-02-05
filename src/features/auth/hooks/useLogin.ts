@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 import { useLoginMutation } from '../api/authApi';
-import { LoginFormData, LoginFormErrors } from '../types';
+import { LoginFormData, LoginFormErrors, UserRole } from '../types';
 import { AuthService } from '../services/AuthService';
 import { LoginValidator } from '@/shared/utils/validators/LoginValidator';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
@@ -102,10 +102,8 @@ export const useLogin = () => {
         // Show success message
         message.success(`Welcome back, ${user.firstName}!`);
 
-        logger.info('Login successful', { userId: user.id, email: user.email });
-
         // Navigate based on user role
-        if (user.role === 'admin') {
+        if (user.userRole === UserRole.ADMIN) {
           navigate(ROUTE_PATHS.ADMIN.DASHBOARD);
         } else {
           navigate(ROUTE_PATHS.HOME);

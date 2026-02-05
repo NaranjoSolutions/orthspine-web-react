@@ -1,0 +1,318 @@
+@use '@/styles/abstracts' as *;
+
+.visitOurClinic {
+  width: 100%;
+  padding: 80px 0;
+  background: $color-gray-50;
+  overflow: hidden;
+
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba($color-primary, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 85% 0%, rgba($color-primary-light, 0.06) 0%, transparent 45%);
+
+  @media (max-width: $breakpoint-md) {
+    padding: 60px 0;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 40px 0;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+
+  @media (max-width: $breakpoint-md) {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  font-size: 48px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin-bottom: $spacing-md;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 36px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 28px;
+  }
+}
+
+.subtitle {
+  font-size: $font-size-lg;
+  color: $color-gray-600;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-base;
+  }
+}
+
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-lg;
+  margin-bottom: 48px;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+    margin-bottom: 32px;
+  }
+}
+
+.infoItem {
+  text-align: center;
+  padding: $spacing-xl $spacing-lg;
+  background: #f8f9fb;
+  border-radius: $border-radius-lg;
+  transition: all $transition-base;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: $breakpoint-md) {
+    text-align: center;
+  }
+}
+
+.infoLabel {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: $spacing-md;
+  margin-top: $spacing-md;
+  color: $color-gray-900;
+  letter-spacing: 0px;
+  text-transform: none;
+}
+
+.infoValue {
+  font-size: 14px;
+  font-weight: $font-weight-normal;
+  color: $color-gray-700;
+  margin: 0;
+  line-height: 1.8;
+}
+
+.infoContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.iconWrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #e3f2fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.infoStack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.infoIcon {
+  font-size: 28px;
+  color: #1976d2;
+  flex: 0 0 auto;
+}
+
+.infoLink {
+  font-size: 14px;
+  font-weight: $font-weight-normal;
+  color: #1976d2;
+  text-decoration: underline;
+  line-height: 1.8;
+
+  &:hover {
+    color: #1565c0;
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary-light;
+    outline-offset: 2px;
+  }
+}
+
+.mapPlaceholder {
+  width: 100%;
+  height: 400px;
+  background: $color-white;
+  border-radius: $border-radius-lg;
+  margin-bottom: $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+
+  @media (max-width: $breakpoint-md) {
+    height: 300px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    height: 250px;
+  }
+}
+
+.mapCard {
+  width: 100%;
+  margin-bottom: $spacing-xl;
+
+  :global {
+    .ant-card {
+      border-radius: $border-radius-lg;
+      box-shadow: $shadow-md;
+    }
+
+    .ant-card-head {
+      border-bottom: 1px solid $color-gray-200;
+      padding: $spacing-md $spacing-lg;
+    }
+
+    .ant-card-body {
+      padding: $spacing-lg;
+    }
+  }
+}
+
+.mapWrapper {
+  width: 100%;
+  height: 400px;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+
+  @media (max-width: $breakpoint-md) {
+    height: 350px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    height: 300px;
+  }
+}
+
+.mapContainer {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+  :global {
+    .leaflet-container {
+      width: 100%;
+      height: 100%;
+      border-radius: $border-radius-md;
+    }
+
+    .leaflet-popup-content-wrapper {
+      border-radius: $border-radius-sm;
+    }
+
+    .leaflet-popup-content {
+      margin: $spacing-md;
+    }
+  }
+}
+
+.popupContent {
+  min-width: 200px;
+}
+
+.mapIcon {
+  font-size: 64px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: $spacing-md;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 48px;
+  }
+}
+
+.mapText {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-lg;
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: $spacing-xl;
+
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+  }
+}
+
+.mapButton {
+  height: 48px;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  padding: 0 32px;
+  border-radius: $border-radius-md;
+  border: 2px solid $color-gray-300;
+  color: $color-gray-700;
+  background: $color-white;
+  transition: all $transition-base;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+    background: $color-white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba($color-primary, 0.22);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba($color-primary, 0.35);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    width: 100%;
+    justify-content: center;
+  }
+}

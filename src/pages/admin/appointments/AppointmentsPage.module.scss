@@ -1,0 +1,66 @@
+.appointmentsPage {
+  width: 100%;
+  max-width: 100%;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    .title {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+  }
+
+  .card {
+    background: var(--color-bg-primary);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .appointmentsPage {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+
+      .title {
+        font-size: 24px;
+      }
+    }
+
+    .card {
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+
+        .searchSection {
+          flex-direction: column;
+          align-items: stretch;
+
+          .searchInput {
+            min-width: 100%;
+          }
+        }
+      }
+
+      .filters {
+        .filterItem {
+          flex-direction: column;
+          align-items: stretch;
+
+          label {
+            margin-bottom: 4px;
+          }
+        }
+      }
+    }
+  }
+}

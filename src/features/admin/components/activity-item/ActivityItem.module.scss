@@ -1,0 +1,18 @@
+@use '@/styles/abstracts' as *;
+
+.activityItem {
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: $color-gray-50;
+  }
+}
+
+.avatar {
+  flex-shrink: 0;
+}
+
+.time {
+  white-space: nowrap;
+  margin-left: $spacing-md;
+}

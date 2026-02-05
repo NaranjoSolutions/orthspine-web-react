@@ -1,0 +1,28 @@
+@use '@/styles/abstracts' as *;
+
+.modal {
+  :global {
+    .ant-modal-header {
+      border-bottom: 2px solid $color-gray-200;
+    }
+
+    .ant-modal-body {
+      padding: $spacing-xl;
+    }
+  }
+}
+
+.descriptions {
+  :global {
+    .ant-descriptions-item-label {
+      background-color: $color-gray-50;
+      font-weight: 600;
+      color: $color-gray-700;
+      width: 35%;
+    }
+
+    .ant-descriptions-item-content {
+      color: $color-gray-800;
+    }
+  }
+}

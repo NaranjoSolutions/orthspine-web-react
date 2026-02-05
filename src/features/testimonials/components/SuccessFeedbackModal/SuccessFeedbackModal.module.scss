@@ -1,0 +1,159 @@
+@use '@/styles/abstracts' as *;
+
+.successModal {
+  :global(.ant-modal-content) {
+    border-radius: $border-radius-lg;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  :global(.ant-modal-body) {
+    padding: 0;
+  }
+}
+
+.modalContent {
+  padding: $spacing-xl $spacing-lg;
+  text-align: center;
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-lg $spacing-md;
+  }
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: $spacing-lg;
+}
+
+.successIcon {
+  font-size: 64px;
+  color: #52c41a; // Ant Design success green
+  animation: scaleIn 0.3s ease-out;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 56px;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.title {
+  font-size: 24px;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+  margin: 0 0 $spacing-md;
+  line-height: 1.3;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 20px;
+  }
+}
+
+.message {
+  font-size: $font-size-base;
+  color: $color-gray-600;
+  line-height: 1.6;
+  margin: 0 0 $spacing-xl;
+  padding: 0 $spacing-md;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-sm;
+    padding: 0;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  width: 100%;
+}
+
+.primaryButton,
+.secondaryButton {
+  width: 100%;
+  height: 48px;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  border-radius: $border-radius-md;
+  transition: all $transition-base;
+
+  @media (max-width: $breakpoint-sm) {
+    height: 44px;
+    font-size: $font-size-sm;
+  }
+}
+
+.primaryButton {
+  background: $color-primary;
+  border-color: $color-primary;
+
+  &:hover {
+    background: $color-primary-dark !important;
+    border-color: $color-primary-dark !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 185, 0.3);
+  }
+
+  &:active {
+    background: $color-primary-dark !important;
+    border-color: $color-primary-dark !important;
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.secondaryButton {
+  background: $color-white;
+  border-color: $color-gray-300;
+  color: $color-gray-700;
+
+  &:hover {
+    border-color: $color-gray-400 !important;
+    color: $color-gray-800 !important;
+    background: $color-gray-50 !important;
+  }
+
+  &:active {
+    border-color: $color-gray-400 !important;
+    color: $color-gray-800 !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+// Ensure modal backdrop has proper z-index and overlay
+:global {
+  .ant-modal-mask {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .ant-modal-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

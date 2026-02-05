@@ -1,0 +1,1 @@
+export { ComprehensiveDescription } from './ComprehensiveDescription';

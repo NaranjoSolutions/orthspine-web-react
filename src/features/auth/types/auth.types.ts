@@ -10,30 +10,31 @@ export interface LoginCredentials {
 }
 
 export interface RegisterCredentials {
-  fullName: string;
+  fullname: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
 export interface User {
-  id: string;
+  userId: string;
   email: string;
   firstName: string;
   lastName: string;
-  role: UserRole;
+  userRole: UserRole;
   avatar?: string;
 }
 
 export enum UserRole {
-  ADMIN = 'admin',
-  USER = 'user',
+  ADMIN = 'ADMIN',
+  USER = 'USER',
 }
 
 export interface AuthTokens {
   accessToken: string;
+  accessTokenExpiresIn: number;
   refreshToken: string;
-  expiresIn: number;
+  refreshTokenExpiresIn: number;
 }
 
 export interface AuthResponse {
@@ -54,14 +55,14 @@ export interface LoginFormErrors {
 }
 
 export interface RegisterFormData {
-  fullName: string;
+  fullname: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
 export interface RegisterFormErrors {
-  fullName?: string;
+  fullname?: string;
   email?: string;
   password?: string;
   confirmPassword?: string;

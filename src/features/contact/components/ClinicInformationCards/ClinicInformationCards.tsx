@@ -1,0 +1,117 @@
+import React from 'react';
+import { Card, Row, Col, Typography, Space } from 'antd';
+import { EnvironmentOutlined, ClockCircleOutlined, PhoneOutlined, MailOutlined } from '@ant-design/icons';
+import { CLINIC_ADDRESS, OPERATING_HOURS } from '../../config/contact.config';
+import { clinicInformation } from '@/shared/resources/clinic-information';
+import styles from './ClinicInformationCards.module.scss';
+
+const { Title, Text, Link } = Typography;
+
+/**
+ * Information card type definition
+ */
+interface InfoCard {
+  id: string;
+  icon: React.ReactNode;
+  title: string;
+  content: React.ReactNode;
+}
+
+/**
+ * ClinicInformationCards Component
+ * Displays essential clinic information in card format using AntD components
+ *
+ * Features:
+ * - Clinic name and address
+ * - Hours of operation
+ * - Contact phone number
+ * - Email address
+ * - Clean, icon-based design using AntD Card
+ * - Responsive layout with AntD Grid system
+ * - Enhanced visual hierarchy
+ */
+export const ClinicInformationCards: React.FC = () => {
+  const infoCards: InfoCard[] = [
+    {
+      id: 'address',
+      icon: <EnvironmentOutlined />,
+      title: 'Location',
+      content: (
+        <Space direction="vertical" size={4}>
+          <Text strong className={styles.clinicName}>
+            {clinicInformation.name}
+          </Text>
+          <Text className={styles.addressText}>{CLINIC_ADDRESS.FULL}</Text>
+        </Space>
+      ),
+    },
+    {
+      id: 'hours',
+      icon: <ClockCircleOutlined />,
+      title: 'Hours of Operation',
+      content: (
+        <Space direction="vertical" size={4}>
+          <div className={styles.hoursRow}>
+            <Text strong className={styles.hoursLabel}>
+              {OPERATING_HOURS.WEEKDAY.LABEL}:
+            </Text>
+            <Text className={styles.hoursValue}>{OPERATING_HOURS.WEEKDAY.HOURS}</Text>
+          </div>
+          <div className={styles.hoursRow}>
+            <Text strong className={styles.hoursLabel}>
+              {OPERATING_HOURS.WEEKEND.LABEL}:
+            </Text>
+            <Text className={styles.hoursValue}>{OPERATING_HOURS.WEEKEND.HOURS}</Text>
+          </div>
+        </Space>
+      ),
+    },
+    {
+      id: 'phone',
+      icon: <PhoneOutlined />,
+      title: 'Phone',
+      content: (
+        <Link href={`tel:${clinicInformation.contact.phones[0]}`} className={styles.contactLink}>
+          {clinicInformation.contact.phones[0]}
+        </Link>
+      ),
+    },
+    {
+      id: 'email',
+      icon: <MailOutlined />,
+      title: 'Email',
+      content: (
+        <Link href={`mailto:${clinicInformation.contact.email}`} className={styles.contactLink}>
+          {clinicInformation.contact.email}
+        </Link>
+      ),
+    },
+  ];
+
+  return (
+    <div className={styles.infoCardsContainer}>
+      <Title level={2} className={styles.sectionTitle}>
+        Clinic Information
+      </Title>
+      <Space direction="vertical" size="middle" className={styles.cardsGrid}>
+        {infoCards.map((card) => (
+          <Card key={card.id} hoverable className={styles.infoCard}>
+            <Row gutter={16} align="middle">
+              <Col flex="none">
+                <div className={styles.iconWrapper}>{card.icon}</div>
+              </Col>
+              <Col flex="auto">
+                <Space direction="vertical" size={4} style={{ width: '100%' }}>
+                  <Title level={5} className={styles.cardTitle}>
+                    {card.title}
+                  </Title>
+                  <div className={styles.cardText}>{card.content}</div>
+                </Space>
+              </Col>
+            </Row>
+          </Card>
+        ))}
+      </Space>
+    </div>
+  );
+};

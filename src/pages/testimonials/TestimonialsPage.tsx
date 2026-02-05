@@ -1,6 +1,7 @@
 import React from 'react';
 import { TestimonialsOverview } from '@/features/testimonials/components/TestimonialsOverview';
 import { TestimonialsList } from '@/features/testimonials/components/TestimonialsList';
+import { TestimonialsCTA } from '@/features/testimonials/components/TestimonialsCTA';
 import { patientTestimonials } from '@/shared/resources/testimonials/testimonials';
 import styles from './TestimonialsPage.module.scss';
 
@@ -23,7 +24,7 @@ export const TestimonialsPage: React.FC = () => {
       acc[testimonial.rating as keyof typeof acc] += 1;
       return acc;
     },
-    { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 }
+    { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 },
   );
 
   const totalRatingPoints = patientTestimonials.reduce((sum, testimonial) => sum + testimonial.rating, 0);
@@ -32,13 +33,11 @@ export const TestimonialsPage: React.FC = () => {
   return (
     <div className={styles.testimonialsPage}>
       <div className={styles.container}>
-        <TestimonialsOverview
-          averageRating={averageRating}
-          totalReviews={totalReviews}
-          ratingCounts={ratingCounts}
-        />
+        <TestimonialsOverview averageRating={averageRating} totalReviews={totalReviews} ratingCounts={ratingCounts} />
 
         <TestimonialsList testimonials={patientTestimonials} />
+
+        <TestimonialsCTA />
       </div>
     </div>
   );

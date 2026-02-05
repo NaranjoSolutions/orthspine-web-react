@@ -3,12 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 import { useRegisterMutation } from '../api/authApi';
 import { RegisterFormData, RegisterFormErrors } from '../types';
-import { AuthService } from '../services/AuthService';
 import { RegisterValidator } from '@/shared/utils/validators/RegisterValidator';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
 import { logger } from '@/infrastructure/logger/Logger';
-import { useAppDispatch } from '@/store/redux/hooks';
-import { setUser, setTokens } from '../store/authSlice';
 
 /**
  * useRegister Hook - Facade Pattern
@@ -16,13 +13,12 @@ import { setUser, setTokens } from '../store/authSlice';
  * Integrated with Ant Design message notifications
  */
 export const useRegister = () => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const [register, { isLoading }] = useRegisterMutation();
 
   const [formData, setFormData] = useState<RegisterFormData>({
-    fullName: '',
+    fullname: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -53,7 +49,7 @@ export const useRegister = () => {
    */
   const validateForm = (): boolean => {
     const validation = RegisterValidator.validateRegisterForm({
-      fullName: formData.fullName,
+      fullname: formData.fullname,
       email: formData.email,
       password: formData.password,
       confirmPassword: formData.confirmPassword,
@@ -86,34 +82,22 @@ export const useRegister = () => {
 
       try {
         // Call register API
-        const response = await register({
-          fullName: formData.fullName,
+        await register({
+          fullname: formData.fullname,
           email: formData.email,
           password: formData.password,
           confirmPassword: formData.confirmPassword,
         }).unwrap();
 
-        // Process response using AuthService (Repository Pattern)
-        const user = AuthService.processLoginResponse(response, false);
-
-        // Update Redux state
-        dispatch(setUser(user));
-        dispatch(setTokens(response.tokens));
-
         // Hide loading message
         hideLoading();
 
-        // Show success message
-        message.success(`Welcome, ${user.firstName}! Your account has been created.`);
+        // Log success for monitoring
+        logger.info('Admin account request submitted', { email: formData.email });
 
-        logger.info('Registration successful', { userId: user.id, email: user.email });
-
-        // Navigate based on user role
-        if (user.role === 'admin') {
-          navigate(ROUTE_PATHS.ADMIN.DASHBOARD);
-        } else {
-          navigate(ROUTE_PATHS.HOME);
-        }
+        // Redirect to confirmation page (UI-only feedback)
+        // Note: The actual account will need admin approval before login is possible
+        navigate(ROUTE_PATHS.AUTH.ADMIN_REQUEST_CONFIRMATION);
       } catch (error: any) {
         // Hide loading message
         hideLoading();

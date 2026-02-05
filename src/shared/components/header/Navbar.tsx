@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Layout, Button, Drawer } from 'antd';
 import { MenuOutlined, CloseOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
+import { useAppSelector } from '@/store';
+import { UserMenu } from './user-menu';
 import styles from './Navbar.module.scss';
 
 const { Header } = Layout;
@@ -20,58 +22,69 @@ const { Header } = Layout;
  */
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
 
-  const handleBookAppointment = () => {
-    navigate(ROUTE_PATHS.BOOK_APPOINTMENT);
-    setMobileMenuOpen(false);
+  /**
+   * Helper function to get nav link class with active state
+   */
+  const getNavLinkClass = (path: string, isMobile: boolean = false): string => {
+    const baseClass = isMobile ? styles.mobileNavLink : styles.navLink;
+    const isActive = location.pathname === path;
+    return `${baseClass} ${isActive ? styles.active : ''}`;
   };
 
-  const handleLoginClick = () => {
-    navigate(ROUTE_PATHS.AUTH.LOGIN);
-    setMobileMenuOpen(false);
-  };
-
-  const handleNavClick = (path: string) => {
+  /**
+   * Helper function to navigate and close mobile menu
+   */
+  const navigateAndCloseMobile = (path: string) => {
     navigate(path);
     setMobileMenuOpen(false);
   };
+
+  const handleBookAppointment = () => navigateAndCloseMobile(ROUTE_PATHS.BOOK_APPOINTMENT);
+  // const handleLoginClick = () => navigateAndCloseMobile(ROUTE_PATHS.AUTH.LOGIN);
 
   return (
     <Header className={styles.navbar}>
       <div className={styles.container}>
         <div className={styles.logo} onClick={() => navigate(ROUTE_PATHS.HOME)}>
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path d="M16 2L4 8v12c0 7.3 5.3 14.1 12 16 6.7-1.9 12-8.7 12-16V8L16 2z" fill="#007BB9" />
-          </svg>
+          <img src="/src/assets/logo/logo.svg" alt="Orthopedic Spine Logo" className={styles.logoImage} />
           <span className={styles.logoText}>Orthopedic Spine</span>
         </div>
 
         <nav className={styles.nav}>
-          <a href={ROUTE_PATHS.HOME} className={styles.navLink}>
-            Home
-          </a>
-          <a href={ROUTE_PATHS.SERVICES} className={styles.navLink}>
-            Services
-          </a>
-          <a href={ROUTE_PATHS.TESTIMONIALS} className={styles.navLink}>
-            Testimonials
-          </a>
-          <a href={ROUTE_PATHS.CONTACT} className={styles.navLink}>
-            Contact
-          </a>
-          <a href={ROUTE_PATHS.ABOUT} className={styles.navLink}>
-            About Us
-          </a>
+          <Link to={ROUTE_PATHS.HOME} className={getNavLinkClass(ROUTE_PATHS.HOME)}>
+            Inicio
+          </Link>
+          <Link to={ROUTE_PATHS.SERVICES} className={getNavLinkClass(ROUTE_PATHS.SERVICES)}>
+            Servicios
+          </Link>
+          <Link to={ROUTE_PATHS.TESTIMONIALS} className={getNavLinkClass(ROUTE_PATHS.TESTIMONIALS)}>
+            Testimonios
+          </Link>
+          <Link to={ROUTE_PATHS.CONTACT} className={getNavLinkClass(ROUTE_PATHS.CONTACT)}>
+            Contacto
+          </Link>
+          <Link to={ROUTE_PATHS.ABOUT} className={getNavLinkClass(ROUTE_PATHS.ABOUT)}>
+            Sobre Nosotros
+          </Link>
         </nav>
 
         <div className={styles.actions}>
-          <Button type="default" className={styles.loginButton} onClick={handleLoginClick}>
-            Login
-          </Button>
-          <Button type="primary" className={styles.bookButton} onClick={handleBookAppointment}>
-            Book Appointment
-          </Button>
+          {isAuthenticated ? (
+            <UserMenu />
+          ) : (
+            <>
+              {/* <Button type="default" className={styles.loginButton} onClick={handleLoginClick}>
+                Login
+              </Button> */}
+              <Button type="primary" className={styles.bookButton} onClick={handleBookAppointment}>
+                Reservar Cita
+              </Button>
+            </>
+          )}
         </div>
 
         <Button
@@ -101,28 +114,54 @@ export const Navbar: React.FC = () => {
         width={280}
       >
         <div className={styles.mobileMenu}>
-          <a onClick={() => handleNavClick(ROUTE_PATHS.HOME)} className={styles.mobileNavLink}>
-            Home
-          </a>
-          <a onClick={() => handleNavClick(ROUTE_PATHS.SERVICES)} className={styles.mobileNavLink}>
-            Services
-          </a>
-          <a onClick={() => handleNavClick(ROUTE_PATHS.CONTACT)} className={styles.mobileNavLink}>
-            Contact
-          </a>
-          <a onClick={() => handleNavClick(ROUTE_PATHS.ABOUT)} className={styles.mobileNavLink}>
-            About Us
-          </a>
-          <a onClick={() => handleNavClick(ROUTE_PATHS.TESTIMONIALS)} className={styles.mobileNavLink}>
-            Testimonials
-          </a>
+          <Link
+            to={ROUTE_PATHS.HOME}
+            onClick={() => setMobileMenuOpen(false)}
+            className={getNavLinkClass(ROUTE_PATHS.HOME, true)}
+          >
+            Inicio
+          </Link>
+          <Link
+            to={ROUTE_PATHS.SERVICES}
+            onClick={() => setMobileMenuOpen(false)}
+            className={getNavLinkClass(ROUTE_PATHS.SERVICES, true)}
+          >
+            Servicios
+          </Link>
+          <Link
+            to={ROUTE_PATHS.CONTACT}
+            onClick={() => setMobileMenuOpen(false)}
+            className={getNavLinkClass(ROUTE_PATHS.CONTACT, true)}
+          >
+            Contacto
+          </Link>
+          <Link
+            to={ROUTE_PATHS.ABOUT}
+            onClick={() => setMobileMenuOpen(false)}
+            className={getNavLinkClass(ROUTE_PATHS.ABOUT, true)}
+          >
+            Sobre Nosotros
+          </Link>
+          <Link
+            to={ROUTE_PATHS.TESTIMONIALS}
+            onClick={() => setMobileMenuOpen(false)}
+            className={getNavLinkClass(ROUTE_PATHS.TESTIMONIALS, true)}
+          >
+            Testimonios
+          </Link>
           <div className={styles.mobileActions}>
-            <Button type="default" className={styles.mobileLoginButton} onClick={handleLoginClick} block>
-              Login
-            </Button>
-            <Button type="primary" className={styles.mobileBookButton} onClick={handleBookAppointment} block>
-              Book Appointment
-            </Button>
+            {isAuthenticated ? (
+              <UserMenu />
+            ) : (
+              <>
+                {/* <Button type="default" className={styles.mobileLoginButton} onClick={handleLoginClick} block>
+                  Login
+                </Button> */}
+                <Button type="primary" className={styles.mobileBookButton} onClick={handleBookAppointment} block>
+                  Reservar Cita
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </Drawer>
