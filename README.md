@@ -37,6 +37,22 @@ The app will be available at `http://localhost:5173` by default.
 
 This project supports multiple deployment methods:
 
+### Vercel (Recommended)
+
+The easiest and fastest way to deploy this application:
+
+1. **Quick Deploy**: Connect your GitHub repository to Vercel
+2. **Auto-Deploy**: Automatic deployments on every push to main
+3. **Preview Deployments**: Each PR gets a unique preview URL
+4. **Zero Config**: Settings auto-detected from `vercel.json`
+
+**Documentation**:
+- [Quick Start Guide](./docs/VERCEL_QUICK_START.md) - Deploy in 5 minutes
+- [Full Deployment Guide](./docs/VERCEL_DEPLOYMENT.md) - Complete instructions
+- [Readiness Assessment](./docs/VERCEL_READINESS_ASSESSMENT.md) - Technical review
+
+**Deploy to Vercel**: [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/NaranjoSolutions/orthspine-web-react)
+
 ### GitHub Pages (Automated)
 
 The application automatically deploys to GitHub Pages when you push to release branches:
@@ -54,10 +70,20 @@ The application automatically deploys to GitHub Pages when you push to release b
 
 Built files can also be deployed to AWS S3 and served via CloudFront.
 
-### Optional: Set Up a Custom Domain
+### Environment Variables
 
-- For GitHub Pages: Configure a custom domain in repository Settings > Pages
-- For AWS: Map your domain to the CloudFront distribution for a branded URL
+All deployment methods require the following environment variables:
+
+- `VITE_BASE_API_URL`: Your production API endpoint
+- `VITE_API_VERSION`: API version path (defaults to `/api/v1`)
+
+See `.env.production.example` for a template.
+
+### Custom Domain
+
+- **Vercel**: Automatic SSL, configure in project settings
+- **GitHub Pages**: Configure in repository Settings > Pages
+- **AWS**: Map domain to CloudFront distribution
 
 ## Project Structure
 
