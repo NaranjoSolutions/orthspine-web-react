@@ -6,6 +6,7 @@ import { ROUTE_PATHS } from '@/routing/config/routePaths';
 import { useAppSelector } from '@/store';
 import { UserMenu } from './user-menu';
 import styles from './Navbar.module.scss';
+import logoSvg from '@/assets/logo/logo.svg';
 
 const { Header } = Layout;
 
@@ -50,7 +51,7 @@ export const Navbar: React.FC = () => {
     <Header className={styles.navbar}>
       <div className={styles.container}>
         <div className={styles.logo} onClick={() => navigate(ROUTE_PATHS.HOME)}>
-          <img src="/src/assets/logo/logo.svg" alt="Orthopedic Spine Logo" className={styles.logoImage} />
+          <img src={logoSvg} alt="Orthopedic Spine Logo" className={styles.logoImage} />
           <span className={styles.logoText}>Orthopedic Spine</span>
         </div>
 
