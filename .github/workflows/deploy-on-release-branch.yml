@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages on Release Branch
+name: Deploy to GitHub Pages on Release Branch Push
 
 on:
   push:
