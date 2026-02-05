@@ -1,0 +1,32 @@
+# Files and directories to ignore during Vercel deployment
+# This optimizes deployment speed and size
+
+# Documentation
+docs/
+README.md
+
+# Development files
+.env.development
+.env.localdev
+.env.local
+
+# Docker files
+Dockerfile
+docker-compose.yml
+nginx/
+
+# Editor directories
+.vscode/
+.idea/
+
+# CI/CD
+.github/
+
+# Test files
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+
+# Source maps (optional - remove this line if you want source maps in production)
+# **/*.map
