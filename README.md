@@ -35,18 +35,37 @@ The app will be available at `http://localhost:5173` by default.
 
 ## Deployment
 
-This project is set up for CI/CD. Built files are automatically deployed to AWS S3 and served via CloudFront.
+This project supports multiple deployment methods:
+
+### GitHub Pages (Automated)
+
+The application automatically deploys to GitHub Pages when you push to release branches:
+
+1. **Trigger**: Push to any branch matching `release/v*.*.*` (e.g., `release/v1.0.0`)
+2. **Process**: 
+   - GitHub Actions workflow builds the application
+   - Deploys to the `gh-pages` branch
+   - Available at: `https://[username].github.io/[repository-name]/`
+3. **Status**: Check the Actions tab for deployment status
+
+[![Deploy to GitHub Pages](https://github.com/NaranjoSolutions/orthspine-web-react/actions/workflows/deploy-on-release-branch.yml/badge.svg)](https://github.com/NaranjoSolutions/orthspine-web-react/actions/workflows/deploy-on-release-branch.yml)
+
+### AWS S3/CloudFront
+
+Built files can also be deployed to AWS S3 and served via CloudFront.
 
 ### Optional: Set Up a Custom Domain
 
-- Map your domain to the CloudFront distribution for a branded URL.
+- For GitHub Pages: Configure a custom domain in repository Settings > Pages
+- For AWS: Map your domain to the CloudFront distribution for a branded URL
 
 ## Project Structure
 
 - `src/` — Main source code (components, pages, hooks, store, assets)
 - `public/` — Static assets
-- `build/` — Production build output
+- `dist/` — Production build output (created during build)
 - `nginx/` — Nginx configuration for deployment
+- `.github/workflows/` — GitHub Actions workflows for CI/CD
 
 ## Contributing
 
