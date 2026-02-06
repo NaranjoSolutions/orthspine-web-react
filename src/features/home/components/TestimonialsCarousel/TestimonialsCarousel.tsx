@@ -6,6 +6,11 @@ import { patientTestimonials } from '@/shared/resources/testimonials/testimonial
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
 import styles from './TestimonialsCarousel.module.scss';
 
+// Carousel constants
+const CARD_WIDTH = 420; // Base card width in pixels (desktop)
+const CARD_GAP = 24; // Gap between cards (spacing-lg)
+const SCROLL_DISTANCE = CARD_WIDTH + CARD_GAP; // Total scroll distance per navigation
+
 /**
  * TestimonialsCarousel Component
  * Displays patient testimonials in a horizontal scrolling carousel
@@ -27,10 +32,9 @@ export const TestimonialsCarousel: React.FC = () => {
   const handlePrevious = useCallback(() => {
     if (trackRef.current) {
       setIsManuallyPaused(true);
-      const cardWidth = 444; // Card width + gap
       const currentScroll = trackRef.current.scrollLeft;
       trackRef.current.scrollTo({
-        left: currentScroll - cardWidth,
+        left: currentScroll - SCROLL_DISTANCE,
         behavior: 'smooth',
       });
     }
@@ -39,10 +43,9 @@ export const TestimonialsCarousel: React.FC = () => {
   const handleNext = useCallback(() => {
     if (trackRef.current) {
       setIsManuallyPaused(true);
-      const cardWidth = 444; // Card width + gap
       const currentScroll = trackRef.current.scrollLeft;
       trackRef.current.scrollTo({
-        left: currentScroll + cardWidth,
+        left: currentScroll + SCROLL_DISTANCE,
         behavior: 'smooth',
       });
     }
