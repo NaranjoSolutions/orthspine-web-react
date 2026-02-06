@@ -55,9 +55,9 @@ export const TeamSection: React.FC = () => {
         </div>
         <div className={styles.teamGrid}>
           <TeamMember
-            name="Dr. Aaron Fallas"
-            title="Fisioterapeuta Principal, DPT"
-            description="Con más de 15 años de experiencia clínica, el Dr. Fallas se especializa en terapia manual y técnicas avanzadas de alineación espinal. Se dedica a proporcionar planes de atención compasivos, basados en evidencia y personalizados para cada paciente en Orthopedic Spine."
+            name="Lic. Aaron Fallas"
+            title="Fisioterapeuta Principal"
+            description="Se especializa en el diagnóstico y tratamiento integral de patologías ortopédicas y neuroquirúrgicas, ofreciendo atención médica de alta calidad con un enfoque centrado en el bienestar del paciente."
             certifications={['Certificado en Terapia Manual', 'Especialista Clínico Ortopédico']}
             image={teamMemberImage}
           />

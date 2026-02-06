@@ -4,7 +4,7 @@ import {
   StorySection,
   ValuesSection,
   TeamSection,
-  CertificationsSection,
+  // CertificationsSection,
   CTASection,
 } from '@/features/about-us/components';
 import styles from './AboutPage.module.scss';
@@ -28,7 +28,7 @@ export const AboutPage: React.FC = () => {
       <StorySection />
       <ValuesSection />
       <TeamSection />
-      <CertificationsSection />
+      {/* <CertificationsSection /> */}
       <CTASection />
     </div>
   );
