@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_PATHS } from '@/routing/config/routePaths';
+import { useScrollToSection } from '@/shared/hooks';
 import styles from './RecoveryJourney.module.scss';
 
 /**
@@ -16,13 +17,15 @@ import styles from './RecoveryJourney.module.scss';
  */
 export const RecoveryJourney: React.FC = () => {
   const navigate = useNavigate();
+  const { scrollToSection } = useScrollToSection();
 
   const handleScheduleAppointment = () => {
     navigate(ROUTE_PATHS.BOOK_APPOINTMENT);
   };
 
   const handleLearnMore = () => {
-    navigate(ROUTE_PATHS.SERVICES);
+    // Scroll to services section on the home page
+    scrollToSection('services-section');
   };
 
   return (

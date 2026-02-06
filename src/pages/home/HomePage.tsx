@@ -5,6 +5,7 @@ import { ServicesCarousel } from '@/features/home/components/ServicesCarousel';
 import styles from './HomePage.module.scss';
 import { VisitOurClinic } from '@/features/home/components/VisitOurClinic';
 import { RecoveryJourney } from '@/features/home/components/RecoveryJourney';
+import { useScrollToSection } from '@/shared/hooks';
 
 /**
  * HomePage Component
@@ -20,6 +21,9 @@ import { RecoveryJourney } from '@/features/home/components/RecoveryJourney';
  * - Recovery Journey call-to-action section
  */
 export const HomePage: React.FC = () => {
+  // Initialize scroll hook to handle hash-based navigation
+  useScrollToSection();
+
   return (
     <div className={styles.homePage}>
       <HomeHeroSection />

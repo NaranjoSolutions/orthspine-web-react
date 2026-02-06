@@ -3,6 +3,7 @@ import { TestimonialsOverview } from '@/features/testimonials/components/Testimo
 import { TestimonialsList } from '@/features/testimonials/components/TestimonialsList';
 import { TestimonialsCTA } from '@/features/testimonials/components/TestimonialsCTA';
 import { patientTestimonials } from '@/shared/resources/testimonials/testimonials';
+import { useScrollToSection } from '@/shared/hooks';
 import styles from './TestimonialsPage.module.scss';
 
 /**
@@ -16,6 +17,9 @@ import styles from './TestimonialsPage.module.scss';
  * - Responsive design
  */
 export const TestimonialsPage: React.FC = () => {
+  // Initialize scroll hook to handle page navigation
+  useScrollToSection();
+
   // Calculate rating statistics
   const totalReviews = patientTestimonials.length;
 
