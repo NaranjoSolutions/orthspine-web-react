@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
 /**
@@ -32,15 +32,15 @@ export const ScrollToTop = () => {
   const { pathname } = useLocation();
   const prevPathnameRef = useRef<string | null>(null);
 
+  // Memoize the prefers-reduced-motion check to avoid repeated DOM queries
+  const prefersReducedMotion = useMemo(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches, []);
+
   useEffect(() => {
     /**
      * Only scroll to top when pathname changes
      * Skip if only the hash changed (same page navigation)
      */
     if (prevPathnameRef.current !== pathname) {
-      // Check for reduced motion preference for accessibility (memoized in ref)
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
       window.scrollTo({
         top: 0,
         left: 0,
@@ -49,7 +49,7 @@ export const ScrollToTop = () => {
 
       prevPathnameRef.current = pathname;
     }
-  }, [pathname]);
+  }, [pathname, prefersReducedMotion]);
 
   // This component renders nothing
   return null;
