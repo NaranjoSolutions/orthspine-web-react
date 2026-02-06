@@ -1,5 +1,5 @@
 import React from 'react';
-import { clinicInformation } from '@/shared/resources/clinic-information';
+import { clinicInformation, parseScheduleEntry } from '@/shared/resources/clinic-information';
 import styles from './OperationalHours.module.scss';
 
 /**
@@ -12,17 +12,8 @@ import styles from './OperationalHours.module.scss';
  */
 export const OperationalHours: React.FC = () => {
   // Parse schedule from shared clinic information
-  // Schedule format: ["Lunes a Viernes: 8:00 am - 5:30 pm", "Sábados: 8:30 am - 12:00 pm"]
-  const schedule = clinicInformation.schedule.map((item) => {
-    const colonIndex = item.indexOf(':');
-    if (colonIndex === -1) {
-      return { day: item, hours: '' };
-    }
-    return {
-      day: item.substring(0, colonIndex).trim(),
-      hours: item.substring(colonIndex + 1).trim(),
-    };
-  });
+  // Schedule format: ["Todos los días: Abierto 24/7"] or multiple entries like ["Lunes a Viernes: 8:00 am - 5:30 pm", "Sábados: 8:30 am - 12:00 pm"]
+  const schedule = clinicInformation.schedule.map((item) => parseScheduleEntry(item));
 
   return (
     <div className={styles.operationalHours}>
@@ -31,7 +22,7 @@ export const OperationalHours: React.FC = () => {
       <div className={styles.scheduleList}>
         {schedule.map((item, index) => (
           <div key={index} className={styles.scheduleItem}>
-            <span className={styles.day}>{item.day}</span>
+            <span className={styles.day}>{item.label}</span>
             <span className={styles.hours}>{item.hours}</span>
           </div>
         ))}

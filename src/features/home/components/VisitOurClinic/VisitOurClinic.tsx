@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'antd';
 import { ClockCircleOutlined, EnvironmentOutlined, PhoneOutlined } from '@ant-design/icons';
 import 'leaflet/dist/leaflet.css';
-import { clinicInformation } from '@/shared/resources/clinic-information';
+import { clinicInformation, parseScheduleEntry } from '@/shared/resources/clinic-information';
 import styles from './VisitOurClinic.module.scss';
 
 // Fix for default marker icon in react-leaflet
@@ -73,9 +73,14 @@ export const VisitOurClinic: React.FC = () => {
               </div>
               <h3 className={styles.infoLabel}>Horario de Atención</h3>
               <div className={styles.infoContent}>
-                <p className={styles.infoValue}>Lun - Vie: 8:00 - 19:00</p>
-                <p className={styles.infoValue}>Sábado: 9:00 - 14:00</p>
-                <p className={styles.infoValue}>Domingo: Cerrado</p>
+                {clinicInformation.schedule.map((scheduleItem, index) => {
+                  const { hours } = parseScheduleEntry(scheduleItem);
+                  return (
+                    <p key={index} className={styles.infoValue}>
+                      {hours}
+                    </p>
+                  );
+                })}
               </div>
             </div>
 
