@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { CheckOutlined } from '@ant-design/icons';
 import styles from './ServiceCard.module.scss';
@@ -16,7 +15,7 @@ interface ServiceCardProps {
 /**
  * Enhanced ServiceCard Component
  * Displays a service card with full-width image, gradient overlay, improved typography,
- * icon-based bullet list, and ghost button CTA
+ * icon-based bullet list, and fully clickable card area
  *
  * Features:
  * - Full-width image with fixed height and top rounded corners
@@ -24,8 +23,8 @@ interface ServiceCardProps {
  * - Improved typography and spacing
  * - Sentence-case section label
  * - Icon-based bullet list using CheckOutlined
- * - Ghost button CTA in brand color
- * - Card hover effects (elevation, translate, image scale)
+ * - Entire card is clickable for navigation
+ * - Card hover effects (elevation, translate, image scale, cursor pointer)
  * - Consistent padding, background, border, shadow for medical aesthetic
  * - Accessible: semantic structure, focus states, keyboard navigation
  *
@@ -46,12 +45,26 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  const handleLearnMore = () => {
+  const handleCardClick = () => {
     navigate(`/services/${serviceId}`);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      navigate(`/services/${serviceId}`);
+    }
+  };
+
   return (
-    <article className={styles.serviceCard}>
+    <article
+      className={styles.serviceCard}
+      onClick={handleCardClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label={`Ver más sobre ${title}`}
+    >
       {/* Full-width image with gradient overlay */}
       <div className={styles.imageContainer}>
         <img src={image} alt={alt} className={styles.cardImage} />
@@ -77,14 +90,9 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
           </div>
         )}
 
-        <Button
-          type="default"
-          ghost
-          className={styles.learnMoreButton}
-          onClick={handleLearnMore}
-        >
+        <div className={styles.ctaIndicator} aria-hidden="true">
           Saber Más
-        </Button>
+        </div>
       </div>
     </article>
   );

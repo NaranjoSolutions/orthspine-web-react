@@ -9,10 +9,10 @@
  * - Improved typography and spacing for medical aesthetic
  * - Sentence-case section label
  * - Icon-based bullet list
- * - Ghost button CTA in brand color with consistent sizing
+ * - Entire card is clickable with cursor pointer
  * - Card hover effects with elevation and image scale
  * - Consistent padding, background, border, shadow
- * - Focus states for accessibility
+ * - Focus states for accessibility (keyboard navigation)
  */
 
 .serviceCard {
@@ -28,12 +28,28 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  cursor: pointer;
 
   // Hover state with elevation
   &:hover {
     transform: translateY(-6px);
     box-shadow: $shadow-xl;
     border-color: $color-gray-300;
+  }
+
+  // Focus state for keyboard navigation
+  &:focus {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
   }
 
   @media (max-width: $breakpoint-md) {
@@ -150,31 +166,24 @@
   flex-shrink: 0;
 }
 
-// Ghost button CTA in brand color with consistent sizing
-.learnMoreButton {
+// CTA indicator (visual only, not interactive since entire card is clickable)
+.ctaIndicator {
   margin-top: auto;
   width: 100%;
   height: $button-height-md;
-  border-color: $color-primary;
+  border: 1px solid $color-primary;
   color: $color-primary;
   font-weight: $font-weight-semibold;
   font-size: $font-size-base;
-  transition: background-color $transition-base, border-color $transition-base, color $transition-base,
-    transform $transition-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-radius-md;
+  transition: background-color $transition-base, color $transition-base, transform $transition-base;
 
-  &:hover {
+  .serviceCard:hover & {
     background-color: $color-primary;
-    border-color: $color-primary;
     color: $color-white;
     transform: translateY(-1px);
-  }
-
-  &:focus {
-    outline: 2px solid $color-primary;
-    outline-offset: 2px;
-  }
-
-  &:active {
-    transform: translateY(0);
   }
 }
