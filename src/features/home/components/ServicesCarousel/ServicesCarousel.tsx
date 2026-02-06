@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { ServiceCard } from '../ServiceCard';
 import { allClinicServices } from '@/shared/resources/services/services';
@@ -9,6 +9,7 @@ import styles from './ServicesCarousel.module.scss';
 const CARD_WIDTH = 350; // Base card width in pixels
 const CARD_GAP = 24; // Gap between cards (spacing-lg)
 const SCROLL_DISTANCE = CARD_WIDTH + CARD_GAP; // Total scroll distance per navigation
+const RESUME_DELAY = 3000; // Resume autoplay after 3 seconds of manual interaction
 
 /**
  * ServicesCarousel Component
@@ -18,16 +19,40 @@ const SCROLL_DISTANCE = CARD_WIDTH + CARD_GAP; // Total scroll distance per navi
  * - Auto-scrolls from left to right continuously
  * - Manual navigation with Previous/Next buttons
  * - Pauses animation on hover or manual interaction
- * - Resumes animation when mouse leaves
+ * - Resumes animation automatically after brief delay
  * - Infinite loop by duplicating service cards
  */
 export const ServicesCarousel: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [isManuallyPaused, setIsManuallyPaused] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
+  const resumeTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Triple the services for truly seamless infinite scroll
   const extendedServices = [...allClinicServices, ...allClinicServices, ...allClinicServices];
+
+  // Clear any existing resume timer
+  const clearResumeTimer = useCallback(() => {
+    if (resumeTimerRef.current) {
+      clearTimeout(resumeTimerRef.current);
+      resumeTimerRef.current = null;
+    }
+  }, []);
+
+  // Resume autoplay after delay
+  const scheduleResume = useCallback(() => {
+    clearResumeTimer();
+    resumeTimerRef.current = setTimeout(() => {
+      setIsManuallyPaused(false);
+    }, RESUME_DELAY);
+  }, [clearResumeTimer]);
+
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => {
+      clearResumeTimer();
+    };
+  }, [clearResumeTimer]);
 
   const handlePrevious = useCallback(() => {
     if (trackRef.current) {
@@ -37,8 +62,9 @@ export const ServicesCarousel: React.FC = () => {
         left: currentScroll - SCROLL_DISTANCE,
         behavior: 'smooth',
       });
+      scheduleResume();
     }
-  }, []);
+  }, [scheduleResume]);
 
   const handleNext = useCallback(() => {
     if (trackRef.current) {
@@ -48,8 +74,9 @@ export const ServicesCarousel: React.FC = () => {
         left: currentScroll + SCROLL_DISTANCE,
         behavior: 'smooth',
       });
+      scheduleResume();
     }
-  }, []);
+  }, [scheduleResume]);
 
   return (
     <section className={styles.servicesSection}>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { TestimonialCard } from '../TestimonialCard';
@@ -10,6 +10,7 @@ import styles from './TestimonialsCarousel.module.scss';
 const CARD_WIDTH = 420; // Base card width in pixels (desktop)
 const CARD_GAP = 24; // Gap between cards (spacing-lg)
 const SCROLL_DISTANCE = CARD_WIDTH + CARD_GAP; // Total scroll distance per navigation
+const RESUME_DELAY = 3000; // Resume autoplay after 3 seconds of manual interaction
 
 /**
  * TestimonialsCarousel Component
@@ -19,15 +20,40 @@ const SCROLL_DISTANCE = CARD_WIDTH + CARD_GAP; // Total scroll distance per navi
  * - Horizontal scrolling display
  * - Manual navigation with Previous/Next buttons
  * - Pauses animation on hover or manual interaction
+ * - Resumes animation automatically after brief delay
  * - "View more" link to testimonials page
  */
 export const TestimonialsCarousel: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [isManuallyPaused, setIsManuallyPaused] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
+  const resumeTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Triple the testimonials for seamless infinite scroll
   const extendedTestimonials = [...patientTestimonials, ...patientTestimonials, ...patientTestimonials];
+
+  // Clear any existing resume timer
+  const clearResumeTimer = useCallback(() => {
+    if (resumeTimerRef.current) {
+      clearTimeout(resumeTimerRef.current);
+      resumeTimerRef.current = null;
+    }
+  }, []);
+
+  // Resume autoplay after delay
+  const scheduleResume = useCallback(() => {
+    clearResumeTimer();
+    resumeTimerRef.current = setTimeout(() => {
+      setIsManuallyPaused(false);
+    }, RESUME_DELAY);
+  }, [clearResumeTimer]);
+
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => {
+      clearResumeTimer();
+    };
+  }, [clearResumeTimer]);
 
   const handlePrevious = useCallback(() => {
     if (trackRef.current) {
@@ -37,8 +63,9 @@ export const TestimonialsCarousel: React.FC = () => {
         left: currentScroll - SCROLL_DISTANCE,
         behavior: 'smooth',
       });
+      scheduleResume();
     }
-  }, []);
+  }, [scheduleResume]);
 
   const handleNext = useCallback(() => {
     if (trackRef.current) {
@@ -48,8 +75,9 @@ export const TestimonialsCarousel: React.FC = () => {
         left: currentScroll + SCROLL_DISTANCE,
         behavior: 'smooth',
       });
+      scheduleResume();
     }
-  }, []);
+  }, [scheduleResume]);
 
   return (
     <section className={styles.testimonialsSection}>
