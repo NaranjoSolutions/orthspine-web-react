@@ -79,7 +79,7 @@ export const ServicesCarousel: React.FC = () => {
   }, [scheduleResume]);
 
   return (
-    <section className={styles.servicesSection}>
+    <section id="services-section" className={styles.servicesSection}>
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={styles.title}>Nuestros Servicios</h2>

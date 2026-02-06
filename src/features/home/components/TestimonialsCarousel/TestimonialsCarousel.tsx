@@ -80,7 +80,7 @@ export const TestimonialsCarousel: React.FC = () => {
   }, [scheduleResume]);
 
   return (
-    <section className={styles.testimonialsSection}>
+    <section id="testimonials-section" className={styles.testimonialsSection}>
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={styles.title}>Testimonios de Pacientes</h2>

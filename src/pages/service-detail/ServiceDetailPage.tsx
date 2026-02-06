@@ -7,6 +7,7 @@ import { ComprehensiveDescription } from '@/features/service-details/components/
 import { ConditionsTreated } from '@/features/service-details/components/ConditionsTreated';
 import { TreatmentApproach } from '@/features/service-details/components/TreatmentApproach';
 import { ServiceDetailCTA } from '@/features/service-details/components/ServiceDetailCTA';
+import { useScrollToSection } from '@/shared/hooks';
 import styles from './ServiceDetailPage.module.scss';
 
 /**
@@ -26,6 +27,9 @@ import styles from './ServiceDetailPage.module.scss';
 export const ServiceDetailPage: React.FC = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
   const navigate = useNavigate();
+
+  // Initialize scroll hook to handle page navigation
+  useScrollToSection();
 
   // Find the service by ID
   const service = allClinicServices.find((s) => s.serviceId === serviceId);

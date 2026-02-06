@@ -2,6 +2,7 @@ import React from 'react';
 import { allClinicServices } from '@/shared/resources/services/services';
 import { ServiceCard } from '@/features/home/components/ServiceCard';
 import { ServiceCTA } from '@/features/services/components/ServiceCTA';
+import { useScrollToSection } from '@/shared/hooks';
 import styles from './ServicesPage.module.scss';
 
 /**
@@ -14,6 +15,9 @@ import styles from './ServicesPage.module.scss';
  * - Contact section at the bottom
  */
 export const ServicesPage: React.FC = () => {
+  // Initialize scroll hook to handle page navigation
+  useScrollToSection();
+
   return (
     <div className={styles.servicesPage}>
       {/* Hero Section */}
