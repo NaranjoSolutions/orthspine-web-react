@@ -19,6 +19,13 @@ const SCROLL_OFFSET_PADDING = 20;
 const TOTAL_SCROLL_OFFSET = NAVBAR_HEIGHT + SCROLL_OFFSET_PADDING;
 
 /**
+ * Delay in milliseconds before executing scroll
+ * Allows React to complete rendering and DOM layout calculations
+ * 100ms provides a safe buffer for most scenarios without noticeable lag
+ */
+const DOM_READY_DELAY = 100;
+
+/**
  * useScrollToSection Hook
  * Handles smooth scrolling to page sections with proper offset for fixed header
  *
@@ -46,7 +53,9 @@ export const useScrollToSection = () => {
    * Scrolls to a section by ID with proper offset
    *
    * @param sectionId - The ID of the section to scroll to
-   * @param offset - Optional custom offset (defaults to TOTAL_SCROLL_OFFSET)
+   * @param offset - Optional custom offset (defaults to TOTAL_SCROLL_OFFSET).
+   *                 Use a custom offset when targeting sections with different header heights
+   *                 or when additional spacing is needed for specific layouts.
    */
   const scrollToSection = useCallback((sectionId: string, offset: number = TOTAL_SCROLL_OFFSET) => {
     // Small delay to ensure DOM is ready
@@ -64,7 +73,7 @@ export const useScrollToSection = () => {
           behavior: prefersReducedMotion ? 'auto' : 'smooth',
         });
       }
-    }, 100);
+    }, DOM_READY_DELAY);
   }, []);
 
   /**
