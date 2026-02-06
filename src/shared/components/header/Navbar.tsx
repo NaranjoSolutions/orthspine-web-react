@@ -51,7 +51,7 @@ export const Navbar: React.FC = () => {
     <Header className={styles.navbar}>
       <div className={styles.container}>
         <div className={styles.logo} onClick={() => navigate(ROUTE_PATHS.HOME)}>
-          <img src={logoSvg} alt="Orthopedic Spine Logo" className={styles.logoImage} />
+          <img src={logoSvg} alt="Orthopedic Spine Home" className={styles.logoImage} />
         </div>
 
         <nav className={styles.nav}>
@@ -99,7 +99,7 @@ export const Navbar: React.FC = () => {
         title={
           <div className={styles.drawerHeader}>
             <div className={styles.logo} onClick={() => navigate(ROUTE_PATHS.HOME)}>
-              <img src={logoSvg} alt="Orthopedic Spine Logo" className={styles.logoImage} />
+              <img src={logoSvg} alt="Orthopedic Spine Home" className={styles.logoImage} />
             </div>
           </div>
         }
