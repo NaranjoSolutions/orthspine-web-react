@@ -6,6 +6,7 @@ import { store } from '@/store/redux/store';
 import { antdTheme } from '@/shared/theme/antd-theme';
 import { ThemeProvider } from '@/shared/theme/theme-context';
 import { AuthInitializer } from '@/features/auth/components/auth-initializer';
+import { ScrollToTop } from '@/routing';
 
 interface AppProvidersProps {
   children: React.ReactNode;
@@ -25,6 +26,7 @@ export const AppProviders: React.FC<AppProvidersProps> = ({ children }) => {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <ScrollToTop />
         <ConfigProvider theme={antdTheme}>
           <ThemeProvider defaultTheme="dark">
             <AuthInitializer>{children}</AuthInitializer>
