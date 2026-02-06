@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, Button } from 'antd';
+import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import { CheckOutlined } from '@ant-design/icons';
 import styles from './ServiceCard.module.scss';
 
 interface ServiceCardProps {
@@ -14,8 +14,20 @@ interface ServiceCardProps {
 }
 
 /**
- * ServiceCard Component
- * Displays a single service card with image, title, description, and Learn More action
+ * Enhanced ServiceCard Component
+ * Displays a service card with full-width image, gradient overlay, improved typography,
+ * icon-based bullet list, and ghost button CTA
+ *
+ * Features:
+ * - Full-width image with fixed height and top rounded corners
+ * - Bottom gradient overlay on image
+ * - Improved typography and spacing
+ * - Sentence-case section label
+ * - Icon-based bullet list using CheckOutlined
+ * - Ghost button CTA in brand color
+ * - Optional card click with hover effects (elevation, translate, image scale)
+ * - Consistent padding, background, border, shadow for medical aesthetic
+ * - Accessible: semantic structure, focus states, keyboard navigation
  *
  * @param title - Service title
  * @param shortDescription - Brief description of the service
@@ -34,37 +46,70 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  const handleLearnMore = () => {
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Prevent navigation if clicking on the button
+    if ((e.target as HTMLElement).closest('button')) {
+      return;
+    }
     navigate(`/services/${serviceId}`);
   };
 
+  const handleLearnMore = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    navigate(`/services/${serviceId}`);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      navigate(`/services/${serviceId}`);
+    }
+  };
+
   return (
-    <Card className={styles.serviceCard} hoverable cover={<img alt={alt} src={image} className={styles.cardImage} />}>
+    <article
+      className={styles.serviceCard}
+      onClick={handleCardClick}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="button"
+      aria-label={`Ver más sobre ${title}`}
+    >
+      {/* Full-width image with gradient overlay */}
+      <div className={styles.imageContainer}>
+        <img src={image} alt={alt} className={styles.cardImage} />
+        <div className={styles.imageGradient} aria-hidden="true" />
+      </div>
+
+      {/* Card content */}
       <div className={styles.cardContent}>
         <h3 className={styles.cardTitle}>{title}</h3>
         <p className={styles.cardDescription}>{shortDescription}</p>
+
         {conditionsTreated && conditionsTreated.length > 0 && (
           <div className={styles.conditionsSection}>
-            <h4 className={styles.conditionsTitle}>CONDICIONES TRATADAS</h4>
-            <ul className={styles.conditionsList}>
+            <h4 className={styles.conditionsTitle}>Condiciones tratadas</h4>
+            <ul className={styles.conditionsList} aria-label="Lista de condiciones tratadas">
               {conditionsTreated.slice(0, 3).map((condition, index) => (
                 <li key={index} className={styles.conditionItem}>
-                  {condition}
+                  <CheckOutlined className={styles.conditionIcon} aria-hidden="true" />
+                  <span>{condition}</span>
                 </li>
               ))}
             </ul>
           </div>
         )}
+
         <Button
-          type="link"
+          type="default"
+          ghost
           className={styles.learnMoreButton}
           onClick={handleLearnMore}
-          icon={<ArrowRightOutlined />}
-          iconPosition="end"
+          aria-label={`Saber más sobre ${title}`}
         >
           Saber Más
         </Button>
       </div>
-    </Card>
+    </article>
   );
 };
