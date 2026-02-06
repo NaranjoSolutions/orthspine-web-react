@@ -82,7 +82,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
           ghost
           className={styles.learnMoreButton}
           onClick={handleLearnMore}
-          aria-label={`Saber más sobre ${title}`}
         >
           Saber Más
         </Button>
