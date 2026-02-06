@@ -134,13 +134,26 @@ window.scrollTo({
 - 100ms delay is negligible for user experience
 - No performance impact on pages not using the hook
 
+## Accessibility Features
+The implementation includes support for users with motion sensitivity:
+
+### Reduced Motion Support
+```typescript
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+window.scrollTo({
+  top: offsetPosition,
+  behavior: prefersReducedMotion ? 'auto' : 'smooth',
+});
+```
+
+When a user has enabled "Reduce Motion" in their system preferences, the hook will use instant scrolling instead of smooth scrolling, respecting their accessibility needs.
+
 ## Future Enhancements
 Potential improvements for future iterations:
-1. Add `prefers-reduced-motion` media query support for accessibility
-2. Add configurable offset per section
-3. Add scroll completion callbacks
-4. Add scroll-spy functionality to highlight active section in navigation
-5. Add unit tests when testing infrastructure is added
+1. Add configurable offset per section
+2. Add scroll completion callbacks
+3. Add scroll-spy functionality to highlight active section in navigation
+4. Add unit tests when testing infrastructure is added
 
 ## Files Changed
 - ✅ `src/shared/hooks/useScrollToSection.ts` (new)
