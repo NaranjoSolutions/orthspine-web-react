@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, Row, Col, Typography, Space } from 'antd';
 import { EnvironmentOutlined, ClockCircleOutlined, PhoneOutlined, MailOutlined } from '@ant-design/icons';
-import { CLINIC_ADDRESS, OPERATING_HOURS } from '../../config/contact.config';
-import { clinicInformation } from '@/shared/resources/clinic-information';
+import { CLINIC_ADDRESS } from '../../config/contact.config';
+import { clinicInformation, parseScheduleEntry } from '@/shared/resources/clinic-information';
 import styles from './ClinicInformationCards.module.scss';
 
 const { Title, Text, Link } = Typography;
@@ -51,18 +51,19 @@ export const ClinicInformationCards: React.FC = () => {
       title: 'Hours of Operation',
       content: (
         <Space direction="vertical" size={4}>
-          <div className={styles.hoursRow}>
-            <Text strong className={styles.hoursLabel}>
-              {OPERATING_HOURS.WEEKDAY.LABEL}:
-            </Text>
-            <Text className={styles.hoursValue}>{OPERATING_HOURS.WEEKDAY.HOURS}</Text>
-          </div>
-          <div className={styles.hoursRow}>
-            <Text strong className={styles.hoursLabel}>
-              {OPERATING_HOURS.WEEKEND.LABEL}:
-            </Text>
-            <Text className={styles.hoursValue}>{OPERATING_HOURS.WEEKEND.HOURS}</Text>
-          </div>
+          {clinicInformation.schedule.map((scheduleItem, index) => {
+            const { label, hours } = parseScheduleEntry(scheduleItem);
+            return (
+              <div key={index} className={styles.hoursRow}>
+                {label && (
+                  <Text strong className={styles.hoursLabel}>
+                    {label}:
+                  </Text>
+                )}
+                <Text className={styles.hoursValue}>{hours}</Text>
+              </div>
+            );
+          })}
         </Space>
       ),
     },
