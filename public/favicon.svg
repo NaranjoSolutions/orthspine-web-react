@@ -1,29 +1,25 @@
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 32 32"
-  width="32"
-  height="32"
->
-  <!-- Spine container -->
-  <rect
-    x="7"
-    y="2"
-    width="12"
-    height="28"
-    rx="6"
-    fill="#CFF5F2"
-  />
-
-  <!-- Vertebrae (reduced count for clarity at small sizes) -->
-  <g fill="#17CFC9">
-    <rect x="10" y="6" width="6" height="4" rx="2" />
-    <rect x="10" y="12" width="6" height="4" rx="2" />
-    <rect x="10" y="18" width="6" height="4" rx="2" />
-  </g>
-
-  <!-- Medical cross -->
-  <g fill="#2F80ED">
-    <rect x="21" y="13" width="2" height="6" rx="1" />
-    <rect x="19" y="15" width="6" height="2" rx="1" />
-  </g>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="spineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1890ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#096dd9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer circle background -->
+  <circle cx="16" cy="16" r="15" fill="#f0f5ff" stroke="#1890ff" stroke-width="1"/>
+  
+  <!-- Stylized spine column -->
+  <path d="M 16 6 L 16 26" stroke="url(#spineGradient)" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Vertebrae discs (simplified for favicon) -->
+  <ellipse cx="16" cy="8" rx="3" ry="1.5" fill="#1890ff" opacity="0.9"/>
+  <ellipse cx="16" cy="12" rx="4" ry="2" fill="#1890ff" opacity="0.85"/>
+  <ellipse cx="16" cy="16" rx="4" ry="2" fill="#1890ff" opacity="0.8"/>
+  <ellipse cx="16" cy="20" rx="4" ry="2" fill="#1890ff" opacity="0.85"/>
+  <ellipse cx="16" cy="24" rx="3" ry="1.5" fill="#1890ff" opacity="0.9"/>
+  
+  <!-- Medical cross accent -->
+  <rect x="15" y="4" width="2" height="4" rx="1" fill="#52c41a"/>
+  <rect x="13.5" y="5.5" width="5" height="1.5" rx="0.75" fill="#52c41a"/>
 </svg>

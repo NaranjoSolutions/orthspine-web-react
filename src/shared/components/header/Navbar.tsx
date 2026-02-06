@@ -100,8 +100,22 @@ export const Navbar: React.FC = () => {
         title={
           <div className={styles.drawerHeader}>
             <div className={styles.logo}>
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <path d="M16 2L4 8v12c0 7.3 5.3 14.1 12 16 6.7-1.9 12-8.7 12-16V8L16 2z" fill="#007BB9" />
+              <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-label="Orthopedic Spine Logo">
+                <defs>
+                  <linearGradient id="spineGradientMobile" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style={{stopColor:'#1890ff',stopOpacity:1}} />
+                    <stop offset="100%" style={{stopColor:'#096dd9',stopOpacity:1}} />
+                  </linearGradient>
+                </defs>
+                <circle cx="16" cy="16" r="15" fill="#f0f5ff" stroke="#1890ff" strokeWidth="1"/>
+                <path d="M 16 6 L 16 26" stroke="url(#spineGradientMobile)" strokeWidth="2" strokeLinecap="round"/>
+                <ellipse cx="16" cy="8" rx="3" ry="1.5" fill="#1890ff" opacity="0.9"/>
+                <ellipse cx="16" cy="12" rx="4" ry="2" fill="#1890ff" opacity="0.85"/>
+                <ellipse cx="16" cy="16" rx="4" ry="2" fill="#1890ff" opacity="0.8"/>
+                <ellipse cx="16" cy="20" rx="4" ry="2" fill="#1890ff" opacity="0.85"/>
+                <ellipse cx="16" cy="24" rx="3" ry="1.5" fill="#1890ff" opacity="0.9"/>
+                <rect x="15" y="4" width="2" height="4" rx="1" fill="#52c41a"/>
+                <rect x="13.5" y="5.5" width="5" height="1.5" rx="0.75" fill="#52c41a"/>
               </svg>
               <span className={styles.logoText}>Orthopedic Spine</span>
             </div>
