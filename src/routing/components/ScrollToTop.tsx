@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 /**
@@ -18,6 +18,7 @@ import { useLocation } from 'react-router-dom';
  * - Scrolls to top when pathname changes
  * - Preserves hash navigation on same page (e.g., /page#section1 -> /page#section2)
  * - Scrolls to top even when navigating with hash (e.g., /page1 -> /page2#section)
+ * - Does not scroll on initial page load/mount
  *
  * @example
  * ```tsx
@@ -30,17 +31,20 @@ import { useLocation } from 'react-router-dom';
  */
 export const ScrollToTop = () => {
   const { pathname } = useLocation();
-  const prevPathnameRef = useRef<string | null>(null);
-
-  // Memoize the prefers-reduced-motion check to avoid repeated DOM queries
-  const prefersReducedMotion = useMemo(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches, []);
+  // Initialize with current pathname to avoid scrolling on mount
+  const prevPathnameRef = useRef<string>(pathname);
 
   useEffect(() => {
     /**
      * Only scroll to top when pathname changes
      * Skip if only the hash changed (same page navigation)
+     * Skip if this is the first render (prevPathnameRef === pathname)
      */
     if (prevPathnameRef.current !== pathname) {
+      // Check for reduced motion preference for accessibility
+      // Checked on each navigation to respect runtime preference changes
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       window.scrollTo({
         top: 0,
         left: 0,
@@ -49,7 +53,7 @@ export const ScrollToTop = () => {
 
       prevPathnameRef.current = pathname;
     }
-  }, [pathname, prefersReducedMotion]);
+  }, [pathname]);
 
   // This component renders nothing
   return null;
