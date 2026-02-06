@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 /**
@@ -15,8 +15,9 @@ import { useLocation } from 'react-router-dom';
  *
  * Architecture:
  * - Uses React Router's useLocation to detect route changes
- * - Runs on every route change (location.pathname change)
- * - Skips scroll reset when only hash changes (for anchor links)
+ * - Scrolls to top when pathname changes
+ * - Preserves hash navigation on same page (e.g., /page#section1 -> /page#section2)
+ * - Scrolls to top even when navigating with hash (e.g., /page1 -> /page2#section)
  *
  * @example
  * ```tsx
@@ -28,15 +29,16 @@ import { useLocation } from 'react-router-dom';
  * ```
  */
 export const ScrollToTop = () => {
-  const { pathname, hash } = useLocation();
+  const { pathname } = useLocation();
+  const prevPathnameRef = useRef<string | null>(null);
 
   useEffect(() => {
     /**
      * Only scroll to top when pathname changes
-     * Skip if navigation is to a hash anchor (same page section)
+     * Skip if only the hash changed (same page navigation)
      */
-    if (!hash) {
-      // Check for reduced motion preference for accessibility
+    if (prevPathnameRef.current !== pathname) {
+      // Check for reduced motion preference for accessibility (memoized in ref)
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       window.scrollTo({
@@ -44,8 +46,10 @@ export const ScrollToTop = () => {
         left: 0,
         behavior: prefersReducedMotion ? 'auto' : 'smooth',
       });
+
+      prevPathnameRef.current = pathname;
     }
-  }, [pathname, hash]);
+  }, [pathname]);
 
   // This component renders nothing
   return null;
