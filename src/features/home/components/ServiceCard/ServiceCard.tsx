@@ -25,7 +25,7 @@ interface ServiceCardProps {
  * - Sentence-case section label
  * - Icon-based bullet list using CheckOutlined
  * - Ghost button CTA in brand color
- * - Optional card click with hover effects (elevation, translate, image scale)
+ * - Card hover effects (elevation, translate, image scale)
  * - Consistent padding, background, border, shadow for medical aesthetic
  * - Accessible: semantic structure, focus states, keyboard navigation
  *
@@ -46,35 +46,12 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  const handleCardClick = (e: React.MouseEvent) => {
-    // Prevent navigation if clicking on the button
-    if ((e.target as HTMLElement).closest('button')) {
-      return;
-    }
+  const handleLearnMore = () => {
     navigate(`/services/${serviceId}`);
-  };
-
-  const handleLearnMore = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    navigate(`/services/${serviceId}`);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      navigate(`/services/${serviceId}`);
-    }
   };
 
   return (
-    <article
-      className={styles.serviceCard}
-      onClick={handleCardClick}
-      onKeyDown={handleKeyDown}
-      tabIndex={0}
-      role="button"
-      aria-label={`Ver más sobre ${title}`}
-    >
+    <article className={styles.serviceCard}>
       {/* Full-width image with gradient overlay */}
       <div className={styles.imageContainer}>
         <img src={image} alt={alt} className={styles.cardImage} />
