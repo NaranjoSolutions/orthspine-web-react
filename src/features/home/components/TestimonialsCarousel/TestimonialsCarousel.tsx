@@ -19,8 +19,8 @@ const RESUME_DELAY = 3000; // Resume autoplay after 3 seconds of manual interact
  * Features:
  * - Horizontal scrolling display
  * - Manual navigation with Previous/Next buttons
- * - Pauses animation on hover or manual interaction
- * - Resumes animation automatically after brief delay
+ * - Pauses animation on hover (resumes on mouse leave)
+ * - Pauses animation on manual navigation (resumes after 3 seconds)
  * - "View more" link to testimonials page
  */
 export const TestimonialsCarousel: React.FC = () => {
