@@ -56,9 +56,12 @@ export const useScrollToSection = () => {
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
 
+        // Check for reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
         window.scrollTo({
           top: offsetPosition,
-          behavior: 'smooth',
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
         });
       }
     }, 100);
@@ -68,9 +71,12 @@ export const useScrollToSection = () => {
    * Scrolls to top of page smoothly
    */
   const scrollToTop = useCallback(() => {
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
     });
   }, []);
 
