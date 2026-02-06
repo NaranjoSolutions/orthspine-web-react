@@ -35,7 +35,7 @@ export const ClinicInformationCards: React.FC = () => {
     {
       id: 'address',
       icon: <EnvironmentOutlined />,
-      title: 'Location',
+      title: 'Ubicación',
       content: (
         <Space direction="vertical" size={4}>
           <Text strong className={styles.clinicName}>
@@ -48,7 +48,7 @@ export const ClinicInformationCards: React.FC = () => {
     {
       id: 'hours',
       icon: <ClockCircleOutlined />,
-      title: 'Hours of Operation',
+      title: 'Horario de Atención',
       content: (
         <Space direction="vertical" size={4}>
           {clinicInformation.schedule.map((scheduleItem, index) => {
@@ -70,7 +70,7 @@ export const ClinicInformationCards: React.FC = () => {
     {
       id: 'phone',
       icon: <PhoneOutlined />,
-      title: 'Phone',
+      title: 'Teléfono',
       content: (
         <Link href={`tel:${clinicInformation.contact.phones[0]}`} className={styles.contactLink}>
           {clinicInformation.contact.phones[0]}
@@ -80,7 +80,7 @@ export const ClinicInformationCards: React.FC = () => {
     {
       id: 'email',
       icon: <MailOutlined />,
-      title: 'Email',
+      title: 'Correo Electrónico',
       content: (
         <Link href={`mailto:${clinicInformation.contact.email}`} className={styles.contactLink}>
           {clinicInformation.contact.email}
@@ -92,7 +92,7 @@ export const ClinicInformationCards: React.FC = () => {
   return (
     <div className={styles.infoCardsContainer}>
       <Title level={2} className={styles.sectionTitle}>
-        Clinic Information
+        Información de la Clínica
       </Title>
       <Space direction="vertical" size="middle" className={styles.cardsGrid}>
         {infoCards.map((card) => (

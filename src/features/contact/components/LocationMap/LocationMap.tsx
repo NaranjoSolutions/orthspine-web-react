@@ -74,10 +74,10 @@ export const LocationMap: React.FC = () => {
 
       <div className={styles.buttonGroup}>
         <Button type="default" size="large" onClick={handleOpenGoogleMaps} className={styles.navButton}>
-          Open in Google Maps
+          Abrir en Google Maps
         </Button>
         <Button type="primary" size="large" onClick={handleOpenWaze} className={styles.navButton}>
-          Open in Waze
+          Abrir en Waze
         </Button>
       </div>
     </div>

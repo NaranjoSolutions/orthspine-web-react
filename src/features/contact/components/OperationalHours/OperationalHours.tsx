@@ -17,7 +17,7 @@ export const OperationalHours: React.FC = () => {
 
   return (
     <div className={styles.operationalHours}>
-      <h2 className={styles.title}>Operational Hours</h2>
+      <h2 className={styles.title}>Horario de Atención</h2>
 
       <div className={styles.scheduleList}>
         {schedule.map((item, index) => (
