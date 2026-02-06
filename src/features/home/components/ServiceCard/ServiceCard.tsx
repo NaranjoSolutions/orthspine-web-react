@@ -65,7 +65,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 
         {conditionsTreated && conditionsTreated.length > 0 && (
           <div className={styles.conditionsSection}>
-            <h4 className={styles.conditionsTitle}>Condiciones tratadas</h4>
+            <p className={styles.conditionsTitle}>Condiciones tratadas</p>
             <ul className={styles.conditionsList} aria-label="Lista de condiciones tratadas">
               {conditionsTreated.slice(0, 3).map((condition, index) => (
                 <li key={index} className={styles.conditionItem}>
