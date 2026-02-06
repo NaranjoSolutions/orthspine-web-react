@@ -45,9 +45,9 @@ To enable anchor navigation, the following section IDs were added:
 
 | Section | ID | Location |
 |---------|----|----|
-| Services Carousel | `services-section` | `ServicesCarousel.tsx` line 82 |
-| Testimonials Carousel | `testimonials-section` | `TestimonialsCarousel.tsx` line 83 |
-| Visit Our Clinic | `contact-section` | Already existed |
+| Services Carousel | `services-section` | `ServicesCarousel.tsx` (main section element) |
+| Testimonials Carousel | `testimonials-section` | `TestimonialsCarousel.tsx` (main section element) |
+| Visit Our Clinic | `contact-section` | `VisitOurClinic.tsx` (already existed) |
 
 ### 3. Behavior Changes
 

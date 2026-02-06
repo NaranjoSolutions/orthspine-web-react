@@ -3,7 +3,10 @@ import { useLocation } from 'react-router-dom';
 
 /**
  * Navbar height constant
- * Must match the height in Navbar.module.scss
+ * Must match the height in Navbar.module.scss (line 7: height: 64px)
+ * If you change the navbar height, update both files:
+ * - src/shared/components/header/Navbar.module.scss
+ * - src/shared/hooks/useScrollToSection.ts
  */
 const NAVBAR_HEIGHT = 64;
 
