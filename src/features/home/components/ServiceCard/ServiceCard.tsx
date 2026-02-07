@@ -15,7 +15,7 @@ interface ServiceCardProps {
 /**
  * Enhanced ServiceCard Component
  * Displays a service card with full-width image, gradient overlay, improved typography,
- * icon-based bullet list, and fully clickable card area
+ * icon-based bullet list, and ghost/outlined button for navigation
  *
  * Features:
  * - Full-width image with fixed height and top rounded corners
@@ -23,10 +23,11 @@ interface ServiceCardProps {
  * - Improved typography and spacing
  * - Sentence-case section label
  * - Icon-based bullet list using CheckOutlined
- * - Entire card is clickable for navigation
- * - Card hover effects (elevation, translate, image scale, cursor pointer)
+ * - Ghost/outlined "Saber Más" button for navigation (border in brand color, subtle hover)
+ * - Card hover effects (elevation, translate, image scale)
  * - Consistent padding, background, border, shadow for medical aesthetic
  * - Accessible: semantic structure, focus states, keyboard navigation
+ * - Single interactive element (button only) to avoid nested interactive element issues
  *
  * @param title - Service title
  * @param shortDescription - Brief description of the service
@@ -45,26 +46,12 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  const handleCardClick = () => {
+  const handleButtonClick = () => {
     navigate(`/services/${serviceId}`);
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      navigate(`/services/${serviceId}`);
-    }
-  };
-
   return (
-    <article
-      className={styles.serviceCard}
-      onClick={handleCardClick}
-      onKeyDown={handleKeyDown}
-      role="button"
-      tabIndex={0}
-      aria-label={`Ver más sobre ${title}`}
-    >
+    <article className={styles.serviceCard}>
       {/* Full-width image with gradient overlay */}
       <div className={styles.imageContainer}>
         <img src={image} alt={alt} className={styles.cardImage} />
@@ -90,9 +77,13 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
           </div>
         )}
 
-        <div className={styles.ctaIndicator} aria-hidden="true">
+        <button
+          className={styles.ctaButton}
+          onClick={handleButtonClick}
+          aria-label={`Ver más sobre ${title}`}
+        >
           Saber Más
-        </div>
+        </button>
       </div>
     </article>
   );

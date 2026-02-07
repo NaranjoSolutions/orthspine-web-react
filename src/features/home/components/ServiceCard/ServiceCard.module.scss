@@ -9,7 +9,7 @@
  * - Improved typography and spacing for medical aesthetic
  * - Sentence-case section label
  * - Icon-based bullet list
- * - Entire card is clickable with cursor pointer
+ * - Ghost/outlined button with brand color border and subtle hover
  * - Card hover effects with elevation and image scale
  * - Consistent padding, background, border, shadow
  * - Focus states for accessibility (keyboard navigation)
@@ -28,28 +28,12 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  cursor: pointer;
 
   // Hover state with elevation
   &:hover {
     transform: translateY(-6px);
     box-shadow: $shadow-xl;
     border-color: $color-gray-300;
-  }
-
-  // Focus state for keyboard navigation
-  &:focus {
-    outline: 2px solid $color-primary;
-    outline-offset: 2px;
-  }
-
-  &:focus:not(:focus-visible) {
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: 2px solid $color-primary;
-    outline-offset: 2px;
   }
 
   @media (max-width: $breakpoint-md) {
@@ -166,24 +150,48 @@
   flex-shrink: 0;
 }
 
-// CTA indicator (visual only, not interactive since entire card is clickable)
-.ctaIndicator {
+// Ghost/outlined button with brand color border and subtle hover
+.ctaButton {
   margin-top: auto;
   width: 100%;
   height: $button-height-md;
   border: 1px solid $color-primary;
+  background-color: transparent;
   color: $color-primary;
   font-weight: $font-weight-semibold;
   font-size: $font-size-base;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  transition: background-color $transition-base, color $transition-base, border-color $transition-base, transform $transition-base;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: $border-radius-md;
-  transition: background-color $transition-base, color $transition-base, transform $transition-base;
 
-  .serviceCard:hover & {
-    background-color: $color-primary;
-    color: $color-white;
+  // Hover state with subtle background
+  &:hover {
+    background-color: rgba($color-primary, 0.08);
+    border-color: $color-primary-dark;
     transform: translateY(-1px);
+  }
+
+  // Active/pressed state
+  &:active {
+    transform: translateY(0);
+    background-color: rgba($color-primary, 0.12);
+  }
+
+  // Focus state for keyboard navigation
+  &:focus {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
   }
 }
