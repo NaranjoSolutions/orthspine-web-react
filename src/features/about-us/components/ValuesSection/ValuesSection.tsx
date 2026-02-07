@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card } from 'antd';
-import { HeartOutlined, ExperimentOutlined, RiseOutlined } from '@ant-design/icons';
+import { HeartOutlined, ExperimentOutlined, RiseOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import styles from './ValuesSection.module.scss';
 
 interface ValueCardProps {
-  icon: 'patient-centered' | 'evidence-based' | 'continuous-improvement';
+  icon: 'patient-centered' | 'evidence-based' | 'continuous-improvement' | 'active-recovery';
   title: string;
   description: string;
 }
@@ -13,6 +13,7 @@ const iconMap = {
   'patient-centered': HeartOutlined,
   'evidence-based': ExperimentOutlined,
   'continuous-improvement': RiseOutlined,
+  'active-recovery': ThunderboltOutlined,
 };
 
 /**
@@ -39,7 +40,7 @@ const ValueCard: React.FC<ValueCardProps> = ({ icon, title, description }) => {
 
 /**
  * ValuesSection Component
- * Displays the three core values of the clinic
+ * Displays the core values of the clinic
  * @returns React component with core values cards
  */
 export const ValuesSection: React.FC = () => {
@@ -62,6 +63,11 @@ export const ValuesSection: React.FC = () => {
             icon="continuous-improvement"
             title="Mejora Continua"
             description="Invertimos en educación continua del personal y tecnología médica de vanguardia cada año."
+          />
+          <ValueCard
+            icon="active-recovery"
+            title="Vida Activa Durante la Recuperación"
+            description="Creemos que el reposo absoluto no siempre es la mejor solución. Diseñamos planes que permiten al paciente continuar con sus actividades cotidianas de forma segura mientras se recupera progresivamente."
           />
         </div>
       </div>
