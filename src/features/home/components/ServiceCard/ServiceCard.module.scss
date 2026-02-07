@@ -156,30 +156,26 @@
   flex-shrink: 0;
 }
 
-// Ghost/outlined button in brand color
+// Visual CTA indicator (not interactive - card handles navigation)
 .learnMoreButton {
   align-self: flex-start;
   font-size: $font-size-base;
   font-weight: $font-weight-semibold;
   color: $color-primary;
-  border-color: $color-primary;
+  border: 1px solid $color-primary;
+  border-radius: $border-radius-sm;
   margin-top: auto;
   display: inline-flex;
   align-items: center;
   gap: $spacing-xs;
-  height: auto;
   padding: $spacing-sm $spacing-lg;
   transition: all $transition-base;
+  pointer-events: none; // Prevent interference with card click
 
-  &:hover {
+  .serviceCard:hover & {
     color: $color-primary-dark;
     border-color: $color-primary-dark;
     background: rgba($color-primary, 0.04);
-  }
-
-  &:focus {
-    color: $color-primary;
-    border-color: $color-primary;
   }
 
   :global(.anticon) {
@@ -187,7 +183,7 @@
     transition: transform $transition-base;
   }
 
-  &:hover :global(.anticon) {
+  .serviceCard:hover & :global(.anticon) {
     transform: translateX(3px);
   }
 

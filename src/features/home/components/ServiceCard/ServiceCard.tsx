@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
 import styles from './ServiceCard.module.scss';
@@ -47,7 +46,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
   };
 
   return (
-    <article
+    <div
       className={styles.serviceCard}
       onClick={handleCardClick}
       onKeyDown={handleKeyDown}
@@ -81,19 +80,12 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
           </div>
         )}
 
-        {/* CTA Button */}
-        <Button
-          type="default"
-          ghost
-          className={styles.learnMoreButton}
-          icon={<ArrowRightOutlined />}
-          iconPosition="end"
-          tabIndex={-1}
-          aria-hidden="true"
-        >
-          Saber Más
-        </Button>
+        {/* CTA Button - Visual indicator only, card handles navigation */}
+        <div className={styles.learnMoreButton} aria-hidden="true">
+          <span>Saber Más</span>
+          <ArrowRightOutlined />
+        </div>
       </div>
-    </article>
+    </div>
   );
 };
