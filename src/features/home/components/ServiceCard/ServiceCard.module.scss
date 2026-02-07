@@ -1,65 +1,105 @@
 @use '@/styles/abstracts' as *;
 
 .serviceCard {
-  width: 350px;
+  width: 100%;
+  max-width: 400px;
   height: 100%;
   border-radius: $border-radius-lg;
   overflow: hidden;
-  transition: all $transition-base;
+  transition: all $transition-slow;
   box-shadow: $shadow-md;
   display: flex;
   flex-direction: column;
+  background: $color-gray-50;
+  border: 1px solid $color-gray-200;
+  cursor: pointer;
+  position: relative;
 
+  // Accessibility: Focus state
+  &:focus {
+    outline: 3px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  // Hover state with elevation and translation
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-8px);
     box-shadow: $shadow-xl;
+    border-color: $color-gray-300;
   }
 
-  :global(.ant-card-cover) {
-    height: 200px;
-    overflow: hidden;
-  }
-
-  :global(.ant-card-body) {
-    padding: $spacing-xl $spacing-lg;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  &:active {
+    transform: translateY(-6px);
   }
 
   @media (max-width: $breakpoint-md) {
-    width: 300px;
+    max-width: 100%;
   }
+}
 
-  @media (max-width: $breakpoint-sm) {
-    width: 280px;
-  }
+// Image wrapper with gradient overlay
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  border-radius: $border-radius-lg $border-radius-lg 0 0;
 }
 
 .cardImage {
   width: 100%;
-  height: 200px;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
   transition: transform $transition-slow;
 
   .serviceCard:hover & {
-    transform: scale(1.05);
+    transform: scale(1.08);
   }
+}
+
+// Subtle gradient overlay at bottom of image
+.imageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+  pointer-events: none;
 }
 
 .cardContent {
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding: $spacing-xl;
+  flex: 1;
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-lg;
+  }
 }
 
 .cardTitle {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: $font-weight-bold;
   color: $color-gray-900;
   margin-bottom: $spacing-md;
   line-height: 1.3;
   text-align: left;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 22px;
+  }
 }
 
 .cardDescription {
@@ -69,6 +109,10 @@
   margin: 0 0 $spacing-lg 0;
   text-align: left;
   flex-shrink: 0;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-sm;
+  }
 }
 
 .conditionsSection {
@@ -78,13 +122,13 @@
   flex-grow: 1;
 }
 
+// Sentence case with smaller font and medium weight
 .conditionsTitle {
-  font-size: 12px;
-  font-weight: $font-weight-semibold;
-  color: $color-gray-500;
-  letter-spacing: 0.5px;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-gray-600;
+  letter-spacing: 0.3px;
   margin-bottom: $spacing-sm;
-  text-transform: uppercase;
   text-align: left;
 }
 
@@ -94,40 +138,57 @@
   margin: 0;
 }
 
+// Check icons instead of bullets
 .conditionItem {
   font-size: $font-size-sm;
   color: $color-gray-700;
   padding: $spacing-xs 0;
-  position: relative;
-  padding-left: $spacing-md;
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-sm;
   text-align: left;
-
-  &::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: $color-primary;
-    font-weight: $font-weight-bold;
-  }
 }
 
+.checkIcon {
+  color: $color-primary;
+  font-size: 14px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+// Visual CTA indicator (not interactive - card handles navigation)
 .learnMoreButton {
-  padding: 0;
-  height: auto;
+  align-self: flex-start;
   font-size: $font-size-base;
   font-weight: $font-weight-semibold;
   color: $color-primary;
-  text-align: left;
+  border: 1px solid $color-primary;
+  border-radius: $border-radius-sm;
   margin-top: auto;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: $spacing-xs;
+  padding: $spacing-sm $spacing-lg;
+  transition: all $transition-base;
+  pointer-events: none; // Prevent interference with card click
 
-  &:hover {
+  .serviceCard:hover & {
     color: $color-primary-dark;
+    border-color: $color-primary-dark;
+    background: rgba($color-primary, 0.04);
   }
 
   :global(.anticon) {
     font-size: 14px;
+    transition: transform $transition-base;
+  }
+
+  .serviceCard:hover & :global(.anticon) {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-sm;
+    padding: $spacing-xs $spacing-md;
   }
 }
