@@ -2,7 +2,7 @@
 
 .testimonialCard {
   width: 100%;
-  min-height: 240px;
+  height: 100%; // Ensure card takes full height of wrapper
   border-radius: $border-radius-lg;
   background: $color-white;
   border: 1px solid $color-gray-200;
@@ -16,6 +16,7 @@
   :global(.ant-card-body) {
     padding: $spacing-xl;
     height: 100%;
+    display: flex; // Ensure flexbox for proper alignment
   }
 }
 
@@ -23,6 +24,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
 }
 
 .stars {
@@ -49,6 +51,12 @@
   font-style: italic;
   overflow-wrap: break-word;
   hyphens: auto;
+  // Text clamping for overflow - show max 6 lines
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .authorInfo {
