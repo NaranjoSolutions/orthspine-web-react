@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, Button } from 'antd';
+import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import { ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
 import styles from './ServiceCard.module.scss';
 
 interface ServiceCardProps {
@@ -16,6 +16,7 @@ interface ServiceCardProps {
 /**
  * ServiceCard Component
  * Displays a single service card with image, title, description, and Learn More action
+ * Features full-card clickability with accessibility support and modern design
  *
  * @param title - Service title
  * @param shortDescription - Brief description of the service
@@ -34,37 +35,65 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  const handleLearnMore = () => {
+  const handleCardClick = () => {
     navigate(`/services/${serviceId}`);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleCardClick();
+    }
+  };
+
   return (
-    <Card className={styles.serviceCard} hoverable cover={<img alt={alt} src={image} className={styles.cardImage} />}>
+    <article
+      className={styles.serviceCard}
+      onClick={handleCardClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label={`Ver detalles de ${title}`}
+    >
+      {/* Image Section with Gradient Overlay */}
+      <div className={styles.imageWrapper}>
+        <img src={image} alt={alt} className={styles.cardImage} />
+        <div className={styles.imageOverlay} aria-hidden="true" />
+      </div>
+
+      {/* Card Content */}
       <div className={styles.cardContent}>
         <h3 className={styles.cardTitle}>{title}</h3>
         <p className={styles.cardDescription}>{shortDescription}</p>
+
+        {/* Conditions Treated Section */}
         {conditionsTreated && conditionsTreated.length > 0 && (
           <div className={styles.conditionsSection}>
-            <h4 className={styles.conditionsTitle}>CONDICIONES TRATADAS</h4>
+            <h4 className={styles.conditionsTitle}>Condiciones tratadas</h4>
             <ul className={styles.conditionsList}>
               {conditionsTreated.slice(0, 3).map((condition, index) => (
                 <li key={index} className={styles.conditionItem}>
-                  {condition}
+                  <CheckOutlined className={styles.checkIcon} aria-hidden="true" />
+                  <span>{condition}</span>
                 </li>
               ))}
             </ul>
           </div>
         )}
+
+        {/* CTA Button */}
         <Button
-          type="link"
+          type="default"
+          ghost
           className={styles.learnMoreButton}
-          onClick={handleLearnMore}
           icon={<ArrowRightOutlined />}
           iconPosition="end"
+          tabIndex={-1}
+          aria-hidden="true"
         >
           Saber Más
         </Button>
       </div>
-    </Card>
+    </article>
   );
 };
