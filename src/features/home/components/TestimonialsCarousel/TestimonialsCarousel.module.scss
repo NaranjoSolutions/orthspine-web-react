@@ -146,19 +146,22 @@
 
 .cardWrapper {
   flex-shrink: 0;
+  height: 320px; // Fixed height for consistent card sizing
 
   // Constrain width on large screens
   @media (min-width: $breakpoint-lg) {
     width: 420px;
   }
 
-  // Full width on mobile/tablet
+  // Full width on mobile/tablet with adjusted height
   @media (max-width: $breakpoint-md) {
     width: 90vw;
+    height: 340px; // Slightly taller for narrower cards
   }
 
   @media (max-width: $breakpoint-sm) {
     width: 85vw;
+    height: 360px; // Even taller for mobile
   }
 }
 
