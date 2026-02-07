@@ -112,6 +112,7 @@ export const ServicesCarousel: React.FC = () => {
                     shortDescription={service.shortDescription}
                     image={service.image}
                     alt={service.alt}
+                    conditionsTreated={service.conditionsTreated}
                     serviceId={service.serviceId}
                   />
                 </div>
