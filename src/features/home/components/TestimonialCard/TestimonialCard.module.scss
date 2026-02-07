@@ -52,6 +52,8 @@
   overflow-wrap: break-word;
   hyphens: auto;
   // Text clamping for overflow - show max 6 lines
+  // Browser support: Chrome, Safari, Firefox, Edge (95%+ modern browsers)
+  // Note: Full testimonials are accessible via the testimonials page ("Ver más" link)
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
