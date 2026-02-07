@@ -124,7 +124,7 @@
 
 // Sentence case with smaller font and medium weight
 .conditionsTitle {
-  font-size: 13px;
+  font-size: $font-size-xs;
   font-weight: $font-weight-medium;
   color: $color-gray-600;
   letter-spacing: 0.3px;
