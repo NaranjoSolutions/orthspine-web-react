@@ -9,6 +9,7 @@ import styles from './ServicesCarousel.module.scss';
 const CARD_GAP = 24; // Gap between cards (spacing-lg)
 const RESUME_DELAY = 3000; // Resume autoplay after 3 seconds of manual interaction
 const AUTO_SCROLL_DURATION = 40000; // Match previous 40s animation timing
+const SWIPE_THRESHOLD = 40; // Minimum swipe distance to trigger navigation
 
 /**
  * ServicesCarousel Component
@@ -33,6 +34,8 @@ export const ServicesCarousel: React.FC = () => {
   const lastTimestampRef = useRef<number | null>(null);
   const scrollDistanceRef = useRef<number>(0);
   const wrapPointRef = useRef<number>(0);
+  const touchStartXRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
 
   // Use refs for pause states to avoid recreating autoScroll callback
   const isPausedRef = useRef(false);
@@ -63,7 +66,8 @@ export const ServicesCarousel: React.FC = () => {
 
     const firstCard = trackRef.current.querySelector(`.${styles.cardWrapper}`) as HTMLElement | null;
     if (firstCard) {
-      const cardWidth = firstCard.offsetWidth;
+      // Use subpixel-accurate width for vw-based cards to keep wrap calculations seamless.
+      const cardWidth = firstCard.getBoundingClientRect().width;
       const scrollDistance = cardWidth + CARD_GAP;
       scrollDistanceRef.current = scrollDistance;
       wrapPointRef.current = scrollDistance * allClinicServices.length;
@@ -171,42 +175,84 @@ export const ServicesCarousel: React.FC = () => {
     }
   }, []);
 
-  const handlePrevious = useCallback(() => {
-    if (wrapperRef.current && scrollDistanceRef.current > 0) {
-      setIsManuallyPaused(true);
-      normalizeScrollPosition();
-      const currentScroll = wrapperRef.current.scrollLeft;
-      wrapperRef.current.scrollTo({
-        left: currentScroll - scrollDistanceRef.current,
-        behavior: 'smooth',
-      });
-      scheduleResume();
-    }
-  }, [normalizeScrollPosition, scheduleResume]);
-
-  const handleNext = useCallback(() => {
-    if (wrapperRef.current && scrollDistanceRef.current > 0) {
-      setIsManuallyPaused(true);
-      normalizeScrollPosition();
-      const currentScroll = wrapperRef.current.scrollLeft;
-      wrapperRef.current.scrollTo({
-        left: currentScroll + scrollDistanceRef.current,
-        behavior: 'smooth',
-      });
-      scheduleResume();
-    }
-  }, [normalizeScrollPosition, scheduleResume]);
+  const scrollByDistance = useCallback(
+    (direction: 'previous' | 'next', shouldScheduleResume = true) => {
+      if (wrapperRef.current && scrollDistanceRef.current > 0) {
+        setIsManuallyPaused(true);
+        normalizeScrollPosition();
+        const currentScroll = wrapperRef.current.scrollLeft;
+        const offset = direction === 'previous' ? -scrollDistanceRef.current : scrollDistanceRef.current;
+        wrapperRef.current.scrollTo({
+          left: currentScroll + offset,
+          behavior: 'smooth',
+        });
+        if (shouldScheduleResume) {
+          scheduleResume();
+        }
+      }
+    },
+    [normalizeScrollPosition, scheduleResume],
+  );
 
   // Handle touch events for mobile
-  const handleTouchStart = useCallback(() => {
-    setIsTouching(true);
-    clearResumeTimer();
-  }, [clearResumeTimer]);
+  const handleTouchStart = useCallback(
+    (event: React.TouchEvent<HTMLDivElement>) => {
+      const touch = event.touches[0];
 
-  const handleTouchEnd = useCallback(() => {
-    setIsTouching(false);
-    scheduleResume();
-  }, [scheduleResume]);
+      if (!touch) {
+        return;
+      }
+
+      touchStartXRef.current = touch.clientX;
+      touchStartYRef.current = touch.clientY;
+      setIsTouching(true);
+      setIsManuallyPaused(true);
+      clearResumeTimer();
+    },
+    [clearResumeTimer],
+  );
+
+  const handleTouchEnd = useCallback(
+    (event: React.TouchEvent<HTMLDivElement>) => {
+      const touch = event.changedTouches[0];
+      const startX = touchStartXRef.current;
+      const startY = touchStartYRef.current;
+      const shouldResume = Boolean(touch);
+
+      setIsTouching(false);
+
+      let shouldNavigatePrevious = false;
+      let shouldNavigateNext = false;
+
+      if (touch && startX !== null && startY !== null) {
+        touchStartXRef.current = null;
+        touchStartYRef.current = null;
+
+        const deltaX = touch.clientX - startX;
+        const deltaY = touch.clientY - startY;
+        const absDeltaX = Math.abs(deltaX);
+        const absDeltaY = Math.abs(deltaY);
+        const meetsSwipeThreshold = absDeltaX >= SWIPE_THRESHOLD;
+        const isHorizontalSwipe = absDeltaX > absDeltaY;
+
+        if (meetsSwipeThreshold && isHorizontalSwipe) {
+          shouldNavigatePrevious = deltaX > 0;
+          shouldNavigateNext = deltaX < 0;
+        }
+      }
+
+      if (shouldNavigatePrevious) {
+        scrollByDistance('previous', false);
+      } else if (shouldNavigateNext) {
+        scrollByDistance('next', false);
+      }
+
+      if (shouldResume) {
+        scheduleResume();
+      }
+    },
+    [scheduleResume, scrollByDistance],
+  );
 
   return (
     <section id="services-section" className={styles.servicesSection}>
@@ -221,7 +267,7 @@ export const ServicesCarousel: React.FC = () => {
         <div className={styles.carouselContainer}>
           <button
             className={styles.navButton}
-            onClick={handlePrevious}
+            onClick={() => scrollByDistance('previous')}
             aria-label="Previous service"
             type="button"
           >
@@ -255,7 +301,7 @@ export const ServicesCarousel: React.FC = () => {
 
           <button
             className={styles.navButton}
-            onClick={handleNext}
+            onClick={() => scrollByDistance('next')}
             aria-label="Next service"
             type="button"
           >
