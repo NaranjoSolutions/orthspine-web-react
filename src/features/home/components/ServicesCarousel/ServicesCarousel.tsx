@@ -66,6 +66,7 @@ export const ServicesCarousel: React.FC = () => {
 
     const firstCard = trackRef.current.querySelector(`.${styles.cardWrapper}`) as HTMLElement | null;
     if (firstCard) {
+      // Use subpixel-accurate width for vw-based cards to keep wrap calculations seamless.
       const cardWidth = firstCard.getBoundingClientRect().width;
       const scrollDistance = cardWidth + CARD_GAP;
       scrollDistanceRef.current = scrollDistance;
@@ -174,7 +175,7 @@ export const ServicesCarousel: React.FC = () => {
     }
   }, []);
 
-  const handlePrevious = useCallback(() => {
+  const handlePrevious = useCallback((shouldScheduleResume = true) => {
     if (wrapperRef.current && scrollDistanceRef.current > 0) {
       setIsManuallyPaused(true);
       normalizeScrollPosition();
@@ -183,11 +184,13 @@ export const ServicesCarousel: React.FC = () => {
         left: currentScroll - scrollDistanceRef.current,
         behavior: 'smooth',
       });
-      scheduleResume();
+      if (shouldScheduleResume) {
+        scheduleResume();
+      }
     }
   }, [normalizeScrollPosition, scheduleResume]);
 
-  const handleNext = useCallback(() => {
+  const handleNext = useCallback((shouldScheduleResume = true) => {
     if (wrapperRef.current && scrollDistanceRef.current > 0) {
       setIsManuallyPaused(true);
       normalizeScrollPosition();
@@ -196,7 +199,9 @@ export const ServicesCarousel: React.FC = () => {
         left: currentScroll + scrollDistanceRef.current,
         behavior: 'smooth',
       });
-      scheduleResume();
+      if (shouldScheduleResume) {
+        scheduleResume();
+      }
     }
   }, [normalizeScrollPosition, scheduleResume]);
 
@@ -223,27 +228,38 @@ export const ServicesCarousel: React.FC = () => {
       const touch = event.changedTouches[0];
       const startX = touchStartXRef.current;
       const startY = touchStartYRef.current;
+      const shouldResume = Boolean(touch);
 
-      touchStartXRef.current = null;
-      touchStartYRef.current = null;
       setIsTouching(false);
 
-      if (!touch || startX === null || startY === null) {
-        return;
+      let shouldNavigatePrevious = false;
+      let shouldNavigateNext = false;
+
+      if (touch && startX !== null && startY !== null) {
+        touchStartXRef.current = null;
+        touchStartYRef.current = null;
+
+        const deltaX = touch.clientX - startX;
+        const deltaY = touch.clientY - startY;
+        const absDeltaX = Math.abs(deltaX);
+        const absDeltaY = Math.abs(deltaY);
+        const meetsSwipeThreshold = absDeltaX >= SWIPE_THRESHOLD;
+        const isHorizontalSwipe = absDeltaX > absDeltaY;
+
+        if (meetsSwipeThreshold && isHorizontalSwipe) {
+          shouldNavigatePrevious = deltaX > 0;
+          shouldNavigateNext = deltaX < 0;
+        }
       }
 
-      const deltaX = touch.clientX - startX;
-      const deltaY = touch.clientY - startY;
+      if (shouldNavigatePrevious) {
+        handlePrevious(false);
+      } else if (shouldNavigateNext) {
+        handleNext(false);
+      }
 
-      if (Math.abs(deltaX) < SWIPE_THRESHOLD || Math.abs(deltaX) <= Math.abs(deltaY)) {
+      if (shouldResume) {
         scheduleResume();
-        return;
-      }
-
-      if (deltaX > 0) {
-        handlePrevious();
-      } else {
-        handleNext();
       }
     },
     [handleNext, handlePrevious, scheduleResume],
