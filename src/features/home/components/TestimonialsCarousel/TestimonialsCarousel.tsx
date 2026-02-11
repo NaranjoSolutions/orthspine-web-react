@@ -94,17 +94,21 @@ export const TestimonialsCarousel: React.FC = () => {
     }
   }, [getScrollDistance, scheduleResume]);
 
-  const handleTouchStart = useCallback((event: React.TouchEvent<HTMLDivElement>) => {
-    const touch = event.touches[0];
+  const handleTouchStart = useCallback(
+    (event: React.TouchEvent<HTMLDivElement>) => {
+      const touch = event.touches[0];
 
-    if (!touch) {
-      return;
-    }
+      if (!touch) {
+        return;
+      }
 
-    touchStartXRef.current = touch.clientX;
-    touchStartYRef.current = touch.clientY;
-    setIsPaused(true);
-  }, []);
+      touchStartXRef.current = touch.clientX;
+      touchStartYRef.current = touch.clientY;
+      setIsManuallyPaused(true);
+      clearResumeTimer();
+    },
+    [clearResumeTimer],
+  );
 
   const handleTouchEnd = useCallback(
     (event: React.TouchEvent<HTMLDivElement>) => {
@@ -114,7 +118,6 @@ export const TestimonialsCarousel: React.FC = () => {
 
       touchStartXRef.current = null;
       touchStartYRef.current = null;
-      setIsPaused(false);
 
       if (!touch || startX === null || startY === null) {
         return;
@@ -124,17 +127,18 @@ export const TestimonialsCarousel: React.FC = () => {
       const deltaY = touch.clientY - startY;
 
       if (Math.abs(deltaX) < SWIPE_THRESHOLD || Math.abs(deltaX) <= Math.abs(deltaY)) {
+        scheduleResume();
         return;
       }
 
       if (deltaX > 0) {
         handlePrevious();
-        return;
+      } else {
+        handleNext();
       }
 
-      handleNext();
     },
-    [handleNext, handlePrevious],
+    [handleNext, handlePrevious, scheduleResume],
   );
 
   return (
