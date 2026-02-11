@@ -6,30 +6,135 @@ import { allClinicServices } from '@/shared/resources/services/services';
 import styles from './ServicesCarousel.module.scss';
 
 // Carousel constants
-const CARD_WIDTH = 350; // Base card width in pixels
 const CARD_GAP = 24; // Gap between cards (spacing-lg)
-const SCROLL_DISTANCE = CARD_WIDTH + CARD_GAP; // Total scroll distance per navigation
 const RESUME_DELAY = 3000; // Resume autoplay after 3 seconds of manual interaction
+const AUTO_SCROLL_DURATION = 40000; // Match previous 40s animation timing
 
 /**
  * ServicesCarousel Component
  * Auto-scrolling horizontal carousel of clinic services
  *
  * Features:
- * - Auto-scrolls from left to right continuously
+ * - Auto-scrolls from left to right continuously using JS-based scrolling
  * - Manual navigation with Previous/Next buttons
  * - Pauses animation on hover (resumes on mouse leave)
+ * - Pauses animation on touch/drag interaction (resumes after delay)
  * - Pauses animation on manual navigation (resumes after 3 seconds)
- * - Infinite loop by duplicating service cards
+ * - Infinite loop by duplicating service cards with seamless wrapping
  */
 export const ServicesCarousel: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [isManuallyPaused, setIsManuallyPaused] = useState(false);
+  const [isTouching, setIsTouching] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const resumeTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const animationFrameRef = useRef<number | null>(null);
+  const lastTimestampRef = useRef<number | null>(null);
+  const scrollDistanceRef = useRef<number>(0);
+  const wrapPointRef = useRef<number>(0);
+
+  // Use refs for pause states to avoid recreating autoScroll callback
+  const isPausedRef = useRef(false);
+  const isManuallyPausedRef = useRef(false);
+  const isTouchingRef = useRef(false);
 
   // Triple the services for truly seamless infinite scroll
   const extendedServices = [...allClinicServices, ...allClinicServices, ...allClinicServices];
+
+  // Sync state with refs
+  useEffect(() => {
+    isPausedRef.current = isPaused;
+  }, [isPaused]);
+
+  useEffect(() => {
+    isManuallyPausedRef.current = isManuallyPaused;
+  }, [isManuallyPaused]);
+
+  useEffect(() => {
+    isTouchingRef.current = isTouching;
+  }, [isTouching]);
+
+  // Calculate card width and scroll distance from actual DOM elements
+  const calculateScrollMetrics = useCallback(() => {
+    if (!trackRef.current) {
+      return;
+    }
+
+    const firstCard = trackRef.current.querySelector(`.${styles.cardWrapper}`) as HTMLElement | null;
+    if (firstCard) {
+      const cardWidth = firstCard.offsetWidth;
+      const scrollDistance = cardWidth + CARD_GAP;
+      scrollDistanceRef.current = scrollDistance;
+      wrapPointRef.current = scrollDistance * allClinicServices.length;
+
+      if (wrapperRef.current && wrapperRef.current.scrollLeft === 0) {
+        wrapperRef.current.scrollLeft = wrapPointRef.current;
+      }
+    }
+  }, []);
+
+  // Auto-scroll animation using requestAnimationFrame
+  // Note: allClinicServices is a constant array that doesn't change during component lifetime
+  const autoScroll = useCallback(() => {
+    if (!wrapperRef.current || wrapPointRef.current === 0) {
+      animationFrameRef.current = requestAnimationFrame(autoScroll);
+      return;
+    }
+
+    const timestamp = performance.now();
+    const lastTimestamp = lastTimestampRef.current ?? timestamp;
+    const delta = timestamp - lastTimestamp;
+    lastTimestampRef.current = timestamp;
+
+    // Continue the animation loop even when paused to allow smooth resume
+    if (isPausedRef.current || isManuallyPausedRef.current || isTouchingRef.current) {
+      animationFrameRef.current = requestAnimationFrame(autoScroll);
+      return;
+    }
+
+    const wrapper = wrapperRef.current;
+    const scrollSpeed = wrapPointRef.current / AUTO_SCROLL_DURATION;
+    wrapper.scrollLeft += scrollSpeed * delta;
+
+    // Seamless wrap around: when we reach the wrap point, jump back to the start of the second set
+    if (wrapper.scrollLeft >= wrapPointRef.current * 2) {
+      wrapper.scrollLeft -= wrapPointRef.current;
+    } else if (wrapper.scrollLeft <= 0) {
+      wrapper.scrollLeft += wrapPointRef.current;
+    }
+
+    // Schedule next frame
+    animationFrameRef.current = requestAnimationFrame(autoScroll);
+  }, []);
+
+  // Start auto-scroll on mount
+  useEffect(() => {
+    calculateScrollMetrics();
+
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      lastTimestampRef.current = null;
+      animationFrameRef.current = requestAnimationFrame(autoScroll);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [autoScroll, calculateScrollMetrics]);
+
+  // Recalculate metrics on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      calculateScrollMetrics();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [calculateScrollMetrics]);
 
   // Clear any existing resume timer
   const clearResumeTimer = useCallback(() => {
@@ -54,28 +159,53 @@ export const ServicesCarousel: React.FC = () => {
     };
   }, [clearResumeTimer]);
 
+  const normalizeScrollPosition = useCallback(() => {
+    if (!wrapperRef.current || wrapPointRef.current === 0) {
+      return;
+    }
+
+    if (wrapperRef.current.scrollLeft >= wrapPointRef.current * 2) {
+      wrapperRef.current.scrollLeft -= wrapPointRef.current;
+    } else if (wrapperRef.current.scrollLeft <= 0) {
+      wrapperRef.current.scrollLeft += wrapPointRef.current;
+    }
+  }, []);
+
   const handlePrevious = useCallback(() => {
-    if (trackRef.current) {
+    if (wrapperRef.current && scrollDistanceRef.current > 0) {
       setIsManuallyPaused(true);
-      const currentScroll = trackRef.current.scrollLeft;
-      trackRef.current.scrollTo({
-        left: currentScroll - SCROLL_DISTANCE,
+      normalizeScrollPosition();
+      const currentScroll = wrapperRef.current.scrollLeft;
+      wrapperRef.current.scrollTo({
+        left: currentScroll - scrollDistanceRef.current,
         behavior: 'smooth',
       });
       scheduleResume();
     }
-  }, [scheduleResume]);
+  }, [normalizeScrollPosition, scheduleResume]);
 
   const handleNext = useCallback(() => {
-    if (trackRef.current) {
+    if (wrapperRef.current && scrollDistanceRef.current > 0) {
       setIsManuallyPaused(true);
-      const currentScroll = trackRef.current.scrollLeft;
-      trackRef.current.scrollTo({
-        left: currentScroll + SCROLL_DISTANCE,
+      normalizeScrollPosition();
+      const currentScroll = wrapperRef.current.scrollLeft;
+      wrapperRef.current.scrollTo({
+        left: currentScroll + scrollDistanceRef.current,
         behavior: 'smooth',
       });
       scheduleResume();
     }
+  }, [normalizeScrollPosition, scheduleResume]);
+
+  // Handle touch events for mobile
+  const handleTouchStart = useCallback(() => {
+    setIsTouching(true);
+    clearResumeTimer();
+  }, [clearResumeTimer]);
+
+  const handleTouchEnd = useCallback(() => {
+    setIsTouching(false);
+    scheduleResume();
   }, [scheduleResume]);
 
   return (
@@ -99,12 +229,15 @@ export const ServicesCarousel: React.FC = () => {
           </button>
 
           <div
-            ref={trackRef}
+            ref={wrapperRef}
             className={styles.carouselWrapper}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchEnd}
           >
-            <div className={`${styles.carouselTrack} ${isPaused || isManuallyPaused ? styles.paused : ''}`}>
+            <div ref={trackRef} className={styles.carouselTrack}>
               {extendedServices.map((service, index) => (
                 <div key={`${service.serviceId}-${index}`} className={styles.cardWrapper}>
                   <ServiceCard
