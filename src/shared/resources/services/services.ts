@@ -1,10 +1,10 @@
 import spine from '../../../assets/images/services/backbone.png';
 import knee from '../../../assets/images/services/knee.png';
-import hip from '../../../assets/images/services/cadera.png';
+import hip from '../../../assets/images/services/hip.png';
 import shoulder from '../../../assets/images/services/shoulder.png';
-import footAndHand1 from '../../../assets/images/services/foot-and-hand-3.png';
+import footAndHand1 from '../../../assets/images/services/foot-and-hand.png';
 import rehabilitation from '../../../assets/images/services/rehabilitation.png';
-import circulation from '../../../assets/images/services/circulation1.png';
+import circulation from '../../../assets/images/services/circulation.png';
 import sports from '../../../assets/images/services/sports.png';
 
 export const allClinicServices = [
