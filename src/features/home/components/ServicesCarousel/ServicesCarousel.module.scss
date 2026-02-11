@@ -82,6 +82,17 @@
   &:active {
     cursor: grabbing;
   }
+
+  @media (max-width: $breakpoint-md) {
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 $spacing-md;
+    -webkit-overflow-scrolling: touch;
+    cursor: default;
+
+    &:active {
+      cursor: default;
+    }
+  }
 }
 
 .navButton {
@@ -120,17 +131,7 @@
   }
 
   @media (max-width: $breakpoint-md) {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    font-size: 18px;
-  }
-
-  @media (max-width: $breakpoint-sm) {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    font-size: 16px;
+    display: none;
   }
 }
 
@@ -152,8 +153,29 @@
   &.paused {
     animation-play-state: paused;
   }
+
+  @media (max-width: $breakpoint-md) {
+    animation: none;
+    padding: 0 $spacing-md;
+  }
 }
 
 .cardWrapper {
   flex-shrink: 0;
+
+  @media (max-width: $breakpoint-md) {
+    width: 87vw;
+    max-width: 450px;
+    scroll-snap-align: center;
+
+    > div {
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    width: 88vw;
+    max-width: 400px;
+  }
 }
