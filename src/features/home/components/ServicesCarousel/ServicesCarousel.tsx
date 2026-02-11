@@ -194,14 +194,6 @@ export const ServicesCarousel: React.FC = () => {
     [normalizeScrollPosition, scheduleResume],
   );
 
-  const handlePrevious = useCallback(() => {
-    scrollByDistance('previous');
-  }, [scrollByDistance]);
-
-  const handleNext = useCallback(() => {
-    scrollByDistance('next');
-  }, [scrollByDistance]);
-
   // Handle touch events for mobile
   const handleTouchStart = useCallback(
     (event: React.TouchEvent<HTMLDivElement>) => {
@@ -275,7 +267,7 @@ export const ServicesCarousel: React.FC = () => {
         <div className={styles.carouselContainer}>
           <button
             className={styles.navButton}
-            onClick={handlePrevious}
+            onClick={() => scrollByDistance('previous')}
             aria-label="Previous service"
             type="button"
           >
@@ -309,7 +301,7 @@ export const ServicesCarousel: React.FC = () => {
 
           <button
             className={styles.navButton}
-            onClick={handleNext}
+            onClick={() => scrollByDistance('next')}
             aria-label="Next service"
             type="button"
           >
