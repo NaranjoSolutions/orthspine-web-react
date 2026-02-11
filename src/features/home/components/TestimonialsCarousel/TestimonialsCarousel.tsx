@@ -11,6 +11,7 @@ const CARD_WIDTH = 420; // Base card width in pixels (desktop)
 const CARD_GAP = 24; // Gap between cards (spacing-lg)
 const SCROLL_DISTANCE = CARD_WIDTH + CARD_GAP; // Total scroll distance per navigation
 const RESUME_DELAY = 3000; // Resume autoplay after 3 seconds of manual interaction
+const SWIPE_THRESHOLD = 40; // Minimum swipe distance to trigger navigation
 
 /**
  * TestimonialsCarousel Component
@@ -28,6 +29,8 @@ export const TestimonialsCarousel: React.FC = () => {
   const [isManuallyPaused, setIsManuallyPaused] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
   const resumeTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const touchStartXRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
 
   // Triple the testimonials for seamless infinite scroll
   const extendedTestimonials = [...patientTestimonials, ...patientTestimonials, ...patientTestimonials];
@@ -48,6 +51,16 @@ export const TestimonialsCarousel: React.FC = () => {
     }, RESUME_DELAY);
   }, [clearResumeTimer]);
 
+  const getScrollDistance = useCallback(() => {
+    const card = trackRef.current?.querySelector<HTMLElement>(`.${styles.cardWrapper}`);
+
+    if (!card) {
+      return SCROLL_DISTANCE;
+    }
+
+    return card.getBoundingClientRect().width + CARD_GAP;
+  }, []);
+
   // Cleanup timer on unmount
   useEffect(() => {
     return () => {
@@ -59,25 +72,70 @@ export const TestimonialsCarousel: React.FC = () => {
     if (trackRef.current) {
       setIsManuallyPaused(true);
       const currentScroll = trackRef.current.scrollLeft;
+      const scrollDistance = getScrollDistance();
       trackRef.current.scrollTo({
-        left: currentScroll - SCROLL_DISTANCE,
+        left: currentScroll - scrollDistance,
         behavior: 'smooth',
       });
       scheduleResume();
     }
-  }, [scheduleResume]);
+  }, [getScrollDistance, scheduleResume]);
 
   const handleNext = useCallback(() => {
     if (trackRef.current) {
       setIsManuallyPaused(true);
       const currentScroll = trackRef.current.scrollLeft;
+      const scrollDistance = getScrollDistance();
       trackRef.current.scrollTo({
-        left: currentScroll + SCROLL_DISTANCE,
+        left: currentScroll + scrollDistance,
         behavior: 'smooth',
       });
       scheduleResume();
     }
-  }, [scheduleResume]);
+  }, [getScrollDistance, scheduleResume]);
+
+  const handleTouchStart = useCallback((event: React.TouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0];
+
+    if (!touch) {
+      return;
+    }
+
+    touchStartXRef.current = touch.clientX;
+    touchStartYRef.current = touch.clientY;
+    setIsPaused(true);
+  }, []);
+
+  const handleTouchEnd = useCallback(
+    (event: React.TouchEvent<HTMLDivElement>) => {
+      const touch = event.changedTouches[0];
+      const startX = touchStartXRef.current;
+      const startY = touchStartYRef.current;
+
+      touchStartXRef.current = null;
+      touchStartYRef.current = null;
+      setIsPaused(false);
+
+      if (!touch || startX === null || startY === null) {
+        return;
+      }
+
+      const deltaX = touch.clientX - startX;
+      const deltaY = touch.clientY - startY;
+
+      if (Math.abs(deltaX) < SWIPE_THRESHOLD || Math.abs(deltaX) <= Math.abs(deltaY)) {
+        return;
+      }
+
+      if (deltaX > 0) {
+        handlePrevious();
+        return;
+      }
+
+      handleNext();
+    },
+    [handleNext, handlePrevious],
+  );
 
   return (
     <section id="testimonials-section" className={styles.testimonialsSection}>
@@ -101,6 +159,9 @@ export const TestimonialsCarousel: React.FC = () => {
             className={styles.carouselWrapper}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchEnd}
           >
             <div className={`${styles.carouselTrack} ${isPaused || isManuallyPaused ? styles.paused : ''}`}>
               {extendedTestimonials.map((testimonial, index) => (
