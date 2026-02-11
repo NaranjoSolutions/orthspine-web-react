@@ -138,27 +138,12 @@ $carousel-card-mobile-width-sm: 88vw;
   }
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-374px * 8));
-  }
-}
-
 .carouselTrack {
   display: flex;
   gap: $spacing-lg;
-  animation: scroll 40s linear infinite;
-  will-change: transform;
-
-  &.paused {
-    animation-play-state: paused;
-  }
+  /* CSS animation removed - now controlled by JS */
 
   @media (max-width: $breakpoint-md) {
-    animation: none;
     padding: 0 $spacing-md;
   }
 }
