@@ -87,8 +87,6 @@ $carousel-card-mobile-width-sm: 88vw;
   }
 
   @media (max-width: $breakpoint-md) {
-    scroll-snap-type: x proximity;
-    scroll-padding: 0 $spacing-md;
     -webkit-overflow-scrolling: touch;
     cursor: default;
 
