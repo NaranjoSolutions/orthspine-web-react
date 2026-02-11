@@ -109,10 +109,7 @@
   }
 
   @media (max-width: $breakpoint-md) {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    font-size: 18px;
+    display: none;
   }
 
   @media (max-width: $breakpoint-sm) {
@@ -153,9 +150,9 @@
     width: 420px;
   }
 
-  // Full width on mobile/tablet with adjusted height
+  // Peek width on mobile/tablet with adjusted height
   @media (max-width: $breakpoint-md) {
-    width: 90vw;
+    width: 88vw;
     height: 340px; // Slightly taller for narrower cards
   }
 
