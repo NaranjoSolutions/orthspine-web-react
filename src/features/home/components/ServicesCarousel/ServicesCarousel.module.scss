@@ -1,5 +1,8 @@
 @use '@/styles/abstracts' as *;
 
+$carousel-card-mobile-width: 87vw;
+$carousel-card-mobile-width-sm: 88vw;
+
 .servicesSection {
   width: 100%;
   padding: 80px 0;
@@ -84,7 +87,7 @@
   }
 
   @media (max-width: $breakpoint-md) {
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
     scroll-padding: 0 $spacing-md;
     -webkit-overflow-scrolling: touch;
     cursor: default;
@@ -164,7 +167,7 @@
   flex-shrink: 0;
 
   @media (max-width: $breakpoint-md) {
-    width: 87vw;
+    width: $carousel-card-mobile-width;
     max-width: 450px;
     scroll-snap-align: center;
 
@@ -175,7 +178,7 @@
   }
 
   @media (max-width: $breakpoint-sm) {
-    width: 88vw;
+    width: $carousel-card-mobile-width-sm;
     max-width: 400px;
   }
 }
