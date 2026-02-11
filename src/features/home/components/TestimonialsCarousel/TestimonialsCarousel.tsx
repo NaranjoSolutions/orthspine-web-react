@@ -136,7 +136,6 @@ export const TestimonialsCarousel: React.FC = () => {
       } else {
         handleNext();
       }
-
     },
     [handleNext, handlePrevious, scheduleResume],
   );
