@@ -175,35 +175,32 @@ export const ServicesCarousel: React.FC = () => {
     }
   }, []);
 
-  const handlePrevious = useCallback((shouldScheduleResume = true) => {
-    if (wrapperRef.current && scrollDistanceRef.current > 0) {
-      setIsManuallyPaused(true);
-      normalizeScrollPosition();
-      const currentScroll = wrapperRef.current.scrollLeft;
-      wrapperRef.current.scrollTo({
-        left: currentScroll - scrollDistanceRef.current,
-        behavior: 'smooth',
-      });
-      if (shouldScheduleResume) {
-        scheduleResume();
+  const scrollByDistance = useCallback(
+    (direction: 'previous' | 'next', shouldScheduleResume = true) => {
+      if (wrapperRef.current && scrollDistanceRef.current > 0) {
+        setIsManuallyPaused(true);
+        normalizeScrollPosition();
+        const currentScroll = wrapperRef.current.scrollLeft;
+        const offset = direction === 'previous' ? -scrollDistanceRef.current : scrollDistanceRef.current;
+        wrapperRef.current.scrollTo({
+          left: currentScroll + offset,
+          behavior: 'smooth',
+        });
+        if (shouldScheduleResume) {
+          scheduleResume();
+        }
       }
-    }
-  }, [normalizeScrollPosition, scheduleResume]);
+    },
+    [normalizeScrollPosition, scheduleResume],
+  );
 
-  const handleNext = useCallback((shouldScheduleResume = true) => {
-    if (wrapperRef.current && scrollDistanceRef.current > 0) {
-      setIsManuallyPaused(true);
-      normalizeScrollPosition();
-      const currentScroll = wrapperRef.current.scrollLeft;
-      wrapperRef.current.scrollTo({
-        left: currentScroll + scrollDistanceRef.current,
-        behavior: 'smooth',
-      });
-      if (shouldScheduleResume) {
-        scheduleResume();
-      }
-    }
-  }, [normalizeScrollPosition, scheduleResume]);
+  const handlePrevious = useCallback(() => {
+    scrollByDistance('previous');
+  }, [scrollByDistance]);
+
+  const handleNext = useCallback(() => {
+    scrollByDistance('next');
+  }, [scrollByDistance]);
 
   // Handle touch events for mobile
   const handleTouchStart = useCallback(
@@ -253,16 +250,16 @@ export const ServicesCarousel: React.FC = () => {
       }
 
       if (shouldNavigatePrevious) {
-        handlePrevious(false);
+        scrollByDistance('previous', false);
       } else if (shouldNavigateNext) {
-        handleNext(false);
+        scrollByDistance('next', false);
       }
 
       if (shouldResume) {
         scheduleResume();
       }
     },
-    [handleNext, handlePrevious, scheduleResume],
+    [scheduleResume, scrollByDistance],
   );
 
   return (
